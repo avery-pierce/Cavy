@@ -26,6 +26,7 @@
 		C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D0C253203B800C8CEF7 /* ListModel.swift */; };
 		C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */; };
 		C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D14253222F900C8CEF7 /* LoadState.swift */; };
+		C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D182532268600C8CEF7 /* LoadStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		C6515D0C253203B800C8CEF7 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableListingView.swift; sourceTree = "<group>"; };
 		C6515D14253222F900C8CEF7 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		C6515D182532268600C8CEF7 /* LoadStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C63DF2C625313E1500728E08 /* LemmyListing.swift */,
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */,
+				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
 				C6515D082532038900C8CEF7 /* MainTabView.swift */,
 				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
@@ -254,6 +257,7 @@
 				C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */,
 				C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,
+				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
 				C63DF2C725313E1500728E08 /* LemmyListing.swift in Sources */,
 				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
 				C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */,
