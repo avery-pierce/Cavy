@@ -14,13 +14,28 @@ struct LoadableListingView: View {
     }
     
     var body: some View {
-        print("rendering...")
-        return ListingView(listModel.posts)
+        content
             .onAppear(perform: listModel.refresh)
             .navigationBarItems(trailing: Button(action: listModel.refresh) {
                 Image(systemName: "arrow.clockwise")
             })
             .navigationTitle(listModel.client.host)
+    }
+    
+    @ViewBuilder var content: some View {
+        switch listModel.loadState {
+        case .complete(let result):
+            switch result {
+            case .success(let posts):
+                ListingView(posts)
+
+            case .failure(let error):
+                Text(error.localizedDescription)
+            }
+            
+        case .idle, .loading:
+            ProgressView()
+        }
     }
 }
 
