@@ -108,17 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
+				C6C3D88D2532473000EB7DB8 /* Views */,
 				C63DF2C325313DE000728E08 /* RootModel.swift */,
 				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
 				C6515D1E253228CA00C8CEF7 /* ImageLoader.swift */,
 				C63DF2C625313E1500728E08 /* LemmyListing.swift */,
-				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
-				C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */,
-				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
-				C6515D082532038900C8CEF7 /* MainTabView.swift */,
 				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
-				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
 				C63DF2C0253001CC00728E08 /* PostItem.swift */,
 				C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */,
 				C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */,
@@ -147,6 +143,18 @@
 				C63DF2D425313FB500728E08 /* Info.plist */,
 			);
 			path = LemmyAppTests;
+			sourceTree = "<group>";
+		};
+		C6C3D88D2532473000EB7DB8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6515D082532038900C8CEF7 /* MainTabView.swift */,
+				C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */,
+				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
+				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
+				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
