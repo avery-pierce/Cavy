@@ -13,14 +13,7 @@ struct LemmyAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ContentView(rootModel.posts)
-                    .onAppear(perform: rootModel.refresh)
-                    .navigationBarItems(trailing: Button(action: rootModel.refresh) {
-                        Image(systemName: "arrow.clockwise")
-                    })
-                    .navigationTitle("Lemmy")
-            }
+            MainTabView(rootModel)
         }
     }
 }

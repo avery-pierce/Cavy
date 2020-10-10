@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  ListingView.swift
 //  LemmyApp
 //
-//  Created by Avery Pierce on 10/8/20.
+//  Created by Avery Pierce on 10/10/20.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct ListingView: View {
     let posts: [PostItem]
     init(_ posts: [PostItem]) {
         self.posts = posts
@@ -28,8 +28,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ListingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(sampleDataList)
+        ListingView(sampleDataList)
     }
 }

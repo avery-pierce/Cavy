@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* LemmyAppApp.swift */; };
-		C63DF2B02530016000728E08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AF2530016000728E08 /* ContentView.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
 		C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2BD253001BC00728E08 /* PostItemView.swift */; };
@@ -22,6 +21,10 @@
 		C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */; };
 		C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */; };
 		C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CF825316A6A00C8CEF7 /* URLSession++.swift */; };
+		C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CFC2532030B00C8CEF7 /* ListingView.swift */; };
+		C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D082532038900C8CEF7 /* MainTabView.swift */; };
+		C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D0C253203B800C8CEF7 /* ListModel.swift */; };
+		C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 /* Begin PBXFileReference section */
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
-		C63DF2AF2530016000728E08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63DF2B42530016300728E08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63DF2B62530016300728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +56,10 @@
 		C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemResponse.swift; sourceTree = "<group>"; };
 		C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAPIClient.swift; sourceTree = "<group>"; };
 		C6515CF825316A6A00C8CEF7 /* URLSession++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession++.swift"; sourceTree = "<group>"; };
+		C6515CFC2532030B00C8CEF7 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
+		C6515D082532038900C8CEF7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		C6515D0C253203B800C8CEF7 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableListingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,11 @@
 			children = (
 				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
 				C63DF2C325313DE000728E08 /* RootModel.swift */,
-				C63DF2AF2530016000728E08 /* ContentView.swift */,
+				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
 				C63DF2C625313E1500728E08 /* LemmyListing.swift */,
+				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
+				C6515D1025321C7D00C8CEF7 /* LoadableListingView.swift */,
+				C6515D082532038900C8CEF7 /* MainTabView.swift */,
 				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
@@ -231,15 +240,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
-				C63DF2B02530016000728E08 /* ContentView.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
 				C63DF2C1253001CC00728E08 /* PostItem.swift in Sources */,
 				C63DF2C425313DE000728E08 /* RootModel.swift in Sources */,
 				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
+				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
+				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
 				C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */,
+				C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */,
 				C63DF2C725313E1500728E08 /* LemmyListing.swift in Sources */,
+				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
 				C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */,
 				C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */,
 			);
