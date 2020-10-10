@@ -30,6 +30,10 @@ struct ListingView: View {
 
 struct ListingView_Previews: PreviewProvider {
     static var previews: some View {
-        ListingView(sampleDataList)
+        Group {
+            ListingView(sampleDataList)
+            ListingView(sampleDataList)
+                .preferredColorScheme(.dark)
+        }
     }
 }

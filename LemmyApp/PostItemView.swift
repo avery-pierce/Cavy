@@ -27,8 +27,8 @@ struct PostItemView: View {
                 }
                 .onAppear(perform: imageLoader.load)
                 .frame(width: 44, height: 44, alignment: .center)
-                .background(Color.gray)
-                .cornerRadius(8.0)
+                .background(Color(white: 0.5).opacity(0.2))
+                .cornerRadius(4.0)
             }
                 
             VStack(alignment: .leading, spacing: 4.0) {
