@@ -9,23 +9,32 @@ import SwiftUI
 
 struct PostItemView: View {
     let postItem: PostItem
+    @ObservedObject var imageLoader: ImageLoader
+    
     init(_ postItem: PostItem) {
         self.postItem = postItem
+        
+        imageLoader = ImageLoader(postItem.imageURL ?? URL(string: "https://www.example.com")!)
     }
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            if (postItem.imageURL != nil) {
-                Rectangle()
-                    .fill(Color.accentColor)
-                    .frame(width: 40, height: 40, alignment: .center)
-                    .cornerRadius(8.0)
+            if postItem.imageURL != nil {
+                LoadStateView(imageLoader.state) { image in
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                }
+                .onAppear(perform: imageLoader.load)
+                .frame(width: 44, height: 44, alignment: .center)
+                .background(Color.gray)
+                .cornerRadius(8.0)
             }
                 
             VStack(alignment: .leading, spacing: 4.0) {
                 Text(postItem.title)
                     .bold()
-                    .font(.system(size: 13.0))
+                    .font(.system(size: 14.0))
                 
                 HStack {
                     Text(postItem.authorName)
