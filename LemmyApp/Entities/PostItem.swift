@@ -14,8 +14,7 @@ protocol PostItem {
     var score: Int { get }
     var authorName: String { get }
     var domain: String { get }
-    
-    var url: URL? { get }
+    var destination: PostDestination? { get }
 }
 
 struct ConcretePostItem: PostItem {
@@ -25,8 +24,7 @@ struct ConcretePostItem: PostItem {
     var score: Int
     var authorName: String
     var domain: String
-    
-    var url: URL? { return nil }
+    var destination: PostDestination?
 }
 
 let sampleDataList = [

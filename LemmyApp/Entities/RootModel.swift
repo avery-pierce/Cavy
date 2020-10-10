@@ -12,4 +12,6 @@ class RootModel: ObservableObject {
         LemmyAPIClient.devLemmyMl,
         LemmyAPIClient.lemmygradML
     ]
+    
+    
 }

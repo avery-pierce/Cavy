@@ -15,11 +15,19 @@ struct ListingView: View {
     
     var body: some View {
         List(posts, id: \.id) { post in
-            if let url = post.url {
-                Link(destination: url) {
+            if let destination = post.destination {
+                switch destination {
+                case .web(let url):
+                    Link(destination: url) {
+                        PostItemView(post)
+                            .padding(.vertical, 8)
+                    }
+                    
+                default:
                     PostItemView(post)
                         .padding(.vertical, 8)
                 }
+                
             } else {
                 PostItemView(post)
                     .padding(.vertical, 8)

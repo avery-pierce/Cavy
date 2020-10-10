@@ -27,6 +27,9 @@
 		C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D14253222F900C8CEF7 /* LoadState.swift */; };
 		C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D182532268600C8CEF7 /* LoadStateView.swift */; };
 		C6515D1F253228CA00C8CEF7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D1E253228CA00C8CEF7 /* ImageLoader.swift */; };
+		C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8992532496E00EB7DB8 /* Resource.swift */; };
+		C6C3D8A0253249F100EB7DB8 /* DecodableResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D89F253249F100EB7DB8 /* DecodableResource.swift */; };
+		C6C3D8A525324E5D00EB7DB8 /* PostDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		C6515D14253222F900C8CEF7 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
 		C6515D182532268600C8CEF7 /* LoadStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStateView.swift; sourceTree = "<group>"; };
 		C6515D1E253228CA00C8CEF7 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		C6C3D8992532496E00EB7DB8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		C6C3D89F253249F100EB7DB8 /* DecodableResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableResource.swift; sourceTree = "<group>"; };
+		C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDestination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,13 +113,11 @@
 			children = (
 				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
 				C6C3D88D2532473000EB7DB8 /* Views */,
+				C6C3D8A325324E4B00EB7DB8 /* Entities */,
 				C6C3D88F253247B600EB7DB8 /* Lemmy Entities */,
 				C6C3D88E2532478100EB7DB8 /* Utils */,
 				C6C3D8942532481F00EB7DB8 /* Extensions */,
-				C63DF2C325313DE000728E08 /* RootModel.swift */,
-				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
 				C6515D1E253228CA00C8CEF7 /* ImageLoader.swift */,
-				C63DF2C0253001CC00728E08 /* PostItem.swift */,
 				C63DF2B12530016300728E08 /* Assets.xcassets */,
 				C63DF2B62530016300728E08 /* Info.plist */,
 				C63DF2B32530016300728E08 /* Preview Content */,
@@ -154,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				C6515D14253222F900C8CEF7 /* LoadState.swift */,
+				C6C3D8992532496E00EB7DB8 /* Resource.swift */,
+				C6C3D89F253249F100EB7DB8 /* DecodableResource.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -162,10 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */,
+				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 				C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */,
 				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
 				C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */,
-				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 			);
 			path = "Lemmy Entities";
 			sourceTree = "<group>";
@@ -176,6 +182,17 @@
 				C6515CF825316A6A00C8CEF7 /* URLSession++.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6C3D8A325324E4B00EB7DB8 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C63DF2C325313DE000728E08 /* RootModel.swift */,
+				C63DF2C0253001CC00728E08 /* PostItem.swift */,
+				C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */,
+				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,13 +296,16 @@
 			files = (
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
+				C6C3D8A525324E5D00EB7DB8 /* PostDestination.swift in Sources */,
 				C63DF2C1253001CC00728E08 /* PostItem.swift in Sources */,
 				C63DF2C425313DE000728E08 /* RootModel.swift in Sources */,
 				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
+				C6C3D8A0253249F100EB7DB8 /* DecodableResource.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
 				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
+				C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */,
 				C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */,
 				C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,

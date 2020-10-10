@@ -165,4 +165,12 @@ extension LemmyPostItem: PostItem {
         guard let url = url else { return "" }
         return URLComponents(url: url, resolvingAgainstBaseURL: false)?.host ?? ""
     }
+    
+    var destination: PostDestination? {
+        if let url = url {
+            return .web(url)
+        } else {
+            return .post(id: id)
+        }
+    }
 }
