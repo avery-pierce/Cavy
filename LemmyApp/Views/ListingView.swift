@@ -23,9 +23,12 @@ struct ListingView: View {
                             .padding(.vertical, 8)
                     }
                     
-                default:
-                    PostItemView(post)
-                        .padding(.vertical, 8)
+                case .selfDetail:
+                    NavigationLink(
+                        destination: PostDetailView(post: post)) {
+                        PostItemView(post)
+                            .padding(.vertical, 8)
+                    }
                 }
                 
             } else {

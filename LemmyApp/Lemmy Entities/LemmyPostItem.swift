@@ -157,6 +157,9 @@ struct LemmyPostItem: Codable {
 }
 
 extension LemmyPostItem: PostItem {
+    var htmlContent: String? { embedHTML }
+    var bodyContent: String? { embedDescription }
+    
     var id: String { String(_id) }
     var title: String { name ?? "" }
     var imageURL: URL? { thumbnailURL.flatMap(URL.init(string:)) }
@@ -170,7 +173,7 @@ extension LemmyPostItem: PostItem {
         if let url = url {
             return .web(url)
         } else {
-            return .post(id: id)
+            return .selfDetail
         }
     }
 }

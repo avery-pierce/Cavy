@@ -9,5 +9,5 @@ import Foundation
 
 enum PostDestination {
     case web(URL)
-    case post(id: String)
+    case selfDetail
 }

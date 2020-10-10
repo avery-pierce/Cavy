@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol PostItem {
     var id: String { get }
@@ -15,6 +16,7 @@ protocol PostItem {
     var authorName: String { get }
     var domain: String { get }
     var destination: PostDestination? { get }
+    var body: String? { get }
 }
 
 struct ConcretePostItem: PostItem {
@@ -25,6 +27,7 @@ struct ConcretePostItem: PostItem {
     var authorName: String
     var domain: String
     var destination: PostDestination?
+    var body: String?
 }
 
 let sampleDataList = [

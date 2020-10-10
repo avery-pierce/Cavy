@@ -30,6 +30,8 @@
 		C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8992532496E00EB7DB8 /* Resource.swift */; };
 		C6C3D8A0253249F100EB7DB8 /* DecodableResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D89F253249F100EB7DB8 /* DecodableResource.swift */; };
 		C6C3D8A525324E5D00EB7DB8 /* PostDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */; };
+		C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */; };
+		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		C6C3D8992532496E00EB7DB8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C6C3D89F253249F100EB7DB8 /* DecodableResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableResource.swift; sourceTree = "<group>"; };
 		C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDestination.swift; sourceTree = "<group>"; };
+		C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
+				C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */,
+				C6D9F103253257C300B41CE4 /* SafariView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,12 +312,14 @@
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
 				C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */,
+				C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */,
 				C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */,
 				C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,
 				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
 				C6515D1F253228CA00C8CEF7 /* ImageLoader.swift in Sources */,
 				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
+				C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */,
 				C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */,
 				C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */,
 			);
