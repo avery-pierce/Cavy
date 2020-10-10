@@ -11,7 +11,28 @@
 		C63DF2B02530016000728E08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AF2530016000728E08 /* ContentView.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
+		C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2BD253001BC00728E08 /* PostItemView.swift */; };
+		C63DF2C1253001CC00728E08 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C0253001CC00728E08 /* PostItem.swift */; };
+		C63DF2C425313DE000728E08 /* RootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C325313DE000728E08 /* RootModel.swift */; };
+		C63DF2C725313E1500728E08 /* LemmyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C625313E1500728E08 /* LemmyListing.swift */; };
+		C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C925313E3200728E08 /* LemmyPostItem.swift */; };
+		C63DF2D325313FB500728E08 /* LemmyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2D225313FB500728E08 /* LemmyAppTests.swift */; };
+		C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */; };
+		C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */; };
+		C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */; };
+		C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */; };
+		C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CF825316A6A00C8CEF7 /* URLSession++.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C63DF2D525313FB500728E08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C63DF2A22530016000728E08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C63DF2A92530016000728E08;
+			remoteInfo = LemmyApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,10 +41,30 @@
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63DF2B42530016300728E08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63DF2B62530016300728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C63DF2BD253001BC00728E08 /* PostItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemView.swift; sourceTree = "<group>"; };
+		C63DF2C0253001CC00728E08 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		C63DF2C325313DE000728E08 /* RootModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModel.swift; sourceTree = "<group>"; };
+		C63DF2C625313E1500728E08 /* LemmyListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyListing.swift; sourceTree = "<group>"; };
+		C63DF2C925313E3200728E08 /* LemmyPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItem.swift; sourceTree = "<group>"; };
+		C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemmyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63DF2D225313FB500728E08 /* LemmyAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppTests.swift; sourceTree = "<group>"; };
+		C63DF2D425313FB500728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCommunity.swift; sourceTree = "<group>"; };
+		C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCommunitiesResponse.swift; sourceTree = "<group>"; };
+		C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemResponse.swift; sourceTree = "<group>"; };
+		C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAPIClient.swift; sourceTree = "<group>"; };
+		C6515CF825316A6A00C8CEF7 /* URLSession++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C63DF2A72530016000728E08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63DF2CD25313FB500728E08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C63DF2AC2530016000728E08 /* LemmyApp */,
+				C63DF2D125313FB500728E08 /* LemmyAppTests */,
 				C63DF2AB2530016000728E08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				C63DF2AA2530016000728E08 /* LemmyApp.app */,
+				C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,7 +96,17 @@
 			isa = PBXGroup;
 			children = (
 				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
+				C63DF2C325313DE000728E08 /* RootModel.swift */,
 				C63DF2AF2530016000728E08 /* ContentView.swift */,
+				C63DF2C625313E1500728E08 /* LemmyListing.swift */,
+				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
+				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
+				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
+				C63DF2C0253001CC00728E08 /* PostItem.swift */,
+				C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */,
+				C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */,
+				C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */,
+				C6515CF825316A6A00C8CEF7 /* URLSession++.swift */,
 				C63DF2B12530016300728E08 /* Assets.xcassets */,
 				C63DF2B62530016300728E08 /* Info.plist */,
 				C63DF2B32530016300728E08 /* Preview Content */,
@@ -67,6 +120,15 @@
 				C63DF2B42530016300728E08 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C63DF2D125313FB500728E08 /* LemmyAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				C63DF2D225313FB500728E08 /* LemmyAppTests.swift */,
+				C63DF2D425313FB500728E08 /* Info.plist */,
+			);
+			path = LemmyAppTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +151,24 @@
 			productReference = C63DF2AA2530016000728E08 /* LemmyApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C63DF2CF25313FB500728E08 /* LemmyAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "LemmyAppTests" */;
+			buildPhases = (
+				C63DF2CC25313FB500728E08 /* Sources */,
+				C63DF2CD25313FB500728E08 /* Frameworks */,
+				C63DF2CE25313FB500728E08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C63DF2D625313FB500728E08 /* PBXTargetDependency */,
+			);
+			name = LemmyAppTests;
+			productName = LemmyAppTests;
+			productReference = C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,6 +180,10 @@
 				TargetAttributes = {
 					C63DF2A92530016000728E08 = {
 						CreatedOnToolsVersion = 12.0.1;
+					};
+					C63DF2CF25313FB500728E08 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = C63DF2A92530016000728E08;
 					};
 				};
 			};
@@ -117,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				C63DF2A92530016000728E08 /* LemmyApp */,
+				C63DF2CF25313FB500728E08 /* LemmyAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +216,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C63DF2CE25313FB500728E08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -138,12 +230,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
 				C63DF2B02530016000728E08 /* ContentView.swift in Sources */,
+				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
+				C63DF2C1253001CC00728E08 /* PostItem.swift in Sources */,
+				C63DF2C425313DE000728E08 /* RootModel.swift in Sources */,
 				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
+				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
+				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
+				C6515CF32531606E00C8CEF7 /* LemmyAPIClient.swift in Sources */,
+				C63DF2C725313E1500728E08 /* LemmyListing.swift in Sources */,
+				C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */,
+				C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63DF2CC25313FB500728E08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63DF2D325313FB500728E08 /* LemmyAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C63DF2D625313FB500728E08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C63DF2A92530016000728E08 /* LemmyApp */;
+			targetProxy = C63DF2D525313FB500728E08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C63DF2B72530016300728E08 /* Debug */ = {
@@ -306,6 +424,46 @@
 			};
 			name = Release;
 		};
+		C63DF2D825313FB500728E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BU7LJXTUEW;
+				INFOPLIST_FILE = LemmyAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.averypierce.LemmyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LemmyApp.app/LemmyApp";
+			};
+			name = Debug;
+		};
+		C63DF2D925313FB500728E08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BU7LJXTUEW;
+				INFOPLIST_FILE = LemmyAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.averypierce.LemmyAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LemmyApp.app/LemmyApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +481,15 @@
 			buildConfigurations = (
 				C63DF2BA2530016300728E08 /* Debug */,
 				C63DF2BB2530016300728E08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "LemmyAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63DF2D825313FB500728E08 /* Debug */,
+				C63DF2D925313FB500728E08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

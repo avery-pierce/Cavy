@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct LemmyAppApp: App {
+    @StateObject var rootModel = RootModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView(rootModel.posts)
+                    .onAppear(perform: rootModel.refresh)
+                    .navigationBarItems(trailing: Button(action: rootModel.refresh) {
+                        Image(systemName: "arrow.clockwise")
+                    })
+                    .navigationTitle("Lemmy")
+            }
         }
     }
 }
