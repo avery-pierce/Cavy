@@ -23,6 +23,12 @@ struct MainTabView: View {
                     Text(client.host)
                 }
             }
+            
+            SettingsView(rootModel)
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
         }
     }
 }
