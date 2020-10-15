@@ -41,6 +41,14 @@ class LemmyAPIClient {
         return path("api/v1/community/list?sort=\(sort.rawValue)")
     }
     
+    func fetchPost(id: String) -> URLRequest {
+        return path("api/v1/post?id=\(id)")
+    }
+    
+    func fetchPost(id: Int) -> URLRequest {
+        return fetchPost(id: String(id))
+    }
+    
     func path(_ path: String) -> URLRequest {
         let url = URL(string: "https://\(host)/\(path)")!
         let request = URLRequest(url: url)

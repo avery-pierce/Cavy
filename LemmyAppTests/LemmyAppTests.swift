@@ -13,23 +13,9 @@ class LemmyAppTests: XCTestCase {
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")
         let request = LemmyAPIClient.devLemmyMl.listCommunities(sort: .hot)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                return XCTFail(error.localizedDescription)
-            }
-            
-            guard let data = data else {
-                debugPrint(response ?? "(no response)")
-                return XCTFail("An error did not occur, but data was nil")
-            }
-            
-            do {
-                let _ = try JSONDecoder().decode(LemmyCommunitiesResponse.self, from: data)
-                e.fulfill()
-            } catch let error {
-                XCTFail("Error occurred during parsing: \(error.localizedDescription)")
-            }
-        }.resume()
+        assertDecodes(to: LemmyCommunitiesResponse.self, fromDataProvidedBy: request) {
+            e.fulfill()
+        }
         
         waitForExpectations(timeout: 5, handler: nil)
     }
@@ -37,49 +23,31 @@ class LemmyAppTests: XCTestCase {
     func testListPosts() throws {
         let e = expectation(description: "List Posts")
         let request = LemmyAPIClient.devLemmyMl.listPosts(type: .all, sort: .hot)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                return XCTFail(error.localizedDescription)
-            }
-            
-            guard let data = data else {
-                debugPrint(response ?? "(no response)")
-                return XCTFail("An error did not occur, but data was nil")
-            }
-            
-            do {
-                let _ = try JSONDecoder().decode(LemmyPostItemResponse.self, from: data)
-                e.fulfill()
-            } catch let error {
-                XCTFail("Error occurred during parsing: \(error.localizedDescription)")
-            }
-        }.resume()
+        assertDecodes(to: LemmyPostItemResponse.self, fromDataProvidedBy: request) {
+            e.fulfill()
+        }
         
         waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testListComments() throws {
+        /*
+         Some good examples:
+         Post ID: 41391
+         post ID: 41326
+         */
         let e = expectation(description: "Get post")
-        let request = LemmyAPIClient.devLemmyMl.path("api/v1/post?id=41326")
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                return XCTFail(error.localizedDescription)
-            }
-            
-            guard let data = data else {
-                debugPrint(response ?? "(no response)")
-                return XCTFail("An error did not occur, but data was nil")
-            }
-            
-            do {
-                let _ = try JSONDecoder().decode(LemmyPostResponse.self, from: data)
-                e.fulfill()
-            } catch let error {
-                XCTFail("Error occurred during parsing: \(error.localizedDescription)")
-            }
-        }.resume()
+        let request = LemmyAPIClient.devLemmyMl.fetchPost(id: 41391)
+        assertDecodes(to: LemmyPostResponse.self, fromDataProvidedBy: request) {
+            e.fulfill()
+        }
         
         waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testDocumentsFolder() {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(urls)
     }
 }
 

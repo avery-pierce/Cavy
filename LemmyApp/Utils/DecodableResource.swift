@@ -7,23 +7,29 @@
 
 import Foundation
 
-class DecodableResource<T: Codable>: Resource {
-    
-    let request: URLRequest
-    let session: URLSession
-    init(loading request: URLRequest, as Type: T.Type, session: URLSession = .shared) {
-        self.request = request
-        self.session = session
-    }
-    
+class DecodableResource<T: Decodable>: Resource, ObservableObject {
     @Published var state: LoadState<T, Error> = .idle
+    
+    let dataProvider: DataProvider
+    init(_ dataProvider: DataProvider) {
+        self.dataProvider = dataProvider
+    }
     
     func load() {
         self.state = .loading(nil)
-        session.decodedDataTask(with: request) { (result: Result<T, Error>, _) in
-            DispatchQueue.main.async {
-                self.state = .complete(result)
+        dataProvider.getData { (result) in
+            let decodeResult = result.flatMap { (data) -> Result<T, Error> in
+                do {
+                    let decoded = try JSONDecoder().decode(T.self, from: data)
+                    return .success(decoded)
+                } catch let error {
+                    return .failure(error)
+                }
             }
-        }.resume()
+            
+            DispatchQueue.main.async {
+                self.state = .complete(decodeResult)
+            }
+        }
     }
 }
