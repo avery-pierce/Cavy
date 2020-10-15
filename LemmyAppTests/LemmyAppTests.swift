@@ -9,10 +9,12 @@ import XCTest
 @testable import LemmyApp
 
 class LemmyAppTests: XCTestCase {
+    
+    let client: LemmyAPIClient = .devLemmyMl
 
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")
-        let request = LemmyAPIClient.devLemmyMl.listCommunities(sort: .hot)
+        let request = client.listCommunities(sort: .hot)
         assertDecodes(to: LemmyCommunitiesResponse.self, fromDataProvidedBy: request) {
             e.fulfill()
         }
@@ -22,7 +24,7 @@ class LemmyAppTests: XCTestCase {
     
     func testListPosts() throws {
         let e = expectation(description: "List Posts")
-        let request = LemmyAPIClient.devLemmyMl.listPosts(type: .all, sort: .hot)
+        let request = client.listPosts(type: .all, sort: .hot)
         assertDecodes(to: LemmyPostItemResponse.self, fromDataProvidedBy: request) {
             e.fulfill()
         }
@@ -37,7 +39,7 @@ class LemmyAppTests: XCTestCase {
          post ID: 41326
          */
         let e = expectation(description: "Get post")
-        let request = LemmyAPIClient.devLemmyMl.fetchPost(id: 41391)
+        let request = client.fetchPost(id: 41391)
         assertDecodes(to: LemmyPostResponse.self, fromDataProvidedBy: request) {
             e.fulfill()
         }
