@@ -26,18 +26,25 @@ class ImageLoader: ObservableObject {
     
     func load() {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                self.state = .complete(.failure(error))
+            let complete = { (_ result: Result<UIImage, Error>) in
+                DispatchQueue.main.async {
+                    print("update image state", result)
+                    self.state = .complete(result)
+                }
             }
             
-            guard let image = UIImage(data: data!) else {
-                self.state = .complete(.failure(ImageProcessingError()))
+            if let error = error {
+                complete(.failure(error))
                 return
             }
             
-            DispatchQueue.main.async {            
-                self.state = .complete(.success(image))
+            guard let image = UIImage(data: data!) else {
+                complete(.failure(ImageProcessingError()))
+                return
             }
+            
+            complete(.success(image))
+            
         }.resume()
     }
 }

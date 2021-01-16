@@ -25,6 +25,10 @@ struct EditInstancesView: View {
                 })
             }
             EditHostsView(rootModel.createAddServerUseCase())
+            Section(header: Text("Good ones")) {
+                Text(LemmyAPIClient.devLemmyMl.host)
+                Text(LemmyAPIClient.lemmygradML.host)
+            }
         }
         .navigationTitle("Edit Instances")
     }

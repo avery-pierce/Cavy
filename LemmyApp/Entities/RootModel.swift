@@ -8,10 +8,21 @@
 import Foundation
 
 class RootModel: ObservableObject {
-    @Published var clients = [
-        LemmyAPIClient.devLemmyMl,
-        LemmyAPIClient.lemmygradML
-    ]
+    @Published var clients = [LemmyAPIClient]() {
+        didSet {
+            sync()
+        }
+    }
+    
+    let serverStore = ServerStore()
+    
+    init() {
+        self.clients = serverStore.read()
+    }
+    
+    func sync() {
+        serverStore.write(clients)
+    }
     
     func addServer(_ server: LemmyAPIClient) {
         clients.append(server)
@@ -39,4 +50,27 @@ extension RootModel: AddServerDelegate {
     func useCase(_ useCase: AddServerUseCase, didAddServer server: String) {
         clients.append(LemmyAPIClient(server))
     }
+}
+
+class ServerStore {
+    private let store: UserDefaults = .standard
+    private let key = "LemmyServers"
+    
+    func read() -> [LemmyAPIClient] {
+        guard let rawServers = store.array(forKey: key) as? [String] else {
+            return ServerStore.defaultServers
+        }
+        
+        return rawServers.map(LemmyAPIClient.init)
+    }
+    
+    func write(_ servers: [LemmyAPIClient]) {
+        let serializedArray = servers.map(\.host)
+        store.set(serializedArray, forKey: key)
+    }
+    
+    static let defaultServers = [
+        LemmyAPIClient.devLemmyMl,
+        LemmyAPIClient.lemmygradML
+    ]
 }
