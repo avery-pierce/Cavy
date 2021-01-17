@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct LoadableListingView: View {
+    let client: LemmyAPIClient
     @ObservedObject var listModel: ListModel
     init(_ client: LemmyAPIClient) {
-        listModel = ListModel(client)
+        self.client = client
+        self.listModel = ListModel(client)
     }
     
     var body: some View {
@@ -22,6 +24,7 @@ struct LoadableListingView: View {
             Image(systemName: "arrow.clockwise")
         })
         .navigationTitle(listModel.client.host)
+        .lemmyAPIClient(client)
     }
 }
 

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-class LemmyAPIClient {
+class LemmyAPIClient: ObservableObject {
     var host: String
     init(_ host: String) {
         self.host = host
@@ -60,5 +61,22 @@ class LemmyAPIClient {
         newRequest.addValue("application/json", forHTTPHeaderField: "Accepts")
         newRequest.addValue("Unnammed Lemmy Mobile Client by @AveryPierceApps", forHTTPHeaderField: "User-Agent")
         return newRequest
+    }
+}
+
+private struct LemmyAPIClientEnvironmentKey: EnvironmentKey {
+    static let defaultValue: LemmyAPIClient = .devLemmyMl
+}
+
+extension EnvironmentValues {
+    var lemmyAPIClient: LemmyAPIClient {
+        get { self[LemmyAPIClientEnvironmentKey.self] }
+        set { self[LemmyAPIClientEnvironmentKey.self] = newValue }
+    }
+}
+
+extension View {
+    func lemmyAPIClient(_ client: LemmyAPIClient) -> some View {
+        environment(\.lemmyAPIClient, client)
     }
 }

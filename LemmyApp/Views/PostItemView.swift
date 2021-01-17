@@ -45,7 +45,7 @@ struct PostItemView: View {
                         .foregroundColor(.secondary)
                     
                     Spacer()
-                }
+                }.font(.system(size: 12.0))
             }
         }
         
