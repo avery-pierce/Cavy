@@ -29,9 +29,11 @@ struct CommentView: View {
                     Text(author)
                         .bold()
                         .padding(.bottom, 6)
+                        .font(.system(size: 14.0))
                 }
                 Text(comment.content ?? "(content)")
                     .multilineTextAlignment(.leading)
+                    .font(.system(size: 14.0))
             }
         }
     }

@@ -23,16 +23,46 @@ struct PostDetailView: View {
         postModel.refresh()
     }
     
-    var body: some View {
-        ScrollView {
-            VStack {
-                Text(post.body ?? "No Body Content")
+    var title: String {
+        switch postModel.loadState {
+        case .complete(let result):
+            switch result {
+            case .success(let post):
+                return "\(post.comments.count) Comments"
+            case .failure:
+                return "Post Detail"
             }
+        default:
+            return "Loading"
+        }
+    }
+    
+    let listEdgeInsets = EdgeInsets(top: 8,
+                                    leading: 12,
+                                    bottom: 8,
+                                    trailing: 8)
+    
+    var body: some View {
+        List() {
+            VStack(alignment: .leading, spacing: 12) {
+                if let title = post.title {
+                    Text(title)
+                        .font(.system(size: 18.0))
+                        .bold()
+                }
+                Text(post.body ?? "No Body Content")
+                    .font(.system(size: 14.0))
+            }
+            .padding(.top, 4)
+            .listRowInsets(listEdgeInsets)
             
             LoadStateView(postModel.loadState) { post in
-                CommentsListView(comments: post.comments)
+                CommentsListView(comments: post.comments).listRowInsets(listEdgeInsets)
             }
-        }.onAppear(perform: refresh)
+        }
+        
+        .navigationBarTitle(title, displayMode: .inline)
+        .onAppear(perform: refresh)
     }
     
     func printMe() {
