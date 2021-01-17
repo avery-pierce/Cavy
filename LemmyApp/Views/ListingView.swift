@@ -13,15 +13,20 @@ struct ListingView: View {
         self.posts = posts
     }
     
+    @State var safariURL: URL? = nil
+    @State var isSafariShown: Bool = false
+    
     var body: some View {
         List(posts, id: \.id) { post in
             if let destination = post.destination {
                 switch destination {
                 case .web(let url):
-                    Link(destination: url) {
-                        PostItemView(post)
-                            .padding(.vertical, 8)
-                    }
+                    PostItemView(post)
+                        .padding(.vertical, 8)
+                        .onTapGesture {
+                            self.safariURL = url
+                            self.isSafariShown = true
+                        }
                     
                 case .selfDetail:
                     NavigationLink(
@@ -35,7 +40,11 @@ struct ListingView: View {
                 PostItemView(post)
                     .padding(.vertical, 8)
             }
-        }.listStyle(PlainListStyle())
+        }
+        .listStyle(PlainListStyle())
+        .sheet(isPresented: $isSafariShown) {
+            OptionalSafariView(url:safariURL)
+        }
     }
 }
 

@@ -20,6 +20,20 @@ struct SafariView: UIViewControllerRepresentable {
     }
 }
 
+struct OptionalSafariView: View {
+    let url: URL?
+    
+    var body: some View {
+        VStack {
+            if let url = url {
+                SafariView(url: url)
+            } else {
+                Spacer()
+            }
+        }
+    }
+}
+
 struct SafariView_Previews: PreviewProvider {
     static var previews: some View {
         SafariView(url: URL(string: "https://www.example.com")!).ignoresSafeArea()
