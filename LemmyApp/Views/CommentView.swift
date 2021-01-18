@@ -8,19 +8,38 @@
 import SwiftUI
 
 struct CommentView: View {
-    let comment: LemmyComment
+    let threadedComment: ThreadedComment
+    var comment: LemmyComment { threadedComment.comment }
     
-    init(_ comment: LemmyComment) {
-        self.comment = comment
+    init(_ threadedComment: ThreadedComment) {
+        self.threadedComment = threadedComment
     }
     
     var author: String {
         return comment.creatorPreferredUsername ?? comment.creatorName ?? "(user)"
     }
     
+    var barColor: UIColor {
+        let colorCycle: [UIColor] = [
+            .red,
+            .orange,
+            .yellow,
+            .green,
+            .blue,
+            .purple,
+        ]
+        
+        let choice = threadedComment.indentationLevel % colorCycle.count
+        return colorCycle[choice]
+    }
+    
+    var inset: CGFloat {
+        return 8.0 * CGFloat(threadedComment.indentationLevel)
+    }
+    
     var body: some View {
         HStack {
-            Color(.red)
+            Color(barColor)
                 .frame(width: 3)
                 .cornerRadius(1.5)
             
@@ -35,18 +54,39 @@ struct CommentView: View {
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 14.0))
             }
-        }
+        }.padding(.leading, inset)
     }
 }
 
 struct CommentView_Previews: PreviewProvider {
     static var previews: some View {
-        CommentView(.fromJSON("""
-                        {
-                            "creator_name": "john_appleseed",
-                            "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
-                        }
-                        """))
-            .previewLayout(.sizeThatFits)
+        Group {
+            ForEach(0..<10) { i in
+                CommentView(ThreadedComment(.fromJSON("""
+                            {
+                                "creator_name": "john_appleseed",
+                                "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+                            }
+                            """), indentationLevel: i))
+                    .previewLayout(.fixed(width: 300, height: 100))
+            }
+            
+//            CommentView(ThreadedComment(.fromJSON("""
+//                        {
+//                            "creator_name": "john_appleseed",
+//                            "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+//                        }
+//                        """), indentationLevel: 1))
+//                .previewLayout(.fixed(width: 300, height: 100))
+//
+//            CommentView(ThreadedComment(.fromJSON("""
+//                        {
+//                            "creator_name": "john_appleseed",
+//                            "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+//                        }
+//                        """), indentationLevel: 2))
+//                .previewLayout(.fixed(width: 300, height: 100))
+        }
+        
     }
 }

@@ -11,6 +11,10 @@
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
 		C62543FC25B4AD78007F170A /* Decodable++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543FB25B4AD78007F170A /* Decodable++.swift */; };
+		C625440025B4BC48007F170A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543FF25B4BC48007F170A /* Node.swift */; };
+		C625440625B4BCBF007F170A /* CommentTreeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */; };
+		C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625440B25B4BFEA007F170A /* CommentTree.swift */; };
+		C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625440F25B4BFF5007F170A /* ThreadedComment.swift */; };
 		C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* LemmyAppApp.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
@@ -69,6 +73,10 @@
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		C62543FB25B4AD78007F170A /* Decodable++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable++.swift"; sourceTree = "<group>"; };
+		C62543FF25B4BC48007F170A /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTreeUseCase.swift; sourceTree = "<group>"; };
+		C625440B25B4BFEA007F170A /* CommentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTree.swift; sourceTree = "<group>"; };
+		C625440F25B4BFF5007F170A /* ThreadedComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadedComment.swift; sourceTree = "<group>"; };
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -247,6 +255,9 @@
 				C6C3D8A425324E5D00EB7DB8 /* PostDestination.swift */,
 				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
 				C62543ED25B4A249007F170A /* PostModel.swift */,
+				C62543FF25B4BC48007F170A /* Node.swift */,
+				C625440B25B4BFEA007F170A /* CommentTree.swift */,
+				C625440F25B4BFF5007F170A /* ThreadedComment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -255,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D9F1182537CD8F00B41CE4 /* EditHostsUseCase.swift */,
+				C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -368,10 +380,12 @@
 				C63DF2C425313DE000728E08 /* RootModel.swift in Sources */,
 				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
 				C6C3D8A0253249F100EB7DB8 /* DecodableResource.swift in Sources */,
+				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
 				C62543EE25B4A249007F170A /* PostModel.swift in Sources */,
 				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
+				C625440625B4BCBF007F170A /* CommentTreeUseCase.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
 				C6D9F1332537DF1500B41CE4 /* DataProvider.swift in Sources */,
 				C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */,
@@ -387,9 +401,11 @@
 				C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,
 				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
+				C625440025B4BC48007F170A /* Node.swift in Sources */,
 				C6D9F11F2537D0A900B41CE4 /* SettingsView.swift in Sources */,
 				C6515D1F253228CA00C8CEF7 /* ImageLoader.swift in Sources */,
 				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
+				C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */,
 				C6D9F1232537D5B100B41CE4 /* EditHostsView.swift in Sources */,
 				C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */,
 				C6515CF925316A6A00C8CEF7 /* URLSession++.swift in Sources */,

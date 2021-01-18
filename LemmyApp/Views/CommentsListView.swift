@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct CommentsListView: View {
-    let comments: [LemmyComment]
+    @ObservedObject var commentTree: CommentTree
+    
+    init(_ comments: [LemmyComment]) {
+        let commentTreeBuilder = CommentTreeUseCase(comments)
+        self.commentTree = CommentTree(commentTreeBuilder.buildTree())
+    }
     
     var body: some View {
-        ForEach(comments, id: \.id) { comment in
+        ForEach(commentTree.comments, id: \.comment.id) { comment in
             CommentView(comment)
         }
     }
@@ -20,21 +25,39 @@ struct CommentsListView: View {
 struct CommentsListView_Previews: PreviewProvider {
     static var previews: some View {
         List() {
-            CommentsListView(comments: [
+            CommentsListView([
                 .fromJSON("""
                         {
                             "id": 1,
                             "creator_name": "jill",
                             "content": "Hello World! This is the first comment in the list"
                         }
-                        """),
+                        """)
+                ,
                 .fromJSON("""
                         {
                             "id": 2,
                             "creator_name": "jack",
-                            "content": "Preview a second comment"
+                            "content": "Preview a second comment",
+                            "parent_id": 1
                         }
-                        """)
+                        """),
+                .fromJSON("""
+                        {
+                            "id": 3,
+                            "creator_name": "jack",
+                            "content": "Preview a second comment",
+                            "parent_id": 1
+                        }
+                        """),
+                .fromJSON("""
+                    {
+                        "id": 4,
+                        "creator_name": "jack",
+                        "content": "Preview a second comment",
+                        "parent_id": 2
+                    }
+                    """)
             ])
         }
         

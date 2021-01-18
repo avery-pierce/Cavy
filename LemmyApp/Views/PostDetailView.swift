@@ -38,7 +38,7 @@ struct PostDetailView: View {
     }
     
     let listEdgeInsets = EdgeInsets(top: 8,
-                                    leading: 12,
+                                    leading: 8,
                                     bottom: 8,
                                     trailing: 8)
     
@@ -57,7 +57,7 @@ struct PostDetailView: View {
             .listRowInsets(listEdgeInsets)
             
             LoadStateView(postModel.loadState) { post in
-                CommentsListView(comments: post.comments).listRowInsets(listEdgeInsets)
+                CommentsListView(post.comments).listRowInsets(listEdgeInsets)
             }
         }
         
