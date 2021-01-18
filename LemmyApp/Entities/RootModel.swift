@@ -70,7 +70,7 @@ class ServerStore {
     }
     
     static let defaultServers = [
-        LemmyAPIClient.devLemmyMl,
+        LemmyAPIClient.lemmyML,
         LemmyAPIClient.lemmygradML
     ]
 }

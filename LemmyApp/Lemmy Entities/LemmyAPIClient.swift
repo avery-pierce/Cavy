@@ -14,7 +14,6 @@ class LemmyAPIClient: ObservableObject {
         self.host = host
     }
     
-    static let devLemmyMl = LemmyAPIClient("dev.lemmy.ml")
     static let lemmyML = LemmyAPIClient("lemmy.ml")
     static let lemmygradML = LemmyAPIClient("lemmygrad.ml")
     
@@ -66,7 +65,7 @@ class LemmyAPIClient: ObservableObject {
 }
 
 private struct LemmyAPIClientEnvironmentKey: EnvironmentKey {
-    static let defaultValue: LemmyAPIClient = .devLemmyMl
+    static let defaultValue: LemmyAPIClient = .lemmyML
 }
 
 extension EnvironmentValues {
@@ -80,4 +79,10 @@ extension View {
     func lemmyAPIClient(_ client: LemmyAPIClient) -> some View {
         environment(\.lemmyAPIClient, client)
     }
+}
+
+// MARK: - Deprecated
+extension LemmyAPIClient {
+    @available(*, deprecated, message: "dev.lemmy.ml has been permanently moved to lemmy.ml")
+    static let devLemmyMl = LemmyAPIClient("dev.lemmy.ml")
 }

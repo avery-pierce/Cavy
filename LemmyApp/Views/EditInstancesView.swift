@@ -10,7 +10,6 @@ import SwiftUI
 struct EditInstancesView: View {
     @ObservedObject var rootModel: RootModel
     
-    
     init(_ rootModel: RootModel) {
         self.rootModel = rootModel
     }
@@ -26,8 +25,9 @@ struct EditInstancesView: View {
             }
             EditHostsView(rootModel.createAddServerUseCase())
             Section(header: Text("Good ones")) {
-                Text(LemmyAPIClient.devLemmyMl.host)
-                Text(LemmyAPIClient.lemmygradML.host)
+                ForEach(ServerStore.defaultServers, id: \.host) { server in
+                    Text(server.host)
+                }
             }
         }
         .navigationTitle("Edit Instances")

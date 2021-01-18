@@ -31,7 +31,7 @@ struct LoadableListingView: View {
 struct LoadableListingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            LoadableListingView(.devLemmyMl)
+            LoadableListingView(.lemmyML)
         }
     }
 }
