@@ -33,6 +33,41 @@ class CommentTreeTests: XCTestCase {
         XCTAssertEqual(result, "18934(0), 18943(1), 18945(2), 18948(3), 18956(4), 18930(0), 18932(1)")
     }
     
+    func testCommentTreeHiddenComments() throws {
+        let useCase = CommentTreeUseCase(mockPost!.comments)
+        let tree = useCase.buildTree()
+        let commentTree = CommentTree(tree)
+        commentTree.hide(18934)
+        
+        let result1 = render(flattenedTree: commentTree.comments)
+        XCTAssertEqual(result1, "18934(X), 18930(0), 18932(1)")
+        
+        commentTree.show(18934)
+        commentTree.hide(18930)
+        let result2 = render(flattenedTree: commentTree.comments)
+        XCTAssertEqual(result2, "18934(0), 18943(1), 18945(2), 18948(3), 18956(4), 18930(X)")
+        
+        commentTree.show(18930)
+        commentTree.hide(18948)
+        let result3 = render(flattenedTree: commentTree.comments)
+        XCTAssertEqual(result3, "18934(0), 18943(1), 18945(2), 18948(X), 18930(0), 18932(1)")
+    }
+    
+    func testCommentToggleHidden() throws {
+        let useCase = CommentTreeUseCase(mockPost!.comments)
+        let tree = useCase.buildTree()
+        let commentTree = CommentTree(tree)
+        commentTree.toggleHidden(18934)
+        
+        let result1 = render(flattenedTree: commentTree.comments)
+        XCTAssertEqual(result1, "18934(X), 18930(0), 18932(1)")
+        
+        commentTree.toggleHidden(18934)
+        commentTree.toggleHidden(18930)
+        let result2 = render(flattenedTree: commentTree.comments)
+        XCTAssertEqual(result2, "18934(0), 18943(1), 18945(2), 18948(3), 18956(4), 18930(X)")
+    }
+    
     private func render(tree: [Node<LemmyComment>]) -> String {
         tree.map { (node) -> String in
             if node.children.isEmpty {
@@ -45,7 +80,11 @@ class CommentTreeTests: XCTestCase {
     
     private func render(flattenedTree: [ThreadedComment]) -> String {
         flattenedTree.map { (comment) -> String in
-            return "\(comment.comment.id!)(\(comment.indentationLevel))"
+            if comment.isHidden {
+                return "\(comment.comment.id!)(X)"
+            } else {
+                return "\(comment.comment.id!)(\(comment.indentationLevel))"
+            }
         }.joined(separator: ", ")
     }
 }
