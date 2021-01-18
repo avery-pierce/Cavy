@@ -17,7 +17,12 @@ struct CommentsListView: View {
     
     var body: some View {
         ForEach(commentTree.comments, id: \.comment.id) { comment in
+            // FIXME: The tap target shrinks to fit the content instead
+            // of filling the entire cell.
             CommentView(comment)
+                .onTapGesture {
+                    self.commentTree.toggleHidden(comment.comment.id!)
+                }
         }
     }
 }
@@ -60,6 +65,7 @@ struct CommentsListView_Previews: PreviewProvider {
                     """)
             ])
         }
+        .animation(.easeInOut)
         
     }
 }

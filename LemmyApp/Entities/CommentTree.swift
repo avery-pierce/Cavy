@@ -30,7 +30,8 @@ class CommentTree: ObservableObject {
         self.comments = flattenTree(nodes)
     }
     
-    func toggleHidden(_ commentID: Int) {
+    func toggleHidden(_ commentID: Int?) {
+        guard let commentID = commentID else { return }
         if hiddenCommentIDs.contains(commentID) {
             show(commentID)
         } else {

@@ -19,7 +19,13 @@ struct CommentView: View {
         return comment.creatorPreferredUsername ?? comment.creatorName ?? "(user)"
     }
     
+    var isHidden: Bool {
+        return threadedComment.isHidden
+    }
+    
     var barColor: UIColor {
+        guard !threadedComment.isHidden else { return .gray }
+        
         let colorCycle: [UIColor] = [
             .red,
             .orange,
@@ -49,12 +55,16 @@ struct CommentView: View {
                         .bold()
                         .padding(.bottom, 6)
                         .font(.system(size: 14.0))
+                        .foregroundColor(isHidden ? .gray : .black)
                 }
-                Text(comment.content ?? "(content)")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 14.0))
+                if !isHidden {
+                    Text(comment.content ?? "(content)")
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 14.0))
+                }
             }
-        }.padding(.leading, inset)
+        }
+        .padding(.leading, inset)
     }
 }
 
@@ -70,22 +80,13 @@ struct CommentView_Previews: PreviewProvider {
                             """), indentationLevel: i))
                     .previewLayout(.fixed(width: 300, height: 100))
             }
-            
-//            CommentView(ThreadedComment(.fromJSON("""
-//                        {
-//                            "creator_name": "john_appleseed",
-//                            "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
-//                        }
-//                        """), indentationLevel: 1))
-//                .previewLayout(.fixed(width: 300, height: 100))
-//
-//            CommentView(ThreadedComment(.fromJSON("""
-//                        {
-//                            "creator_name": "john_appleseed",
-//                            "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
-//                        }
-//                        """), indentationLevel: 2))
-//                .previewLayout(.fixed(width: 300, height: 100))
+            CommentView(ThreadedComment(.fromJSON("""
+                            {
+                                "creator_name": "john_appleseed",
+                                "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+                            }
+                            """), indentationLevel: 0, isHidden: true))
+                .previewLayout(.fixed(width: 300, height: 100))
         }
         
     }
