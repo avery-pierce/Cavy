@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LemmyPostResponse: Codable {
+struct LemmyPostResponse: Codable, Equatable {
     let post: LemmyPostItem
     let comments: [LemmyComment]
     let community: LemmyCommunity

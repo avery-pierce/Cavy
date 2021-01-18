@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LemmyComment: Codable {
+struct LemmyComment: Codable, Equatable {
     let id : Int?
     let creatorID : Int?
     let postID : Int?

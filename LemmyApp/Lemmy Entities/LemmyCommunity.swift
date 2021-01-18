@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LemmyCommunity: Codable {
+struct LemmyCommunity: Codable, Equatable {
     let nsfw : Bool?
     let title : String?
     let numberOfSubscribers : Int?

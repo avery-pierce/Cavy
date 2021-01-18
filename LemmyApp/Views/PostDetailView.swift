@@ -18,7 +18,6 @@ struct PostDetailView: View {
     }
     
     func refresh() {
-        print("Refreshing")
         postModel.client = client
         postModel.refresh()
     }
@@ -57,12 +56,15 @@ struct PostDetailView: View {
             .listRowInsets(listEdgeInsets)
             
             LoadStateView(postModel.loadState) { post in
-                CommentsListView(post.comments).listRowInsets(listEdgeInsets)
+                CommentsListView(post.comments)
+                    .listRowInsets(listEdgeInsets)
             }
         }
-        
         .navigationBarTitle(title, displayMode: .inline)
         .onAppear(perform: refresh)
+        
+        // FIXME: I want animation when a comment is collapsed/shown, but not anywhere else.
+        .animation(.easeIn)
     }
     
     func printMe() {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LemmyModerator: Codable {
+struct LemmyModerator: Codable, Equatable {
     /*
      "id": 14751,
      "community_id": 15016,

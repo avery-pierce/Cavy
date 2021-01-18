@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LemmyPostItem: Codable {
+struct LemmyPostItem: Codable, Equatable {
     let embedDescription : String?
     let communityDeleted : Bool?
     let _id : Int
