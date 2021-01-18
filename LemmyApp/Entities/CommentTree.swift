@@ -17,7 +17,7 @@ class CommentTree: ObservableObject {
         self.comments = flattenTree(nodes)
     }
     
-    func flattenTree(_ childNodes: [Node<LemmyComment>]) -> [ThreadedComment] {
+    private func flattenTree(_ childNodes: [Node<LemmyComment>]) -> [ThreadedComment] {
         var flattened = [ThreadedComment]()
         
         for node in childNodes {
@@ -34,5 +34,4 @@ class CommentTree: ObservableObject {
         
         return flattened
     }
-    
 }

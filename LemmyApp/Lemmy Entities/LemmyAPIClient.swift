@@ -15,6 +15,7 @@ class LemmyAPIClient: ObservableObject {
     }
     
     static let devLemmyMl = LemmyAPIClient("dev.lemmy.ml")
+    static let lemmyML = LemmyAPIClient("lemmy.ml")
     static let lemmygradML = LemmyAPIClient("lemmygrad.ml")
     
     enum PostType: String {

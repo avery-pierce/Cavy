@@ -18,6 +18,7 @@ class CommentTreeUseCase {
     }
     
     func buildTree() -> [Node<LemmyComment>] {
+        tree = []
         let unsortedNodes = input.map({ Node($0) })
         unsortedNodes.forEach { node in
             guard let id = node.value.id else { return }
