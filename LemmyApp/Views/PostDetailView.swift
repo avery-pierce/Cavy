@@ -36,6 +36,14 @@ struct PostDetailView: View {
         }
     }
     
+    var webLink: URL? {
+        switch post.destination {
+        case .web(let url):
+            return url
+        default: return nil
+        }
+    }
+    
     let listEdgeInsets = EdgeInsets(top: 8,
                                     leading: 8,
                                     bottom: 8,
@@ -49,8 +57,16 @@ struct PostDetailView: View {
                         .font(.system(size: 18.0))
                         .bold()
                 }
-                Text(post.body ?? "No Body Content")
-                    .font(.system(size: 14.0))
+                
+                if let body = post.body {
+                    Text(body).font(.system(size: 14.0))
+                }
+                
+                if let url = webLink {
+                    Link(url.absoluteString, destination: url)
+                        .font(.system(size: 14.0))
+                        .foregroundColor(.accentColor)
+                }
             }
             .padding(.top, 4)
             .listRowInsets(listEdgeInsets)
