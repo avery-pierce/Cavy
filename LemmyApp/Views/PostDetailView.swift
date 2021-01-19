@@ -49,6 +49,14 @@ struct PostDetailView: View {
                                     bottom: 8,
                                     trailing: 8)
     
+    var timeAgoText: String {
+        guard let publishedDate = post.publishedDate else { return "??" }
+        
+        let now = Date()
+        let interval = now.timeIntervalSince(publishedDate)
+        return abbreviatedTimeInterval(of: interval)
+    }
+    
     var body: some View {
         List() {
             VStack(alignment: .leading, spacing: 12) {
@@ -67,6 +75,26 @@ struct PostDetailView: View {
                         .font(.system(size: 14.0))
                         .foregroundColor(.accentColor)
                 }
+                
+                HStack {
+                    Text(post.authorName)
+                        .foregroundColor(.accentColor)
+                    
+                    if let communityName = post.communityName {
+                        Text(communityName)
+                            .foregroundColor(.green)
+                    }
+                    
+                    Text(timeAgoText)
+                        .foregroundColor(.secondary)
+                    
+                    Text(post.domain)
+                        .italic()
+                        .foregroundColor(.secondary)
+                    
+                    Spacer()
+                }
+                .font(.system(size: 12.0))
             }
             .padding(.top, 4)
             .listRowInsets(listEdgeInsets)
