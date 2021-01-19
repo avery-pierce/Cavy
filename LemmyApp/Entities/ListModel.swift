@@ -13,14 +13,14 @@ class ListModel: ObservableObject {
         self.client = client
     }
     
-    @Published var loadState: LoadState<[PostItem], Error> = .idle
+    @Published var loadState: LoadState<[LemmyPostItem], Error> = .idle
     
     func refresh() {
         loadState = .loading(nil)
         let request = client.listPosts(type: .all, sort: .hot)
         URLSession.shared.decodedDataTask(with: request) { (result: Result<LemmyPostItemResponse, Error>, response) in
             DispatchQueue.main.async {
-                let postResult = result.map(\.posts).map({ $0 as [PostItem] })
+                let postResult = result.map(\.posts).map({ $0 as [LemmyPostItem] })
                 self.loadState = .complete(postResult)
             }
         }.resume()

@@ -157,10 +157,11 @@ struct LemmyPostItem: Codable, Equatable {
 }
 
 extension LemmyPostItem: PostItem {
+    var id: Int { _id }
+    
     var htmlContent: String? { embedHTML }
     var bodyContent: String? { embedDescription }
     
-    var id: String { String(_id) }
     var title: String { name ?? "" }
     var imageURL: URL? { thumbnailURL.flatMap(URL.init(string:)) }
     var authorName: String { creatorPreferredUsername ?? creatorName ?? "" }

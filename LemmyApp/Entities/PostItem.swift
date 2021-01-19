@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol PostItem {
-    var id: String { get }
+    var id: Int { get }
     var title: String { get }
     var imageURL: URL? { get }
     var score: Int { get }
@@ -20,7 +20,7 @@ protocol PostItem {
 }
 
 struct ConcretePostItem: PostItem {
-    var id: String
+    var id: Int
     var title: String
     var imageURL: URL?
     var score: Int
@@ -31,11 +31,56 @@ struct ConcretePostItem: PostItem {
 }
 
 let sampleDataList = [
-    ConcretePostItem(id: "1", title: "Simulating Machines in Clojure", imageURL: URL(string: "https://dev.lemmy.ml/pictrs/image/thumbnail256/ZmPVJQGWHQ.png")!, score: 2, authorName: "@yogthos", domain: "stopa.io"),
-    ConcretePostItem(id: "2", title: "Top 4 Coding Languages To Learn For Beginners (2020) - Qvault", imageURL: URL(string: "https://dev.lemmy.ml/pictrs/image/thumbnail256/imxHpk3Q7C.png"), score: 2, authorName: "@wagslane", domain: "qvault.io"),
-    ConcretePostItem(id: "3", title: "The Open University Project", imageURL: URL(string: "https://dev.lemmy.ml/pictrs/image/thumbnail256/23vlPmgocf.png"), score: 1, authorName: "@avalos", domain: "monora.org"),
-    ConcretePostItem(id: "4", title: "I made a playlist of 6h56min of chill synth music to lift you up and motivate you while coding/working. Enjoy!", imageURL: URL(string: "https://dev.lemmy.ml/pictrs/image/thumbnail256/wAqJ6oqwiz.jpg")!, score: 1, authorName: "@unknownguyfromnowher", domain: "open.spotify.com"),
-    ConcretePostItem(id: "5", title: "Why Life Can’t Be Simpler", imageURL: URL(string: "https://dev.lemmy.ml/pictrs/image/thumbnail256/LVnmAliBZg.png"), score: 2, authorName: "@yogthos", domain: "fs.blog"),
+    LemmyPostItem.fromJSON("""
+        {
+            "id": 1,
+            "name": "Simulating Machines in Clojure",
+            "thumbnail_url": "https://dev.lemmy.ml/pictrs/image/thumbnail256/ZmPVJQGWHQ.png",
+            "score": 2,
+            "creatorName": "yogthos",
+            "url": "https://www.example.com"
+        }
+        """),
+    LemmyPostItem.fromJSON("""
+        {
+            "id": 2,
+            "name": "Top 4 Coding Languages To Learn For Beginners (2020) - Qvault",
+            "thumbnail_url": "https://dev.lemmy.ml/pictrs/image/thumbnail256/imxHpk3Q7C.png",
+            "score": 2,
+            "creatorName": "wagslane",
+            "url": "https://www.example.com"
+        }
+        """),
+    LemmyPostItem.fromJSON("""
+        {
+            "id": 3,
+            "name": "The Open University Project",
+            "thumbnail_url": "https://dev.lemmy.ml/pictrs/image/thumbnail256/23vlPmgocf.png",
+            "score": 1,
+            "creatorName": "avalos",
+            "url": "https://www.example.com"
+        }
+        """),
+    LemmyPostItem.fromJSON("""
+        {
+            "id": 4,
+            "name": "I made a playlist of 6h56min of chill synth music to lift you up and motivate you while coding/working. Enjoy!",
+            "thumbnail_url": "https://dev.lemmy.ml/pictrs/image/thumbnail256/wAqJ6oqwiz.jpg",
+            "score": 1,
+            "creatorName": "unknownguyfromnowher",
+            "url": "https://www.example.com"
+        }
+        """),
+    LemmyPostItem.fromJSON("""
+        {
+            "id": 4,
+            "name": "Why Life Can’t Be Simpler",
+            "thumbnail_url": "https://dev.lemmy.ml/pictrs/image/thumbnail256/LVnmAliBZg.png",
+            "score": 2,
+            "creatorName": "yogthos",
+            "url": "https://www.example.com"
+        }
+        """),
 ]
 
 let sampleData = sampleDataList[3]

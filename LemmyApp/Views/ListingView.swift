@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ListingView: View {
-    let posts: [PostItem]
-    init(_ posts: [PostItem]) {
+    let posts: [LemmyPostItem]
+    init(_ posts: [LemmyPostItem]) {
         self.posts = posts
     }
     
