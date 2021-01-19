@@ -53,7 +53,7 @@ struct CommentView: View {
         
         let now = Date()
         let interval = now.timeIntervalSince(publishedDate)
-        return abbreviatedForm(of: interval)
+        return abbreviatedTimeInterval(of: interval)
     }
     
     var body: some View {

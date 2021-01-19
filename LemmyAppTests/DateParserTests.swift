@@ -16,23 +16,23 @@ class DateParserTests: XCTestCase {
     }
     
     func testAbbreviatedForm() throws {
-        XCTAssertEqual(abbreviatedForm(of: seconds(0)), "now")
+        XCTAssertEqual(abbreviatedTimeInterval(of: seconds(0)), "now")
         
-        XCTAssertEqual(abbreviatedForm(of: seconds(35)), "35s")
-        XCTAssertEqual(abbreviatedForm(of: seconds(44.2)), "44s")
-        XCTAssertEqual(abbreviatedForm(of: seconds(44.5)), "45s")
+        XCTAssertEqual(abbreviatedTimeInterval(of: seconds(35)), "35s")
+        XCTAssertEqual(abbreviatedTimeInterval(of: seconds(44.2)), "44s")
+        XCTAssertEqual(abbreviatedTimeInterval(of: seconds(44.5)), "45s")
         
-        XCTAssertEqual(abbreviatedForm(of: minutes(22.0)), "22m")
-        XCTAssertEqual(abbreviatedForm(of: minutes(38.4)), "38m")
-        XCTAssertEqual(abbreviatedForm(of: minutes(38.8)), "39m")
+        XCTAssertEqual(abbreviatedTimeInterval(of: minutes(22.0)), "22m")
+        XCTAssertEqual(abbreviatedTimeInterval(of: minutes(38.4)), "38m")
+        XCTAssertEqual(abbreviatedTimeInterval(of: minutes(38.8)), "39m")
         
-        XCTAssertEqual(abbreviatedForm(of: hours(10)), "10h")
-        XCTAssertEqual(abbreviatedForm(of: hours(4.3)), "4h")
-        XCTAssertEqual(abbreviatedForm(of: hours(4.6)), "5h")
+        XCTAssertEqual(abbreviatedTimeInterval(of: hours(10)), "10h")
+        XCTAssertEqual(abbreviatedTimeInterval(of: hours(4.3)), "4h")
+        XCTAssertEqual(abbreviatedTimeInterval(of: hours(4.6)), "5h")
         
-        XCTAssertEqual(abbreviatedForm(of: days(13)), "13d")
-        XCTAssertEqual(abbreviatedForm(of: days(21.1)), "21d")
-        XCTAssertEqual(abbreviatedForm(of: days(21.9)), "22d")
+        XCTAssertEqual(abbreviatedTimeInterval(of: days(13)), "13d")
+        XCTAssertEqual(abbreviatedTimeInterval(of: days(21.1)), "21d")
+        XCTAssertEqual(abbreviatedTimeInterval(of: days(21.9)), "22d")
         
     }
     

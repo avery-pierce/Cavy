@@ -18,7 +18,7 @@ func parseLemmyDate(_ dateString: String) -> Date? {
     formatter.date(from: dateString)
 }
 
-func abbreviatedForm(of timeInterval: TimeInterval) -> String {
+func abbreviatedTimeInterval(of timeInterval: TimeInterval) -> String {
     if timeInterval < 1 {
         return "now"
     } else if timeInterval < 60 {
