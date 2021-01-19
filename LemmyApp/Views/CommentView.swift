@@ -49,7 +49,11 @@ struct CommentView: View {
     }
     
     var timeAgoText: String {
-        return "1h"
+        guard let publishedDate = comment.creatorPublishedDate else { return "??" }
+        
+        let now = Date()
+        let interval = now.timeIntervalSince(publishedDate)
+        return abbreviatedForm(of: interval)
     }
     
     var body: some View {
