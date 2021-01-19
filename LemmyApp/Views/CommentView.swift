@@ -49,7 +49,7 @@ struct CommentView: View {
     }
     
     var timeAgoText: String {
-        guard let publishedDate = comment.creatorPublishedDate else { return "??" }
+        guard let publishedDate = comment.publishedDate else { return "??" }
         
         let now = Date()
         let interval = now.timeIntervalSince(publishedDate)
@@ -63,24 +63,26 @@ struct CommentView: View {
                 .frame(width: 3)
             
             VStack(alignment: .leading, spacing: 6) {
-                HStack(alignment: .center, spacing: 12) {
-                    HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 2) {
-                        Image(systemName: "arrow.up")
-                        Text(scoreText)
+                VStack {
+                    HStack(alignment: .center, spacing: 12) {
+                        HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 2) {
+                            Image(systemName: "arrow.up")
+                            Text(scoreText)
+                        }
+                        
+                        HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
+                            Text(author).bold()
+                        }
+                        
+                        Spacer()
+                        
+                        Text(timeAgoText)
+                            .foregroundColor(.secondary)
                     }
-                    
-                    HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
-                        Text(author).bold()
-                    }
-                    
-                    Spacer()
-                    
-                    Text(timeAgoText)
-                        .foregroundColor(.secondary)
                 }
                 .font(.system(size: 14.0))
                 .foregroundColor(isHidden ? .secondary : .primary)
-                .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .padding(.trailing, 10)
                 
                 if !isHidden {
                     Text(comment.content ?? "(content)")
@@ -103,6 +105,7 @@ struct CommentView_Previews: PreviewProvider {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
                                     "score": 15,
+                                    "creator_published": "2021-01-18T23:42:26.673844"
                                 }
                                 """), indentationLevel: i))
                         .previewLayout(.fixed(width: 300, height: 100))

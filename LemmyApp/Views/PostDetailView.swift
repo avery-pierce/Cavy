@@ -80,7 +80,7 @@ struct PostDetailView: View {
         .onAppear(perform: refresh)
         
         // FIXME: I want animation when a comment is collapsed/shown, but not anywhere else.
-        .animation(.easeIn)
+        .animation(.linear)
     }
     
     func printMe() {

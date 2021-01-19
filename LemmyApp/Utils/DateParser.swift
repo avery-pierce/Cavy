@@ -10,6 +10,7 @@ import Foundation
 let formatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
     return formatter
 }()
 
