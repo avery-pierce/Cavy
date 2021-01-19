@@ -20,6 +20,7 @@
 		C625442325B65137007F170A /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625442225B65137007F170A /* DateParser.swift */; };
 		C625442725B65220007F170A /* LemmyComment++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625442625B65220007F170A /* LemmyComment++.swift */; };
 		C625442B25B65528007F170A /* DateParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625442A25B65528007F170A /* DateParserTests.swift */; };
+		C625443125B685ED007F170A /* 20210118_post_list_all_hot.json in Resources */ = {isa = PBXBuildFile; fileRef = C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */; };
 		C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* LemmyAppApp.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		C625442225B65137007F170A /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		C625442625B65220007F170A /* LemmyComment++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LemmyComment++.swift"; sourceTree = "<group>"; };
 		C625442A25B65528007F170A /* DateParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParserTests.swift; sourceTree = "<group>"; };
+		C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210118_post_list_all_hot.json; sourceTree = "<group>"; };
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				C625441825B600B9007F170A /* 20210118_lemmy_post_41391.json */,
+				C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C625443125B685ED007F170A /* 20210118_post_list_all_hot.json in Resources */,
 				C625441925B600B9007F170A /* 20210118_lemmy_post_41391.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
