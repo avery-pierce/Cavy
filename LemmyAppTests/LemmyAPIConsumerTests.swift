@@ -8,7 +8,7 @@
 import XCTest
 @testable import LemmyApp
 
-class LemmyAppTests: XCTestCase {
+class LemmyAPIConsumerTests: XCTestCase {
     
     let client: LemmyAPIClient = .lemmyML
 

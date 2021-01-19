@@ -22,18 +22,18 @@ func abbreviatedForm(of timeInterval: TimeInterval) -> String {
     if timeInterval < 1 {
         return "now"
     } else if timeInterval < 60 {
-        return "\(Int(ceil(timeInterval)))s"
+        return "\(Int(round(timeInterval)))s"
     } else if timeInterval < (60 /* seconds */ * 60 /* minutes */) {
         let minutes = timeInterval / 60.0
-        return "\(Int(ceil(minutes)))m"
+        return "\(Int(round(minutes)))m"
     } else if timeInterval < (60 /* seconds */ * 60 /* minutes */ * 24 /* hours */) {
         let minutes = timeInterval / 60.0
         let hours = minutes / 60.0
-        return "\(Int(ceil(hours)))h"
+        return "\(Int(round(hours)))h"
     } else {
         let minutes = timeInterval / 60.0
         let hours = minutes / 60.0
         let days = hours / 24.0
-        return "\(Int(ceil(days)))d"
+        return "\(Int(round(days)))d"
     }
 }
