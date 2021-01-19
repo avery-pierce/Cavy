@@ -89,6 +89,7 @@
 		C625442625B65220007F170A /* LemmyComment++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LemmyComment++.swift"; sourceTree = "<group>"; };
 		C625442A25B65528007F170A /* DateParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParserTests.swift; sourceTree = "<group>"; };
 		C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210118_post_list_all_hot.json; sourceTree = "<group>"; };
+		C625443425B68B8E007F170A /* 20210118_post_list_all_hot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210118_post_list_all_hot.json; sourceTree = "<group>"; };
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		C63DF2B32530016300728E08 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				C625443425B68B8E007F170A /* 20210118_post_list_all_hot.json */,
 				C63DF2B42530016300728E08 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";

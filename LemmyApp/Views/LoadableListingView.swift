@@ -24,6 +24,7 @@ struct LoadableListingView: View {
             Image(systemName: "arrow.clockwise")
         })
         .navigationTitle(listModel.client.host)
+        .navigationBarTitleDisplayMode(.inline)
         .lemmyAPIClient(client)
     }
 }

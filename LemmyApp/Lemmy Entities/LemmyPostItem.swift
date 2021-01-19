@@ -178,3 +178,9 @@ extension LemmyPostItem: PostItem {
         }
     }
 }
+
+extension LemmyPostItem {
+    var publishedDate: Date? {
+        published.flatMap(parseLemmyDate(_:))
+    }
+}
