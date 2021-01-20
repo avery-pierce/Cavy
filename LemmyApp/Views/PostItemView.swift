@@ -22,6 +22,56 @@ struct PostItemView: View {
         return abbreviatedTimeInterval(of: interval)
     }
     
+    var timeAgoDetail: some View {
+        Text(timeAgoText)
+            .foregroundColor(.secondary)
+    }
+    
+    var commentsDetail: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "bubble.left")
+            Text("\(postItem.numberOfComments ?? 0) comments")
+        }
+    }
+    
+    var authorDetail: some View {
+        Text(postItem.authorName)
+            .foregroundColor(.accentColor)
+    }
+    
+    func communityDetail(_ communityName: String) -> some View {
+        Text(communityName)
+            .foregroundColor(.green)
+    }
+    
+    var domainDetail: some View {
+        Text(postItem.domain)
+            .italic()
+            .foregroundColor(.secondary)
+    }
+    
+    var metadataView: some View {
+        VStack(spacing: 4.0) {
+            HStack {
+                authorDetail
+                if let communityName = postItem.communityName {
+                    communityDetail(communityName)
+                }
+                domainDetail
+                Spacer()
+            }
+            .font(.system(size: 12.0))
+            
+            HStack(spacing: 4) {
+                timeAgoDetail
+                commentsDetail
+                Spacer()
+            }
+            .font(.system(size: 12.0))
+            .foregroundColor(.secondary)
+        }
+    }
+    
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             if let thumbnailURL = postItem.imageURL {
@@ -33,32 +83,7 @@ struct PostItemView: View {
                     .bold()
                     .font(.system(size: 14.0))
                 
-                HStack {
-                    Text(postItem.authorName)
-                        .foregroundColor(.accentColor)
-                    
-                    if let communityName = postItem.communityName {
-                        Text(communityName)
-                            .foregroundColor(.green)
-                    }
-                    
-                    Text(timeAgoText)
-                        .foregroundColor(.secondary)
-                    
-                    Text(postItem.domain)
-                        .italic()
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                }
-                .font(.system(size: 12.0))
-                
-                HStack(spacing: 4) {
-                    Image(systemName: "bubble.left")
-                    Text("\(postItem.numberOfComments ?? 0) comments")
-                }
-                .font(.system(size: 12.0))
-                .foregroundColor(.secondary)
+                metadataView
             }
         }
     }
