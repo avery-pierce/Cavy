@@ -19,7 +19,15 @@ struct LoadStateView<T, E: Error, V: View>: View {
     var body: some View {
         switch loadState {
         case .idle, .loading:
-            ProgressView()
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                Spacer()
+            }
         
         case .complete(let result):
             switch result {
