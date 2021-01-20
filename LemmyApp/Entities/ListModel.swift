@@ -34,6 +34,5 @@ class ListModel: ObservableObject {
         if needsRefresh {
             refresh()
         }
-        
     }
 }
