@@ -25,4 +25,15 @@ class ListModel: ObservableObject {
             }
         }.resume()
     }
+    
+    var needsRefresh: Bool {
+        return loadState.isIdle
+    }
+    
+    func refreshIfNeeded() {
+        if needsRefresh {
+            refresh()
+        }
+        
+    }
 }

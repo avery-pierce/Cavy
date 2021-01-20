@@ -19,7 +19,7 @@ struct LoadableListingView: View {
         LoadStateView(listModel.loadState) { posts in
             ListingView(posts)
         }
-        .onAppear(perform: listModel.refresh)
+        .onAppear(perform: listModel.refreshIfNeeded)
         .navigationBarItems(trailing: Button(action: listModel.refresh) {
             Image(systemName: "arrow.clockwise")
         })
