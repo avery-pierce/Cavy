@@ -31,7 +31,7 @@ struct PostItemView: View {
         HStack(spacing: 4) {
             Image(systemName: "bubble.left")
             Text("\(postItem.numberOfComments ?? 0) comments")
-        }
+        }.foregroundColor(.secondary)
     }
     
     var authorDetail: some View {
@@ -50,6 +50,23 @@ struct PostItemView: View {
             .foregroundColor(.secondary)
     }
     
+    var scoreText: String {
+        "\(postItem.score)"
+    }
+    
+    var scoreDetail: some View {
+        HStack(alignment: .center, spacing: 2) {
+            Image(systemName: "arrow.up")
+            Text(scoreText)
+        }.font(.system(size: 12.0, weight: .regular))
+    }
+    
+    var bulletSeperator: some View {
+        return BulletSeperator()
+            .foregroundColor(.secondary)
+            .opacity(0.5)
+    }
+    
     var metadataView: some View {
         VStack(spacing: 4.0) {
             HStack {
@@ -63,12 +80,14 @@ struct PostItemView: View {
             .font(.system(size: 12.0))
             
             HStack(spacing: 4) {
-                timeAgoDetail
+                scoreDetail
+                bulletSeperator
                 commentsDetail
+                bulletSeperator
+                timeAgoDetail
                 Spacer()
             }
             .font(.system(size: 12.0))
-            .foregroundColor(.secondary)
         }
     }
     
