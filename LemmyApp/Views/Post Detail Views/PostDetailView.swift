@@ -11,10 +11,23 @@ struct PostDetailView: View {
     let post: LemmyPostItem
     @Environment(\.lemmyAPIClient) var client: LemmyAPIClient
     @ObservedObject var postModel: PostModel
+    @ObservedObject var imageLoader: ImageLoader
     
     init(post: LemmyPostItem) {
         self.post = post
         self.postModel = PostModel(postID: post.id)
+        
+        // FIXME: Handle this better
+        let thumbnailURL = post.imageURL ?? URL(string: "https://www.example.com")!
+        self.imageLoader = ImageLoader(thumbnailURL)
+        
+        if hasThumbnail {
+            self.imageLoader.load()
+        }
+    }
+    
+    var hasThumbnail: Bool {
+        return post.imageURL != nil
     }
     
     func refresh() {
@@ -71,9 +84,9 @@ struct PostDetailView: View {
                 }
                 
                 if let url = webLink {
-                    Link(url.absoluteString, destination: url)
-                        .font(.system(size: 14.0))
-                        .foregroundColor(.accentColor)
+                    Link(destination: url) {
+                        ArticleSummaryView(post, thumbnailState: self.hasThumbnail ? imageLoader.state : nil)
+                    }
                 }
                 
                 HStack {

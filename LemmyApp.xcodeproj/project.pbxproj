@@ -63,6 +63,7 @@
 		C6D9F1432537F05100B41CE4 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8992532496E00EB7DB8 /* Resource.swift */; };
 		C6D9F1462537F05400B41CE4 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D14253222F900C8CEF7 /* LoadState.swift */; };
 		C6D9F14A2537F3A100B41CE4 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1492537F3A100B41CE4 /* Assert.swift */; };
+		C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		C6D9F1322537DF1500B41CE4 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		C6D9F1362537E16700B41CE4 /* PlainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainError.swift; sourceTree = "<group>"; };
 		C6D9F1492537F3A100B41CE4 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
+		C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */,
+				C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */,
 				C62543E925B4A1F1007F170A /* CommentsListView.swift */,
 				C62543F125B4ABED007F170A /* CommentView.swift */,
 			);
@@ -444,6 +447,7 @@
 				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
 				C625440025B4BC48007F170A /* Node.swift in Sources */,
 				C6D9F11F2537D0A900B41CE4 /* SettingsView.swift in Sources */,
+				C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */,
 				C6515D1F253228CA00C8CEF7 /* ImageLoader.swift in Sources */,
 				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
 				C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */,
