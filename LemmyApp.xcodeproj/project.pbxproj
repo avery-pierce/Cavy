@@ -230,9 +230,7 @@
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
-				C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */,
-				C62543E925B4A1F1007F170A /* CommentsListView.swift */,
-				C62543F125B4ABED007F170A /* CommentView.swift */,
+				C6FA67D725B9D3A1002A352E /* Post Detail Views */,
 				C6D9F103253257C300B41CE4 /* SafariView.swift */,
 				C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */,
 			);
@@ -300,6 +298,16 @@
 				C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */,
 			);
 			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		C6FA67D725B9D3A1002A352E /* Post Detail Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */,
+				C62543E925B4A1F1007F170A /* CommentsListView.swift */,
+				C62543F125B4ABED007F170A /* CommentView.swift */,
+			);
+			path = "Post Detail Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
