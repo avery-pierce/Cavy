@@ -30,7 +30,7 @@ struct PostItemView: View {
     var commentsDetail: some View {
         HStack(spacing: 4) {
             Image(systemName: "bubble.left")
-            Text("\(postItem.numberOfComments ?? 0) comments")
+            Text("\(postItem.numberOfComments ?? 0) \(postItem.numberOfComments == 1 ? "comment" : "comments")")
         }.foregroundColor(.secondary)
     }
     
