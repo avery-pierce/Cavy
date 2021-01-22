@@ -62,7 +62,7 @@ struct PostContentView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-            .frame(minHeight: 200, maxHeight: 500, alignment: .center)
+            .frame(minHeight: 300, idealHeight: 500, maxHeight: 800, alignment: .center)
         }
     }
     
