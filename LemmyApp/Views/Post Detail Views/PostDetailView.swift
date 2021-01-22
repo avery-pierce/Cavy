@@ -70,6 +70,13 @@ struct PostDetailView: View {
         return abbreviatedTimeInterval(of: interval)
     }
     
+    var articleSummaryView: some View {
+        let summaryTitle = post.embedTitle == post.title ? nil : post.embedTitle
+        let thumbnailState = post.thumbnailURL != nil ? imageLoader.state : nil
+        
+        return ArticleSummaryView(title: summaryTitle, description: post.embedDescription, destinationURL: post.url, thumbnailState: thumbnailState)
+    }
+    
     var body: some View {
         List() {
             VStack(alignment: .leading, spacing: 12) {
@@ -85,7 +92,7 @@ struct PostDetailView: View {
                 
                 if let url = webLink {
                     Link(destination: url) {
-                        ArticleSummaryView(post, thumbnailState: self.hasThumbnail ? imageLoader.state : nil)
+                        articleSummaryView
                     }
                 }
                 
