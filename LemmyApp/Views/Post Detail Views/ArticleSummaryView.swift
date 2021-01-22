@@ -57,10 +57,7 @@ struct ArticleSummaryView: View {
             Spacer()
         }
         .padding(12.0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8.0)
-                .stroke(Color.secondary, lineWidth: 1)
-        )
+        .background(Color(white: 0.5, opacity: 0.25))
         .cornerRadius(8.0)
     }
 }
@@ -123,6 +120,15 @@ struct ArticleSummaryView_Previews: PreviewProvider {
             
             ArticleSummaryView(samplePost, thumbnailState: .loading(50))
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
+        
+        Group {
+            ArticleSummaryView(title: "New Post", description: "Hello World", destinationURL: "http://www.example.com", thumbnailState: .loading(nil))
+            
+            ArticleSummaryView(samplePost, thumbnailState: .loading(50))
+        }
+        .preferredColorScheme(.dark)
         .padding()
         .previewLayout(.sizeThatFits)
     }
