@@ -77,6 +77,16 @@ struct PostDetailView: View {
         return ArticleSummaryView(title: summaryTitle, description: post.embedDescription, destinationURL: post.url, thumbnailState: thumbnailState)
     }
     
+    func dumpIt() {
+        do {
+            let jsonData = try JSONEncoder().encode(post)
+            let jsonString = String(data: jsonData, encoding: .utf8) ?? "did not decode string"
+            print(jsonString)
+        } catch let error {
+            print("Unable to encode post:", error)
+        }
+    }
+    
     var body: some View {
         List() {
             VStack(alignment: .leading, spacing: 12) {
@@ -125,6 +135,7 @@ struct PostDetailView: View {
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: dumpIt, label: { Image(systemName: "tray.and.arrow.down") }))
         .onAppear(perform: refresh)
         
         // FIXME: I want animation when a comment is collapsed/shown, but not anywhere else.
