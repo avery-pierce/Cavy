@@ -12,7 +12,6 @@ class CommentTreeTests: XCTestCase {
     
     var mockComments: [LemmyComment] = []
     var mockPost: LemmyPostResponse!
-    let testBundle = Bundle(for: CommentTreeTests.self)
     
     override func setUpWithError() throws {
         mockPost = LemmyPostResponse.fromJSON(fileNamed: "20210118_lemmy_post_41391", withExtension: "json", in: testBundle)
