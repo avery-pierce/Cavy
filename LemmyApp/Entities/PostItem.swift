@@ -15,7 +15,6 @@ protocol PostItem {
     var score: Int { get }
     var authorName: String { get }
     var domain: String { get }
-    var destination: PostDestination? { get }
     var body: String? { get }
 }
 

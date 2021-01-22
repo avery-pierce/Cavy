@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ArticleSummaryView: View {
-    
     var title: String?
     var description: String?
     var thumbnailState: LoadState<UIImage, Error>?

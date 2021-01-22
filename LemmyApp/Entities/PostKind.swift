@@ -7,8 +7,7 @@
 
 import Foundation
 
-enum PostKind {
+enum LinkKind {
     case image
     case web
-    case text
 }

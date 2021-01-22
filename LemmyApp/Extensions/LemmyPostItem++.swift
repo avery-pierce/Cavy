@@ -8,12 +8,7 @@
 import Foundation
 
 extension LemmyPostItem {
-    var kind: PostKind {
-        guard let url = url else { return .text }
-        if isImageURL(url) {
-            return .image
-        } else {
-            return .web
-        }
+    var kind: LinkKind? {
+        url?.kind
     }
 }

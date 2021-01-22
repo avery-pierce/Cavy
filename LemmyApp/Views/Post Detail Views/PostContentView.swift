@@ -61,7 +61,12 @@ struct PostContentView: View {
             
             if let url = post.url {
                 Link(destination: url) {
-                    articleSummaryView
+                    switch url.kind {
+                    case .web:
+                        articleSummaryView
+                    case .image:
+                        articleSummaryView
+                    }
                 }
             }
             

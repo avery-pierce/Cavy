@@ -30,6 +30,6 @@ class LemmyPostItem__Tests: XCTestCase {
     }
     
     func testSelfPost() throws {
-        XCTAssertEqual(selfPost.kind, .text)
+        XCTAssertEqual(selfPost.kind, nil)
     }
 }
