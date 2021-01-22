@@ -13,21 +13,24 @@ struct ListingView: View {
         self.posts = posts
     }
     
-    @State var safariURL: URL? = nil
-    @State var isSafariShown: Bool = false
-    
     var body: some View {
-        List(posts, id: \.id) { post in
-            NavigationLink(
-                destination: PostDetailView(post: post)) {
-                PostItemView(post)
-                    .padding(.vertical, 8)
+        // Had to jumpt through some strange hooks to hide the disclosure indicator
+        // https://stackoverflow.com/a/61724540
+        List {
+            ForEach(posts, id: \.id) { post in
+                ZStack {
+                    PostItemView(post)
+                        .padding(.vertical, 8)
+                    NavigationLink(
+                        destination: PostDetailView(post: post)) {
+                        EmptyView()
+                    }
+                    .frame(width: 0, height: 0)
+                    .hidden()
+                }
             }
         }
         .listStyle(PlainListStyle())
-        .sheet(isPresented: $isSafariShown) {
-            OptionalSafariView(url:safariURL)
-        }
     }
 }
 
