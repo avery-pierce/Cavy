@@ -73,6 +73,10 @@
 		C6FA67FF25BA7991002A352E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67FE25BA7991002A352E /* Utils.swift */; };
 		C6FA680325BA7ECA002A352E /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA680225BA7ECA002A352E /* PostContentView.swift */; };
 		C6FA680725BA822E002A352E /* URL++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA680625BA822E002A352E /* URL++.swift */; };
+		C6FA680F25BB2910002A352E /* 20210122_lemmy_ml_stite.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA680E25BB2910002A352E /* 20210122_lemmy_ml_stite.json */; };
+		C6FA681325BB295F002A352E /* LemmySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA681225BB295F002A352E /* LemmySite.swift */; };
+		C6FA681725BB2CA2002A352E /* LemmySiteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA681625BB2CA2002A352E /* LemmySiteResponse.swift */; };
+		C6FA681B25BB2F42002A352E /* 20210122_chapo_chat_site.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA681A25BB2F42002A352E /* 20210122_chapo_chat_site.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +156,10 @@
 		C6FA67FE25BA7991002A352E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C6FA680225BA7ECA002A352E /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		C6FA680625BA822E002A352E /* URL++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL++.swift"; sourceTree = "<group>"; };
+		C6FA680E25BB2910002A352E /* 20210122_lemmy_ml_stite.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210122_lemmy_ml_stite.json; sourceTree = "<group>"; };
+		C6FA681225BB295F002A352E /* LemmySite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmySite.swift; sourceTree = "<group>"; };
+		C6FA681625BB2CA2002A352E /* LemmySiteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmySiteResponse.swift; sourceTree = "<group>"; };
+		C6FA681A25BB2F42002A352E /* 20210122_chapo_chat_site.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210122_chapo_chat_site.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +185,8 @@
 			children = (
 				C625441825B600B9007F170A /* 20210118_lemmy_post_41391.json */,
 				C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */,
+				C6FA680E25BB2910002A352E /* 20210122_lemmy_ml_stite.json */,
+				C6FA681A25BB2F42002A352E /* 20210122_chapo_chat_site.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -280,6 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				C6515CF22531606E00C8CEF7 /* LemmyAPIClient.swift */,
+				C6FA681225BB295F002A352E /* LemmySite.swift */,
+				C6FA681625BB2CA2002A352E /* LemmySiteResponse.swift */,
 				C63DF2C925313E3200728E08 /* LemmyPostItem.swift */,
 				C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */,
 				C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */,
@@ -430,8 +442,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FA681B25BB2F42002A352E /* 20210122_chapo_chat_site.json in Resources */,
 				C625443125B685ED007F170A /* 20210118_post_list_all_hot.json in Resources */,
 				C625441925B600B9007F170A /* 20210118_lemmy_post_41391.json in Resources */,
+				C6FA680F25BB2910002A352E /* 20210122_lemmy_ml_stite.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +477,8 @@
 				C6D9F1332537DF1500B41CE4 /* DataProvider.swift in Sources */,
 				C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */,
 				C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */,
+				C6FA681725BB2CA2002A352E /* LemmySiteResponse.swift in Sources */,
+				C6FA681325BB295F002A352E /* LemmySite.swift in Sources */,
 				C6D9F1292537D83400B41CE4 /* EditInstancesView.swift in Sources */,
 				C62543FC25B4AD78007F170A /* Decodable++.swift in Sources */,
 				C62543F225B4ABED007F170A /* CommentView.swift in Sources */,

@@ -47,6 +47,16 @@ class LemmyAPIConsumerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    func testGetSiteData() throws {
+        let e = expectation(description: "Fetch Site")
+        let request = client.fetchSite()
+        assertDecodes(to: LemmySiteResponse.self, fromDataProvidedBy: request) {
+            e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     func testDocumentsFolder() {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls)
