@@ -64,6 +64,8 @@
 		C6D9F1462537F05400B41CE4 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515D14253222F900C8CEF7 /* LoadState.swift */; };
 		C6D9F14A2537F3A100B41CE4 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1492537F3A100B41CE4 /* Assert.swift */; };
 		C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */; };
+		C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */; };
+		C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E425BA5804002A352E /* ThumbnailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		C6D9F1362537E16700B41CE4 /* PlainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainError.swift; sourceTree = "<group>"; };
 		C6D9F1492537F3A100B41CE4 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSummaryView.swift; sourceTree = "<group>"; };
+		C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
+		C6FA67E425BA5804002A352E /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C6515D182532268600C8CEF7 /* LoadStateView.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
+				C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */,
+				C6FA67E425BA5804002A352E /* ThumbnailView.swift */,
 				C6FA67D725B9D3A1002A352E /* Post Detail Views */,
 				C6D9F103253257C300B41CE4 /* SafariView.swift */,
 				C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */,
@@ -427,6 +433,7 @@
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
 				C62543EE25B4A249007F170A /* PostModel.swift in Sources */,
+				C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */,
 				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C625440625B4BCBF007F170A /* CommentTreeUseCase.swift in Sources */,
@@ -449,6 +456,7 @@
 				C6D9F11F2537D0A900B41CE4 /* SettingsView.swift in Sources */,
 				C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */,
 				C6515D1F253228CA00C8CEF7 /* ImageLoader.swift in Sources */,
+				C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */,
 				C6515D0D253203B800C8CEF7 /* ListModel.swift in Sources */,
 				C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */,
 				C6A7D4D025B8866B00D5FF2E /* BulletSeperator.swift in Sources */,

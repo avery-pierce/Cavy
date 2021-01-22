@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct ArticleSummaryView<E: Error>: View {
+struct ArticleSummaryView: View {
     
     var title: String?
     var description: String?
-    var thumbnailState: LoadState<UIImage, E>?
+    var thumbnailState: LoadState<UIImage, Error>?
     var destinationURL: String?
     
-    init(_ post: LemmyPostItem, thumbnailState: LoadState<UIImage, E>?) {
+    init(_ post: LemmyPostItem, thumbnailState: LoadState<UIImage, Error>?) {
         self.init(title: post.embedTitle, description: post.embedDescription, destinationURL: post.url, thumbnailState: thumbnailState)
     }
     
-    init(title: String?, description: String?, destinationURL: URL?, thumbnailState: LoadState<UIImage, E>?) {
+    init(title: String?, description: String?, destinationURL: URL?, thumbnailState: LoadState<UIImage, Error>?) {
         self.init(title: title, description: description, destinationURL: destinationURL?.absoluteString, thumbnailState: thumbnailState)
     }
     
-    init(title: String?, description: String?, destinationURL: String?, thumbnailState: LoadState<UIImage, E>?) {
+    init(title: String?, description: String?, destinationURL: String?, thumbnailState: LoadState<UIImage, Error>?) {
         self.title = title
         self.description = description
         self.destinationURL = destinationURL
@@ -30,15 +30,9 @@ struct ArticleSummaryView<E: Error>: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 12.0) {
+        HStack(alignment: .top, spacing: 12.0) {
             if let thumbnailState = thumbnailState {
-                LoadStateView(thumbnailState) { image in
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                }
-                .frame(width: 60.0, height: 60.0)
-                .background(Color(white: 0.8))
+                ThumbnailView(thumbnailState)
             }
             
             VStack(alignment: .leading, spacing: 4.0) {
@@ -60,11 +54,10 @@ struct ArticleSummaryView<E: Error>: View {
                         .foregroundColor(.accentColor)
                 }
             }
-            .padding(.vertical, 8.0)
-            .padding(.trailing, 8.0)
             
             Spacer()
         }
+        .padding(12.0)
         .overlay(
             RoundedRectangle(cornerRadius: 8.0)
                 .stroke(Color.secondary, lineWidth: 1)
@@ -127,11 +120,11 @@ struct ArticleSummaryView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            ArticleSummaryView<Error>(title: "New Post", description: "Hello World", destinationURL: "http://www.example.com", thumbnailState: .loading(nil))
-                .padding()
-                .previewLayout(.sizeThatFits)
+            ArticleSummaryView(title: "New Post", description: "Hello World", destinationURL: "http://www.example.com", thumbnailState: .loading(nil))
             
-            ArticleSummaryView<Error>(samplePost, thumbnailState: .loading(50))
+            ArticleSummaryView(samplePost, thumbnailState: .loading(50))
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }

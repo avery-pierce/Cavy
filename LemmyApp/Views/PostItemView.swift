@@ -108,26 +108,6 @@ struct PostItemView: View {
     }
 }
 
-struct LoadingThumbnailView: View {
-    @ObservedObject var imageLoader: ImageLoader
-    
-    init(_ imageURL: URL) {
-        imageLoader = ImageLoader(imageURL)
-    }
-    
-    var body: some View {
-        LoadStateView(imageLoader.state) { image in
-            Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-        }
-        .onAppear(perform: imageLoader.load)
-        .frame(width: 44, height: 44, alignment: .center)
-        .background(Color(white: 0.5).opacity(0.2))
-        .cornerRadius(4.0)
-    }
-}
-
 struct PostItemView_Previews: PreviewProvider {
     
     static var previews: some View {
