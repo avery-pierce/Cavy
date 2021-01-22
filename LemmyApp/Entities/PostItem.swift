@@ -25,7 +25,6 @@ struct ConcretePostItem: PostItem {
     var score: Int
     var authorName: String
     var domain: String
-    var destination: PostDestination?
     var body: String?
 }
 
