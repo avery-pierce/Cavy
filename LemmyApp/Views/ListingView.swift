@@ -18,24 +18,8 @@ struct ListingView: View {
     
     var body: some View {
         List(posts, id: \.id) { post in
-            if let destination = post.destination {
-                switch destination {
-                case .web:
-                    NavigationLink(
-                        destination: PostDetailView(post: post)) {
-                        PostItemView(post)
-                            .padding(.vertical, 8)
-                    }
-                    
-                case .selfDetail:
-                    NavigationLink(
-                        destination: PostDetailView(post: post)) {
-                        PostItemView(post)
-                            .padding(.vertical, 8)
-                    }
-                }
-                
-            } else {
+            NavigationLink(
+                destination: PostDetailView(post: post)) {
                 PostItemView(post)
                     .padding(.vertical, 8)
             }

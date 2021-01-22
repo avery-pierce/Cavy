@@ -72,6 +72,7 @@
 		C6FA67F725BA77B2002A352E /* URLUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67F625BA77B2002A352E /* URLUtilsTests.swift */; };
 		C6FA67FB25BA7923002A352E /* LemmyPostItem++Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67FA25BA7923002A352E /* LemmyPostItem++Tests.swift */; };
 		C6FA67FF25BA7991002A352E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67FE25BA7991002A352E /* Utils.swift */; };
+		C6FA680325BA7ECA002A352E /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA680225BA7ECA002A352E /* PostContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		C6FA67F625BA77B2002A352E /* URLUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLUtilsTests.swift; sourceTree = "<group>"; };
 		C6FA67FA25BA7923002A352E /* LemmyPostItem++Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LemmyPostItem++Tests.swift"; sourceTree = "<group>"; };
 		C6FA67FE25BA7991002A352E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C6FA680225BA7ECA002A352E /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */,
+				C6FA680225BA7ECA002A352E /* PostContentView.swift */,
 				C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */,
 				C62543E925B4A1F1007F170A /* CommentsListView.swift */,
 				C62543F125B4ABED007F170A /* CommentView.swift */,
@@ -454,6 +457,7 @@
 				C62543EE25B4A249007F170A /* PostModel.swift in Sources */,
 				C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */,
 				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
+				C6FA680325BA7ECA002A352E /* PostContentView.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C625440625B4BCBF007F170A /* CommentTreeUseCase.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
