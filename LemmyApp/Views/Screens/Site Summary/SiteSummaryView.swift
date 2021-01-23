@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SiteSummaryView: View {
+    @Environment(\.lemmyAPIClient) var client
     var siteResponseState: LoadState<LemmySiteResponse, Error>
     
     var siteResponse: LemmySiteResponse? {
@@ -20,25 +21,56 @@ struct SiteSummaryView: View {
     
     var body: some View {
         List {
-            
             if let siteResponse = siteResponse {
+                if let icon = site?.icon {
+                    Loader(icon, parsedBy: imageParser) { state in
+                        LoadStateView(state) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+                
                 Section {
                     if let name = site?.name {
                         Text(name)
+                    }
+                    
+                    if let description = site?.description {
+                        Text(description)
+                    }
+                }
+                
+                Section {
+                    if site != nil {
+                        NavigationLink("Posts", destination: LoadableListingView(client))
                     }
                     
                     if let numberOfUsers = site?.numberOfUsers {
                         Text("\(numberOfUsers) users")
                     }
                     
-                    Text("\(siteResponse.admins.count) admins")
+                    if let numberOfCommunities = site?.numberOfCommunities {
+                        Text("\(numberOfCommunities) communities")
+                    }
                     
-                    Text("\(siteResponse.banned.count) banned users")
+                    if let adminsCount = siteResponse.admins.count {
+                        Text("\(adminsCount) admins")
+                    }
                     
-                    Text("\(siteResponse.federatedInstances.count) federated instances")
+                    if let bannedCount = siteResponse.banned.count {
+                        Text("\(bannedCount) banned users")
+                    }
+                    
+                    if let federatedInstances = siteResponse.federatedInstances.count {
+                        Text("\(federatedInstances) federated instances")
+                    }
                 }
             }
-        }.listStyle(GroupedListStyle())
+        }
+        .listStyle(GroupedListStyle())
+        .navigationBarHidden(true)
     }
 }
 

@@ -17,7 +17,7 @@ struct MainTabView: View {
         TabView {
             ForEach(rootModel.clients, id: \.host) { client in
                 NavigationView {
-                    LoadableListingView(client)
+                    SiteSummaryLoaderView(client)
                 }.tabItem {
                     Image(systemName: "globe")
                     Text(client.host)
