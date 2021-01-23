@@ -52,7 +52,7 @@ struct SiteSummaryView: View {
                     }
                     
                     if let numberOfCommunities = site?.numberOfCommunities {
-                        Text("\(numberOfCommunities) communities")
+                        NavigationLink("\(numberOfCommunities) communities", destination: LoadableCommunitiesView().lemmyAPIClient(client))
                     }
                     
                     if let adminsCount = siteResponse.admins.count {
