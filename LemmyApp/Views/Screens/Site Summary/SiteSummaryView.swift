@@ -75,7 +75,7 @@ struct SiteSummaryView: View {
     }
 }
 
-struct SiteSummaryView_Previews: PreviewProvider {    
+struct SiteSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
