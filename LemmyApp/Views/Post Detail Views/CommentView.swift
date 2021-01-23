@@ -100,7 +100,7 @@ struct CommentView_Previews: PreviewProvider {
         Group {
             Group {
                 ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(.fromJSON("""
+                    CommentView(ThreadedComment(try! .fromJSON("""
                                 {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
@@ -111,7 +111,7 @@ struct CommentView_Previews: PreviewProvider {
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
-                CommentView(ThreadedComment(.fromJSON("""
+                CommentView(ThreadedComment(try! .fromJSON("""
                                 {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
@@ -122,7 +122,7 @@ struct CommentView_Previews: PreviewProvider {
             
             Group {
                 ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(.fromJSON("""
+                    CommentView(ThreadedComment(try! .fromJSON("""
                                 {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
@@ -132,7 +132,7 @@ struct CommentView_Previews: PreviewProvider {
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
-                CommentView(ThreadedComment(.fromJSON("""
+                CommentView(ThreadedComment(try! .fromJSON("""
                                 {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"

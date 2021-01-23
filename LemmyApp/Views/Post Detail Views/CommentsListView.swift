@@ -31,7 +31,7 @@ struct CommentsListView_Previews: PreviewProvider {
     static var previews: some View {
         List() {
             CommentsListView([
-                .fromJSON("""
+                try! .fromJSON("""
                         {
                             "id": 1,
                             "creator_name": "jill",
@@ -39,7 +39,7 @@ struct CommentsListView_Previews: PreviewProvider {
                         }
                         """)
                 ,
-                .fromJSON("""
+                try! .fromJSON("""
                         {
                             "id": 2,
                             "creator_name": "jack",
@@ -47,7 +47,7 @@ struct CommentsListView_Previews: PreviewProvider {
                             "parent_id": 1
                         }
                         """),
-                .fromJSON("""
+                try! .fromJSON("""
                         {
                             "id": 3,
                             "creator_name": "jack",
@@ -55,7 +55,7 @@ struct CommentsListView_Previews: PreviewProvider {
                             "parent_id": 1
                         }
                         """),
-                .fromJSON("""
+                try! .fromJSON("""
                     {
                         "id": 4,
                         "creator_name": "jack",

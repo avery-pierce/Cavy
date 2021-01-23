@@ -29,7 +29,7 @@ struct ConcretePostItem: PostItem {
 }
 
 let sampleDataList = [
-    LemmyPostItem.fromJSON("""
+    try! LemmyPostItem.fromJSON("""
         {
             "id": 1,
             "name": "Simulating Machines in Clojure",
@@ -39,7 +39,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    LemmyPostItem.fromJSON("""
+    try! LemmyPostItem.fromJSON("""
         {
             "id": 2,
             "name": "Top 4 Coding Languages To Learn For Beginners (2020) - Qvault",
@@ -49,7 +49,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    LemmyPostItem.fromJSON("""
+    try! LemmyPostItem.fromJSON("""
         {
             "id": 3,
             "name": "The Open University Project",
@@ -59,7 +59,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    LemmyPostItem.fromJSON("""
+    try! LemmyPostItem.fromJSON("""
         {
             "id": 4,
             "name": "I made a playlist of 6h56min of chill synth music to lift you up and motivate you while coding/working. Enjoy!",
@@ -69,7 +69,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    LemmyPostItem.fromJSON("""
+    try! LemmyPostItem.fromJSON("""
         {
             "id": 4,
             "name": "Why Life Can’t Be Simpler",

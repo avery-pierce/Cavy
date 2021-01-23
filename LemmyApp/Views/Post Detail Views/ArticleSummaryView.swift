@@ -63,7 +63,7 @@ struct ArticleSummaryView: View {
 }
 
 struct ArticleSummaryView_Previews: PreviewProvider {
-    static let samplePost = LemmyPostItem.fromJSON("""
+    static let samplePost = try! LemmyPostItem.fromJSON("""
                 {
                     "id": 48420,
                     "name": "Parler partially reappears with support from Russian technology firm",

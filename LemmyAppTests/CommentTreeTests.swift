@@ -14,7 +14,7 @@ class CommentTreeTests: XCTestCase {
     var mockPost: LemmyPostResponse!
     
     override func setUpWithError() throws {
-        mockPost = LemmyPostResponse.fromJSON(fileNamed: "20210118_lemmy_post_41391", withExtension: "json", in: testBundle)
+        mockPost = try! LemmyPostResponse.fromJSON(fileNamed: "20210118_lemmy_post_41391", withExtension: "json", in: testBundle)
     }
 
     func testCommentTreeUseCase() throws {

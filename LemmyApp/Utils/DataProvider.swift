@@ -82,3 +82,10 @@ extension URLRequest: DataProvider {
         URLRequestResource(self).getData(completion)
     }
 }
+
+extension URL: DataProvider {
+    func getData(_ completion: @escaping (Result<Data, Error>) -> Void) {
+        let urlRequest = URLRequest(url: self)
+        URLRequestResource(urlRequest).getData(completion)
+    }
+}

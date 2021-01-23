@@ -9,16 +9,15 @@ import SwiftUI
 
 struct SiteSummaryLoaderView: View {
     let client: LemmyAPIClient
-    
-    @ObservedObject var loader: JSONLoader<LemmySiteResponse>
-    
     init(_ client: LemmyAPIClient = .lemmyML) {
         self.client = client
-        self.loader = JSONLoader<LemmySiteResponse>(client.fetchSite())
     }
     
     var body: some View {
-        SiteSummaryView(siteResponseState: loader.state)
+        Loader(client.fetchSite(), parsedBy: LemmySiteResponse.fromJSON) { loadState in
+        
+            SiteSummaryView(siteResponseState: loadState)
+        }
     }
 }
 

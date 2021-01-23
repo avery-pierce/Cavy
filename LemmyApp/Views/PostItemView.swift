@@ -121,7 +121,7 @@ struct PostItemView_Previews: PreviewProvider {
         }
     }
     
-    static let post = LemmyPostItem.fromJSON("""
+    static let post = try! LemmyPostItem.fromJSON("""
                 {
                     "id": 48420,
                     "name": "Parler partially reappears with support from Russian technology firm",

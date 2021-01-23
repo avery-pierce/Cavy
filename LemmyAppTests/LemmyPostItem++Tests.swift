@@ -10,7 +10,7 @@ import XCTest
 
 class LemmyPostItem__Tests: XCTestCase {
     
-    let allPosts = LemmyPostItemResponse.fromJSON(fileNamed: "20210118_post_list_all_hot", withExtension: "json", in: testBundle)
+    let allPosts = try! LemmyPostItemResponse.fromJSON(fileNamed: "20210118_post_list_all_hot", withExtension: "json", in: testBundle)
     var webArticlePost: LemmyPostItem {
         allPosts.posts[0]
     }

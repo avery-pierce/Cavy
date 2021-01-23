@@ -43,7 +43,7 @@ struct SiteSummaryView: View {
 }
 
 struct SiteSummaryView_Previews: PreviewProvider {
-    static let previewSite = LemmySiteResponse.fromJSON(fileNamed: "20210122_lemmy_ml_stite", withExtension: ".json")
+    static let previewSite = try! LemmySiteResponse.fromJSON(fileNamed: "20210122_lemmy_ml_stite", withExtension: ".json")
     
     static var previews: some View {
         Group {
