@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Renders an activity indicator while the content is loading
 struct LoadStateView<T, E: Error, V: View>: View {
     let loadState: LoadState<T, E>
     let contentView: (T) -> V
