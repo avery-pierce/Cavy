@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct LoadingThumbnailView: View {
-    @ObservedObject var imageLoader: ImageLoader
+    let dataProvider: DataProvider
     
-    init(_ imageURL: URL) {
-        imageLoader = ImageLoader(imageURL)
+    init(_ dataProvider: DataProvider) {
+        self.dataProvider = dataProvider
     }
     
     var body: some View {
-        ThumbnailView(imageLoader.state)
-            .onAppear(perform: imageLoader.load)
+        Loader(dataProvider, parsedBy: imageParser) { state in
+            ThumbnailView(state)
+        }
     }
 }
