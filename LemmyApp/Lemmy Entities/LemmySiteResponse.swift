@@ -14,7 +14,7 @@ struct LemmySiteResponse: Codable {
     var online: Int?
     var version: String?
     var myUser: LemmyUser?
-    var federatedInstances: [String]?
+    var federatedInstances: [String]
     
     enum CodingKeys: String, CodingKey {
         case site = "site"
@@ -34,6 +34,6 @@ struct LemmySiteResponse: Codable {
         online = try values.decodeIfPresent(Int.self, forKey: .online)
         version = try values.decodeIfPresent(String.self, forKey: .version)
         myUser = try values.decodeIfPresent(LemmyUser.self, forKey: .myUser)
-        federatedInstances = try values.decodeIfPresent([String].self, forKey: .federatedInstances)
+        federatedInstances = try values.decodeIfPresent([String].self, forKey: .federatedInstances) ?? []
     }
 }

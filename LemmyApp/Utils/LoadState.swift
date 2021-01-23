@@ -12,6 +12,14 @@ enum LoadState<T, E: Error> {
     case loading(_ percentage: Double? = nil)
     case complete(Result<T, E>)
     
+    static func success(_ value: T) -> LoadState<T, E> {
+        return .complete(.success(value))
+    }
+    
+    static func failure(_ error: E) -> LoadState<T, E> {
+        return .complete(.failure(error))
+    }
+    
     var isIdle: Bool {
         switch self {
         case .idle: return true
@@ -31,6 +39,17 @@ enum LoadState<T, E: Error> {
         case .complete: return true
         default: return false
         }
+    }
+    
+    var result: Result<T, E>? {
+        switch self {
+        case .complete(let result): return result
+        default: return nil
+        }
+    }
+    
+    var value: T? {
+        return try? result?.get()
     }
 }
 

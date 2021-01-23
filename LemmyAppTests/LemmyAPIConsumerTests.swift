@@ -57,6 +57,17 @@ class LemmyAPIConsumerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    // TODO: Requires Auth
+//    func testGetSiteConfig() throws {
+//        let e = expectation(description: "Fetch Site Config")
+//        let request = client.fetchSiteConfig()
+//        assertDecodes(to: LemmySiteConfig.self, fromDataProvidedBy: request) {
+//            e.fulfill()
+//        }
+//
+//        waitForExpectations(timeout: 5, handler: nil)
+//    }
+    
     func testDocumentsFolder() {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls)
