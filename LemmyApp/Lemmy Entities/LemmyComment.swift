@@ -45,7 +45,6 @@ struct LemmyComment: Codable, Equatable {
     let saved : String?
     
     enum CodingKeys: String, CodingKey {
-        
         case id = "id"
         case creatorID = "creator_id"
         case postID = "post_id"
