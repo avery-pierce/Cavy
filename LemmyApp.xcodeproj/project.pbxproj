@@ -262,6 +262,17 @@
 			path = LemmyAppTests;
 			sourceTree = "<group>";
 		};
+		C652708D25BCBAEB0014FB05 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C6C3D8992532496E00EB7DB8 /* Resource.swift */,
+				C6D9F1322537DF1500B41CE4 /* DataProvider.swift */,
+				C652707925BCAE880014FB05 /* DataResource.swift */,
+				C652707D25BCAF5C0014FB05 /* ParsedDataResource.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		C6C3D88D2532473000EB7DB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,10 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				C6515D14253222F900C8CEF7 /* LoadState.swift */,
-				C6C3D8992532496E00EB7DB8 /* Resource.swift */,
-				C652707925BCAE880014FB05 /* DataResource.swift */,
-				C652707D25BCAF5C0014FB05 /* ParsedDataResource.swift */,
-				C6D9F1322537DF1500B41CE4 /* DataProvider.swift */,
+				C652708D25BCBAEB0014FB05 /* Resource */,
 				C6D9F1362537E16700B41CE4 /* PlainError.swift */,
 				C625442225B65137007F170A /* DateParser.swift */,
 				C6FA67F225BA76F7002A352E /* URLUtils.swift */,

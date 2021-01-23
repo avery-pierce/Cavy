@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Describes a type that can asynchronously provide data, either via the network, or some other means.
 protocol DataProvider {
     /// Fetches the data associated with this provider. The callback handler
     /// is not guaranteed to be called on the main thread.
