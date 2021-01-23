@@ -75,13 +75,11 @@ struct SiteSummaryView: View {
     }
 }
 
-struct SiteSummaryView_Previews: PreviewProvider {
-    static let previewSite = try! LemmySiteResponse.fromJSON(fileNamed: "20210122_lemmy_ml_stite", withExtension: ".json")
-    
+struct SiteSummaryView_Previews: PreviewProvider {    
     static var previews: some View {
         Group {
             NavigationView {
-                SiteSummaryView(siteResponseState: .success(previewSite))
+                SiteSummaryView(siteResponseState: .success(LemmySiteResponse.sampleData))
             }
         }
     }

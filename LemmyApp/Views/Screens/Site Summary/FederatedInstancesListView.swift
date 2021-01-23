@@ -26,6 +26,8 @@ struct FederatedInstancesListView: View {
 
 struct FederatedInstancesListView_Previews: PreviewProvider {
     static var previews: some View {
-        FederatedInstancesListView([])
+        NavigationView {
+            FederatedInstancesListView(LemmySiteResponse.sampleData.federatedInstances)
+        }
     }
 }
