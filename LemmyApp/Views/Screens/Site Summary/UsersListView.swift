@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct UsersListView: View {
+    let users: [LemmyUser]
+    init(_ users: [LemmyUser]) {
+        self.users = users
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(users, id:\.id) { user in
+            VStack(alignment: .leading, spacing: 12.0) {
+                Text(user.name ?? "").bold()
+                if let bio = user.bio {
+                    Text(bio)
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct UsersListView_Previews: PreviewProvider {
     static var previews: some View {
-        UsersListView()
+        NavigationView {
+            UsersListView(LemmySiteResponse.sampleData.admins)
+        }
     }
 }

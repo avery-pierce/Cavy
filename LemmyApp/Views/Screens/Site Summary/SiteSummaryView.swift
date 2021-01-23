@@ -55,12 +55,12 @@ struct SiteSummaryView: View {
                         NavigationLink("\(numberOfCommunities) communities", destination: LoadableCommunitiesView().lemmyAPIClient(client))
                     }
                     
-                    if let adminsCount = siteResponse.admins.count {
-                        Text("\(adminsCount) admins")
+                    if let admins = siteResponse.admins {
+                        NavigationLink("\(admins.count) admins", destination: UsersListView(admins).navigationTitle("Admins"))
                     }
                     
-                    if let bannedCount = siteResponse.banned.count {
-                        Text("\(bannedCount) banned users")
+                    if let bannedUsers = siteResponse.banned {
+                        NavigationLink("\(bannedUsers.count) banned users", destination: UsersListView(bannedUsers).navigationTitle("Banned Users"))
                     }
                     
                     if let federatedInstances = siteResponse.federatedInstances {
