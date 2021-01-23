@@ -63,14 +63,15 @@ struct SiteSummaryView: View {
                         Text("\(bannedCount) banned users")
                     }
                     
-                    if let federatedInstances = siteResponse.federatedInstances.count {
-                        Text("\(federatedInstances) federated instances")
+                    if let federatedInstances = siteResponse.federatedInstances {
+                        NavigationLink("\(federatedInstances.count) federated instances", destination: FederatedInstancesListView(federatedInstances))
                     }
                 }
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationBarHidden(true)
+        .navigationTitle(client.host)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

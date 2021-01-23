@@ -32,6 +32,7 @@
 		C640772625BCC7E500B42F63 /* CommunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640772525BCC7E500B42F63 /* CommunitiesView.swift */; };
 		C640772A25BCC8C100B42F63 /* LoadableCommunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640772925BCC8C100B42F63 /* LoadableCommunitiesView.swift */; };
 		C640772E25BCCCA600B42F63 /* PostResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640772D25BCCCA600B42F63 /* PostResultsView.swift */; };
+		C640773525BCD02000B42F63 /* FederatedInstancesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C640773425BCD02000B42F63 /* FederatedInstancesListView.swift */; };
 		C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */; };
 		C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */; };
 		C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */; };
@@ -128,6 +129,7 @@
 		C640772525BCC7E500B42F63 /* CommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesView.swift; sourceTree = "<group>"; };
 		C640772925BCC8C100B42F63 /* LoadableCommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCommunitiesView.swift; sourceTree = "<group>"; };
 		C640772D25BCCCA600B42F63 /* PostResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResultsView.swift; sourceTree = "<group>"; };
+		C640773425BCD02000B42F63 /* FederatedInstancesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FederatedInstancesListView.swift; sourceTree = "<group>"; };
 		C6515CE62531454700C8CEF7 /* LemmyCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCommunity.swift; sourceTree = "<group>"; };
 		C6515CEA2531479400C8CEF7 /* LemmyCommunitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCommunitiesResponse.swift; sourceTree = "<group>"; };
 		C6515CEE2531601800C8CEF7 /* LemmyPostItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemResponse.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				C652705425BC9EB70014FB05 /* SiteSummaryView.swift */,
 				C652706D25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift */,
+				C640773425BCD02000B42F63 /* FederatedInstancesListView.swift */,
 			);
 			path = "Site Summary";
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
 				C652706E25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift in Sources */,
+				C640773525BCD02000B42F63 /* FederatedInstancesListView.swift in Sources */,
 				C6FA67E925BA7675002A352E /* LemmyPostItem++.swift in Sources */,
 				C62543EE25B4A249007F170A /* PostModel.swift in Sources */,
 				C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */,
