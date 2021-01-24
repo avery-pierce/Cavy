@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C6091CC625BCEBBB00E6CD0F /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CC525BCEBBB00E6CD0F /* ListCellView.swift */; };
 		C6091CCE25BDE22300E6CD0F /* SavedInstanceExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */; };
+		C6091CD325BDF2C800E6CD0F /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = C6091CD225BDF2C800E6CD0F /* Down */; };
+		C6091CD725BDF2EA00E6CD0F /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CD625BDF2EA00E6CD0F /* MarkdownText.swift */; };
+		C6091CDB25BDF44B00E6CD0F /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CDA25BDF44B00E6CD0F /* HTMLView.swift */; };
+		C6091CDF25BDF53300E6CD0F /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CDE25BDF53300E6CD0F /* AttributedText.swift */; };
+		C6091CE425BE013600E6CD0F /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C6091CE325BE013600E6CD0F /* MarkdownUI */; };
 		C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543E925B4A1F1007F170A /* CommentsListView.swift */; };
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
@@ -105,6 +110,9 @@
 /* Begin PBXFileReference section */
 		C6091CC525BCEBBB00E6CD0F /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
 		C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedInstanceExplorerView.swift; sourceTree = "<group>"; };
+		C6091CD625BDF2EA00E6CD0F /* MarkdownText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownText.swift; sourceTree = "<group>"; };
+		C6091CDA25BDF44B00E6CD0F /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
+		C6091CDE25BDF53300E6CD0F /* AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
 		C62543E925B4A1F1007F170A /* CommentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListView.swift; sourceTree = "<group>"; };
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -193,6 +201,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6091CD325BDF2C800E6CD0F /* Down in Frameworks */,
+				C6091CE425BE013600E6CD0F /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +350,9 @@
 				C6FA67E425BA5804002A352E /* ThumbnailView.swift */,
 				C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */,
 				C6091CC525BCEBBB00E6CD0F /* ListCellView.swift */,
+				C6091CD625BDF2EA00E6CD0F /* MarkdownText.swift */,
+				C6091CDA25BDF44B00E6CD0F /* HTMLView.swift */,
+				C6091CDE25BDF53300E6CD0F /* AttributedText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -471,6 +484,10 @@
 			dependencies = (
 			);
 			name = LemmyApp;
+			packageProductDependencies = (
+				C6091CD225BDF2C800E6CD0F /* Down */,
+				C6091CE325BE013600E6CD0F /* MarkdownUI */,
+			);
 			productName = LemmyApp;
 			productReference = C63DF2AA2530016000728E08 /* LemmyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -520,6 +537,10 @@
 				Base,
 			);
 			mainGroup = C63DF2A12530016000728E08;
+			packageReferences = (
+				C6091CD125BDF2C800E6CD0F /* XCRemoteSwiftPackageReference "Down" */,
+				C6091CE225BE013600E6CD0F /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+			);
 			productRefGroup = C63DF2AB2530016000728E08 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -561,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6091CDF25BDF53300E6CD0F /* AttributedText.swift in Sources */,
 				C652705125BC99A80014FB05 /* LemmyModerator.swift in Sources */,
 				C6D9F1372537E16700B41CE4 /* PlainError.swift in Sources */,
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
@@ -581,7 +603,9 @@
 				C6FA680325BA7ECA002A352E /* PostContentView.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
 				C625440625B4BCBF007F170A /* CommentTreeUseCase.swift in Sources */,
+				C6091CDB25BDF44B00E6CD0F /* HTMLView.swift in Sources */,
 				C6F306B525BCE08600B381B1 /* LemmySiteResponsePreviews.swift in Sources */,
+				C6091CD725BDF2EA00E6CD0F /* MarkdownText.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
 				C6D9F1332537DF1500B41CE4 /* DataProvider.swift in Sources */,
 				C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */,
@@ -887,6 +911,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C6091CD125BDF2C800E6CD0F /* XCRemoteSwiftPackageReference "Down" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnxnguyen/Down";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.4;
+			};
+		};
+		C6091CE225BE013600E6CD0F /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C6091CD225BDF2C800E6CD0F /* Down */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6091CD125BDF2C800E6CD0F /* XCRemoteSwiftPackageReference "Down" */;
+			productName = Down;
+		};
+		C6091CE325BE013600E6CD0F /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6091CE225BE013600E6CD0F /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C63DF2A22530016000728E08 /* Project object */;
 }

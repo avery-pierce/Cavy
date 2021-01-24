@@ -80,7 +80,7 @@ struct SiteSummaryView: View {
                     
                     if let description = siteResponse.site?.description {
                         HStack {
-                            Text(description)
+                            MarkdownText(description)
                             Spacer()
                         }
                         .padding()
