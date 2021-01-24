@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SiteSummaryView: View {
     @Environment(\.lemmyAPIClient) var client
+    @Environment(\.colorScheme) var colorScheme
+    
     var siteResponseState: LoadState<LemmySiteResponse, Error>
     
     var siteResponse: LemmySiteResponse? {
@@ -20,7 +22,21 @@ struct SiteSummaryView: View {
     }
     
     var backgroundColor: Color {
-        return Color(hue: 0.6, saturation: 0.1, brightness: 0.96)
+        switch colorScheme {
+        case .dark:
+            return Color(hue: 0.6, saturation: 0.1, brightness: 0.1)
+        default:
+            return Color(hue: 0.6, saturation: 0.1, brightness: 0.96)
+        }
+    }
+    
+    var backdropColor: Color {
+        switch colorScheme {
+        case .dark:
+            return .black
+        default:
+            return .white
+        }
     }
     
     var body: some View {
@@ -49,7 +65,7 @@ struct SiteSummaryView: View {
                             Spacer()
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.white))
+                        .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
                         .padding(.horizontal)
                     }
                     
@@ -107,7 +123,7 @@ struct SiteSummaryView: View {
                             Divider()
                         }
                     }
-                    .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.white))
+                    .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
                     .padding(.horizontal)
                 }
             }.background(backgroundColor.ignoresSafeArea())
@@ -122,6 +138,12 @@ struct SiteSummaryView_Previews: PreviewProvider {
                 SiteSummaryView(siteResponseState: .success(LemmySiteResponse.sampleData))
             }
             .navigationBarTitleDisplayMode(.inline)
+            
+            NavigationView {
+                SiteSummaryView(siteResponseState: .success(LemmySiteResponse.sampleData))
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .colorScheme(.dark)
         }
     }
 }
