@@ -26,7 +26,7 @@ struct SiteSummaryView: View {
         case .dark:
             return Color(hue: 0.6, saturation: 0.1, brightness: 0.1)
         default:
-            return Color(hue: 0.6, saturation: 0.1, brightness: 0.96)
+            return Color(hue: 0.6, saturation: 0.04, brightness: 0.97)
         }
     }
     
