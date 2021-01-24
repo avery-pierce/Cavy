@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C6091CC625BCEBBB00E6CD0F /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CC525BCEBBB00E6CD0F /* ListCellView.swift */; };
+		C6091CCE25BDE22300E6CD0F /* SavedInstanceExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */; };
 		C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543E925B4A1F1007F170A /* CommentsListView.swift */; };
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		C6091CC525BCEBBB00E6CD0F /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedInstanceExplorerView.swift; sourceTree = "<group>"; };
 		C62543E925B4A1F1007F170A /* CommentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListView.swift; sourceTree = "<group>"; };
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				C652705425BC9EB70014FB05 /* SiteSummaryView.swift */,
 				C652706D25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift */,
 				C640773425BCD02000B42F63 /* FederatedInstancesListView.swift */,
+				C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */,
 				C6F306B025BCE02300B381B1 /* UsersListView.swift */,
 			);
 			path = "Site Summary";
@@ -599,6 +602,7 @@
 				C6515D1125321C7D00C8CEF7 /* LoadableListingView.swift in Sources */,
 				C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */,
 				C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */,
+				C6091CCE25BDE22300E6CD0F /* SavedInstanceExplorerView.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,
 				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
 				C625440025B4BC48007F170A /* Node.swift in Sources */,
