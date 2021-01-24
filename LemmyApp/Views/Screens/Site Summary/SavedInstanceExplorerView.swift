@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SavedInstanceExplorerView: View {
-    @Environment(\.rootModel) var rootModel: RootModel
+    @EnvironmentObject var rootModel: RootModel
     
     var hosts: [String] {
         return rootModel.clients.map(\.host)

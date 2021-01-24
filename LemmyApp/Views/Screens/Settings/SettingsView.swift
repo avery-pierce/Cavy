@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct SettingsView: View {
-    let rootModel: RootModel
-    init(_ rootModel: RootModel) {
-        self.rootModel = rootModel
-    }
+    @EnvironmentObject var rootModel: RootModel
     
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: EditInstancesView(rootModel)) {
+                NavigationLink(destination: EditInstancesView()) {
                     Text("Edit Instances")
                 }
             }.navigationTitle("Settings")
@@ -26,6 +23,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(RootModel())
+        SettingsView().rootModel(RootModel())
     }
 }

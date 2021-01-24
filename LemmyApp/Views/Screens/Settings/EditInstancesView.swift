@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct EditInstancesView: View {
-    @ObservedObject var rootModel: RootModel
-    
-    init(_ rootModel: RootModel) {
-        self.rootModel = rootModel
-    }
+    @EnvironmentObject var rootModel: RootModel
     
     var body: some View {
         Form {
@@ -36,6 +32,6 @@ struct EditInstancesView: View {
 
 struct EditInstancesView_Previews: PreviewProvider {
     static var previews: some View {
-        EditInstancesView(RootModel())
+        EditInstancesView().rootModel(RootModel())
     }
 }

@@ -76,19 +76,8 @@ class ServerStore {
     ]
 }
 
-private struct RootModelEnvironmentKey: EnvironmentKey {
-    static let defaultValue: RootModel = RootModel()
-}
-
-extension EnvironmentValues {
-    var rootModel: RootModel {
-        get { self[RootModelEnvironmentKey.self] }
-        set { self[RootModelEnvironmentKey.self] = newValue }
-    }
-}
-
 extension View {
     func rootModel(_ rootModel: RootModel) -> some View {
-        environment(\.rootModel, rootModel)
+        environmentObject(rootModel)
     }
 }

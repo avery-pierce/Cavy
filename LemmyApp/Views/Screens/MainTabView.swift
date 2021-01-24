@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @Environment(\.rootModel) var rootModel: RootModel
+    @EnvironmentObject var rootModel: RootModel
     
     var body: some View {
         TabView {
@@ -26,7 +26,7 @@ struct MainTabView: View {
                 }
             }
             
-            SettingsView(rootModel)
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }

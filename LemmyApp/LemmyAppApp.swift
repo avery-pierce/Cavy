@@ -14,7 +14,7 @@ struct LemmyAppApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .rootModel(rootModel)
+                .environmentObject(rootModel)
         }
     }
 }
