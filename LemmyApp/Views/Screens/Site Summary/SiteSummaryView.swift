@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SiteSummaryView: View {
+    @EnvironmentObject var rootModel: RootModel
     @Environment(\.lemmyAPIClient) var client
     @Environment(\.colorScheme) var colorScheme
     
@@ -36,6 +37,24 @@ struct SiteSummaryView: View {
             return .black
         default:
             return .white
+        }
+    }
+    
+    var saveInstanceButton: some View {
+        Button(action: toggleSiteSaved) {
+            isServerSaved ? Image(systemName: "star.fill") : Image(systemName: "star")
+        }
+    }
+
+    var isServerSaved: Bool {
+        return rootModel.clients.contains(where: { $0.host == client.host })
+    }
+    
+    func toggleSiteSaved() {
+        if isServerSaved {
+            rootModel.removeServer(client)
+        } else {
+            rootModel.addServer(client)
         }
     }
     
@@ -126,12 +145,24 @@ struct SiteSummaryView: View {
                     .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
                     .padding(.horizontal)
                 }
-            }.background(backgroundColor.ignoresSafeArea())
+            }
+            .background(backgroundColor.ignoresSafeArea())
+            
         }
+        .navigationBarItems(trailing: saveInstanceButton)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SiteSummaryView_Previews: PreviewProvider {
+    static let modelWithNoClients: RootModel = {
+        var model = RootModel()
+        while model.clients.count > 0 {
+            model.removeServer(at: 0)
+        }
+        return model
+    }()
+    
     static var previews: some View {
         Group {
             NavigationView {
@@ -144,6 +175,7 @@ struct SiteSummaryView_Previews: PreviewProvider {
             }
             .navigationBarTitleDisplayMode(.inline)
             .colorScheme(.dark)
-        }
+            
+        }.rootModel(modelWithNoClients)
     }
 }
