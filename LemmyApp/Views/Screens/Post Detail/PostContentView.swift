@@ -89,7 +89,7 @@ struct PostContentView: View {
             
             VStack(alignment: .leading, spacing: 12) {
                 if let body = post.body {
-                    Text(body).font(.system(size: 14.0))
+                    MarkdownText(body).font(.system(size: 14.0))
                 }
                 
                 if let url = post.url, url.kind == LinkKind.web {

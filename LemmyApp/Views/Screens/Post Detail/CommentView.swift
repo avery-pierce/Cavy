@@ -85,9 +85,9 @@ struct CommentView: View {
                 .padding(.trailing, 10)
                 
                 if !isHidden {
-                    Text(comment.content ?? "(content)")
-                        .multilineTextAlignment(.leading)
+                    MarkdownText(comment.content ?? "(content)")
                         .font(.system(size: 14.0))
+                        .multilineTextAlignment(.leading)
                 }
             }
         }

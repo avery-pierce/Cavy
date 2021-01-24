@@ -6,49 +6,18 @@
 //
 
 import SwiftUI
-import Down
+import MarkdownUI
 
 struct MarkdownText: View {
-    @Environment(\.colorScheme) var colorScheme
     
     let markdownString: String
     init(_ markdownString: String) {
         self.markdownString = markdownString
     }
     
-    let stylesheetLightTheme: String = """
-    * {font-family: -apple-system; color: #000;}
-    code, pre { font-family: Menlo }
-    """
-    
-    let stylehseetDarkTheme: String = """
-    * {font-family: -apple-system; color: #FFF;}
-    code, pre { font-family: Menlo }
-    """
-    
-    var stylesheet: String {
-        switch colorScheme {
-        case .dark: return stylehseetDarkTheme
-        default: return stylesheetLightTheme
-        }
-    }
-    
-    var attributedString: NSAttributedString {
-        if Thread.isMainThread {
-            return try! Down(markdownString: markdownString).toAttributedString(stylesheet: nil)
-        } else {
-            return DispatchQueue.main.sync {
-                return try! Down(markdownString: markdownString).toAttributedString(stylesheet: nil)
-            }
-        }
-    }
-    
-    var htmlString: String {
-        return try! Down(markdownString: markdownString).toHTML()
-    }
-    
     var body: some View {
-        HTMLView(htmlContent: htmlString)
+        Markdown(Document(markdownString))
+            .markdownStyle(MarkdownStyle(font: .system(size: 14.0)))
     }
 }
 
@@ -57,8 +26,8 @@ struct MarkdownText_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            MarkdownText(markdownText)
-
+            MarkdownText(markdownText).preferredColorScheme(.light)
+            MarkdownText(markdownText).preferredColorScheme(.dark)
         }
     }
 }
