@@ -14,7 +14,7 @@ struct SiteSummaryView: View {
     var siteResponseState: LoadState<LemmySiteResponse, Error>
     
     var siteResponse: LemmySiteResponse? {
-        return siteResponseState.value
+        siteResponseState.value
     }
     
     var site: LemmySite? {
