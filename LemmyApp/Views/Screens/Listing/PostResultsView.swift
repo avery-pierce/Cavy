@@ -9,15 +9,15 @@ import SwiftUI
 
 struct PostResultsView: View {
     
-    let parsedDataResource: ParsedDataResource<[LemmyPostItem]>
-    init(_ parsedDataResource: ParsedDataResource<[LemmyPostItem]>) {
+    let parsedDataResource: ParsedDataResource<CavyPostListing>
+    init(_ parsedDataResource: ParsedDataResource<CavyPostListing>) {
         self.parsedDataResource = parsedDataResource
     }
     
     var body: some View {
         Loader(parsedDataResource) { state in
             LoadStateView(state) { result in
-                ListingView(result.map(\.cavyPost))
+                ListingView(result.cavyPosts)
             }
         }
     }

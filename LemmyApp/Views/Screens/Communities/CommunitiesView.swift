@@ -14,19 +14,10 @@ struct CommunitiesView: View {
         self.communities = communities
     }
     
-    func postResults(communityID: Int) -> ParsedDataResource<[LemmyPostItem]> {
+    func postResults(communityID: Int) -> ParsedDataResource<CavyPostListing> {
         switch client {
-        case .v1(let spec):
-            let list = spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)
-            return ParsedDataResource(list.dataProvider, parsedBy: typeAdapter(parser: jsonParser(list.type), adapter: { response in
-                return response.posts
-            }))
-            
-        case .v2(let spec):
-            let list = spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)
-            return ParsedDataResource(list.dataProvider, parsedBy: typeAdapter(parser: jsonParser(list.type), adapter: { (response) in
-                return response.posts.compactMap(\.post)
-            }))
+        case .v1(let spec): return ParsedDataResource(spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID))
+        case .v2(let spec): return ParsedDataResource(spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID))
         }
     }
     
