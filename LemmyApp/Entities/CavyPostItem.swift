@@ -19,6 +19,12 @@ struct CavyPost {
     var thumbnailURL: URL?
     var linkURL: URL?
     var bodyMarkdown: String?
+    var embed: Embed?
+    
+    struct Embed {
+        var title: String?
+        var description: String?
+    }
 }
 
 extension CavyPost {
@@ -34,7 +40,8 @@ protocol CavyPostListing {
 extension LemmyPostItem {
     var cavyPost: CavyPost {
         let publishedDate = published.flatMap(parseLemmyDate(_:))
-        return CavyPost(id: id, title: name, visited: false, submitterName: creatorPreferredUsername ?? creatorName, communityName: communityName, score: score, numComments: numberOfComments, publishDate: publishedDate, thumbnailURL: thumbnailURL.flatMap(URL.init(string:)), linkURL: url, bodyMarkdown: body)
+        let embed = CavyPost.Embed(title: embedTitle, description: embedDescription)
+        return CavyPost(id: id, title: name, visited: false, submitterName: creatorPreferredUsername ?? creatorName, communityName: communityName, score: score, numComments: numberOfComments, publishDate: publishedDate, thumbnailURL: thumbnailURL.flatMap(URL.init(string:)), linkURL: url, bodyMarkdown: body, embed: embed)
     }
 }
 
@@ -45,7 +52,8 @@ extension LemmyPostItemResponse: CavyPostListing {
 extension LemmyPostItemSummary {
     var cavyPost: CavyPost {
         let publishedDate = counts.published.flatMap(parseLemmyDate(_:))
-        return CavyPost(id: post!.id, title: post?.name, visited: read, submitterName: creator?.name, communityName: community?.name, score: counts.score, numComments: counts.comments, publishDate: publishedDate, thumbnailURL: post?.thumbnailURL.flatMap(URL.init(string:)), linkURL: post?.url, bodyMarkdown: post?.body)
+        let embed = CavyPost.Embed(title: post?.embedTitle, description: post?.embedDescription)
+        return CavyPost(id: post!.id, title: post?.name, visited: read, submitterName: creator?.name, communityName: community?.name, score: counts.score, numComments: counts.comments, publishDate: publishedDate, thumbnailURL: post?.thumbnailURL.flatMap(URL.init(string:)), linkURL: post?.url, bodyMarkdown: post?.body, embed: embed)
     }
 }
 

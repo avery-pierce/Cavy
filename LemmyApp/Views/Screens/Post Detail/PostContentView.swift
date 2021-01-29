@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct PostContentView: View {
-    let post: LemmyPostItem
+    let post: CavyPost
 
+    // TODO: Refactor these to use Loader pattern
     @ObservedObject var thumbnailImageLoader: ImageLoader
     @ObservedObject var imageLoader: ImageLoader
 
-    init(_ post: LemmyPostItem) {
+    init(_ post: CavyPost) {
         self.post = post
         
-        let thumbnailURL = post.thumbnailURL.flatMap(URL.init) ?? URL(string: "http://www.example.com")!
+        let thumbnailURL = post.thumbnailURL ?? URL(string: "http://www.example.com")!
         self.thumbnailImageLoader = ImageLoader(thumbnailURL)
         
-        let url = post.url ?? URL(string: "http://www.example.com")!
+        let url = post.linkURL ?? URL(string: "http://www.example.com")!
         self.imageLoader = ImageLoader(url)
         
         if hasThumbnail {
             self.thumbnailImageLoader.load()
         }
         
-        if post.kind == LinkKind.image {
+        if post.linkURL?.kind == LinkKind.image {
             self.imageLoader.load()
         }
     }
     
     var hasThumbnail: Bool {
-        return post.imageURL != nil
+        return post.thumbnailURL != nil
     }
     
     let listEdgeInsets = EdgeInsets(top: 8,
@@ -41,14 +42,14 @@ struct PostContentView: View {
                                     trailing: 8)
     
     var articleSummaryView: some View {
-        let summaryTitle = post.embedTitle == post.name ? nil : post.embedTitle
+        let summaryTitle = post.embed?.title == post.title ? nil : post.embed?.title
         let thumbnailState = post.thumbnailURL != nil ? thumbnailImageLoader.state : nil
         
-        return ArticleSummaryView(title: summaryTitle, description: post.embedDescription, destinationURL: post.url, thumbnailState: thumbnailState)
+        return ArticleSummaryView(title: summaryTitle, description: post.embed?.description, destinationURL: post.linkURL, thumbnailState: thumbnailState)
     }
     
     var timeAgoText: String {
-        guard let publishedDate = post.publishedDate else { return "??" }
+        guard let publishedDate = post.publishDate else { return "??" }
         
         let now = Date()
         let interval = now.timeIntervalSince(publishedDate)
@@ -69,7 +70,7 @@ struct PostContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 12) {
-                if let title = post.name {
+                if let title = post.title {
                     Text(title)
                         .font(.system(size: 18.0))
                         .bold()
@@ -77,9 +78,9 @@ struct PostContentView: View {
             }
             .padding(EdgeInsets(top: 12, leading: 8, bottom: 8, trailing: 8))
             
-            if let url = post.url, url.kind == LinkKind.image {
+            if let url = post.linkURL, url.kind == LinkKind.image {
                 Link(destination: url) {
-                    HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                    HStack(alignment: .center) {
                         Spacer()
                         largeImageView
                         Spacer()
@@ -88,19 +89,21 @@ struct PostContentView: View {
             }
             
             VStack(alignment: .leading, spacing: 12) {
-                if let body = post.body {
+                if let body = post.bodyMarkdown {
                     MarkdownText(body).font(.system(size: 14.0))
                 }
                 
-                if let url = post.url, url.kind == LinkKind.web {
+                if let url = post.linkURL, url.kind == LinkKind.web {
                     Link(destination: url) {
                         articleSummaryView
                     }
                 }
                 
                 HStack {
-                    Text(post.authorName)
-                        .foregroundColor(.accentColor)
+                    if let submitter = post.submitterName {
+                        Text(submitter)
+                            .foregroundColor(.accentColor)
+                    }
                     
                     if let communityName = post.communityName {
                         Text(communityName)
@@ -110,9 +113,11 @@ struct PostContentView: View {
                     Text(timeAgoText)
                         .foregroundColor(.secondary)
                     
-                    Text(post.domain)
-                        .italic()
-                        .foregroundColor(.secondary)
+                    if let domain = post.domain {
+                        Text(domain)
+                            .italic()
+                            .foregroundColor(.secondary)
+                    }
                     
                     Spacer()
                 }
@@ -127,7 +132,7 @@ struct PostContentView: View {
 struct PostContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PostContentView(LemmyPostItem.sampleData)
+            PostContentView(LemmyPostItem.sampleData.cavyPost)
         }.previewLayout(.sizeThatFits)
     }
 }

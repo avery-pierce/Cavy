@@ -54,7 +54,7 @@ struct PostDetailView: View {
     
     var body: some View {
         List() {
-            PostContentView(post)
+            PostContentView(post.cavyPost)
             LoadStateView(postModel.loadState) { comments in
                 CommentsListView(comments)
                     .listRowInsets(listEdgeInsets)
