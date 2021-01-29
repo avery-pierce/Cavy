@@ -10,7 +10,7 @@ import XCTest
 
 class LemmyAPIConsumerTests: XCTestCase {
     
-    let client: LemmyAPIClient = .lemmyML
+    let client: LemmyAPIFactory = .lemmyML
 
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")

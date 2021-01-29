@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LoadableListingView: View {
-    let client: LemmyAPIClient
+    let client: LemmyAPIFactory
     @ObservedObject var listModel: ListModel
-    init(_ client: LemmyAPIClient) {
+    init(_ client: LemmyAPIFactory) {
         self.client = client
         self.listModel = ListModel(client)
     }

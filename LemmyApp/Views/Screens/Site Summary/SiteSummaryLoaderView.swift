@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SiteSummaryLoaderView: View {
-    let client: LemmyAPIClient
+    let client: LemmyAPIFactory
     
-    init(_ client: LemmyAPIClient = .lemmyML) {
+    init(_ client: LemmyAPIFactory = .lemmyML) {
         self.client = client
     }
     

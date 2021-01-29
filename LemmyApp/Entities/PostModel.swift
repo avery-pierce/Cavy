@@ -8,9 +8,9 @@
 import Foundation
 
 class PostModel: ObservableObject {
-    var client: LemmyAPIClient?
+    var client: LemmyAPIFactory?
     let postID: Int
-    init(_ client: LemmyAPIClient? = nil, postID: Int) {
+    init(_ client: LemmyAPIFactory? = nil, postID: Int) {
         self.client = client
         self.postID = postID
     }

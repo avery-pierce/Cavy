@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class RootModel: ObservableObject {
-    @Published var clients = [LemmyAPIClient]() {
+    @Published var clients = [LemmyAPIFactory]() {
         didSet {
             sync()
         }
@@ -25,7 +25,7 @@ class RootModel: ObservableObject {
         serverStore.write(clients)
     }
     
-    func addServer(_ server: LemmyAPIClient) {
+    func addServer(_ server: LemmyAPIFactory) {
         clients.append(server)
     }
     
@@ -33,7 +33,7 @@ class RootModel: ObservableObject {
         clients.remove(at: index)
     }
     
-    func removeServer(_ server: LemmyAPIClient) {
+    func removeServer(_ server: LemmyAPIFactory) {
         guard let index = clients.firstIndex(where: { (client) -> Bool in
             return client.host == server.host
         }) else { return }
@@ -49,7 +49,7 @@ class RootModel: ObservableObject {
 
 extension RootModel: AddServerDelegate {
     func useCase(_ useCase: AddServerUseCase, didAddServer server: String) {
-        clients.append(LemmyAPIClient(server))
+        clients.append(LemmyAPIFactory(server))
     }
 }
 
@@ -57,22 +57,22 @@ class ServerStore {
     private let store: UserDefaults = .standard
     private let key = "LemmyServers"
     
-    func read() -> [LemmyAPIClient] {
+    func read() -> [LemmyAPIFactory] {
         guard let rawServers = store.array(forKey: key) as? [String] else {
             return ServerStore.defaultServers
         }
         
-        return rawServers.map({ LemmyAPIClient($0) })
+        return rawServers.map({ LemmyAPIFactory($0) })
     }
     
-    func write(_ servers: [LemmyAPIClient]) {
+    func write(_ servers: [LemmyAPIFactory]) {
         let serializedArray = servers.map(\.host)
         store.set(serializedArray, forKey: key)
     }
     
     static let defaultServers = [
-        LemmyAPIClient.lemmyML,
-        LemmyAPIClient.lemmygradML
+        LemmyAPIFactory.lemmyML,
+        LemmyAPIFactory.lemmygradML
     ]
 }
 

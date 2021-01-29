@@ -8,8 +8,8 @@
 import Foundation
 
 class ListModel: ObservableObject {
-    let client: LemmyAPIClient
-    init(_ client: LemmyAPIClient) {
+    let client: LemmyAPIFactory
+    init(_ client: LemmyAPIFactory) {
         self.client = client
     }
     

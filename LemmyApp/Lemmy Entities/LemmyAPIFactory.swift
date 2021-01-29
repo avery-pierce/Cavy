@@ -8,14 +8,14 @@
 import Foundation
 import SwiftUI
 
-class LemmyAPIClient: ObservableObject {
+class LemmyAPIFactory: ObservableObject {
     var host: String
     init(_ host: String) {
         self.host = host
     }
     
-    static let lemmyML = LemmyAPIClient("lemmy.ml")
-    static let lemmygradML = LemmyAPIClient("lemmygrad.ml")
+    static let lemmyML = LemmyAPIFactory("lemmy.ml")
+    static let lemmygradML = LemmyAPIFactory("lemmygrad.ml")
     
     enum PostType: String {
         case all = "All"
@@ -80,24 +80,24 @@ class LemmyAPIClient: ObservableObject {
 }
 
 private struct LemmyAPIClientEnvironmentKey: EnvironmentKey {
-    static let defaultValue: LemmyAPIClient = .lemmyML
+    static let defaultValue: LemmyAPIFactory = .lemmyML
 }
 
 extension EnvironmentValues {
-    var lemmyAPIClient: LemmyAPIClient {
+    var lemmyAPIClient: LemmyAPIFactory {
         get { self[LemmyAPIClientEnvironmentKey.self] }
         set { self[LemmyAPIClientEnvironmentKey.self] = newValue }
     }
 }
 
 extension View {
-    func lemmyAPIClient(_ client: LemmyAPIClient) -> some View {
+    func lemmyAPIClient(_ client: LemmyAPIFactory) -> some View {
         environment(\.lemmyAPIClient, client)
     }
 }
 
 // MARK: - Deprecated
-extension LemmyAPIClient {
+extension LemmyAPIFactory {
     @available(*, deprecated, message: "dev.lemmy.ml has been permanently moved to lemmy.ml")
-    static let devLemmyMl = LemmyAPIClient("dev.lemmy.ml")
+    static let devLemmyMl = LemmyAPIFactory("dev.lemmy.ml")
 }

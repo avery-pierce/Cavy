@@ -10,7 +10,7 @@ import SwiftUI
 struct PostDetailView: View {
     let post: LemmyPostItem
     
-    @Environment(\.lemmyAPIClient) var client: LemmyAPIClient
+    @Environment(\.lemmyAPIClient) var client: LemmyAPIFactory
     @ObservedObject var postModel: PostModel
     
     init(post: LemmyPostItem) {
