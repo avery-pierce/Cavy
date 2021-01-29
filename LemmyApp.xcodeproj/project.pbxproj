@@ -15,7 +15,7 @@
 		C6091CF625C46F0300E6CD0F /* LemmyCommunitySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CF525C46F0300E6CD0F /* LemmyCommunitySummary.swift */; };
 		C6091CFA25C46F1A00E6CD0F /* LemmyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CF925C46F1A00E6CD0F /* LemmyCategory.swift */; };
 		C6091CFE25C46F3500E6CD0F /* LemmyCounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091CFD25C46F3500E6CD0F /* LemmyCounts.swift */; };
-		C6091D0425C473B800E6CD0F /* LemmyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0325C473B800E6CD0F /* LemmyAPIClient.swift */; };
+		C6091D0425C473B800E6CD0F /* LemmyV2Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */; };
 		C6091D0A25C4759800E6CD0F /* LemmyV2APIConsumerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0925C4759800E6CD0F /* LemmyV2APIConsumerTests.swift */; };
 		C6091D0E25C4797900E6CD0F /* LemmyPostItemResponseV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0D25C4797900E6CD0F /* LemmyPostItemResponseV2.swift */; };
 		C6091D1225C4799400E6CD0F /* LemmyPostItemSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D1125C4799400E6CD0F /* LemmyPostItemSummary.swift */; };
@@ -123,7 +123,7 @@
 		C6091CF525C46F0300E6CD0F /* LemmyCommunitySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCommunitySummary.swift; sourceTree = "<group>"; };
 		C6091CF925C46F1A00E6CD0F /* LemmyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCategory.swift; sourceTree = "<group>"; };
 		C6091CFD25C46F3500E6CD0F /* LemmyCounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyCounts.swift; sourceTree = "<group>"; };
-		C6091D0325C473B800E6CD0F /* LemmyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAPIClient.swift; sourceTree = "<group>"; };
+		C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV2Spec.swift; sourceTree = "<group>"; };
 		C6091D0925C4759800E6CD0F /* LemmyV2APIConsumerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV2APIConsumerTests.swift; sourceTree = "<group>"; };
 		C6091D0D25C4797900E6CD0F /* LemmyPostItemResponseV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemResponseV2.swift; sourceTree = "<group>"; };
 		C6091D1125C4799400E6CD0F /* LemmyPostItemSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemSummary.swift; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 		C6C3D88F253247B600EB7DB8 /* Lemmy Entities */ = {
 			isa = PBXGroup;
 			children = (
-				C6091D0325C473B800E6CD0F /* LemmyAPIClient.swift */,
+				C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */,
 				C6515CF22531606E00C8CEF7 /* LemmyAPIFactory.swift */,
 				C6FA681225BB295F002A352E /* LemmySite.swift */,
 				C6FA681625BB2CA2002A352E /* LemmySiteResponse.swift */,
@@ -608,7 +608,7 @@
 				C652705125BC99A80014FB05 /* LemmyModerator.swift in Sources */,
 				C6D9F1372537E16700B41CE4 /* PlainError.swift in Sources */,
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
-				C6091D0425C473B800E6CD0F /* LemmyAPIClient.swift in Sources */,
+				C6091D0425C473B800E6CD0F /* LemmyV2Spec.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
 				C63DF2C1253001CC00728E08 /* PostItem.swift in Sources */,
 				C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */,

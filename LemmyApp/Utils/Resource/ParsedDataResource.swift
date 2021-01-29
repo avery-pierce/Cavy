@@ -33,6 +33,12 @@ class ParsedDataResource<T>: ObservableObject, Resource {
     }
 }
 
+extension ParsedDataResource {
+    convenience init<D>(_ spec: Spec<D, T>) {
+        self.init(spec.dataProvider, parsedBy: jsonParser(spec.type))
+    }
+}
+
 struct ImageProcessingError: Error, LocalizedError {
     var errorDescription: String? { return "Could not parse the image" }
 }

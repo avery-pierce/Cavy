@@ -7,8 +7,8 @@
 
 import Foundation
 
-class LemmyV2APIClient {
-    static let lemmyML = LemmyV2APIClient("lemmy.ml")
+class LemmyV2Spec {
+    static let lemmyML = LemmyV2Spec("lemmy.ml")
     
     private(set) var factory: LemmyAPIFactory
     
