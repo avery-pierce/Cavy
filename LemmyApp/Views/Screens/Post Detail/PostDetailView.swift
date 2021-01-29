@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct PostDetailView: View {
-    let post: LemmyPostItem
+    let post: CavyPost
     
     @Environment(\.lemmyAPIClient) var client: LemmyAPIClient
     @ObservedObject var postModel: PostModel
     
-    init(post: LemmyPostItem) {
+    init(post: CavyPost) {
         self.post = post
         self.postModel = PostModel(postID: post.id)
     }
@@ -27,8 +27,8 @@ struct PostDetailView: View {
         switch postModel.loadState {
         case .complete(let result):
             switch result {
-            case .success(let comments):
-                return "\(comments.count) Comments"
+            case .success(let listing):
+                return "\(listing.cavyComments.count) Comments"
             case .failure:
                 return "Post Detail"
             }
@@ -42,26 +42,15 @@ struct PostDetailView: View {
                                     bottom: 8,
                                     trailing: 8)
     
-    func dumpIt() {
-        do {
-            let jsonData = try JSONEncoder().encode(post)
-            let jsonString = String(data: jsonData, encoding: .utf8) ?? "did not decode string"
-            print(jsonString)
-        } catch let error {
-            print("Unable to encode post:", error)
-        }
-    }
-    
     var body: some View {
         List() {
-            PostContentView(post.cavyPost)
-            LoadStateView(postModel.loadState) { comments in
-                CommentsListView(comments.map(\.cavyComment))
+            PostContentView(post)
+            LoadStateView(postModel.loadState) { listing in
+                CommentsListView(listing.cavyComments)
                     .listRowInsets(listEdgeInsets)
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: dumpIt, label: { Image(systemName: "tray.and.arrow.down") }))
         .onAppear(perform: refresh)
         
         // FIXME: I want animation when a comment is collapsed/shown, but not anywhere else.
@@ -72,7 +61,7 @@ struct PostDetailView: View {
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PostDetailView(post: LemmyPostItem.sampleData)
+            PostDetailView(post: LemmyPostItem.sampleData.cavyPost)
         }.environment(\.lemmyAPIClient, .lemmyML)
     }
 }

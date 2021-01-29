@@ -22,7 +22,7 @@ struct ListingView: View {
                     PostItemView(post.cavyPost)
                         .padding(.vertical, 8)
                     NavigationLink(
-                        destination: PostDetailView(post: post)) {
+                        destination: PostDetailView(post: post.cavyPost)) {
                         EmptyView()
                     }
                     .frame(width: 0, height: 0)

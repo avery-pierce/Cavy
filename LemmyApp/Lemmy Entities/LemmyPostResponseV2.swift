@@ -21,11 +21,20 @@ struct LemmyCommentSummary: Codable {
     var recipient: LemmyUser?
     var post: LemmyPostItem?
     var community: LemmyCommunity?
-    var counts: LemmyCounts?
+    var counts: Counts
     var creatorBannedFromCommunity: Bool?
     var subscribed: Bool?
     var saved: Bool?
     var myVote: Bool?
+    
+    struct Counts: Codable {
+        var id: Int
+        var commentID: Int
+        var score: Int?
+        var upvotes: Int?
+        var downvotes: Int?
+        var published: String?
+    }
 }
 
 struct LemmyModeratorSummary: Codable {

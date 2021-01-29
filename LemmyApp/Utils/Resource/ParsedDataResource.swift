@@ -37,6 +37,10 @@ extension ParsedDataResource {
     convenience init<D>(_ spec: Spec<D, T>) {
         self.init(spec.dataProvider, parsedBy: jsonParser(spec.type))
     }
+    
+    convenience init<D, T1: CavyCommentListing>(_ spec: Spec<D, T1>) where T == CavyCommentListing {
+        self.init(spec.dataProvider, parsedBy: jsonParser(spec.type))
+    }
 }
 
 struct ImageProcessingError: Error, LocalizedError {

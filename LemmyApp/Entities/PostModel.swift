@@ -15,22 +15,14 @@ class PostModel: ObservableObject {
         self.postID = postID
     }
     
-    lazy var commentsResource: ParsedDataResource<[LemmyComment]> = {
+    lazy var commentsResource: ParsedDataResource<CavyCommentListing> = {
         switch client! {
-        case .v1(let spec):
-            let post = spec.fetchPost(id: postID)
-            return ParsedDataResource(post.dataProvider, parsedBy: typeAdapter(parser: jsonParser(post.type), adapter: { (response) in
-                return response.comments
-            }))
-        case .v2(let spec):
-            let post = spec.fetchPost(id: postID)
-            return ParsedDataResource(post.dataProvider, parsedBy: typeAdapter(parser: jsonParser(post.type), adapter: { (response) in
-                return response.comments?.compactMap(\.comment) ?? []
-            }))
+        case .v1(let spec): return ParsedDataResource(spec.fetchPost(id: postID))
+        case .v2(let spec): return ParsedDataResource(spec.fetchPost(id: postID))
         }
     }()
     
-    @Published var loadState: LoadState<[LemmyComment], Error> = .idle
+    @Published var loadState: LoadState<CavyCommentListing, Error> = .idle
     
     func refresh() {
         loadState = .loading(nil)

@@ -22,3 +22,26 @@ extension LemmyComment {
         return CavyComment(id: id!, parentID: parentID, score: score, submitterName: creatorPreferredUsername ?? creatorName, publishDate: publishDate, bodyMarkdown: content)
     }
 }
+
+extension LemmyCommentSummary {
+    var cavyComment: CavyComment {
+        let publishDate = comment?.published.flatMap(parseLemmyDate(_:))
+        return CavyComment(id: comment!.id!, parentID: comment!.parentID!, score: counts.score, submitterName: creator?.name, publishDate: publishDate, bodyMarkdown: comment?.content)
+    }
+}
+
+protocol CavyCommentListing {
+    var cavyComments: [CavyComment] { get }
+}
+
+extension LemmyPostResponse: CavyCommentListing {
+    var cavyComments: [CavyComment] {
+        return comments.map(\.cavyComment)
+    }
+}
+
+extension LemmyPostResponseV2: CavyCommentListing {
+    var cavyComments: [CavyComment] {
+        return comments?.map(\.cavyComment) ?? []
+    }
+}
