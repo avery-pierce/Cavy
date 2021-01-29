@@ -17,7 +17,7 @@ struct PostResultsView: View {
     var body: some View {
         Loader(parsedDataResource) { state in
             LoadStateView(state) { result in
-                ListingView(result)
+                ListingView(result.map(\.cavyPost))
             }
         }
     }

@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ListingView: View {
-    let posts: [LemmyPostItem]
-    init(_ posts: [LemmyPostItem]) {
+    let posts: [CavyPost]
+    init(_ posts: [CavyPost]) {
         self.posts = posts
+    }
+    
+    init(_ postListing: CavyPostListing) {
+        self.posts = postListing.cavyPosts
     }
     
     var body: some View {
@@ -19,10 +23,10 @@ struct ListingView: View {
         List {
             ForEach(posts, id: \.id) { post in
                 ZStack {
-                    PostItemView(post.cavyPost)
+                    PostItemView(post)
                         .padding(.vertical, 8)
                     NavigationLink(
-                        destination: PostDetailView(post: post.cavyPost)) {
+                        destination: PostDetailView(post: post)) {
                         EmptyView()
                     }
                     .frame(width: 0, height: 0)
@@ -37,8 +41,8 @@ struct ListingView: View {
 struct ListingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ListingView(LemmyPostItem.sampleDataList)
-            ListingView(LemmyPostItem.sampleDataList)
+            ListingView(LemmyPostItem.sampleDataList.map(\.cavyPost))
+            ListingView(LemmyPostItem.sampleDataList.map(\.cavyPost))
                 .preferredColorScheme(.dark)
         }
     }

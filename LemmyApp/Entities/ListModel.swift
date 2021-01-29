@@ -13,21 +13,12 @@ class ListModel: ObservableObject {
         self.client = client
     }
     
-    @Published var loadState: LoadState<[LemmyPostItem], Error> = .idle
+    @Published var loadState: LoadState<CavyPostListing, Error> = .idle
     
-    lazy var listPosts: ParsedDataResource<[LemmyPostItem]> = {
+    lazy var listPosts: ParsedDataResource<CavyPostListing> = {
         switch client {
-        case .v1(let spec):
-            let listPostsSpec = spec.listPosts(type: .all, sort: .hot)
-            return ParsedDataResource(listPostsSpec.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listPostsSpec.type), adapter: { (response) in
-                return response.posts
-            }))
-            
-        case .v2(let spec):
-            let listPostsSpec = spec.listPosts(type: .all, sort: .hot)
-            return ParsedDataResource(listPostsSpec.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listPostsSpec.type), adapter: { (response) in
-                return response.posts.compactMap(\.post)
-            }))
+        case .v1(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot))
+        case .v2(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot))
         }
     }()
     

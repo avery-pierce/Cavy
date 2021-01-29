@@ -16,8 +16,8 @@ struct LoadableListingView: View {
     }
     
     var body: some View {
-        LoadStateView(listModel.loadState) { posts in
-            ListingView(posts)
+        LoadStateView(listModel.loadState) { listing in
+            ListingView(listing.cavyPosts)
         }
         .onAppear(perform: listModel.refreshIfNeeded)
         .navigationBarItems(trailing: Button(action: listModel.refresh) {
