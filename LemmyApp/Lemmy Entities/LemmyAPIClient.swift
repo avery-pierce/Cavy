@@ -17,11 +17,6 @@ class LemmyAPIClient: ObservableObject {
     static let lemmyML = LemmyAPIClient("lemmy.ml")
     static let lemmygradML = LemmyAPIClient("lemmygrad.ml")
     
-    enum APIVersion: String {
-        case v1 = "v1"
-        case v2 = "v2"
-    }
-    
     enum PostType: String {
         case all = "All"
         case subscribed = "Subscribed"
