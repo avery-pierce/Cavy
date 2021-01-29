@@ -162,7 +162,6 @@ extension LemmyPostItem {
     var htmlContent: String? { embedHTML }
     var bodyContent: String? { embedDescription }
     
-    var title: String { name ?? "" }
     var imageURL: URL? { thumbnailURL.flatMap(URL.init(string:)) }
     var authorName: String { creatorPreferredUsername ?? creatorName ?? "" }
     var domain: String {

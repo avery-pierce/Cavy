@@ -98,7 +98,7 @@ struct PostItemView: View {
             }
 
             VStack(alignment: .leading, spacing: 4.0) {
-                Text(postItem.title)
+                Text(postItem.name ?? "")
                     .bold()
                     .font(.system(size: 14.0))
                 

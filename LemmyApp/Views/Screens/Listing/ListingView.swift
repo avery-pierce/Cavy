@@ -37,8 +37,8 @@ struct ListingView: View {
 struct ListingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ListingView(sampleDataList)
-            ListingView(sampleDataList)
+            ListingView(LemmyPostItem.sampleDataList)
+            ListingView(LemmyPostItem.sampleDataList)
                 .preferredColorScheme(.dark)
         }
     }

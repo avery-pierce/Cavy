@@ -72,7 +72,7 @@ struct PostDetailView: View {
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PostDetailView(post: sampleData)
+            PostDetailView(post: LemmyPostItem.sampleData)
         }.environment(\.lemmyAPIClient, .lemmyML)
     }
 }

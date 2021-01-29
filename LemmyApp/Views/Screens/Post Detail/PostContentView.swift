@@ -41,7 +41,7 @@ struct PostContentView: View {
                                     trailing: 8)
     
     var articleSummaryView: some View {
-        let summaryTitle = post.embedTitle == post.title ? nil : post.embedTitle
+        let summaryTitle = post.embedTitle == post.name ? nil : post.embedTitle
         let thumbnailState = post.thumbnailURL != nil ? thumbnailImageLoader.state : nil
         
         return ArticleSummaryView(title: summaryTitle, description: post.embedDescription, destinationURL: post.url, thumbnailState: thumbnailState)
@@ -69,7 +69,7 @@ struct PostContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 12) {
-                if let title = post.title {
+                if let title = post.name {
                     Text(title)
                         .font(.system(size: 18.0))
                         .bold()
@@ -127,7 +127,7 @@ struct PostContentView: View {
 struct PostContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PostContentView(sampleData)
+            PostContentView(LemmyPostItem.sampleData)
         }.previewLayout(.sizeThatFits)
     }
 }

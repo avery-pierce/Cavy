@@ -1,35 +1,15 @@
 //
-//  PostItem.swift
+//  LemmyPostItemPreviews.swift
 //  LemmyApp
 //
-//  Created by Avery Pierce on 10/8/20.
+//  Created by Avery Pierce on 1/29/21.
 //
 
 import Foundation
-import SwiftUI
-
-protocol PostItem {
-    var id: Int { get }
-    var title: String { get }
-    var imageURL: URL? { get }
-    var score: Int { get }
-    var authorName: String { get }
-    var domain: String { get }
-    var body: String? { get }
-}
-
-struct ConcretePostItem: PostItem {
-    var id: Int
-    var title: String
-    var imageURL: URL?
-    var score: Int
-    var authorName: String
-    var domain: String
-    var body: String?
-}
-
-let sampleDataList = [
-    try! LemmyPostItem.fromJSON("""
+extension LemmyPostItem {
+    
+    static let sampleDataList = [
+        try! LemmyPostItem.fromJSON("""
         {
             "id": 1,
             "name": "Simulating Machines in Clojure",
@@ -39,7 +19,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    try! LemmyPostItem.fromJSON("""
+        try! LemmyPostItem.fromJSON("""
         {
             "id": 2,
             "name": "Top 4 Coding Languages To Learn For Beginners (2020) - Qvault",
@@ -49,7 +29,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    try! LemmyPostItem.fromJSON("""
+        try! LemmyPostItem.fromJSON("""
         {
             "id": 3,
             "name": "The Open University Project",
@@ -59,7 +39,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    try! LemmyPostItem.fromJSON("""
+        try! LemmyPostItem.fromJSON("""
         {
             "id": 4,
             "name": "I made a playlist of 6h56min of chill synth music to lift you up and motivate you while coding/working. Enjoy!",
@@ -69,7 +49,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-    try! LemmyPostItem.fromJSON("""
+        try! LemmyPostItem.fromJSON("""
         {
             "id": 4,
             "name": "Why Life Can’t Be Simpler",
@@ -79,6 +59,7 @@ let sampleDataList = [
             "url": "https://www.example.com"
         }
         """),
-]
-
-let sampleData = sampleDataList[3]
+    ]
+    
+    static let sampleData = sampleDataList[3]
+}
