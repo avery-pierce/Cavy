@@ -8,14 +8,14 @@
 import Foundation
 
 class CommentTree: ObservableObject {
-    let nodes: [Node<LemmyComment>]
+    let nodes: [Node<CavyComment>]
     var hiddenCommentIDs = Set<Int>() {
         didSet { sync() }
     }
     
     @Published var comments: [ThreadedComment] = []
     
-    init(_ nodes: [Node<LemmyComment>]) {
+    init(_ nodes: [Node<CavyComment>]) {
         self.nodes = nodes
         self.comments = flattenTree(nodes)
     }
@@ -43,7 +43,7 @@ class CommentTree: ObservableObject {
         comments = flattenTree(nodes)
     }
     
-    private func flattenTree(_ childNodes: [Node<LemmyComment>]) -> [ThreadedComment] {
+    private func flattenTree(_ childNodes: [Node<CavyComment>]) -> [ThreadedComment] {
         var flattened = [ThreadedComment]()
         
         for node in childNodes {
@@ -65,12 +65,11 @@ class CommentTree: ObservableObject {
         return flattened
     }
     
-    private func createThreadedComment(from node: Node<LemmyComment>) -> ThreadedComment {
+    private func createThreadedComment(from node: Node<CavyComment>) -> ThreadedComment {
         return ThreadedComment(node.value, isHidden: isCommentHidden(node))
     }
     
-    private func isCommentHidden(_ node: Node<LemmyComment>) -> Bool {
-        guard let id = node.value.id else { return false }
-        return hiddenCommentIDs.contains(id)
+    private func isCommentHidden(_ node: Node<CavyComment>) -> Bool {
+        return hiddenCommentIDs.contains(node.value.id)
     }
 }

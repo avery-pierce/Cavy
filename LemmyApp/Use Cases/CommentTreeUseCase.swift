@@ -8,20 +8,25 @@
 import Foundation
 
 class CommentTreeUseCase {
-    let input: [LemmyComment]
+    let input: [CavyComment]
     
-    private var tree: [Node<LemmyComment>] = []
-    private var cache: [Int: Node<LemmyComment>] = [:]
+    private var tree: [Node<CavyComment>] = []
+    private var cache: [Int: Node<CavyComment>] = [:]
     
-    init(_ input: [LemmyComment]) {
+    convenience init(_ input: [LemmyComment]) {
+        let cavyComments = input.map(\.cavyComment)
+        self.init(cavyComments)
+    }
+    
+    init(_ input: [CavyComment]) {
         self.input = input
     }
     
-    func buildTree() -> [Node<LemmyComment>] {
+    func buildTree() -> [Node<CavyComment>] {
         tree = []
         let unsortedNodes = input.map({ Node($0) })
         unsortedNodes.forEach { node in
-            guard let id = node.value.id else { return }
+            let id = node.value.id
             cache[id] = node
         }
         
@@ -36,7 +41,7 @@ class CommentTreeUseCase {
         return tree
     }
     
-    private func findNode(withCommentID commentID: Int) -> Node<LemmyComment>? {
+    private func findNode(withCommentID commentID: Int) -> Node<CavyComment>? {
         return cache[commentID]
     }
 }

@@ -56,7 +56,7 @@ struct PostDetailView: View {
         List() {
             PostContentView(post.cavyPost)
             LoadStateView(postModel.loadState) { comments in
-                CommentsListView(comments)
+                CommentsListView(comments.map(\.cavyComment))
                     .listRowInsets(listEdgeInsets)
             }
         }

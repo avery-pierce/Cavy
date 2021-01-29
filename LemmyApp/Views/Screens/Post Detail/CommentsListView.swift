@@ -10,7 +10,7 @@ import SwiftUI
 struct CommentsListView: View {
     @ObservedObject var commentTree: CommentTree
     
-    init(_ comments: [LemmyComment]) {
+    init(_ comments: [CavyComment]) {
         let commentTreeBuilder = CommentTreeUseCase(comments)
         self.commentTree = CommentTree(commentTreeBuilder.buildTree())
     }
@@ -31,38 +31,38 @@ struct CommentsListView_Previews: PreviewProvider {
     static var previews: some View {
         List() {
             CommentsListView([
-                try! .fromJSON("""
+                try! LemmyComment.fromJSON("""
                         {
                             "id": 1,
                             "creator_name": "jill",
                             "content": "Hello World! This is the first comment in the list"
                         }
-                        """)
+                        """).cavyComment
                 ,
-                try! .fromJSON("""
+                try! LemmyComment.fromJSON("""
                         {
                             "id": 2,
                             "creator_name": "jack",
                             "content": "Preview a second comment",
                             "parent_id": 1
                         }
-                        """),
-                try! .fromJSON("""
+                        """).cavyComment,
+                try! LemmyComment.fromJSON("""
                         {
                             "id": 3,
                             "creator_name": "jack",
                             "content": "Preview a second comment",
                             "parent_id": 1
                         }
-                        """),
-                try! .fromJSON("""
+                        """).cavyComment,
+                try! LemmyComment.fromJSON("""
                     {
                         "id": 4,
                         "creator_name": "jack",
                         "content": "Preview a second comment",
                         "parent_id": 2
                     }
-                    """)
+                    """).cavyComment
             ])
         }
         .animation(.easeInOut)
