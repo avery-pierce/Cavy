@@ -7,21 +7,6 @@
 
 import Foundation
 
-struct APIDataProvider<D: DataProvider, T: Codable> {
-    var dataProvider: D
-    var type: T.Type
-    
-    init(_ dataProvider: D, as serializedType: T.Type) {
-        self.dataProvider = dataProvider
-        self.type = serializedType
-    }
-    
-    init(_ dataProvider: D) {
-        self.dataProvider = dataProvider
-        self.type = T.self
-    }
-}
-
 class LemmyV2APIClient {
     static let lemmyML = LemmyV2APIClient("lemmy.ml")
     
@@ -31,24 +16,24 @@ class LemmyV2APIClient {
         self.factory = LemmyAPIFactory(host, .v2)
     }
     
-    func fetchSite() -> APIDataProvider<URLRequest, LemmySiteResponseV2> {
-        return APIDataProvider(factory.fetchSite())
+    func fetchSite() -> Spec<URLRequest, LemmySiteResponseV2> {
+        return Spec(factory.fetchSite())
     }
 
-    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50) -> APIDataProvider<URLRequest, LemmyPostItemResponseV2> {
-        return APIDataProvider(factory.listPosts(type: type, sort: sort, limit: limit), as: LemmyPostItemResponseV2.self)
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50) -> Spec<URLRequest, LemmyPostItemResponseV2> {
+        return Spec(factory.listPosts(type: type, sort: sort, limit: limit), as: LemmyPostItemResponseV2.self)
     }
 
-    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, communityID: Int) -> APIDataProvider<URLRequest, LemmyPostItemResponseV2> {
-        return APIDataProvider(factory.listPosts(type: type, sort: sort, limit: limit, communityID: communityID), as: LemmyPostItemResponseV2.self)
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, communityID: Int) -> Spec<URLRequest, LemmyPostItemResponseV2> {
+        return Spec(factory.listPosts(type: type, sort: sort, limit: limit, communityID: communityID), as: LemmyPostItemResponseV2.self)
     }
 
-    func listCommunities(sort: LemmyAPIFactory.SortType, page: Int = 1, limit: Int = 50) -> APIDataProvider<URLRequest, LemmyCommunitiesResponseV2> {
-        return APIDataProvider(factory.listCommunities(sort: sort, page: page, limit: limit), as: LemmyCommunitiesResponseV2.self)
+    func listCommunities(sort: LemmyAPIFactory.SortType, page: Int = 1, limit: Int = 50) -> Spec<URLRequest, LemmyCommunitiesResponseV2> {
+        return Spec(factory.listCommunities(sort: sort, page: page, limit: limit), as: LemmyCommunitiesResponseV2.self)
     }
 
-    func fetchPost(id: Int) -> APIDataProvider<URLRequest, LemmyPostResponseV2> {
-        return APIDataProvider(factory.fetchPost(id: id), as: LemmyPostResponseV2.self)
+    func fetchPost(id: Int) -> Spec<URLRequest, LemmyPostResponseV2> {
+        return Spec(factory.fetchPost(id: id), as: LemmyPostResponseV2.self)
     }
 }
 

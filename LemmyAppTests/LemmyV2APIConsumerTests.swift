@@ -68,7 +68,7 @@ class LemmyV2APIConsumerTests: XCTestCase {
     }
 }
 
-func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: APIDataProvider<D, T>, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
+func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: Spec<D, T>, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
     dataPackage.dataProvider.getData { (result) in
         let data = assertSuccess(result, file: file, line: line)
         assertDecodes(to: dataPackage.type, from: data, file: file, line: line)
