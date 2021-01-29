@@ -13,10 +13,29 @@ struct LemmySiteResponseV2: Codable {
     var banned: [LemmyUserView]?
     var online: Int?
     var version: String?
-    
-    // TODO: CodingKeys
     var myUser: LemmyUser?
     var federatedInstances: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case siteView = "site_view"
+        case admins = "admins"
+        case banned = "banned"
+        case online = "online"
+        case version = "version"
+        case myUser = "my_user"
+        case federatedInstances = "federated_instances"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        siteView = try values.decodeIfPresent(LemmySiteView.self, forKey: .siteView)
+        admins = try values.decodeIfPresent([LemmyUserView].self, forKey: .admins)
+        banned = try values.decodeIfPresent([LemmyUserView].self, forKey: .banned)
+        online = try values.decodeIfPresent(Int.self, forKey: .online)
+        version = try values.decodeIfPresent(String.self, forKey: .version)
+        myUser = try values.decodeIfPresent(LemmyUser.self, forKey: .myUser)
+        federatedInstances = try values.decodeIfPresent([String].self, forKey: .federatedInstances)
+    }
 }
 
 struct LemmySiteView: Codable {
