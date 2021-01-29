@@ -21,6 +21,12 @@ struct CavyPost {
     var bodyMarkdown: String?
 }
 
+extension CavyPost {
+    var domain: String? {
+        return linkURL?.host
+    }
+}
+
 protocol CavyPostListing {
     var cavyPosts: [CavyPost] { get }
 }

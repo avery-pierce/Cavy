@@ -19,7 +19,7 @@ struct ListingView: View {
         List {
             ForEach(posts, id: \.id) { post in
                 ZStack {
-                    PostItemView(post)
+                    PostItemView(post.cavyPost)
                         .padding(.vertical, 8)
                     NavigationLink(
                         destination: PostDetailView(post: post)) {

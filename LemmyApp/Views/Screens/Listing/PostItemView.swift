@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PostItemView: View {
-    let postItem: LemmyPostItem
+    let postItem: CavyPost
     
-    init(_ postItem: LemmyPostItem) {
+    init(_ postItem: CavyPost) {
         self.postItem = postItem
     }
     
     var timeAgoText: String {
-        guard let publishedDate = postItem.publishedDate else { return "??" }
+        guard let publishedDate = postItem.publishDate else { return "??" }
         
         let now = Date()
         let interval = now.timeIntervalSince(publishedDate)
@@ -30,12 +30,12 @@ struct PostItemView: View {
     var commentsDetail: some View {
         HStack(spacing: 4) {
             Image(systemName: "bubble.left")
-            Text("\(postItem.numberOfComments ?? 0) \(postItem.numberOfComments == 1 ? "comment" : "comments")")
+            Text("\(postItem.numComments ?? 0) \(postItem.numComments == 1 ? "comment" : "comments")")
         }.foregroundColor(.secondary)
     }
     
-    var authorDetail: some View {
-        Text(postItem.authorName)
+    func authorDetail(_ authorName: String) -> some View {
+        Text(authorName)
             .foregroundColor(.accentColor)
     }
     
@@ -44,14 +44,15 @@ struct PostItemView: View {
             .foregroundColor(.green)
     }
     
-    var domainDetail: some View {
-        Text(postItem.domain)
+    func domainDetail(_ domain: String) -> some View {
+        Text(domain)
             .italic()
             .foregroundColor(.secondary)
     }
     
     var scoreText: String {
-        "\(postItem.score ?? 0)"
+        guard let score = postItem.score else { return "-" }
+        return "\(score)"
     }
     
     var scoreDetail: some View {
@@ -70,11 +71,18 @@ struct PostItemView: View {
     var metadataView: some View {
         VStack(spacing: 4.0) {
             HStack {
-                authorDetail
+                if let author = postItem.submitterName {
+                    authorDetail(author)
+                }
+                
                 if let communityName = postItem.communityName {
                     communityDetail(communityName)
                 }
-                domainDetail
+                
+                if let domain = postItem.domain {
+                    domainDetail(domain)
+                }
+                
                 Spacer()
             }
             .font(.system(size: 12.0))
@@ -93,12 +101,12 @@ struct PostItemView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            if let thumbnailURL = postItem.imageURL {
+            if let thumbnailURL = postItem.thumbnailURL {
                 LoadingThumbnailView(thumbnailURL)
             }
 
             VStack(alignment: .leading, spacing: 4.0) {
-                Text(postItem.name ?? "")
+                Text(postItem.title ?? "")
                     .bold()
                     .font(.system(size: 14.0))
                 
@@ -170,5 +178,5 @@ struct PostItemView_Previews: PreviewProvider {
                     "read": null,
                     "saved": null
                 }
-                """)
+                """).cavyPost
 }
