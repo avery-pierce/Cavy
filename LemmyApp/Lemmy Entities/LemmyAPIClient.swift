@@ -10,12 +10,19 @@ import SwiftUI
 
 class LemmyAPIClient: ObservableObject {
     var host: String
-    init(_ host: String) {
+    var version: APIVersion
+    init(_ host: String, _ version: APIVersion = .v1) {
         self.host = host
+        self.version = version
     }
     
-    static let lemmyML = LemmyAPIClient("lemmy.ml")
-    static let lemmygradML = LemmyAPIClient("lemmygrad.ml")
+    static let lemmyML = LemmyAPIClient("lemmy.ml", .v2)
+    static let lemmygradML = LemmyAPIClient("lemmygrad.ml", .v1)
+    
+    enum APIVersion: String {
+        case v1 = "v1"
+        case v2 = "v2"
+    }
     
     enum PostType: String {
         case all = "All"
@@ -40,25 +47,25 @@ class LemmyAPIClient: ObservableObject {
     
     func fetchSiteConfig() -> URLRequest {
         // TODO: Requires auth
-        return path("api/v1/site/config")
+        return path("api/\(v)/site/config")
     }
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50) -> URLRequest {
         // It looks strange, but yes, the `type_` argument includes the underscore.
-        return path("api/v1/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)")
+        return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)")
     }
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50, communityID: Int) -> URLRequest {
         // It looks strange, but yes, the `type_` argument includes the underscore.
-        return path("api/v1/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&community_id=\(communityID)")
+        return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&community_id=\(communityID)")
     }
     
     func listCommunities(sort: SortType, page: Int = 1, limit: Int = 50) -> URLRequest {
-        return path("api/v1/community/list?sort=\(sort.rawValue)&page=\(page)&limit=\(limit)")
+        return path("api/\(v)/community/list?sort=\(sort.rawValue)&page=\(page)&limit=\(limit)")
     }
     
     func fetchPost(id: String) -> URLRequest {
-        return path("api/v1/post?id=\(id)")
+        return path("api/\(v)/post?id=\(id)")
     }
     
     func fetchPost(id: Int) -> URLRequest {
@@ -76,6 +83,10 @@ class LemmyAPIClient: ObservableObject {
         newRequest.addValue("application/json", forHTTPHeaderField: "Accepts")
         newRequest.addValue("Unnammed Lemmy Mobile Client by @AveryPierceApps", forHTTPHeaderField: "User-Agent")
         return newRequest
+    }
+    
+    private var v: String {
+        return version.rawValue
     }
 }
 

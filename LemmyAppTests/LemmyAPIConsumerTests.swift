@@ -67,11 +67,7 @@ class LemmyAPIConsumerTests: XCTestCase {
 //
 //        waitForExpectations(timeout: 5, handler: nil)
 //    }
-    
-    func testDocumentsFolder() {
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print(urls)
-    }
+
 }
 
 func prettyPrintJSON(_ data: Data) throws -> String {

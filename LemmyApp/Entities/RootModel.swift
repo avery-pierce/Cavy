@@ -62,7 +62,7 @@ class ServerStore {
             return ServerStore.defaultServers
         }
         
-        return rawServers.map(LemmyAPIClient.init)
+        return rawServers.map({ LemmyAPIClient($0) })
     }
     
     func write(_ servers: [LemmyAPIClient]) {
