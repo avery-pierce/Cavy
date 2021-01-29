@@ -26,8 +26,34 @@ class LemmyV2APIClient {
         self.factory = LemmyAPIFactory(host, .v2)
     }
     
+//    func fetchSite() -> URLRequest {
+//        return path("api/\(v)/site")
+//    }
+//
+//    func fetchSiteConfig() -> URLRequest {
+//        // TODO: Requires auth
+//        return path("api/\(v)/site/config")
+//    }
+
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50) -> APIDataProvider<URLRequest, LemmyPostItemResponseV2> {
+        return APIDataProvider(factory.listPosts(type: type, sort: sort, limit: limit), as: LemmyPostItemResponseV2.self)
+    }
+
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, communityID: Int) -> APIDataProvider<URLRequest, LemmyPostItemResponseV2> {
+        return APIDataProvider(factory.listPosts(type: type, sort: sort, limit: limit, communityID: communityID), as: LemmyPostItemResponseV2.self)
+    }
+
     func listCommunities(sort: LemmyAPIFactory.SortType, page: Int = 1, limit: Int = 50) -> APIDataProvider<URLRequest, LemmyCommunitiesResponseV2> {
         return APIDataProvider(factory.listCommunities(sort: sort, page: page, limit: limit), as: LemmyCommunitiesResponseV2.self)
     }
+
+//    func fetchPost(id: String) -> URLRequest {
+//        return path("api/\(v)/post?id=\(id)")
+//    }
+//
+//    func fetchPost(id: Int) -> URLRequest {
+//        return fetchPost(id: String(id))
+//    }
+    
 }
 

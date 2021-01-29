@@ -20,7 +20,7 @@ struct LemmyPostItem: Codable, Equatable {
     let updated : String?
     let communityID : Int?
     let communityIcon : String?
-    let score : Int
+    let score : Int?
     let newestActivityTime : String?
     let creatorActorID : String?
     let communityLocal : Bool?
@@ -119,7 +119,7 @@ struct LemmyPostItem: Codable, Equatable {
         updated = try values.decodeIfPresent(String.self, forKey: .updated)
         communityID = try values.decodeIfPresent(Int.self, forKey: .communityID)
         communityIcon = try values.decodeIfPresent(String.self, forKey: .communityIcon)
-        score = try values.decode(Int.self, forKey: .score)
+        score = try values.decodeIfPresent(Int.self, forKey: .score)
         newestActivityTime = try values.decodeIfPresent(String.self, forKey: .newestActivityTime)
         creatorActorID = try values.decodeIfPresent(String.self, forKey: .creatorActorID)
         communityLocal = try values.decodeIfPresent(Bool.self, forKey: .communityLocal)
@@ -156,7 +156,7 @@ struct LemmyPostItem: Codable, Equatable {
     }
 }
 
-extension LemmyPostItem: PostItem {
+extension LemmyPostItem {
     var id: Int { _id }
     
     var htmlContent: String? { embedHTML }

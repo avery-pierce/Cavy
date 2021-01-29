@@ -22,15 +22,25 @@ class LemmyV2APIConsumerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-//    func testListPosts() throws {
-//        let e = expectation(description: "List Posts")
-//        let request = client.listPosts(type: .all, sort: .hot)
-//        assertDecodes(to: LemmyPostItemResponse.self, fromDataProvidedBy: request) {
-//            e.fulfill()
-//        }
-//        
-//        waitForExpectations(timeout: 5, handler: nil)
-//    }
+    func testListPosts() throws {
+        let e = expectation(description: "List Posts")
+        let spec = client.listPosts(type: .all, sort: .hot)
+        assertDecodes(spec) {
+            e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testListPostsByCommunity() throws {
+        let e = expectation(description: "List Posts")
+        let spec = client.listPosts(type: .all, sort: .hot, communityID: 1)
+        assertDecodes(spec) {
+            e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 //    
 //    func testListComments() throws {
 //        /*

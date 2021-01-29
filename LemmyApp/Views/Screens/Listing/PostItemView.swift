@@ -51,7 +51,7 @@ struct PostItemView: View {
     }
     
     var scoreText: String {
-        "\(postItem.score)"
+        "\(postItem.score ?? 0)"
     }
     
     var scoreDetail: some View {
