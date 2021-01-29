@@ -26,6 +26,7 @@
 		C6091D2825C4881700E6CD0F /* LemmyV1SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */; };
 		C6091D3225C48D4400E6CD0F /* LemmyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */; };
 		C6091D3D25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D3C25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift */; };
+		C6091D4125C4B4FC00E6CD0F /* CavyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D4025C4B4FC00E6CD0F /* CavyComment.swift */; };
 		C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543E925B4A1F1007F170A /* CommentsListView.swift */; };
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
@@ -44,7 +45,7 @@
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
 		C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2BD253001BC00728E08 /* PostItemView.swift */; };
-		C63DF2C1253001CC00728E08 /* CavyPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C0253001CC00728E08 /* CavyPostItem.swift */; };
+		C63DF2C1253001CC00728E08 /* CavyPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C0253001CC00728E08 /* CavyPost.swift */; };
 		C63DF2C425313DE000728E08 /* RootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C325313DE000728E08 /* RootModel.swift */; };
 		C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2C925313E3200728E08 /* LemmyPostItem.swift */; };
 		C63DF2D325313FB500728E08 /* LemmyAPIConsumerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2D225313FB500728E08 /* LemmyAPIConsumerTests.swift */; };
@@ -138,6 +139,7 @@
 		C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV1SpecTests.swift; sourceTree = "<group>"; };
 		C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAPIClient.swift; sourceTree = "<group>"; };
 		C6091D3C25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemPreviews.swift; sourceTree = "<group>"; };
+		C6091D4025C4B4FC00E6CD0F /* CavyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyComment.swift; sourceTree = "<group>"; };
 		C62543E925B4A1F1007F170A /* CommentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListView.swift; sourceTree = "<group>"; };
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 		C63DF2B42530016300728E08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63DF2B62530016300728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C63DF2BD253001BC00728E08 /* PostItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemView.swift; sourceTree = "<group>"; };
-		C63DF2C0253001CC00728E08 /* CavyPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyPostItem.swift; sourceTree = "<group>"; };
+		C63DF2C0253001CC00728E08 /* CavyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyPost.swift; sourceTree = "<group>"; };
 		C63DF2C325313DE000728E08 /* RootModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModel.swift; sourceTree = "<group>"; };
 		C63DF2C925313E3200728E08 /* LemmyPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItem.swift; sourceTree = "<group>"; };
 		C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemmyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -473,7 +475,8 @@
 			isa = PBXGroup;
 			children = (
 				C63DF2C325313DE000728E08 /* RootModel.swift */,
-				C63DF2C0253001CC00728E08 /* CavyPostItem.swift */,
+				C63DF2C0253001CC00728E08 /* CavyPost.swift */,
+				C6091D4025C4B4FC00E6CD0F /* CavyComment.swift */,
 				C6FA67EC25BA769B002A352E /* PostKind.swift */,
 				C6515D0C253203B800C8CEF7 /* ListModel.swift */,
 				C62543ED25B4A249007F170A /* PostModel.swift */,
@@ -622,7 +625,7 @@
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
 				C6091D0425C473B800E6CD0F /* LemmyV2Spec.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
-				C63DF2C1253001CC00728E08 /* CavyPostItem.swift in Sources */,
+				C63DF2C1253001CC00728E08 /* CavyPost.swift in Sources */,
 				C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */,
 				C63DF2C425313DE000728E08 /* RootModel.swift in Sources */,
 				C6F306B125BCE02300B381B1 /* UsersListView.swift in Sources */,
@@ -673,6 +676,7 @@
 				C6091CFA25C46F1A00E6CD0F /* LemmyCategory.swift in Sources */,
 				C6091CCE25BDE22300E6CD0F /* SavedInstanceExplorerView.swift in Sources */,
 				C6515D15253222F900C8CEF7 /* LoadState.swift in Sources */,
+				C6091D4125C4B4FC00E6CD0F /* CavyComment.swift in Sources */,
 				C6515D192532268600C8CEF7 /* LoadStateView.swift in Sources */,
 				C625440025B4BC48007F170A /* Node.swift in Sources */,
 				C6D9F11F2537D0A900B41CE4 /* SettingsView.swift in Sources */,
