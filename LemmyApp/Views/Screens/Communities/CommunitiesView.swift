@@ -19,7 +19,7 @@ struct CommunitiesView: View {
         case .v1(let spec):
             let list = spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)
             return ParsedDataResource(list.dataProvider, parsedBy: typeAdapter(parser: jsonParser(list.type), adapter: { response in
-                return response.posts.compactMap(\.post)
+                return response.posts
             }))
             
         case .v2(let spec):

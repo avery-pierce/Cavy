@@ -20,7 +20,7 @@ class ListModel: ObservableObject {
         case .v1(let spec):
             let listPostsSpec = spec.listPosts(type: .all, sort: .hot)
             return ParsedDataResource(listPostsSpec.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listPostsSpec.type), adapter: { (response) in
-                return response.posts.compactMap(\.post)
+                return response.posts
             }))
             
         case .v2(let spec):
