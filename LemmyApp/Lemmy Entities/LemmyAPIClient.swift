@@ -15,6 +15,11 @@ struct APIDataProvider<D: DataProvider, T: Codable> {
         self.dataProvider = dataProvider
         self.serializedType = serializedType
     }
+    
+    init(_ dataProvider: D) {
+        self.dataProvider = dataProvider
+        self.serializedType = T.self
+    }
 }
 
 class LemmyV2APIClient {
@@ -26,14 +31,9 @@ class LemmyV2APIClient {
         self.factory = LemmyAPIFactory(host, .v2)
     }
     
-//    func fetchSite() -> URLRequest {
-//        return path("api/\(v)/site")
-//    }
-//
-//    func fetchSiteConfig() -> URLRequest {
-//        // TODO: Requires auth
-//        return path("api/\(v)/site/config")
-//    }
+    func fetchSite() -> APIDataProvider<URLRequest, LemmySiteResponseV2> {
+        return APIDataProvider(factory.fetchSite())
+    }
 
     func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50) -> APIDataProvider<URLRequest, LemmyPostItemResponseV2> {
         return APIDataProvider(factory.listPosts(type: type, sort: sort, limit: limit), as: LemmyPostItemResponseV2.self)

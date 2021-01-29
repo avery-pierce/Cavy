@@ -56,16 +56,16 @@ class LemmyV2APIConsumerTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-//    
-//    func testGetSiteData() throws {
-//        let e = expectation(description: "Fetch Site")
-//        let request = client.fetchSite()
-//        assertDecodes(to: LemmySiteResponse.self, fromDataProvidedBy: request) {
-//            e.fulfill()
-//        }
-//        
-//        waitForExpectations(timeout: 5, handler: nil)
-//    }
+
+    func testGetSiteData() throws {
+        let e = expectation(description: "Fetch Site")
+        let spec = client.fetchSite()
+        assertDecodes(spec) {
+            e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }
 
 func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: APIDataProvider<D, T>, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
