@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CommentView: View {
     let threadedComment: ThreadedComment
-    var comment: LemmyComment { threadedComment.comment }
+    var comment: CavyComment { threadedComment.comment }
     
     init(_ threadedComment: ThreadedComment) {
         self.threadedComment = threadedComment
     }
     
     var author: String {
-        return comment.creatorPreferredUsername ?? comment.creatorName ?? "(user)"
+        return comment.submitterName ?? "(user)"
     }
     
     var isHidden: Bool {
@@ -49,7 +49,7 @@ struct CommentView: View {
     }
     
     var timeAgoText: String {
-        guard let publishedDate = comment.publishedDate else { return "??" }
+        guard let publishedDate = comment.publishDate else { return "??" }
         
         let now = Date()
         let interval = now.timeIntervalSince(publishedDate)
@@ -85,7 +85,7 @@ struct CommentView: View {
                 .padding(.trailing, 10)
                 
                 if !isHidden {
-                    MarkdownText(comment.content ?? "(content)")
+                    MarkdownText(comment.bodyMarkdown ?? "(content)")
                         .font(.system(size: 14.0))
                         .multilineTextAlignment(.leading)
                 }

@@ -21,7 +21,7 @@ struct CommentsListView: View {
             // of filling the entire cell.
             CommentView(comment)
                 .onTapGesture {
-                    self.commentTree.toggleHidden(comment.comment.id!)
+                    self.commentTree.toggleHidden(comment.comment.id)
                 }
         }
     }
