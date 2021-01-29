@@ -10,7 +10,7 @@ import XCTest
 
 class LemmyAPIConsumerTests: XCTestCase {
     
-    let client: LemmyAPIFactory = .lemmyML
+    let client: LemmyAPIFactory = LemmyAPIFactory("chapo.chat")
 
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")
@@ -56,18 +56,6 @@ class LemmyAPIConsumerTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-    
-    // TODO: Requires Auth
-//    func testGetSiteConfig() throws {
-//        let e = expectation(description: "Fetch Site Config")
-//        let request = client.fetchSiteConfig()
-//        assertDecodes(to: LemmySiteConfig.self, fromDataProvidedBy: request) {
-//            e.fulfill()
-//        }
-//
-//        waitForExpectations(timeout: 5, handler: nil)
-//    }
-
 }
 
 func prettyPrintJSON(_ data: Data) throws -> String {
