@@ -8,24 +8,33 @@
 import Foundation
 
 class PostModel: ObservableObject {
-    var client: LemmyAPIFactory?
+    var client: LemmyAPIClient?
     let postID: Int
-    init(_ client: LemmyAPIFactory? = nil, postID: Int) {
+    init(_ client: LemmyAPIClient? = nil, postID: Int) {
         self.client = client
         self.postID = postID
     }
     
-    @Published var loadState: LoadState<LemmyPostResponse, Error> = .idle
+    lazy var commentsResource: ParsedDataResource<[LemmyComment]> = {
+        switch client! {
+        case .v1(let spec):
+            let post = spec.fetchPost(id: postID)
+            return ParsedDataResource(post.dataProvider, parsedBy: typeAdapter(parser: jsonParser(post.type), adapter: { (response) in
+                return response.comments
+            }))
+        case .v2(let spec):
+            let post = spec.fetchPost(id: postID)
+            return ParsedDataResource(post.dataProvider, parsedBy: typeAdapter(parser: jsonParser(post.type), adapter: { (response) in
+                return response.comments?.compactMap(\.comment) ?? []
+            }))
+        }
+    }()
+    
+    @Published var loadState: LoadState<[LemmyComment], Error> = .idle
     
     func refresh() {
-        guard let client = client else { return }
-        
         loadState = .loading(nil)
-        let request = client.fetchPost(id: postID)
-        URLSession.shared.decodedDataTask(with: request) { (result: Result<LemmyPostResponse, Error>, response) in
-            DispatchQueue.main.async {
-                self.loadState = .complete(result)
-            }
-        }.resume()
+        commentsResource.$state.assign(to: &$loadState)
+        commentsResource.load()
     }
 }

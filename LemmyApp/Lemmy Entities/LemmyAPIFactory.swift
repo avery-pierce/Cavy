@@ -91,18 +91,18 @@ class LemmyAPIFactory: ObservableObject {
 }
 
 private struct LemmyAPIClientEnvironmentKey: EnvironmentKey {
-    static let defaultValue: LemmyAPIFactory = .lemmyML
+    static let defaultValue: LemmyAPIClient = .lemmyML
 }
 
 extension EnvironmentValues {
-    var lemmyAPIClient: LemmyAPIFactory {
+    var lemmyAPIClient: LemmyAPIClient {
         get { self[LemmyAPIClientEnvironmentKey.self] }
         set { self[LemmyAPIClientEnvironmentKey.self] = newValue }
     }
 }
 
 extension View {
-    func lemmyAPIClient(_ client: LemmyAPIFactory) -> some View {
+    func lemmyAPIClient(_ client: LemmyAPIClient) -> some View {
         environment(\.lemmyAPIClient, client)
     }
 }

@@ -24,6 +24,7 @@
 		C6091D1E25C4832800E6CD0F /* Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D1D25C4832800E6CD0F /* Spec.swift */; };
 		C6091D2425C487F900E6CD0F /* LemmyV1Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D2325C487F900E6CD0F /* LemmyV1Spec.swift */; };
 		C6091D2825C4881700E6CD0F /* LemmyV1SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */; };
+		C6091D3225C48D4400E6CD0F /* LemmyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */; };
 		C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543E925B4A1F1007F170A /* CommentsListView.swift */; };
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
@@ -134,6 +135,7 @@
 		C6091D1D25C4832800E6CD0F /* Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spec.swift; sourceTree = "<group>"; };
 		C6091D2325C487F900E6CD0F /* LemmyV1Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV1Spec.swift; sourceTree = "<group>"; };
 		C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV1SpecTests.swift; sourceTree = "<group>"; };
+		C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAPIClient.swift; sourceTree = "<group>"; };
 		C62543E925B4A1F1007F170A /* CommentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListView.swift; sourceTree = "<group>"; };
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 		C6C3D88F253247B600EB7DB8 /* Lemmy Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */,
 				C6091D2325C487F900E6CD0F /* LemmyV1Spec.swift */,
 				C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */,
 				C6515CF22531606E00C8CEF7 /* LemmyAPIFactory.swift */,
@@ -643,6 +646,7 @@
 				C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */,
 				C640772A25BCC8C100B42F63 /* LoadableCommunitiesView.swift in Sources */,
 				C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */,
+				C6091D3225C48D4400E6CD0F /* LemmyAPIClient.swift in Sources */,
 				C6FA681725BB2CA2002A352E /* LemmySiteResponse.swift in Sources */,
 				C6FA681325BB295F002A352E /* LemmySite.swift in Sources */,
 				C640772625BCC7E500B42F63 /* CommunitiesView.swift in Sources */,

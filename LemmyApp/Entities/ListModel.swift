@@ -8,22 +8,33 @@
 import Foundation
 
 class ListModel: ObservableObject {
-    let client: LemmyAPIFactory
-    init(_ client: LemmyAPIFactory) {
+    let client: LemmyAPIClient
+    init(_ client: LemmyAPIClient) {
         self.client = client
     }
     
     @Published var loadState: LoadState<[LemmyPostItem], Error> = .idle
     
+    lazy var listPosts: ParsedDataResource<[LemmyPostItem]> = {
+        switch client {
+        case .v1(let spec):
+            let listPostsSpec = spec.listPosts(type: .all, sort: .hot)
+            return ParsedDataResource(listPostsSpec.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listPostsSpec.type), adapter: { (response) in
+                return response.posts.compactMap(\.post)
+            }))
+            
+        case .v2(let spec):
+            let listPostsSpec = spec.listPosts(type: .all, sort: .hot)
+            return ParsedDataResource(listPostsSpec.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listPostsSpec.type), adapter: { (response) in
+                return response.posts.compactMap(\.post)
+            }))
+        }
+    }()
+    
     func refresh() {
         loadState = .loading(nil)
-        let request = client.listPosts(type: .all, sort: .hot)
-        URLSession.shared.decodedDataTask(with: request) { (result: Result<LemmyPostItemResponse, Error>, response) in
-            DispatchQueue.main.async {
-                let postResult = result.map(\.posts).map({ $0 as [LemmyPostItem] })
-                self.loadState = .complete(postResult)
-            }
-        }.resume()
+        listPosts.$state.assign(to: &$loadState)
+        listPosts.load()
     }
     
     var needsRefresh: Bool {

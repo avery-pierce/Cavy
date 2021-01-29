@@ -11,7 +11,7 @@ struct SavedInstanceExplorerView: View {
     @EnvironmentObject var rootModel: RootModel
     
     var hosts: [String] {
-        return rootModel.clients.map(\.host)
+        return rootModel.clients.map(\.descriptor)
     }
     
     var body: some View {

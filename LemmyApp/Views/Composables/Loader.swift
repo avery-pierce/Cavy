@@ -17,7 +17,15 @@ struct Loader<T, V: View>: View {
          parsedBy parser: (@escaping (Data) throws -> T),
          view: @escaping (LoadState<T, Error>) -> V) {
         
-        self.parsedResource = ParsedDataResource(dataProvider, parsedBy: parser)
+        self.init(ParsedDataResource(dataProvider, parsedBy: parser), view: view)
+    }
+    
+    init<D>(_ spec: Spec<D, T>, view: @escaping (LoadState<T, Error>) -> V) {
+        self.init(ParsedDataResource(spec), view: view)
+    }
+    
+    init(_ parsedDataResource: ParsedDataResource<T>, view: @escaping (LoadState<T, Error>) -> V) {
+        self.parsedResource = parsedDataResource
         self.contentView = view
         parsedResource.load()
     }

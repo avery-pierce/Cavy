@@ -10,7 +10,7 @@ import SwiftUI
 struct PostDetailView: View {
     let post: LemmyPostItem
     
-    @Environment(\.lemmyAPIClient) var client: LemmyAPIFactory
+    @Environment(\.lemmyAPIClient) var client: LemmyAPIClient
     @ObservedObject var postModel: PostModel
     
     init(post: LemmyPostItem) {
@@ -27,8 +27,8 @@ struct PostDetailView: View {
         switch postModel.loadState {
         case .complete(let result):
             switch result {
-            case .success(let post):
-                return "\(post.comments.count) Comments"
+            case .success(let comments):
+                return "\(comments.count) Comments"
             case .failure:
                 return "Post Detail"
             }
@@ -55,8 +55,8 @@ struct PostDetailView: View {
     var body: some View {
         List() {
             PostContentView(post)
-            LoadStateView(postModel.loadState) { post in
-                CommentsListView(post.comments)
+            LoadStateView(postModel.loadState) { comments in
+                CommentsListView(comments)
                     .listRowInsets(listEdgeInsets)
             }
         }

@@ -36,4 +36,14 @@ struct LemmySiteResponse: Codable {
         myUser = try values.decodeIfPresent(LemmyUser.self, forKey: .myUser)
         federatedInstances = try values.decodeIfPresent([String].self, forKey: .federatedInstances) ?? []
     }
+    
+    init(site: LemmySite?, admins: [LemmyUser], banned: [LemmyUser], online: Int?, version: String?, myUser: LemmyUser?, federatedInstances: [String]) {
+        self.site = site
+        self.admins = admins
+        self.banned = banned
+        self.online = online
+        self.version = version
+        self.myUser = myUser
+        self.federatedInstances = federatedInstances
+    }
 }

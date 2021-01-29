@@ -14,11 +14,27 @@ struct CommunitiesView: View {
         self.communities = communities
     }
     
+    func postResults(communityID: Int) -> ParsedDataResource<[LemmyPostItem]> {
+        switch client {
+        case .v1(let spec):
+            let list = spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)
+            return ParsedDataResource(list.dataProvider, parsedBy: typeAdapter(parser: jsonParser(list.type), adapter: { response in
+                return response.posts.compactMap(\.post)
+            }))
+            
+        case .v2(let spec):
+            let list = spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)
+            return ParsedDataResource(list.dataProvider, parsedBy: typeAdapter(parser: jsonParser(list.type), adapter: { (response) in
+                return response.posts.compactMap(\.post)
+            }))
+        }
+    }
+    
     var body: some View {
         List {
             ForEach(communities, id: \.id) { community in
                 if let communityID = community.id {
-                    NavigationLink(community.name ?? "", destination: PostResultsView(client.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID)).lemmyAPIClient(client))
+                    NavigationLink(community.name ?? "", destination: PostResultsView(postResults(communityID: communityID)).lemmyAPIClient(client))
                 } else {
                     Text(community.name ?? "")
                 }

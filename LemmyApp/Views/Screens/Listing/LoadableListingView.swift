@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LoadableListingView: View {
-    let client: LemmyAPIFactory
+    let client: LemmyAPIClient
     @ObservedObject var listModel: ListModel
-    init(_ client: LemmyAPIFactory) {
+    init(_ client: LemmyAPIClient) {
         self.client = client
         self.listModel = ListModel(client)
     }
@@ -23,7 +23,7 @@ struct LoadableListingView: View {
         .navigationBarItems(trailing: Button(action: listModel.refresh) {
             Image(systemName: "arrow.clockwise")
         })
-        .navigationTitle(listModel.client.host)
+        .navigationTitle(listModel.client.descriptor)
         .navigationBarTitleDisplayMode(.inline)
         .lemmyAPIClient(client)
     }

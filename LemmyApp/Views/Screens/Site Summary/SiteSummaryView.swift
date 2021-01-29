@@ -47,7 +47,7 @@ struct SiteSummaryView: View {
     }
 
     var isServerSaved: Bool {
-        return rootModel.clients.contains(where: { $0.host == client.host })
+        return rootModel.clients.contains(where: { $0.descriptor == client.descriptor })
     }
     
     func toggleSiteSaved() {
@@ -76,7 +76,7 @@ struct SiteSummaryView: View {
                         .font(.title)
                         .bold()
                     
-                    Text(client.host).font(.title2)
+                    Text(client.descriptor).font(.title2)
                     
                     if let description = siteResponse.site?.description {
                         HStack {

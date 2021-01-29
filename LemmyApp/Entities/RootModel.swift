@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class RootModel: ObservableObject {
-    @Published var clients = [LemmyAPIFactory]() {
+    @Published var clients = [LemmyAPIClient]() {
         didSet {
             sync()
         }
@@ -25,7 +25,7 @@ class RootModel: ObservableObject {
         serverStore.write(clients)
     }
     
-    func addServer(_ server: LemmyAPIFactory) {
+    func addServer(_ server: LemmyAPIClient) {
         clients.append(server)
     }
     
@@ -33,9 +33,9 @@ class RootModel: ObservableObject {
         clients.remove(at: index)
     }
     
-    func removeServer(_ server: LemmyAPIFactory) {
+    func removeServer(_ server: LemmyAPIClient) {
         guard let index = clients.firstIndex(where: { (client) -> Bool in
-            return client.host == server.host
+            return client.descriptor == server.descriptor
         }) else { return }
         removeServer(at: Int(index))
     }
@@ -49,7 +49,7 @@ class RootModel: ObservableObject {
 
 extension RootModel: AddServerDelegate {
     func useCase(_ useCase: AddServerUseCase, didAddServer server: String) {
-        clients.append(LemmyAPIFactory(server))
+        clients.append(LemmyAPIClient(descriptor: server))
     }
 }
 
@@ -57,22 +57,22 @@ class ServerStore {
     private let store: UserDefaults = .standard
     private let key = "LemmyServers"
     
-    func read() -> [LemmyAPIFactory] {
+    func read() -> [LemmyAPIClient] {
         guard let rawServers = store.array(forKey: key) as? [String] else {
             return ServerStore.defaultServers
         }
         
-        return rawServers.map({ LemmyAPIFactory($0) })
+        return rawServers.map(LemmyAPIClient.init(descriptor:))
     }
     
-    func write(_ servers: [LemmyAPIFactory]) {
-        let serializedArray = servers.map(\.host)
+    func write(_ servers: [LemmyAPIClient]) {
+        let serializedArray = servers.map(\.descriptor)
         store.set(serializedArray, forKey: key)
     }
     
     static let defaultServers = [
-        LemmyAPIFactory.lemmyML,
-        LemmyAPIFactory.lemmygradML
+        LemmyAPIClient.lemmyML,
+        LemmyAPIClient.lemmygradML
     ]
 }
 

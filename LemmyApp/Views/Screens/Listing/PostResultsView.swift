@@ -9,15 +9,15 @@ import SwiftUI
 
 struct PostResultsView: View {
     
-    let dataProvider: DataProvider
-    init(_ dataProvider: DataProvider) {
-        self.dataProvider = dataProvider
+    let parsedDataResource: ParsedDataResource<[LemmyPostItem]>
+    init(_ parsedDataResource: ParsedDataResource<[LemmyPostItem]>) {
+        self.parsedDataResource = parsedDataResource
     }
     
     var body: some View {
-        Loader(dataProvider, parsedBy: LemmyPostItemResponse.fromJSON) { state in
+        Loader(parsedDataResource) { state in
             LoadStateView(state) { result in
-                ListingView(result.posts)
+                ListingView(result)
             }
         }
     }

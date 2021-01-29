@@ -13,16 +13,16 @@ struct EditInstancesView: View {
     var body: some View {
         Form {
             Section {
-                ForEach(rootModel.clients, id: \.host) { (client) in
-                    Text(client.host)
+                ForEach(rootModel.clients, id: \.descriptor) { (client) in
+                    Text(client.descriptor)
                 }.onDelete(perform: { indexSet in
                     indexSet.forEach(rootModel.removeServer(at:))
                 })
             }
             EditHostsView(rootModel.createAddServerUseCase())
             Section(header: Text("Good ones")) {
-                ForEach(ServerStore.defaultServers, id: \.host) { server in
-                    Text(server.host)
+                ForEach(ServerStore.defaultServers, id: \.descriptor) { server in
+                    Text(server.descriptor)
                 }
             }
         }

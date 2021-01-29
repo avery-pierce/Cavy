@@ -10,11 +10,26 @@ import SwiftUI
 struct LoadableCommunitiesView: View {
     @Environment(\.lemmyAPIClient) var client
     
-    var body: some View {
-        Loader(client.listCommunities(sort: .topAll), parsedBy: LemmyCommunitiesResponse.fromJSON) { state in
+    var listCommunities: ParsedDataResource<[LemmyCommunity]> {
+        switch client {
+        case .v2(let spec):
+            let listCommunities = spec.listCommunities(sort: .topAll)
+            return ParsedDataResource(listCommunities.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listCommunities.type), adapter: { (response) -> [LemmyCommunity] in
+                return response.communities.compactMap(\.community)
+            }))
             
-            LoadStateView(state) { listing in
-                CommunitiesView(listing.communities)
+        case .v1(let spec):
+            let listCommunities = spec.listCommunities(sort: .topAll)
+            return ParsedDataResource(listCommunities.dataProvider, parsedBy: typeAdapter(parser: jsonParser(listCommunities.type), adapter: { (response) -> [LemmyCommunity] in
+                return response.communities
+            }))
+        }
+    }
+    
+    var body: some View {
+        Loader(listCommunities) { state in
+            LoadStateView(state) { communities in
+                CommunitiesView(communities)
             }
         }
     }
