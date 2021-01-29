@@ -9,16 +9,16 @@ import Foundation
 
 struct APIDataProvider<D: DataProvider, T: Codable> {
     var dataProvider: D
-    var serializedType: T.Type
+    var type: T.Type
     
     init(_ dataProvider: D, as serializedType: T.Type) {
         self.dataProvider = dataProvider
-        self.serializedType = serializedType
+        self.type = serializedType
     }
     
     init(_ dataProvider: D) {
         self.dataProvider = dataProvider
-        self.serializedType = T.self
+        self.type = T.self
     }
 }
 
