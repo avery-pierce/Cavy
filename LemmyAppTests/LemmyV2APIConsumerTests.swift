@@ -41,21 +41,21 @@ class LemmyV2APIConsumerTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-//    
-//    func testListComments() throws {
-//        /*
-//         Some good examples:
-//         Post ID: 41391
-//         post ID: 41326
-//         */
-//        let e = expectation(description: "Get post")
-//        let request = client.fetchPost(id: 41391)
-//        assertDecodes(to: LemmyPostResponse.self, fromDataProvidedBy: request) {
-//            e.fulfill()
-//        }
-//        
-//        waitForExpectations(timeout: 5, handler: nil)
-//    }
+
+    func testListComments() throws {
+        /*
+         Some good examples:
+         Post ID: 41391
+         post ID: 41326
+         */
+        let e = expectation(description: "Get post")
+        let spec = client.fetchPost(id: 41391)
+        assertDecodes(spec) {
+            e.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 //    
 //    func testGetSiteData() throws {
 //        let e = expectation(description: "Fetch Site")

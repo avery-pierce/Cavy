@@ -19,6 +19,7 @@
 		C6091D0A25C4759800E6CD0F /* LemmyV2APIConsumerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0925C4759800E6CD0F /* LemmyV2APIConsumerTests.swift */; };
 		C6091D0E25C4797900E6CD0F /* LemmyPostItemResponseV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D0D25C4797900E6CD0F /* LemmyPostItemResponseV2.swift */; };
 		C6091D1225C4799400E6CD0F /* LemmyPostItemSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D1125C4799400E6CD0F /* LemmyPostItemSummary.swift */; };
+		C6091D1625C47C7800E6CD0F /* LemmyPostResponseV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6091D1525C47C7800E6CD0F /* LemmyPostResponseV2.swift */; };
 		C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543E925B4A1F1007F170A /* CommentsListView.swift */; };
 		C62543EE25B4A249007F170A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543ED25B4A249007F170A /* PostModel.swift */; };
 		C62543F225B4ABED007F170A /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62543F125B4ABED007F170A /* CommentView.swift */; };
@@ -124,6 +125,7 @@
 		C6091D0925C4759800E6CD0F /* LemmyV2APIConsumerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyV2APIConsumerTests.swift; sourceTree = "<group>"; };
 		C6091D0D25C4797900E6CD0F /* LemmyPostItemResponseV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemResponseV2.swift; sourceTree = "<group>"; };
 		C6091D1125C4799400E6CD0F /* LemmyPostItemSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItemSummary.swift; sourceTree = "<group>"; };
+		C6091D1525C47C7800E6CD0F /* LemmyPostResponseV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponseV2.swift; sourceTree = "<group>"; };
 		C62543E925B4A1F1007F170A /* CommentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListView.swift; sourceTree = "<group>"; };
 		C62543ED25B4A249007F170A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C62543F125B4ABED007F170A /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				C6091CF925C46F1A00E6CD0F /* LemmyCategory.swift */,
 				C6091CFD25C46F3500E6CD0F /* LemmyCounts.swift */,
 				C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */,
+				C6091D1525C47C7800E6CD0F /* LemmyPostResponseV2.swift */,
 				C6D9F10F2532652500B41CE4 /* LemmyComment.swift */,
 				C6D9F1132532654700B41CE4 /* LemmyUser.swift */,
 				C652705025BC99A80014FB05 /* LemmyModerator.swift */,
@@ -633,6 +636,7 @@
 				C6D9F1292537D83400B41CE4 /* EditInstancesView.swift in Sources */,
 				C652708625BCB4820014FB05 /* Loader.swift in Sources */,
 				C652705525BC9EB70014FB05 /* SiteSummaryView.swift in Sources */,
+				C6091D1625C47C7800E6CD0F /* LemmyPostResponseV2.swift in Sources */,
 				C6091D0E25C4797900E6CD0F /* LemmyPostItemResponseV2.swift in Sources */,
 				C62543FC25B4AD78007F170A /* Decodable++.swift in Sources */,
 				C62543F225B4ABED007F170A /* CommentView.swift in Sources */,

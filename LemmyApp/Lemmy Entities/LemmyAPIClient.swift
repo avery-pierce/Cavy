@@ -47,13 +47,8 @@ class LemmyV2APIClient {
         return APIDataProvider(factory.listCommunities(sort: sort, page: page, limit: limit), as: LemmyCommunitiesResponseV2.self)
     }
 
-//    func fetchPost(id: String) -> URLRequest {
-//        return path("api/\(v)/post?id=\(id)")
-//    }
-//
-//    func fetchPost(id: Int) -> URLRequest {
-//        return fetchPost(id: String(id))
-//    }
-    
+    func fetchPost(id: Int) -> APIDataProvider<URLRequest, LemmyPostResponseV2> {
+        return APIDataProvider(factory.fetchPost(id: id), as: LemmyPostResponseV2.self)
+    }
 }
 
