@@ -282,6 +282,7 @@
 				C6C3D88D2532473000EB7DB8 /* Views */,
 				C6C3D8A325324E4B00EB7DB8 /* Entities */,
 				C6D9F1172537CD7500B41CE4 /* Use Cases */,
+				C659A6A925C5E8E400F12466 /* Lemmy API */,
 				C6C3D88F253247B600EB7DB8 /* Lemmy Entities */,
 				C6C3D88E2532478100EB7DB8 /* Utils */,
 				C6C3D8942532481F00EB7DB8 /* Extensions */,
@@ -410,6 +411,17 @@
 			path = Composables;
 			sourceTree = "<group>";
 		};
+		C659A6A925C5E8E400F12466 /* Lemmy API */ = {
+			isa = PBXGroup;
+			children = (
+				C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */,
+				C6091D2325C487F900E6CD0F /* LemmyV1Spec.swift */,
+				C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */,
+				C6515CF22531606E00C8CEF7 /* LemmyAPIFactory.swift */,
+			);
+			path = "Lemmy API";
+			sourceTree = "<group>";
+		};
 		C6C3D88D2532473000EB7DB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,10 +448,6 @@
 		C6C3D88F253247B600EB7DB8 /* Lemmy Entities */ = {
 			isa = PBXGroup;
 			children = (
-				C6091D3125C48D4400E6CD0F /* LemmyAPIClient.swift */,
-				C6091D2325C487F900E6CD0F /* LemmyV1Spec.swift */,
-				C6091D0325C473B800E6CD0F /* LemmyV2Spec.swift */,
-				C6515CF22531606E00C8CEF7 /* LemmyAPIFactory.swift */,
 				C6FA681225BB295F002A352E /* LemmySite.swift */,
 				C6FA681625BB2CA2002A352E /* LemmySiteResponse.swift */,
 				C6091D1925C4813200E6CD0F /* LemmySiteResponseV2.swift */,
