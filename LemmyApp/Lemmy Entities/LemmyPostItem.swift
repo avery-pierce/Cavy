@@ -10,7 +10,7 @@ import Foundation
 struct LemmyPostItem: Codable, Equatable {
     let embedDescription : String?
     let communityDeleted : Bool?
-    let _id : Int
+    let id : Int
     let local : Bool?
     let body : String?
     let creatorID : Int?
@@ -59,7 +59,7 @@ struct LemmyPostItem: Codable, Equatable {
         
         case embedDescription = "embed_description"
         case communityDeleted = "community_deleted"
-        case _id = "id"
+        case id = "id"
         case local = "local"
         case body = "body"
         case creatorID = "creator_id"
@@ -109,7 +109,7 @@ struct LemmyPostItem: Codable, Equatable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         embedDescription = try values.decodeIfPresent(String.self, forKey: .embedDescription)
         communityDeleted = try values.decodeIfPresent(Bool.self, forKey: .communityDeleted)
-        _id = try values.decode(Int.self, forKey: ._id)
+        id = try values.decode(Int.self, forKey: .id)
         local = try values.decodeIfPresent(Bool.self, forKey: .local)
         body = try values.decodeIfPresent(String.self, forKey: .body)
         creatorID = try values.decodeIfPresent(Int.self, forKey: .creatorID)
@@ -153,21 +153,5 @@ struct LemmyPostItem: Codable, Equatable {
         downvotes = try values.decodeIfPresent(Int.self, forKey: .downvotes)
         communityNSFW = try values.decodeIfPresent(Bool.self, forKey: .communityNSFW)
         nsfw = try values.decodeIfPresent(Bool.self, forKey: .nsfw)
-    }
-}
-
-extension LemmyPostItem {
-    var id: Int { _id }
-    
-    var htmlContent: String? { embedHTML }
-    var bodyContent: String? { embedDescription }
-    
-    var imageURL: URL? { thumbnailURL.flatMap(URL.init(string:)) }
-    var authorName: String { creatorPreferredUsername ?? creatorName ?? "" }
-}
-
-extension LemmyPostItem {
-    var publishedDate: Date? {
-        published.flatMap(parseLemmyDate(_:))
     }
 }
