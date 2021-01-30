@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CommunitiesView: View {
     @Environment(\.lemmyAPIClient) var client
-    let communities: [LemmyCommunity]
-    init(_ communities: [LemmyCommunity]) {
+    let communities: [CavyCommunity]
+    init(_ communities: [CavyCommunity]) {
         self.communities = communities
     }
     
@@ -25,9 +25,9 @@ struct CommunitiesView: View {
         List {
             ForEach(communities, id: \.id) { community in
                 if let communityID = community.id {
-                    NavigationLink(community.name ?? "", destination: PostResultsView(postResults(communityID: communityID)).lemmyAPIClient(client))
+                    NavigationLink(community.name, destination: PostResultsView(postResults(communityID: communityID)).lemmyAPIClient(client))
                 } else {
-                    Text(community.name ?? "")
+                    Text(community.name)
                 }
             }
         }

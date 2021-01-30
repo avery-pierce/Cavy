@@ -8,6 +8,7 @@
 import Foundation
 
 struct LemmyCommunity: Codable, Equatable {
+    let id : Int
     let nsfw : Bool?
     let title : String?
     let numberOfSubscribers : Int?
@@ -23,7 +24,6 @@ struct LemmyCommunity: Codable, Equatable {
     let updated : String?
     let name : String?
     let numberOfPosts : Int?
-    let id : Int?
     let creatorName : String?
     let numberOfComments : Int?
     let subscribed : String?
@@ -38,7 +38,7 @@ struct LemmyCommunity: Codable, Equatable {
     let description : String?
     
     enum CodingKeys: String, CodingKey {
-        
+        case id = "id"
         case nsfw = "nsfw"
         case title = "title"
         case numberOfSubscribers = "number_of_subscribers"
@@ -54,7 +54,6 @@ struct LemmyCommunity: Codable, Equatable {
         case updated = "updated"
         case name = "name"
         case numberOfPosts = "number_of_posts"
-        case id = "id"
         case creatorName = "creator_name"
         case numberOfComments = "number_of_comments"
         case subscribed = "subscribed"
@@ -71,6 +70,7 @@ struct LemmyCommunity: Codable, Equatable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int.self, forKey: .id)
         nsfw = try values.decodeIfPresent(Bool.self, forKey: .nsfw)
         title = try values.decodeIfPresent(String.self, forKey: .title)
         numberOfSubscribers = try values.decodeIfPresent(Int.self, forKey: .numberOfSubscribers)
@@ -86,7 +86,6 @@ struct LemmyCommunity: Codable, Equatable {
         updated = try values.decodeIfPresent(String.self, forKey: .updated)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         numberOfPosts = try values.decodeIfPresent(Int.self, forKey: .numberOfPosts)
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
         creatorName = try values.decodeIfPresent(String.self, forKey: .creatorName)
         numberOfComments = try values.decodeIfPresent(Int.self, forKey: .numberOfComments)
         subscribed = try values.decodeIfPresent(String.self, forKey: .subscribed)
