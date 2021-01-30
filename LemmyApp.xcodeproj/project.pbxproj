@@ -311,9 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				C625441725B60083007F170A /* Mock Data */,
-				C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */,
-				C6091D0925C4759800E6CD0F /* LemmyV2SpecTests.swift */,
-				C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */,
+				C659A6BA25C5FEB500F12466 /* API Compatibility Tests */,
 				C625441325B5FEE9007F170A /* CommentTreeTests.swift */,
 				C625442A25B65528007F170A /* DateParserTests.swift */,
 				C6FA67F625BA77B2002A352E /* URLUtilsTests.swift */,
@@ -423,6 +421,16 @@
 				C6515CF22531606E00C8CEF7 /* LemmyAPIFactory.swift */,
 			);
 			path = "Lemmy API";
+			sourceTree = "<group>";
+		};
+		C659A6BA25C5FEB500F12466 /* API Compatibility Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */,
+				C6091D0925C4759800E6CD0F /* LemmyV2SpecTests.swift */,
+				C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */,
+			);
+			path = "API Compatibility Tests";
 			sourceTree = "<group>";
 		};
 		C6C3D88D2532473000EB7DB8 /* Views */ = {
