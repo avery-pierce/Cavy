@@ -24,7 +24,7 @@ struct SiteSummaryLoaderView: View {
     
     var body: some View {
         Loader(siteResource) { loadState in
-            LoadStateView(loadState.map({ $0.cavySite })) { site in
+            LoadStateView(loadState.map(\.cavySite)) { site in
                 SiteSummaryView(site)
                     .environment(\.lemmyAPIClient, client)
             }
