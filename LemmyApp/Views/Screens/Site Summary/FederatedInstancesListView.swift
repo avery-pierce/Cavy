@@ -16,7 +16,13 @@ struct FederatedInstancesListView: View {
     var body: some View {
         List {
             ForEach(federatedInstances, id: \.self) { instance in
-                NavigationLink(instance, destination: SiteSummaryLoaderView(LemmyAPIClient(descriptor: instance)))
+                NavigationLink(instance, destination:
+                    Loader(APIClientSelectorResource(instance)) { clientLoadState in
+                        LoadStateView(clientLoadState) { client in
+                            SiteSummaryLoaderView(client)
+                        }
+                    }
+                )
             }
         }
         .navigationTitle("Federated Instances")

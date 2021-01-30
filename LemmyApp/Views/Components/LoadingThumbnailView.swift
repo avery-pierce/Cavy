@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct LoadingThumbnailView: View {
-    let dataProvider: DataProvider
+struct LoadingThumbnailView<D: DataProvider>: View {
+    let dataProvider: D
     
-    init(_ dataProvider: DataProvider) {
+    init(_ dataProvider: D) {
         self.dataProvider = dataProvider
     }
     

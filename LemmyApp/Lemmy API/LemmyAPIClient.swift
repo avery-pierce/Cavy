@@ -54,6 +54,13 @@ extension LemmyAPIClient {
         }
     }
     
+    var host: String {
+        switch self {
+        case .v1(let spec): return spec.factory.host
+        case .v2(let spec): return spec.factory.host
+        }
+    }
+    
     var descriptor: String {
         switch self {
         case .v1(let spec): return "\(spec.factory.host)/v1"

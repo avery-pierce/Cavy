@@ -10,12 +10,14 @@ import SwiftUI
 struct SavedInstanceExplorerView: View {
     @EnvironmentObject var rootModel: RootModel
     
-    var hosts: [String] {
-        return rootModel.clients.map(\.descriptor)
-    }
-    
     var body: some View {
-        FederatedInstancesListView(hosts)
+        List {
+            ForEach(rootModel.clients, id: \.descriptor) { client in
+                NavigationLink(client.descriptor, destination: SiteSummaryLoaderView(client))
+            }
+        }
+        .navigationTitle("Saved Instances")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
