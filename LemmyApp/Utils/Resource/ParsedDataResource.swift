@@ -81,11 +81,3 @@ func imageParser(_ data: Data) throws -> UIImage {
 func passthroughParser(_ data: Data) -> Data {
     return data
 }
-
-func typeAdapter<T1, T2>(parser: @escaping (Data) throws -> T1, adapter: @escaping (T1) throws -> T2) -> (Data) throws -> T2 {
-    return { (_ data: Data) throws -> T2 in
-        let t1 = try parser(data)
-        let t2 = try adapter(t1)
-        return t2
-    }
-}
