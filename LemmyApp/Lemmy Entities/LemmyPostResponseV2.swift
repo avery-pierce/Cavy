@@ -8,11 +8,28 @@
 import Foundation
 
 struct LemmyPostResponseV2: Codable {
-    var postView: LemmyPostItemSummary?
+    var postView: LemmyPostItemSummary
     var communityView: LemmyCommunitySummary?
     var comments: [LemmyCommentSummary]?
     var moderators: [LemmyModeratorSummary]?
     var online: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case postView = "post_view"
+        case communityView = "community_view"
+        case comments = "comments"
+        case moderators = "moderators"
+        case online = "online"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        postView = try values.decode(LemmyPostItemSummary.self, forKey: .postView)
+        communityView = try values.decodeIfPresent(LemmyCommunitySummary.self, forKey: .communityView)
+        comments = try values.decodeIfPresent([LemmyCommentSummary].self, forKey: .comments)
+        moderators = try values.decodeIfPresent([LemmyModeratorSummary].self, forKey: .moderators)
+        online = try values.decodeIfPresent(Int.self, forKey: .online)
+    }
 }
 
 struct LemmyCommentSummary: Codable {
@@ -26,6 +43,33 @@ struct LemmyCommentSummary: Codable {
     var subscribed: Bool?
     var saved: Bool?
     var myVote: Bool?
+    
+    enum CodingKeys: String, CodingKey {
+        case comment = "comment"
+        case creator = "creator"
+        case recipient = "recipient"
+        case post = "post"
+        case community = "community"
+        case counts = "counts"
+        case creatorBannedFromCommunity = "creator_banned_from_community"
+        case subscribed = "subscribed"
+        case saved = "saved"
+        case myVote = "my_vote"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        comment = try values.decodeIfPresent(LemmyComment.self, forKey: .comment)
+        creator = try values.decodeIfPresent(LemmyUser.self, forKey: .creator)
+        recipient = try values.decodeIfPresent(LemmyUser.self, forKey: .recipient)
+        post = try values.decodeIfPresent(LemmyPostItem.self, forKey: .post)
+        community = try values.decodeIfPresent(LemmyCommunity.self, forKey: .community)
+        counts = try values.decode(Counts.self, forKey: .counts)
+        creatorBannedFromCommunity = try values.decodeIfPresent(Bool.self, forKey: .creatorBannedFromCommunity)
+        subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
+        saved = try values.decodeIfPresent(Bool.self, forKey: .saved)
+        myVote = try values.decodeIfPresent(Bool.self, forKey: .myVote)
+    }
     
     struct Counts: Codable {
         var id: Int
