@@ -74,6 +74,8 @@
 		C659A69E25C5D4B000F12466 /* CavySite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659A69D25C5D4B000F12466 /* CavySite.swift */; };
 		C659A6A225C5DF4100F12466 /* CavyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659A6A125C5DF4100F12466 /* CavyUser.swift */; };
 		C659A6A625C5E3AC00F12466 /* CavyCommunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659A6A525C5E3AC00F12466 /* CavyCommunity.swift */; };
+		C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659A6AC25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift */; };
+		C659A6B125C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */; };
 		C6A7D4D025B8866B00D5FF2E /* BulletSeperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */; };
 		C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8992532496E00EB7DB8 /* Resource.swift */; };
 		C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */; };
@@ -192,6 +194,8 @@
 		C659A69D25C5D4B000F12466 /* CavySite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavySite.swift; sourceTree = "<group>"; };
 		C659A6A125C5DF4100F12466 /* CavyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyUser.swift; sourceTree = "<group>"; };
 		C659A6A525C5E3AC00F12466 /* CavyCommunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyCommunity.swift; sourceTree = "<group>"; };
+		C659A6AC25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLemmyAPIVersionUseCase.swift; sourceTree = "<group>"; };
+		C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLemmyAPIVersionUseCaseTests.swift; sourceTree = "<group>"; };
 		C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletSeperator.swift; sourceTree = "<group>"; };
 		C6C3D8992532496E00EB7DB8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				C63DF2D225313FB500728E08 /* LemmyAPIConsumerTests.swift */,
 				C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */,
 				C6091D0925C4759800E6CD0F /* LemmyV2SpecTests.swift */,
+				C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */,
 				C625441325B5FEE9007F170A /* CommentTreeTests.swift */,
 				C625442A25B65528007F170A /* DateParserTests.swift */,
 				C6FA67F625BA77B2002A352E /* URLUtilsTests.swift */,
@@ -503,6 +508,7 @@
 			children = (
 				C6D9F1182537CD8F00B41CE4 /* EditHostsUseCase.swift */,
 				C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */,
+				C659A6AC25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -642,6 +648,7 @@
 				C6091D3D25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift in Sources */,
 				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
+				C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
 				C6091D1225C4799400E6CD0F /* LemmyPostItemSummary.swift in Sources */,
 				C652706E25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift in Sources */,
@@ -727,6 +734,7 @@
 				C6FA67FB25BA7923002A352E /* LemmyPostItem++Tests.swift in Sources */,
 				C6D9F14A2537F3A100B41CE4 /* Assert.swift in Sources */,
 				C6FA67F725BA77B2002A352E /* URLUtilsTests.swift in Sources */,
+				C659A6B125C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift in Sources */,
 				C6D9F13D2537F04700B41CE4 /* PlainError.swift in Sources */,
 				C625441425B5FEE9007F170A /* CommentTreeTests.swift in Sources */,
 				C6FA67FF25BA7991002A352E /* Utils.swift in Sources */,
