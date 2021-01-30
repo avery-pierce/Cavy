@@ -41,10 +41,78 @@ struct LemmySiteResponseV2: Codable {
 struct LemmySiteView: Codable {
     var site: LemmySite?
     var creator: LemmyUser?
-    var counts: LemmyCounts?
+    var counts: Counts
+    
+    struct Counts: Codable {
+        var id: Int
+        var siteID: Int
+        var users: Int?
+        var posts: Int?
+        var comments: Int?
+        var communities: Int?
+        var usersActiveDay: Int?
+        var usersActiveWeek: Int?
+        var usersActiveMonth: Int?
+        var usersActiveHalfYear: Int?
+
+        enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case siteID = "site_id"
+            case users = "users"
+            case posts = "posts"
+            case comments = "comments"
+            case communities = "communities"
+            case usersActiveDay = "users_active_day"
+            case usersActiveWeek = "users_active_week"
+            case usersActiveMonth = "users_active_month"
+            case usersActiveHalfYear = "users_active_half_year"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            id = try values.decode(Int.self, forKey: .id)
+            siteID = try values.decode(Int.self, forKey: .siteID)
+            users = try values.decodeIfPresent(Int.self, forKey: .users)
+            posts = try values.decodeIfPresent(Int.self, forKey: .posts)
+            comments = try values.decodeIfPresent(Int.self, forKey: .comments)
+            communities = try values.decodeIfPresent(Int.self, forKey: .communities)
+            usersActiveDay = try values.decodeIfPresent(Int.self, forKey: .usersActiveDay)
+            usersActiveWeek = try values.decodeIfPresent(Int.self, forKey: .usersActiveWeek)
+            usersActiveMonth = try values.decodeIfPresent(Int.self, forKey: .usersActiveMonth)
+            usersActiveHalfYear = try values.decodeIfPresent(Int.self, forKey: .usersActiveHalfYear)
+        }
+    }
 }
 
 struct LemmyUserView: Codable {
     var user: LemmyUser?
-    var counts: LemmyCounts?
+    var counts: Counts
+    
+    struct Counts: Codable {
+        var id: Int
+        var userID: Int
+        var postCount: Int?
+        var postScore: Int?
+        var commentCount: Int?
+        var commentScore: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case userID = "user_id"
+            case postCount = "post_count"
+            case postScore = "post_score"
+            case commentCount = "comment_count"
+            case commentScore = "comment_score"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            id = try values.decode(Int.self, forKey: .id)
+            userID = try values.decode(Int.self, forKey: .userID)
+            postCount = try values.decodeIfPresent(Int.self, forKey: .postCount)
+            postScore = try values.decodeIfPresent(Int.self, forKey: .postScore)
+            commentCount = try values.decodeIfPresent(Int.self, forKey: .commentCount)
+            commentScore = try values.decodeIfPresent(Int.self, forKey: .commentScore)
+        }
+    }
 }
