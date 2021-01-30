@@ -26,7 +26,7 @@ extension LemmyComment {
 extension LemmyCommentSummary {
     var cavyComment: CavyComment {
         let publishDate = comment?.published.flatMap(parseLemmyDate(_:))
-        return CavyComment(id: comment!.id!, parentID: comment!.parentID!, score: counts.score, submitterName: creator?.name, publishDate: publishDate, bodyMarkdown: comment?.content)
+        return CavyComment(id: comment!.id!, parentID: comment!.parentID, score: counts.score, submitterName: creator?.name, publishDate: publishDate, bodyMarkdown: comment?.content)
     }
 }
 

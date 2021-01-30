@@ -11,19 +11,25 @@ import SwiftUI
 class RootModel: ObservableObject {
     @Published var clients = [LemmyAPIClient]() {
         didSet {
-            sync()
+            serverStore.write(clients)
         }
     }
     
-    let serverStore = ServerStore()
+    @Published var savedListings = [ListingDescriptor]() {
+        didSet {
+            listingStore.write(savedListings)
+        }
+    }
+    
+    let serverStore = ClientStore()
+    let listingStore = ListingStore()
     
     init() {
         self.clients = serverStore.read()
+        self.savedListings = listingStore.read()
     }
     
-    func sync() {
-        serverStore.write(clients)
-    }
+    // MARK: - Server management
     
     func addServer(_ server: LemmyAPIClient) {
         clients.append(server)
@@ -45,35 +51,27 @@ class RootModel: ObservableObject {
         useCase.delegate = self
         return useCase
     }
+    
+    // MARK: - Saved Listings
+    
+    func addFavorite(_ listing: ListingDescriptor) {
+        savedListings.append(listing)
+    }
+    
+    func removeFavorite(at index: Int) {
+        savedListings.remove(at: index)
+    }
+    
+    func removeFavorite(_ listing: ListingDescriptor) {
+        guard let index = savedListings.firstIndex(of: listing) else { return }
+        removeFavorite(at: index)
+    }
 }
 
 extension RootModel: AddServerDelegate {
     func useCase(_ useCase: AddServerUseCase, didAddServer server: String) {
         clients.append(LemmyAPIClient(descriptor: server))
     }
-}
-
-class ServerStore {
-    private let store: UserDefaults = .standard
-    private let key = "LemmyServers"
-    
-    func read() -> [LemmyAPIClient] {
-        guard let rawServers = store.array(forKey: key) as? [String] else {
-            return ServerStore.defaultServers
-        }
-        
-        return rawServers.map(LemmyAPIClient.init(descriptor:))
-    }
-    
-    func write(_ servers: [LemmyAPIClient]) {
-        let serializedArray = servers.map(\.descriptor)
-        store.set(serializedArray, forKey: key)
-    }
-    
-    static let defaultServers = [
-        LemmyAPIClient.lemmyML,
-        LemmyAPIClient.lemmygradML
-    ]
 }
 
 extension View {

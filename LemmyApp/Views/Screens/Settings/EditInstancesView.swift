@@ -21,7 +21,7 @@ struct EditInstancesView: View {
             }
             EditHostsView(rootModel.createAddServerUseCase())
             Section(header: Text("Good ones")) {
-                ForEach(ServerStore.defaultServers, id: \.descriptor) { server in
+                ForEach(ClientStore.defaultServers, id: \.descriptor) { server in
                     Text(server.descriptor)
                 }
             }

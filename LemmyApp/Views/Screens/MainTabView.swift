@@ -18,11 +18,11 @@ struct MainTabView: View {
                 Label("Instances", systemImage: "binoculars")
             }
             
-            ForEach(rootModel.clients, id: \.descriptor) { client in
+            ForEach(rootModel.savedListings, id: \.self) { listing in
                 NavigationView {
-                    SiteSummaryLoaderView(client)
+                    ListingDescriptorView(listing)
                 }.tabItem {
-                    Label(client.descriptor, systemImage: "globe")
+                    Label(listing.name, systemImage: "globe")
                 }
             }
             

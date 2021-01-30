@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoadableListingView: View {
+    @EnvironmentObject var rootModel: RootModel
     let client: LemmyAPIClient
     @ObservedObject var listModel: ListModel
     init(_ client: LemmyAPIClient) {
@@ -20,12 +21,31 @@ struct LoadableListingView: View {
             ListingView(listing.cavyPosts)
         }
         .onAppear(perform: listModel.refreshIfNeeded)
-        .navigationBarItems(trailing: Button(action: listModel.refresh) {
-            Image(systemName: "arrow.clockwise")
+        .navigationBarItems(trailing: HStack {
+            Button(action: listModel.refresh) {
+                Image(systemName: "arrow.clockwise")
+            }
+            Button(action: toggleSaved) {
+                isListingSaved ? Image(systemName: "star.fill") : Image(systemName: "star")
+            }
         })
         .navigationTitle(listModel.client.descriptor)
         .navigationBarTitleDisplayMode(.inline)
         .lemmyAPIClient(client)
+    }
+
+    var listing: ListingDescriptor { ListingDescriptor(client, communityID: nil, favorite: true) }
+    
+    var isListingSaved: Bool {
+        return rootModel.savedListings.contains(listing)
+    }
+    
+    func toggleSaved() {
+        if isListingSaved {
+            rootModel.removeFavorite(listing)
+        } else {
+            rootModel.addFavorite(listing)
+        }
     }
 }
 

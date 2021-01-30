@@ -25,7 +25,7 @@ struct CommunitiesView: View {
         List {
             ForEach(communities, id: \.id) { community in
                 if let communityID = community.id {
-                    NavigationLink(community.name, destination: PostResultsView(postResults(communityID: communityID)).lemmyAPIClient(client))
+                    NavigationLink(community.name, destination: PostResultsView(postResults(communityID: communityID), descriptor: ListingDescriptor(client, communityID: communityID, favorite: true)).lemmyAPIClient(client))
                 } else {
                     Text(community.name)
                 }
