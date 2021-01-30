@@ -30,6 +30,7 @@ struct ListingDescriptorView: View {
     
     var body: some View {
         PostResultsView(resource)
+            .lemmyAPIClient(LemmyAPIClient(descriptor: listingDescriptor.client))
     }
 }
 

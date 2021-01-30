@@ -20,6 +20,7 @@ struct CommentsListView: View {
             // FIXME: The tap target shrinks to fit the content instead
             // of filling the entire cell.
             CommentView(comment)
+                .animation(.easeIn)
                 .onTapGesture {
                     self.commentTree.toggleHidden(comment.comment.id)
                 }
@@ -29,17 +30,18 @@ struct CommentsListView: View {
 
 struct CommentsListView_Previews: PreviewProvider {
     static var previews: some View {
-        List() {
-            CommentsListView([
-                try! LemmyComment.fromJSON("""
+        ScrollView {
+            LazyVStack {
+                CommentsListView([
+                    try! LemmyComment.fromJSON("""
                         {
                             "id": 1,
                             "creator_name": "jill",
                             "content": "Hello World! This is the first comment in the list"
                         }
                         """).cavyComment
-                ,
-                try! LemmyComment.fromJSON("""
+                    ,
+                    try! LemmyComment.fromJSON("""
                         {
                             "id": 2,
                             "creator_name": "jack",
@@ -47,7 +49,7 @@ struct CommentsListView_Previews: PreviewProvider {
                             "parent_id": 1
                         }
                         """).cavyComment,
-                try! LemmyComment.fromJSON("""
+                    try! LemmyComment.fromJSON("""
                         {
                             "id": 3,
                             "creator_name": "jack",
@@ -55,7 +57,7 @@ struct CommentsListView_Previews: PreviewProvider {
                             "parent_id": 1
                         }
                         """).cavyComment,
-                try! LemmyComment.fromJSON("""
+                    try! LemmyComment.fromJSON("""
                     {
                         "id": 4,
                         "creator_name": "jack",
@@ -63,7 +65,9 @@ struct CommentsListView_Previews: PreviewProvider {
                         "parent_id": 2
                     }
                     """).cavyComment
-            ])
+                ])
+                Spacer()
+            }
         }
         .animation(.easeInOut)
         

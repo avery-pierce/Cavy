@@ -37,24 +37,18 @@ struct PostDetailView: View {
         }
     }
     
-    let listEdgeInsets = EdgeInsets(top: 8,
-                                    leading: 8,
-                                    bottom: 8,
-                                    trailing: 8)
-    
     var body: some View {
-        List() {
-            PostContentView(post)
-            LoadStateView(postModel.loadState) { listing in
-                CommentsListView(listing.cavyComments)
-                    .listRowInsets(listEdgeInsets)
+        ScrollView {
+            LazyVStack {
+                PostContentView(post)
+                LoadStateView(postModel.loadState) { listing in
+                    CommentsListView(listing.cavyComments)
+                        .padding(.leading, 8)
+                }
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
         .onAppear(perform: refresh)
-        
-        // FIXME: I want animation when a comment is collapsed/shown, but not anywhere else.
-        .animation(.linear)
     }
 }
 

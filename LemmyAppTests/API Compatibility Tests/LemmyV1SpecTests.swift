@@ -10,7 +10,7 @@ import XCTest
 
 class LemmyV1SpecTests: XCTestCase {
     
-    let client: LemmyV1Spec = LemmyV1Spec("chapo.chat")
+    let client: LemmyV1Spec = LemmyV1Spec("www.chapo.chat")
     
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")
@@ -49,7 +49,7 @@ class LemmyV1SpecTests: XCTestCase {
          post ID: 41326
          */
         let e = expectation(description: "Get post")
-        let spec = client.fetchPost(id: 41391)
+        let spec = client.fetchPost(id: 79027)
         assertDecodes(spec) {
             e.fulfill()
         }
