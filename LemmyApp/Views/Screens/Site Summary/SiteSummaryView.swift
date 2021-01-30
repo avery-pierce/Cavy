@@ -12,14 +12,9 @@ struct SiteSummaryView: View {
     @Environment(\.lemmyAPIClient) var client
     @Environment(\.colorScheme) var colorScheme
     
-    var siteResponseState: LoadState<LemmySiteResponse, Error>
-    
-    var siteResponse: LemmySiteResponse? {
-        siteResponseState.value
-    }
-    
-    var site: LemmySite? {
-        siteResponse?.site
+    var site: CavySite
+    init(_ site: CavySite) {
+        self.site = site
     }
     
     var backgroundColor: Color {
@@ -40,117 +35,93 @@ struct SiteSummaryView: View {
         }
     }
     
-    var saveInstanceButton: some View {
-        Button(action: toggleSiteSaved) {
-            isServerSaved ? Image(systemName: "star.fill") : Image(systemName: "star")
-        }
-    }
-
-    var isServerSaved: Bool {
-        return rootModel.clients.contains(where: { $0.descriptor == client.descriptor })
-    }
-    
-    func toggleSiteSaved() {
-        if isServerSaved {
-            rootModel.removeServer(client)
-        } else {
-            rootModel.addServer(client)
-        }
-    }
-    
     var body: some View {
-        LoadStateView(siteResponseState) { (siteResponse) in
-            ScrollView {
-                LazyVStack {
-                    if let icon = site?.icon.flatMap(URL.init(string:)) {
-                        Loader(icon, parsedBy: imageParser) { state in
-                            LoadStateView(state) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
+        ScrollView {
+            LazyVStack {
+                if let icon = site.iconURL {
+                    Loader(icon, parsedBy: imageParser) { state in
+                        LoadStateView(state) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                         }
                     }
-                    
-                    Text(siteResponse.site?.name ?? "")
-                        .font(.title)
-                        .bold()
-                    
-                    Text(client.descriptor).font(.title2)
-                    
-                    if let description = siteResponse.site?.description {
-                        HStack {
-                            MarkdownText(description)
-                            Spacer()
-                        }
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
-                        .padding(.horizontal)
+                }
+                
+                Text(site.name)
+                    .font(.title)
+                    .bold()
+                
+                Text(client.descriptor).font(.title2)
+                
+                if let description = site.descriptionMarkdown {
+                    HStack {
+                        MarkdownText(description)
+                        Spacer()
                     }
-                    
-                    VStack(alignment: .leading) {
-                        if site != nil {
-                            NavigationLink(destination: LoadableListingView(client)) {
-                                ListCellView {
-                                    Text("Posts").bold()
-                                }
-                                .padding(.top, 8)
-                            }
-                            Divider()
-                        }
-                        
-                        if let numberOfUsers = site?.numberOfUsers {
-                            ListCellView {
-                                Text("\(numberOfUsers) users")
-                            }
-                            Divider()
-                        }
-                        
-                        if let numberOfCommunities = site?.numberOfCommunities {
-                            NavigationLink(destination: LoadableCommunitiesView().lemmyAPIClient(client)) {
-                                ListCellView {
-                                    Text("\(numberOfCommunities) communities")
-                                }
-                            }
-                            Divider()
-                        }
-                        
-                        if let admins = siteResponse.admins {
-                            NavigationLink(destination: UsersListView(admins).navigationTitle("Admins")) {
-                                ListCellView {
-                                    Text("\(admins.count) admins")
-                                }
-                            }
-                            Divider()
-                        }
-                        
-                        if let bannedUsers = siteResponse.banned {
-                            NavigationLink(destination: UsersListView(bannedUsers).navigationTitle("Banned Users")) {
-                                ListCellView {
-                                    Text("\(bannedUsers.count) banned users")
-                                }
-                            }
-                            Divider()
-                        }
-                        
-                        if let federatedInstances = siteResponse.federatedInstances {
-                            NavigationLink(destination: FederatedInstancesListView(federatedInstances)) {
-                                ListCellView {
-                                    Text("\(federatedInstances.count) federated instances")
-                                }
-                            }
-                            Divider()
-                        }
-                    }
+                    .padding()
                     .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
                     .padding(.horizontal)
                 }
+                
+                VStack(alignment: .leading) {
+                    
+                    NavigationLink(destination: LoadableListingView(client)) {
+                        ListCellView {
+                            Text("Posts").bold()
+                        }
+                        .padding(.top, 8)
+                    }
+                    Divider()
+                
+                    if let numberOfUsers = site.numberOfUsers {
+                        ListCellView {
+                            Text("\(numberOfUsers) users")
+                        }
+                        Divider()
+                    }
+                    
+                    if let numberOfCommunities = site.numberOfCommunities {
+                        NavigationLink(destination: LoadableCommunitiesView().lemmyAPIClient(client)) {
+                            ListCellView {
+                                Text("\(numberOfCommunities) communities")
+                            }
+                        }
+                        Divider()
+                    }
+                    
+                    if let admins = site.admins {
+                        NavigationLink(destination: UsersListView(admins).navigationTitle("Admins")) {
+                            ListCellView {
+                                Text("\(admins.count) admins")
+                            }
+                        }
+                        Divider()
+                    }
+                    
+                    if let bannedUsers = site.banned {
+                        NavigationLink(destination: UsersListView(bannedUsers).navigationTitle("Banned Users")) {
+                            ListCellView {
+                                Text("\(bannedUsers.count) banned users")
+                            }
+                        }
+                        Divider()
+                    }
+                    
+                    if let federatedInstances = site.federatedInstances {
+                        NavigationLink(destination: FederatedInstancesListView(federatedInstances)) {
+                            ListCellView {
+                                Text("\(federatedInstances.count) federated instances")
+                            }
+                        }
+                        Divider()
+                    }
+                }
+                .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
+                .padding(.horizontal)
             }
-            .background(backgroundColor.ignoresSafeArea())
-            
         }
-        .navigationBarItems(trailing: saveInstanceButton)
-        .navigationBarTitleDisplayMode(.inline)
+        .background(backgroundColor.ignoresSafeArea())
     }
 }
 
@@ -166,12 +137,12 @@ struct SiteSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                SiteSummaryView(siteResponseState: .success(LemmySiteResponse.sampleData))
+                SiteSummaryView(LemmySiteResponse.sampleData.cavySite)
             }
             .navigationBarTitleDisplayMode(.inline)
             
             NavigationView {
-                SiteSummaryView(siteResponseState: .success(LemmySiteResponse.sampleData))
+                SiteSummaryView(LemmySiteResponse.sampleData.cavySite)
             }
             .navigationBarTitleDisplayMode(.inline)
             .colorScheme(.dark)

@@ -18,13 +18,17 @@ struct CavySite {
     var federatedInstances: [String]?
 }
 
-extension LemmySiteResponse {
+protocol CavySiteConvertable {
+    var cavySite: CavySite { get }
+}
+
+extension LemmySiteResponse: CavySiteConvertable {
     var cavySite: CavySite {
         CavySite(name: site?.name ?? "", iconURL: site?.icon.flatMap(URL.init(string:)), descriptionMarkdown: site?.description, numberOfUsers: site?.numberOfUsers, numberOfCommunities: site?.numberOfComments, admins: admins, banned: banned, federatedInstances: federatedInstances)
     }
 }
 
-extension LemmySiteResponseV2 {
+extension LemmySiteResponseV2: CavySiteConvertable {
     var cavySite: CavySite {
         CavySite(name: siteView?.site?.name ?? "", iconURL: siteView?.site?.icon.flatMap(URL.init(string:)), descriptionMarkdown: siteView?.site?.description, numberOfUsers: siteView?.counts.users, numberOfCommunities: siteView?.counts.communities, admins: admins?.compactMap(\.user), banned: banned?.compactMap(\.user), federatedInstances: federatedInstances)
     }

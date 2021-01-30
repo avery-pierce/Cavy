@@ -8,37 +8,46 @@
 import SwiftUI
 
 struct SiteSummaryLoaderView: View {
+    @EnvironmentObject var rootModel: RootModel
     let client: LemmyAPIClient
     
     init(_ client: LemmyAPIClient = .lemmyML) {
         self.client = client
     }
     
-    var siteResource: ParsedDataResource<LemmySiteResponse> {
+    var siteResource: ParsedDataResource<CavySiteConvertable> {
         switch client {
         case .v1(let spec): return ParsedDataResource(spec.fetchSite())
-        case .v2(let spec):
-            let fetchSite = spec.fetchSite()
-            return ParsedDataResource(fetchSite.dataProvider, parsedBy: typeAdapter(parser: jsonParser(fetchSite.type), adapter: { (v2) -> LemmySiteResponse in
-                
-                let site = v2.siteView?.site
-                let admins = v2.admins?.compactMap(\.user) ?? []
-                let banned = v2.banned?.compactMap(\.user) ?? []
-                let online = v2.online
-                let version = v2.version
-                let myUser = v2.myUser
-                let federatedInstances = v2.federatedInstances ?? []
-                
-                return LemmySiteResponse(site: site, admins: admins, banned: banned, online: online, version: version, myUser: myUser, federatedInstances: federatedInstances)
-            }))
+        case .v2(let spec): return ParsedDataResource(spec.fetchSite())
         }
     }
     
     var body: some View {
         Loader(siteResource) { loadState in
-        
-            SiteSummaryView(siteResponseState: loadState)
-                .environment(\.lemmyAPIClient, client)
+            LoadStateView(loadState.map({ $0.cavySite })) { site in
+                SiteSummaryView(site)
+                    .environment(\.lemmyAPIClient, client)
+            }
+        }
+        .navigationBarItems(trailing: saveInstanceButton)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    var saveInstanceButton: some View {
+        Button(action: toggleSiteSaved) {
+            isServerSaved ? Image(systemName: "star.fill") : Image(systemName: "star")
+        }
+    }
+    
+    var isServerSaved: Bool {
+        return rootModel.clients.contains(where: { $0.descriptor == client.descriptor })
+    }
+    
+    func toggleSiteSaved() {
+        if isServerSaved {
+            rootModel.removeServer(client)
+        } else {
+            rootModel.addServer(client)
         }
     }
 }

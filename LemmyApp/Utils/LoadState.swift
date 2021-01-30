@@ -51,6 +51,19 @@ enum LoadState<T, E: Error> {
     var value: T? {
         return try? result?.get()
     }
+    
+    func map<NewSuccess>(_ closure: (T) -> NewSuccess) -> LoadState<NewSuccess, E> {
+        switch self {
+        case .idle:
+            return .idle
+            
+        case .loading(let pct):
+            return .loading(pct)
+            
+        case .complete(let result):
+            return .complete(result.map(closure))
+        }
+    }
 }
 
 extension LoadState: Equatable where E: Equatable, T: Equatable {}
