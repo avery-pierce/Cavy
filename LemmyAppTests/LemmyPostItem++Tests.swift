@@ -22,14 +22,14 @@ class LemmyPostItem__Tests: XCTestCase {
     }
 
     func testWebArticle() throws {
-        XCTAssertEqual(webArticlePost.kind, .web)
+        XCTAssertEqual(webArticlePost.cavyPost.linkURL?.kind, .web)
     }
     
     func testImagePost() throws {
-        XCTAssertEqual(imagePost.kind, .image)
+        XCTAssertEqual(imagePost.cavyPost.linkURL?.kind, .image)
     }
     
     func testSelfPost() throws {
-        XCTAssertEqual(selfPost.kind, nil)
+        XCTAssertEqual(selfPost.cavyPost.linkURL?.kind, nil)
     }
 }

@@ -67,12 +67,12 @@ class CommentTreeTests: XCTestCase {
         XCTAssertEqual(result2, "18934(0), 18943(1), 18945(2), 18948(3), 18956(4), 18930(X)")
     }
     
-    private func render(tree: [Node<LemmyComment>]) -> String {
+    private func render(tree: [Node<CavyComment>]) -> String {
         tree.map { (node) -> String in
             if node.children.isEmpty {
-                return "\(node.value.id!)"
+                return "\(node.value.id)"
             } else {
-                return "\(node.value.id!)>(\(render(tree: node.children)))"
+                return "\(node.value.id)>(\(render(tree: node.children)))"
             }
         }.joined(separator: ", ")
     }
@@ -80,9 +80,9 @@ class CommentTreeTests: XCTestCase {
     private func render(flattenedTree: [ThreadedComment]) -> String {
         flattenedTree.map { (comment) -> String in
             if comment.isHidden {
-                return "\(comment.comment.id!)(X)"
+                return "\(comment.comment.id)(X)"
             } else {
-                return "\(comment.comment.id!)(\(comment.indentationLevel))"
+                return "\(comment.comment.id)(\(comment.indentationLevel))"
             }
         }.joined(separator: ", ")
     }

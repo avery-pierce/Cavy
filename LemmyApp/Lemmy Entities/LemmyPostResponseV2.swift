@@ -34,6 +34,25 @@ struct LemmyCommentSummary: Codable {
         var upvotes: Int?
         var downvotes: Int?
         var published: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case commentID = "comment_id"
+            case score = "score"
+            case upvotes = "upvotes"
+            case downvotes = "downvotes"
+            case published = "published"
+        }
+        
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            id = try values.decode(Int.self, forKey: .id)
+            commentID = try values.decode(Int.self, forKey: .commentID)
+            score = try values.decodeIfPresent(Int.self, forKey: .score)
+            upvotes = try values.decodeIfPresent(Int.self, forKey: .upvotes)
+            downvotes = try values.decodeIfPresent(Int.self, forKey: .downvotes)
+            published = try values.decodeIfPresent(String.self, forKey: .published)
+        }
     }
 }
 

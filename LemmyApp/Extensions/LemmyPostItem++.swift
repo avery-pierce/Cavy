@@ -8,7 +8,5 @@
 import Foundation
 
 extension LemmyPostItem {
-    var kind: LinkKind? {
-        url?.kind
-    }
+
 }

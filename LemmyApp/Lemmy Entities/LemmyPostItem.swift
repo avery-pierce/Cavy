@@ -16,7 +16,7 @@ struct LemmyPostItem: Codable, Equatable {
     let creatorID : Int?
     let creatorAvatar : String?
     let locked : Bool?
-    let url : URL?
+    let url : String?
     let updated : String?
     let communityID : Int?
     let communityIcon : String?
@@ -115,7 +115,7 @@ struct LemmyPostItem: Codable, Equatable {
         creatorID = try values.decodeIfPresent(Int.self, forKey: .creatorID)
         creatorAvatar = try values.decodeIfPresent(String.self, forKey: .creatorAvatar)
         locked = try values.decodeIfPresent(Bool.self, forKey: .locked)
-        url = try values.decodeIfPresent(URL.self, forKey: .url)
+        url = try values.decodeIfPresent(String.self, forKey: .url)
         updated = try values.decodeIfPresent(String.self, forKey: .updated)
         communityID = try values.decodeIfPresent(Int.self, forKey: .communityID)
         communityIcon = try values.decodeIfPresent(String.self, forKey: .communityIcon)
@@ -164,10 +164,6 @@ extension LemmyPostItem {
     
     var imageURL: URL? { thumbnailURL.flatMap(URL.init(string:)) }
     var authorName: String { creatorPreferredUsername ?? creatorName ?? "" }
-    var domain: String {
-        guard let url = url else { return "" }
-        return URLComponents(url: url, resolvingAgainstBaseURL: false)?.host ?? ""
-    }
 }
 
 extension LemmyPostItem {

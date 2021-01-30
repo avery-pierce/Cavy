@@ -60,8 +60,8 @@ class LemmyAPIFactory: ObservableObject {
         return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&community_id=\(communityID)")
     }
     
-    func listCommunities(sort: SortType, page: Int = 1, limit: Int = 50) -> URLRequest {
-        return path("api/\(v)/community/list?sort=\(sort.rawValue)&page=\(page)&limit=\(limit)")
+    func listCommunities(type: PostType = .all, sort: SortType, page: Int = 1, limit: Int = 50) -> URLRequest {
+        return path("api/\(v)/community/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&page=\(page)&limit=\(limit)")
     }
     
     func fetchPost(id: String) -> URLRequest {
