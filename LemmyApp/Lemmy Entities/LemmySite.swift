@@ -17,7 +17,7 @@ struct LemmySite: Codable {
     var enableDownvotes: Bool?
     var openRegistration: Bool?
     var enableNSFW: Bool?
-    var icon: URL?
+    var icon: String?
     var banner: String?
     var creatorName: String?
     var creatorPreferredUsername: String?
@@ -57,7 +57,7 @@ struct LemmySite: Codable {
         enableDownvotes = try values.decodeIfPresent(Bool.self, forKey: .enableDownvotes)
         openRegistration = try values.decodeIfPresent(Bool.self, forKey: .openRegistration)
         enableNSFW = try values.decodeIfPresent(Bool.self, forKey: .enableNSFW)
-        icon = try values.decodeIfPresent(URL.self, forKey: .icon)
+        icon = try values.decodeIfPresent(String.self, forKey: .icon)
         banner = try values.decodeIfPresent(String.self, forKey: .banner)
         creatorName = try values.decodeIfPresent(String.self, forKey: .creatorName)
         creatorPreferredUsername = try values.decodeIfPresent(String.self, forKey: .creatorPreferredUsername)

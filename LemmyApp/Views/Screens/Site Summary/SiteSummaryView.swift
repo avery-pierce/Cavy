@@ -62,7 +62,7 @@ struct SiteSummaryView: View {
         LoadStateView(siteResponseState) { (siteResponse) in
             ScrollView {
                 LazyVStack {
-                    if let icon = site?.icon {
+                    if let icon = site?.icon.flatMap(URL.init(string:)) {
                         Loader(icon, parsedBy: imageParser) { state in
                             LoadStateView(state) { image in
                                 Image(uiImage: image)
