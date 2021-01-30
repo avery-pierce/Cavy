@@ -79,7 +79,6 @@
 		C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
-		C6D9F10C2532646300B41CE4 /* LemmyFetchPost.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D9F10B2532646300B41CE4 /* LemmyFetchPost.json */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
 		C6D9F1142532654700B41CE4 /* LemmyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1132532654700B41CE4 /* LemmyUser.swift */; };
 		C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1182537CD8F00B41CE4 /* EditHostsUseCase.swift */; };
@@ -198,7 +197,6 @@
 		C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
-		C6D9F10B2532646300B41CE4 /* LemmyFetchPost.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LemmyFetchPost.json; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
 		C6D9F1132532654700B41CE4 /* LemmyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyUser.swift; sourceTree = "<group>"; };
 		C6D9F1182537CD8F00B41CE4 /* EditHostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHostsUseCase.swift; sourceTree = "<group>"; };
@@ -465,7 +463,6 @@
 				C6D9F10F2532652500B41CE4 /* LemmyComment.swift */,
 				C6D9F1132532654700B41CE4 /* LemmyUser.swift */,
 				C652705025BC99A80014FB05 /* LemmyModerator.swift */,
-				C6D9F10B2532646300B41CE4 /* LemmyFetchPost.json */,
 			);
 			path = "Lemmy Entities";
 			sourceTree = "<group>";
@@ -611,7 +608,6 @@
 				C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */,
 				C652705C25BCA1490014FB05 /* 20210118_post_list_all_hot.json in Resources */,
 				C652705925BCA1460014FB05 /* 20210122_lemmy_ml_site.json in Resources */,
-				C6D9F10C2532646300B41CE4 /* LemmyFetchPost.json in Resources */,
 				C63DF2B22530016300728E08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
