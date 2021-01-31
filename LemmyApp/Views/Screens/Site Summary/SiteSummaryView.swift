@@ -44,7 +44,7 @@ struct SiteSummaryView: View {
                     .padding(.horizontal)
                     .buttonStyle(DefaultButtonStyle())
                 
-                NavigationLink(destination: LoadableListingView(client)) {
+                NavigationLink(destination: LoadingPostListView(.frontPage(of: client))) {
                     ListCellView {
                         Image(systemName: "tray.full")
                         VStack(alignment: .leading) {
