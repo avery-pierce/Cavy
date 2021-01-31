@@ -39,6 +39,26 @@ struct SiteSummaryView: View {
                 
                 APILevelTidbit()
                 
+                SiteKPIsRow(site: site)
+                    .padding(.horizontal)
+                    .buttonStyle(DefaultButtonStyle())
+                
+                NavigationLink(destination: LoadableListingView(client)) {
+                    ListCellView {
+                        Image(systemName: "tray.full")
+                        VStack(alignment: .leading) {
+                            Text("Front Page")
+                                .font(.system(size: 14.0))
+                                .bold()
+                            Text(client.host)
+                                .font(.system(size: 12.0))
+                                .opacity(0.8)
+                        }
+                    }
+                }
+                .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
+                .padding(.horizontal)
+                
                 if let description = site.descriptionMarkdown {
                     HStack {
                         MarkdownText(description)
@@ -49,61 +69,15 @@ struct SiteSummaryView: View {
                     .padding(.horizontal)
                 }
                 
-                VStack(alignment: .leading) {
-                    
-                    NavigationLink(destination: LoadableListingView(client)) {
+                if let admins = site.admins {
+                    NavigationLink(destination: UsersListView(admins).navigationTitle("Admins")) {
                         ListCellView {
-                            Text("Posts").bold()
+                            Text("\(admins.count) admins")
                         }
-                        .padding(.top, 8)
                     }
-                    Divider()
-                
-                    if let numberOfUsers = site.numberOfUsers {
-                        ListCellView {
-                            Text("\(numberOfUsers) users")
-                        }
-                        Divider()
-                    }
-                    
-                    if let numberOfCommunities = site.numberOfCommunities {
-                        NavigationLink(destination: LoadableCommunitiesView().lemmyAPIClient(client)) {
-                            ListCellView {
-                                Text("\(numberOfCommunities) communities")
-                            }
-                        }
-                        Divider()
-                    }
-                    
-                    if let admins = site.admins {
-                        NavigationLink(destination: UsersListView(admins).navigationTitle("Admins")) {
-                            ListCellView {
-                                Text("\(admins.count) admins")
-                            }
-                        }
-                        Divider()
-                    }
-                    
-                    if let bannedUsers = site.banned {
-                        NavigationLink(destination: UsersListView(bannedUsers).navigationTitle("Banned Users")) {
-                            ListCellView {
-                                Text("\(bannedUsers.count) banned users")
-                            }
-                        }
-                        Divider()
-                    }
-                    
-                    if let federatedInstances = site.federatedInstances {
-                        NavigationLink(destination: FederatedInstancesListView(federatedInstances)) {
-                            ListCellView {
-                                Text("\(federatedInstances.count) federated instances")
-                            }
-                        }
-                        Divider()
-                    }
+                    .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
+                    .padding(.horizontal)
                 }
-                .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
-                .padding(.horizontal)
             }
         }
         .background(Color.systemGroupedBackground.ignoresSafeArea())
