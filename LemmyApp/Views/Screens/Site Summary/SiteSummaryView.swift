@@ -17,24 +17,6 @@ struct SiteSummaryView: View {
         self.site = site
     }
     
-    var backgroundColor: Color {
-        switch colorScheme {
-        case .dark:
-            return Color(hue: 0.6, saturation: 0.1, brightness: 0.1)
-        default:
-            return Color(hue: 0.6, saturation: 0.04, brightness: 0.97)
-        }
-    }
-    
-    var backdropColor: Color {
-        switch colorScheme {
-        case .dark:
-            return .black
-        default:
-            return .white
-        }
-    }
-    
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -60,7 +42,7 @@ struct SiteSummaryView: View {
                         Spacer()
                     }
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
+                    .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
                     .padding(.horizontal)
                 }
                 
@@ -117,11 +99,11 @@ struct SiteSummaryView: View {
                         Divider()
                     }
                 }
-                .background(RoundedRectangle(cornerRadius: 8.0).fill(backdropColor))
+                .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
                 .padding(.horizontal)
             }
         }
-        .background(backgroundColor.ignoresSafeArea())
+        .background(Color.systemGroupedBackground.ignoresSafeArea())
     }
 }
 

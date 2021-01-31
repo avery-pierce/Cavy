@@ -34,6 +34,7 @@ struct LemmyPostItemSummary: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         post = try values.decodeIfPresent(LemmyPostItem.self, forKey: .post)
         creator = try values.decodeIfPresent(LemmyUser.self, forKey: .creator)
+        community = try values.decodeIfPresent(LemmyCommunity.self, forKey: .community)
         creatorBannedFromCommunity = try values.decodeIfPresent(Bool.self, forKey: .creatorBannedFromCommunity)
         counts = try values.decode(Counts.self, forKey: .counts)
         subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
