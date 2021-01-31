@@ -26,6 +26,7 @@ struct SiteSummaryView: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 12.0)
                         }
                     }
                 }
@@ -34,7 +35,9 @@ struct SiteSummaryView: View {
                     .font(.title)
                     .bold()
                 
-                Text(client.descriptor).font(.title2)
+                Text(client.host).font(.title2)
+                
+                APILevelTidbit()
                 
                 if let description = site.descriptionMarkdown {
                     HStack {

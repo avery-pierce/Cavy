@@ -41,6 +41,8 @@
 		C625442B25B65528007F170A /* DateParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625442A25B65528007F170A /* DateParserTests.swift */; };
 		C625443125B685ED007F170A /* 20210118_post_list_all_hot.json in Resources */ = {isa = PBXBuildFile; fileRef = C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */; };
 		C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65625C7295E00CC1FC9 /* Colors.swift */; };
+		C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */; };
+		C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */; };
 		C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* LemmyAppApp.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
@@ -164,6 +166,8 @@
 		C625443025B685ED007F170A /* 20210118_post_list_all_hot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210118_post_list_all_hot.json; sourceTree = "<group>"; };
 		C625443425B68B8E007F170A /* 20210118_post_list_all_hot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 20210118_post_list_all_hot.json; sourceTree = "<group>"; };
 		C632F65625C7295E00CC1FC9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTidbit.swift; sourceTree = "<group>"; };
+		C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILevelTidbit.swift; sourceTree = "<group>"; };
 		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -269,6 +273,15 @@
 				C6FA681A25BB2F42002A352E /* 20210122_chapo_chat_site.json */,
 			);
 			path = "Mock Data";
+			sourceTree = "<group>";
+		};
+		C632F65A25C72C8E00CC1FC9 /* Tidbits */ = {
+			isa = PBXGroup;
+			children = (
+				C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */,
+				C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */,
+			);
+			path = Tidbits;
 			sourceTree = "<group>";
 		};
 		C63DF2A12530016000728E08 = {
@@ -395,6 +408,7 @@
 		C652709525BCBC050014FB05 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C632F65A25C72C8E00CC1FC9 /* Tidbits */,
 				C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */,
 				C6FA67E425BA5804002A352E /* ThumbnailView.swift */,
 				C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */,
@@ -666,6 +680,7 @@
 				C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */,
 				C652705125BC99A80014FB05 /* LemmyModerator.swift in Sources */,
 				C6D9F1372537E16700B41CE4 /* PlainError.swift in Sources */,
+				C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */,
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
 				C6091D0425C473B800E6CD0F /* LemmyV2Spec.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
@@ -702,6 +717,7 @@
 				C6FA681725BB2CA2002A352E /* LemmySiteResponse.swift in Sources */,
 				C6FA681325BB295F002A352E /* LemmySite.swift in Sources */,
 				C659A69E25C5D4B000F12466 /* CavySite.swift in Sources */,
+				C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */,
 				C640772625BCC7E500B42F63 /* CommunitiesView.swift in Sources */,
 				C6D9F1292537D83400B41CE4 /* EditInstancesView.swift in Sources */,
 				C659A6A625C5E3AC00F12466 /* CavyCommunity.swift in Sources */,
