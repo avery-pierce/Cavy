@@ -26,6 +26,7 @@ struct SiteSummaryView: View {
                             Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .frame(maxHeight: 200)
                                 .padding(.horizontal, 12.0)
                         }
                     }
@@ -60,13 +61,11 @@ struct SiteSummaryView: View {
                 .padding(.horizontal)
                 
                 if let description = site.descriptionMarkdown {
-                    HStack {
-                        MarkdownText(description)
-                        Spacer()
-                    }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
-                    .padding(.horizontal)
+                    MarkdownText(description)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
+                        .padding(.horizontal)
                 }
                 
                 if let admins = site.admins {
@@ -79,6 +78,7 @@ struct SiteSummaryView: View {
                     .padding(.horizontal)
                 }
             }
+            .padding(.vertical, 12.0)
         }
         .background(Color.systemGroupedBackground.ignoresSafeArea())
     }
