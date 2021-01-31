@@ -10,26 +10,8 @@ import SwiftUI
 struct PostContentView: View {
     let post: CavyPost
 
-    // TODO: Refactor these to use Loader pattern
-    @ObservedObject var thumbnailImageLoader: ImageLoader
-    @ObservedObject var imageLoader: ImageLoader
-
     init(_ post: CavyPost) {
         self.post = post
-        
-        let thumbnailURL = post.thumbnailURL ?? URL(string: "http://www.example.com")!
-        self.thumbnailImageLoader = ImageLoader(thumbnailURL)
-        
-        let url = post.linkURL ?? URL(string: "http://www.example.com")!
-        self.imageLoader = ImageLoader(url)
-        
-        if hasThumbnail {
-            self.thumbnailImageLoader.load()
-        }
-        
-        if post.linkURL?.kind == LinkKind.image {
-            self.imageLoader.load()
-        }
     }
     
     var hasThumbnail: Bool {
@@ -43,9 +25,15 @@ struct PostContentView: View {
     
     var articleSummaryView: some View {
         let summaryTitle = post.embed?.title == post.title ? nil : post.embed?.title
-        let thumbnailState = post.thumbnailURL != nil ? thumbnailImageLoader.state : nil
-        
-        return ArticleSummaryView(title: summaryTitle, description: post.embed?.description, destinationURL: post.linkURL, thumbnailState: thumbnailState)
+        return VStack {
+            if let thumbnailURL = post.thumbnailURL {
+                Loader(thumbnailURL, parsedBy: imageParser) { thumbnailState in
+                    ArticleSummaryView(title: summaryTitle, description: post.embed?.description, destinationURL: post.linkURL, thumbnailState: thumbnailState)
+                }
+            } else {
+                ArticleSummaryView(title: summaryTitle, description: post.embed?.description, destinationURL: post.linkURL, thumbnailState: nil)
+            }
+        }
     }
     
     var timeAgoText: String {
@@ -58,12 +46,21 @@ struct PostContentView: View {
     
     var largeImageView: some View {
         VStack(alignment: .center) {
-            LoadStateView(imageLoader.state) { image in
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+            if let imageURL = post.linkURL, imageURL.kind == LinkKind.image {
+                Link(destination: imageURL) {
+                    Loader(imageURL, parsedBy: imageParser) { state in
+                        HStack(alignment: .center) {
+                            LoadStateView(state) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                        }
+                    }
+                }
+            } else {
+                EmptyView()
             }
-            .frame(minHeight: 300, idealHeight: 500, maxHeight: 800, alignment: .center)
         }
     }
     
@@ -78,15 +75,7 @@ struct PostContentView: View {
             }
             .padding(EdgeInsets(top: 12, leading: 8, bottom: 8, trailing: 8))
             
-            if let url = post.linkURL, url.kind == LinkKind.image {
-                Link(destination: url) {
-                    HStack(alignment: .center) {
-                        Spacer()
-                        largeImageView
-                        Spacer()
-                    }
-                }
-            }
+            largeImageView 
             
             VStack(alignment: .leading, spacing: 12) {
                 if let body = post.bodyMarkdown {
@@ -125,7 +114,6 @@ struct PostContentView: View {
             }
             .padding(EdgeInsets(top: 12, leading: 8, bottom: 8, trailing: 8))
         }
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
 

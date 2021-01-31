@@ -45,6 +45,7 @@ struct PostDetailView: View {
                     CommentsListView(listing.cavyComments)
                         .padding(.leading, 8)
                 }
+                Spacer()
             }
         }
         .navigationBarTitle(title, displayMode: .inline)

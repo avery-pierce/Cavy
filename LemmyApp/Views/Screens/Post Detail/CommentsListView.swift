@@ -20,10 +20,10 @@ struct CommentsListView: View {
             // FIXME: The tap target shrinks to fit the content instead
             // of filling the entire cell.
             CommentView(comment)
-                .animation(.easeIn)
                 .onTapGesture {
                     self.commentTree.toggleHidden(comment.comment.id)
                 }
+                .animation(.easeIn, value: commentTree.hiddenCommentIDs)
         }
     }
 }
