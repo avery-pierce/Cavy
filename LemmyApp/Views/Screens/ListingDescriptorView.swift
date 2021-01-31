@@ -31,6 +31,7 @@ struct ListingDescriptorView: View {
     var body: some View {
         PostResultsView(resource)
             .lemmyAPIClient(LemmyAPIClient(descriptor: listingDescriptor.client))
+            .navigationBarItems(trailing: ToggleSavedListingButton(listingDescriptor))
     }
 }
 

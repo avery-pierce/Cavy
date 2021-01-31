@@ -24,15 +24,15 @@ struct CommunitiesView: View {
     var body: some View {
         List {
             ForEach(communities, id: \.id) { community in
-                if let communityID = community.id {
-                    NavigationLink(community.name, destination: PostResultsView(postResults(communityID: communityID), descriptor: ListingDescriptor(client, communityID: communityID, favorite: true)).lemmyAPIClient(client))
-                } else {
-                    Text(community.name)
-                }
+                NavigationLink(community.name, destination: ListingDescriptorView(listingDescriptor(for: community)))
             }
         }
         .navigationTitle("Communities")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func listingDescriptor(for community: CavyCommunity) -> ListingDescriptor {
+        ListingDescriptor(client, communityID: community.id, favorite: true, label: "\(community.name)")
     }
 }
 

@@ -34,7 +34,7 @@ struct LoadableListingView: View {
         .lemmyAPIClient(client)
     }
 
-    var listing: ListingDescriptor { ListingDescriptor(client, communityID: nil, favorite: true) }
+    var listing: ListingDescriptor { ListingDescriptor(client, communityID: nil, favorite: true, label: client.host) }
     
     var isListingSaved: Bool {
         return rootModel.savedListings.contains(listing)
