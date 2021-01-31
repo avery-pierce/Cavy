@@ -13,25 +13,8 @@ struct ListingDescriptorView: View {
         self.listingDescriptor = listingDescriptor
     }
     
-    var resource: ParsedDataResource<CavyPostListing> {
-        let client = LemmyAPIClient(descriptor: listingDescriptor.client)
-        if let communityID = listingDescriptor.communityID {
-            switch client {
-            case .v2(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot, communityID: communityID))
-            case .v1(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot, communityID: communityID))
-            }
-        } else {
-            switch client {
-            case .v1(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot))
-            case .v2(let spec): return ParsedDataResource(spec.listPosts(type: .all, sort: .hot))
-            }
-        }
-    }
-    
     var body: some View {
-        PostResultsView(resource)
-            .lemmyAPIClient(LemmyAPIClient(descriptor: listingDescriptor.client))
-            .navigationBarItems(trailing: ToggleSavedListingButton(listingDescriptor))
+        LoadingPostListView(listingDescriptor.createIntent())
     }
 }
 

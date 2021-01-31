@@ -36,4 +36,10 @@ struct ListingDescriptor: Codable, Equatable, Hashable {
             return "\(host)"
         }
     }
+    
+    func createIntent() -> ListingIntent {
+        var intent = ListingIntent(LemmyAPIClient(descriptor: client))
+        intent.communityID = communityID
+        return intent
+    }
 }
