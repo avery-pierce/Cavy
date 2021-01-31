@@ -24,15 +24,11 @@ struct CommunitiesView: View {
     var body: some View {
         List {
             ForEach(communities, id: \.id) { community in
-                NavigationLink(community.name, destination: ListingDescriptorView(listingDescriptor(for: community)))
+                NavigationLink(community.name, destination: LoadingPostListView(.community(client, community)))
             }
         }
         .navigationTitle("Communities")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    func listingDescriptor(for community: CavyCommunity) -> ListingDescriptor {
-        ListingDescriptor(client, communityID: community.id, favorite: true, label: "\(community.name)")
     }
 }
 

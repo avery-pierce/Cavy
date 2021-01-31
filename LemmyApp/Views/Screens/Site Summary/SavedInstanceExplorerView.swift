@@ -26,7 +26,7 @@ struct SavedInstanceExplorerView: View {
             Section(header: Text("Saved listings")) {
                 ForEach(rootModel.savedListings, id: \.self) { listing in
                     NavigationLink(
-                        destination: ListingDescriptorView(listing),
+                        destination: LoadingPostListView(listing.createIntent()),
                         label: {
                             Image(systemName: "tray.full")
                             Text(listing.name)

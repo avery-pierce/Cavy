@@ -20,7 +20,7 @@ struct MainTabView: View {
             
             ForEach(rootModel.savedListings, id: \.self) { listing in
                 NavigationView {
-                    ListingDescriptorView(listing)
+                    LoadingPostListView(listing.createIntent())
                 }.tabItem {
                     Label(listing.name, systemImage: "globe")
                 }
