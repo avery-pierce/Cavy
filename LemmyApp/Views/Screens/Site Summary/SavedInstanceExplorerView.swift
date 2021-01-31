@@ -12,10 +12,29 @@ struct SavedInstanceExplorerView: View {
     
     var body: some View {
         List {
-            ForEach(rootModel.clients, id: \.descriptor) { client in
-                NavigationLink(client.descriptor, destination: SiteSummaryLoaderView(client))
+            Section(header: Text("Saved Instances")) {
+                ForEach(rootModel.clients, id: \.descriptor) { client in
+                    NavigationLink(
+                        destination: SiteSummaryLoaderView(client),
+                        label: {
+                            Image(systemName: "server.rack")
+                            Text(client.descriptor)
+                        })
+                }
+            }
+            
+            Section(header: Text("Saved listings")) {
+                ForEach(rootModel.savedListings, id: \.self) { listing in
+                    NavigationLink(
+                        destination: ListingDescriptorView(listing),
+                        label: {
+                            Image(systemName: "tray.full")
+                            Text(listing.name)
+                        })
+                }
             }
         }
+        .listStyle(InsetGroupedListStyle())
         .navigationTitle("Saved Instances")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -23,6 +42,8 @@ struct SavedInstanceExplorerView: View {
 
 struct SavedInstanceExplorerView_Previews: PreviewProvider {
     static var previews: some View {
-        SavedInstanceExplorerView().rootModel(RootModel())
+        NavigationView {
+            SavedInstanceExplorerView().rootModel(RootModel())
+        }
     }
 }
