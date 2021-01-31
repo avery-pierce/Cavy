@@ -29,7 +29,14 @@ struct SavedInstanceExplorerView: View {
                         destination: LoadingPostListView(listing),
                         label: {
                             Image(systemName: "tray.full")
-                            Text(listing.title)
+                            VStack(alignment: .leading) {
+                                Text(listing.title)
+                                    .font(.system(size: 14.0))
+                                    .bold()
+                                Text(listing.detail)
+                                    .font(.system(size: 12.0))
+                                    .opacity(0.8)
+                            }
                         })
                 }
             }

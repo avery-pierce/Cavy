@@ -53,6 +53,7 @@ struct ListingIntent {
     
     static func community(_ client: LemmyAPIClient, _ community: CavyCommunity) -> ListingIntent {
         var intent = ListingIntent(client, postType: .community)
+        intent.communityID = community.id
         intent.explicitTitle = community.title ?? community.name
         intent.explicitDetail = "\(client.host)/c/\(community.name)"
         return intent

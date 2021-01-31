@@ -36,14 +36,31 @@ struct LoadingPostListView<PostResource: Resource & ObservableObject>: View wher
         intent?.client ?? client
     }
     
+    var title: some View {
+        let title = intent?.title ?? client.host
+        let detail = intent?.detail
+        
+        return VStack {
+            Text(title).font(.headline)
+            if let detail = detail {
+                Text(detail).font(.subheadline)
+            }
+        }
+    }
+    
     var body: some View {
         Loader(resource) { loadState in
             LoadStateView(loadState) { listing in
                 ListingView(listing.cavyPosts)
             }
+            .lemmyAPIClient(activeClient)
+            .navigationBarItems(trailing: barButtonItems)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    title
+                }
+            }
         }
-        .lemmyAPIClient(activeClient)
-        .navigationBarItems(trailing: barButtonItems)
-        .navigationTitle(activeClient.descriptor)
     }
 }
