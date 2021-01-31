@@ -43,6 +43,7 @@ struct SiteSummaryView: View {
                 SiteKPIsRow(site: site)
                     .padding(.horizontal)
                     .buttonStyle(DefaultButtonStyle())
+                    .lemmyAPIClient(client)
                 
                 NavigationLink(destination: LoadingPostListView(.frontPage(of: client))) {
                     ListCellView {

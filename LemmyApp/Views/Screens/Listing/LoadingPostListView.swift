@@ -22,13 +22,28 @@ struct LoadingPostListView<PostResource: Resource & ObservableObject>: View wher
         self.resource = intent.createResource()
     }
     
+    var barButtonItems: some View {
+        HStack {
+            if let intent = intent {
+                ToggleSavedListIntent(intent)
+            } else {
+                EmptyView()
+            }
+        }
+    }
+    
+    var activeClient: LemmyAPIClient {
+        intent?.client ?? client
+    }
+    
     var body: some View {
         Loader(resource) { loadState in
             LoadStateView(loadState) { listing in
                 ListingView(listing.cavyPosts)
             }
         }
-        .lemmyAPIClient(intent?.client ?? client)
-        .navigationTitle(client.descriptor)
+        .lemmyAPIClient(activeClient)
+        .navigationBarItems(trailing: barButtonItems)
+        .navigationTitle(activeClient.descriptor)
     }
 }

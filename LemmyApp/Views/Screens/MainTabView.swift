@@ -18,11 +18,11 @@ struct MainTabView: View {
                 Label("Instances", systemImage: "binoculars")
             }
             
-            ForEach(rootModel.savedListings, id: \.self) { listing in
+            ForEach(rootModel.savedListings, id: \.fakeHashValue) { listing in
                 NavigationView {
-                    LoadingPostListView(listing.createIntent())
+                    LoadingPostListView(listing)
                 }.tabItem {
-                    Label(listing.name, systemImage: "globe")
+                    Label(listing.title, systemImage: "globe")
                 }
             }
             

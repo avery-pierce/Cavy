@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListingView: View {
+    @Environment(\.lemmyAPIClient) var client
     let posts: [CavyPost]
     init(_ posts: [CavyPost]) {
         self.posts = posts
@@ -26,7 +27,7 @@ struct ListingView: View {
                     PostItemView(post)
                         .padding(.vertical, 8)
                     NavigationLink(
-                        destination: PostDetailView(post: post)) {
+                        destination: PostDetailView(post: post).lemmyAPIClient(client)) {
                         EmptyView()
                     }
                     .frame(width: 0, height: 0)

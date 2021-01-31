@@ -74,4 +74,39 @@ struct ListingIntent {
             }
         }
     }
+    
+    func createFlatPack() -> FlatPack {
+        FlatPack(clientDescriptor: client.descriptor, postType: postType, sortType: sortType, communityID: communityID, limit: limit, explicitTitle: explicitTitle, explicitDetail: explicitDetail)
+    }
+    
+    init(_ flatPack: FlatPack) {
+        self.client = LemmyAPIClient(descriptor: flatPack.clientDescriptor)
+        self.postType = flatPack.postType
+        self.sortType = flatPack.sortType
+        self.communityID = flatPack.communityID
+        self.limit = flatPack.limit ?? 50
+        self.explicitTitle = flatPack.explicitTitle
+        self.explicitDetail = flatPack.explicitDetail
+    }
+    
+    struct FlatPack: Codable, Equatable, Hashable {
+        var clientDescriptor: String
+        var postType: LemmyAPIFactory.PostType
+        var sortType: LemmyAPIFactory.SortType
+        var communityID: Int?
+        var limit: Int?
+        var explicitTitle: String?
+        var explicitDetail: String?
+    }
+    
+    /// Should be unique
+    var fakeHashValue: Int {
+        return createFlatPack().hashValue
+    }
+}
+
+extension ListingIntent: Equatable {
+    static func == (lhs: ListingIntent, rhs: ListingIntent) -> Bool {
+        return lhs.createFlatPack() == rhs.createFlatPack()
+    }
 }

@@ -15,14 +15,14 @@ class RootModel: ObservableObject {
         }
     }
     
-    @Published var savedListings = [ListingDescriptor]() {
+    @Published var savedListings = [ListingIntent]() {
         didSet {
             listingStore.write(savedListings)
         }
     }
     
     let serverStore = ClientStore()
-    let listingStore = ListingStore()
+    let listingStore = ListingIntentStore()
     
     init() {
         self.clients = serverStore.read()
@@ -54,7 +54,7 @@ class RootModel: ObservableObject {
     
     // MARK: - Saved Listings
     
-    func addFavorite(_ listing: ListingDescriptor) {
+    func addFavorite(_ listing: ListingIntent) {
         savedListings.append(listing)
     }
     
@@ -62,7 +62,7 @@ class RootModel: ObservableObject {
         savedListings.remove(at: index)
     }
     
-    func removeFavorite(_ listing: ListingDescriptor) {
+    func removeFavorite(_ listing: ListingIntent) {
         guard let index = savedListings.firstIndex(of: listing) else { return }
         removeFavorite(at: index)
     }

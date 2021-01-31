@@ -24,12 +24,12 @@ struct SavedInstanceExplorerView: View {
             }
             
             Section(header: Text("Saved listings")) {
-                ForEach(rootModel.savedListings, id: \.self) { listing in
+                ForEach(rootModel.savedListings, id: \.fakeHashValue) { listing in
                     NavigationLink(
-                        destination: LoadingPostListView(listing.createIntent()),
+                        destination: LoadingPostListView(listing),
                         label: {
                             Image(systemName: "tray.full")
-                            Text(listing.name)
+                            Text(listing.title)
                         })
                 }
             }

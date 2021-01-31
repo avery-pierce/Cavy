@@ -24,13 +24,13 @@ class LemmyAPIFactory: ObservableObject {
         case v2 = "v2"
     }
     
-    enum PostType: String {
+    enum PostType: String, Codable {
         case all = "All"
         case subscribed = "Subscribed"
         case community = "Community"
     }
     
-    enum SortType: String {
+    enum SortType: String, Codable {
         case active = "Active"
         case hot = "Hot"
         case new = "New"
