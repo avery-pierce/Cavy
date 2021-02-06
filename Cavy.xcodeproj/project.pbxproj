@@ -299,8 +299,8 @@
 		C63DF2A12530016000728E08 = {
 			isa = PBXGroup;
 			children = (
-				C63DF2AC2530016000728E08 /* LemmyApp */,
-				C63DF2D125313FB500728E08 /* LemmyAppTests */,
+				C63DF2AC2530016000728E08 /* Cavy */,
+				C63DF2D125313FB500728E08 /* CavyTests */,
 				C63DF2AB2530016000728E08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C63DF2AC2530016000728E08 /* LemmyApp */ = {
+		C63DF2AC2530016000728E08 /* Cavy */ = {
 			isa = PBXGroup;
 			children = (
 				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
@@ -329,7 +329,7 @@
 				C63DF2B62530016300728E08 /* Info.plist */,
 				C63DF2B32530016300728E08 /* Preview Content */,
 			);
-			path = LemmyApp;
+			path = Cavy;
 			sourceTree = "<group>";
 		};
 		C63DF2B32530016300728E08 /* Preview Content */ = {
@@ -344,7 +344,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C63DF2D125313FB500728E08 /* LemmyAppTests */ = {
+		C63DF2D125313FB500728E08 /* CavyTests */ = {
 			isa = PBXGroup;
 			children = (
 				C625441725B60083007F170A /* Mock Data */,
@@ -357,7 +357,7 @@
 				C63DF2D425313FB500728E08 /* Info.plist */,
 				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 			);
-			path = LemmyAppTests;
+			path = CavyTests;
 			sourceTree = "<group>";
 		};
 		C640772425BCC7C000B42F63 /* Communities */ = {
@@ -636,7 +636,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C63DF2A52530016000728E08 /* Build configuration list for PBXProject "LemmyApp" */;
+			buildConfigurationList = C63DF2A52530016000728E08 /* Build configuration list for PBXProject "Cavy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -992,7 +992,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LemmyApp.app/LemmyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cavy.app/Cavy";
 			};
 			name = Debug;
 		};
@@ -1012,14 +1012,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LemmyApp.app/LemmyApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cavy.app/Cavy";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C63DF2A52530016000728E08 /* Build configuration list for PBXProject "LemmyApp" */ = {
+		C63DF2A52530016000728E08 /* Build configuration list for PBXProject "Cavy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C63DF2B72530016300728E08 /* Debug */,
