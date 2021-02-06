@@ -180,7 +180,7 @@
 		C632F67B25C74E5700CC1FC9 /* ListingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingIntent.swift; sourceTree = "<group>"; };
 		C632F67F25C7556C00CC1FC9 /* LoadingPostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPostListView.swift; sourceTree = "<group>"; };
 		C632F68B25C75E6100CC1FC9 /* ToggleSavedListIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSavedListIntent.swift; sourceTree = "<group>"; };
-		C63DF2AA2530016000728E08 /* LemmyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemmyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63DF2AA2530016000728E08 /* Cavy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cavy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63DF2B42530016300728E08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 		C63DF2C0253001CC00728E08 /* CavyPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyPost.swift; sourceTree = "<group>"; };
 		C63DF2C325313DE000728E08 /* RootModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModel.swift; sourceTree = "<group>"; };
 		C63DF2C925313E3200728E08 /* LemmyPostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostItem.swift; sourceTree = "<group>"; };
-		C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemmyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63DF2D025313FB500728E08 /* CavyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CavyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63DF2D425313FB500728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C640772525BCC7E500B42F63 /* CommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesView.swift; sourceTree = "<group>"; };
 		C640772925BCC8C100B42F63 /* LoadableCommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCommunitiesView.swift; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 		C63DF2AB2530016000728E08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C63DF2AA2530016000728E08 /* LemmyApp.app */,
-				C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */,
+				C63DF2AA2530016000728E08 /* Cavy.app */,
+				C63DF2D025313FB500728E08 /* CavyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,9 +580,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C63DF2A92530016000728E08 /* LemmyApp */ = {
+		C63DF2A92530016000728E08 /* Cavy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C63DF2B92530016300728E08 /* Build configuration list for PBXNativeTarget "LemmyApp" */;
+			buildConfigurationList = C63DF2B92530016300728E08 /* Build configuration list for PBXNativeTarget "Cavy" */;
 			buildPhases = (
 				C63DF2A62530016000728E08 /* Sources */,
 				C63DF2A72530016000728E08 /* Frameworks */,
@@ -592,17 +592,17 @@
 			);
 			dependencies = (
 			);
-			name = LemmyApp;
+			name = Cavy;
 			packageProductDependencies = (
 				C6091CE325BE013600E6CD0F /* MarkdownUI */,
 			);
 			productName = LemmyApp;
-			productReference = C63DF2AA2530016000728E08 /* LemmyApp.app */;
+			productReference = C63DF2AA2530016000728E08 /* Cavy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C63DF2CF25313FB500728E08 /* LemmyAppTests */ = {
+		C63DF2CF25313FB500728E08 /* CavyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "LemmyAppTests" */;
+			buildConfigurationList = C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "CavyTests" */;
 			buildPhases = (
 				C63DF2CC25313FB500728E08 /* Sources */,
 				C63DF2CD25313FB500728E08 /* Frameworks */,
@@ -613,9 +613,9 @@
 			dependencies = (
 				C63DF2D625313FB500728E08 /* PBXTargetDependency */,
 			);
-			name = LemmyAppTests;
+			name = CavyTests;
 			productName = LemmyAppTests;
-			productReference = C63DF2D025313FB500728E08 /* LemmyAppTests.xctest */;
+			productReference = C63DF2D025313FB500728E08 /* CavyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -652,8 +652,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C63DF2A92530016000728E08 /* LemmyApp */,
-				C63DF2CF25313FB500728E08 /* LemmyAppTests */,
+				C63DF2A92530016000728E08 /* Cavy */,
+				C63DF2CF25313FB500728E08 /* CavyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -810,7 +810,7 @@
 /* Begin PBXTargetDependency section */
 		C63DF2D625313FB500728E08 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C63DF2A92530016000728E08 /* LemmyApp */;
+			target = C63DF2A92530016000728E08 /* Cavy */;
 			targetProxy = C63DF2D525313FB500728E08 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1028,7 +1028,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C63DF2B92530016300728E08 /* Build configuration list for PBXNativeTarget "LemmyApp" */ = {
+		C63DF2B92530016300728E08 /* Build configuration list for PBXNativeTarget "Cavy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C63DF2BA2530016300728E08 /* Debug */,
@@ -1037,7 +1037,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "LemmyAppTests" */ = {
+		C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "CavyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C63DF2D825313FB500728E08 /* Debug */,
