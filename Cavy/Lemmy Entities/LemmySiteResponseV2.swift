@@ -14,7 +14,7 @@ struct LemmySiteResponseV2: Codable {
     var online: Int?
     var version: String?
     var myUser: LemmyUser?
-    var federatedInstances: [String]?
+    var federatedInstances: FederatedInstancesView?
     
     enum CodingKeys: String, CodingKey {
         case siteView = "site_view"
@@ -34,7 +34,24 @@ struct LemmySiteResponseV2: Codable {
         online = try values.decodeIfPresent(Int.self, forKey: .online)
         version = try values.decodeIfPresent(String.self, forKey: .version)
         myUser = try values.decodeIfPresent(LemmyUser.self, forKey: .myUser)
-        federatedInstances = try values.decodeIfPresent([String].self, forKey: .federatedInstances)
+        
+        do {
+            // API changed in Lemmy v0.9.4
+            federatedInstances = try values.decodeIfPresent(FederatedInstancesView.self, forKey: .federatedInstances)
+        } catch let decodingError {
+            // Fall back to legacy style
+            if let legacyFederatedInstances = try? values.decodeIfPresent([String].self, forKey: .federatedInstances) {
+                federatedInstances = FederatedInstancesView(linked: legacyFederatedInstances, allowed: legacyFederatedInstances, blocked: nil)
+            } else {
+                throw decodingError
+            }
+        }
+    }
+    
+    struct FederatedInstancesView: Codable {
+        var linked: [String]?
+        var allowed: [String]?
+        var blocked: [String]?
     }
 }
 
@@ -116,3 +133,4 @@ struct LemmyUserView: Codable {
         }
     }
 }
+

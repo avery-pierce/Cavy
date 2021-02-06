@@ -30,6 +30,13 @@ extension LemmySiteResponse: CavySiteConvertable {
 
 extension LemmySiteResponseV2: CavySiteConvertable {
     var cavySite: CavySite {
-        CavySite(name: siteView?.site?.name ?? "", iconURL: siteView?.site?.icon.flatMap(URL.init(string:)), descriptionMarkdown: siteView?.site?.description, numberOfUsers: siteView?.counts.users, numberOfCommunities: siteView?.counts.communities, admins: admins?.compactMap(\.user).map(\.cavyUser), banned: banned?.compactMap(\.user).map(\.cavyUser), federatedInstances: federatedInstances)
+        CavySite(name: siteView?.site?.name ?? "",
+                 iconURL: siteView?.site?.icon.flatMap(URL.init(string:)),
+                 descriptionMarkdown: siteView?.site?.description,
+                 numberOfUsers: siteView?.counts.users,
+                 numberOfCommunities: siteView?.counts.communities,
+                 admins: admins?.compactMap(\.user).map(\.cavyUser),
+                 banned: banned?.compactMap(\.user).map(\.cavyUser),
+                 federatedInstances: federatedInstances?.linked)
     }
 }
