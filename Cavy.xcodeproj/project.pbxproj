@@ -51,7 +51,7 @@
 		C632F67C25C74E5700CC1FC9 /* ListingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F67B25C74E5700CC1FC9 /* ListingIntent.swift */; };
 		C632F68025C7556C00CC1FC9 /* LoadingPostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F67F25C7556C00CC1FC9 /* LoadingPostListView.swift */; };
 		C632F68C25C75E6100CC1FC9 /* ToggleSavedListIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F68B25C75E6100CC1FC9 /* ToggleSavedListIntent.swift */; };
-		C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* LemmyAppApp.swift */; };
+		C63DF2AE2530016000728E08 /* CavyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2AD2530016000728E08 /* CavyApp.swift */; };
 		C63DF2B22530016300728E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B12530016300728E08 /* Assets.xcassets */; };
 		C63DF2B52530016300728E08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63DF2B42530016300728E08 /* Preview Assets.xcassets */; };
 		C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DF2BD253001BC00728E08 /* PostItemView.swift */; };
@@ -181,7 +181,7 @@
 		C632F67F25C7556C00CC1FC9 /* LoadingPostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPostListView.swift; sourceTree = "<group>"; };
 		C632F68B25C75E6100CC1FC9 /* ToggleSavedListIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSavedListIntent.swift; sourceTree = "<group>"; };
 		C63DF2AA2530016000728E08 /* Cavy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cavy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C63DF2AD2530016000728E08 /* LemmyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyAppApp.swift; sourceTree = "<group>"; };
+		C63DF2AD2530016000728E08 /* CavyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CavyApp.swift; sourceTree = "<group>"; };
 		C63DF2B12530016300728E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63DF2B42530016300728E08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63DF2B62530016300728E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 		C63DF2AC2530016000728E08 /* Cavy */ = {
 			isa = PBXGroup;
 			children = (
-				C63DF2AD2530016000728E08 /* LemmyAppApp.swift */,
+				C63DF2AD2530016000728E08 /* CavyApp.swift */,
 				C6C3D88D2532473000EB7DB8 /* Views */,
 				C6C3D8A325324E4B00EB7DB8 /* Entities */,
 				C6D9F1172537CD7500B41CE4 /* Use Cases */,
@@ -702,7 +702,7 @@
 				C632F67625C738D400CC1FC9 /* SiteKPIsRow.swift in Sources */,
 				C6F306B125BCE02300B381B1 /* UsersListView.swift in Sources */,
 				C6091D3D25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift in Sources */,
-				C63DF2AE2530016000728E08 /* LemmyAppApp.swift in Sources */,
+				C63DF2AE2530016000728E08 /* CavyApp.swift in Sources */,
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
 				C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,

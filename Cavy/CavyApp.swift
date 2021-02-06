@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct LemmyAppApp: App {
+struct CavyApp: App {
     @StateObject var rootModel = RootModel()
     
     var body: some Scene {
