@@ -22,10 +22,16 @@ func assertDecodes<T: Decodable>(to Type: T.Type, from data: Data?, file: Static
         let _ = try JSONDecoder().decode(Type.self, from: data!)
     } catch let error {
         print(error)
+        print(try! prettyJSON(data!))
         XCTFail(error.localizedDescription, file: file, line: line)
     }
 }
 
+func prettyJSON(_ data: Data) throws -> String {
+    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+    let prettyData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+    return String(data: prettyData, encoding: .utf8)!
+}
 
 @discardableResult func assertSuccess<T, E: Error>(_ result: Result<T, E>, file: StaticString = #filePath, line: UInt = #line) -> T! {
     switch result {
