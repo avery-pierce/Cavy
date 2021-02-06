@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SavedInstanceExplorerView: View {
+    @ScaledMetric(wrappedValue: 2.0) var spacing: CGFloat
+    @ScaledMetric(wrappedValue: 14.0) var headerFontSize: CGFloat
+    @ScaledMetric(wrappedValue: 12.0) var subheadFontSize: CGFloat
     @EnvironmentObject var rootModel: RootModel
     
     var body: some View {
@@ -18,7 +21,12 @@ struct SavedInstanceExplorerView: View {
                         destination: SiteSummaryLoaderView(client),
                         label: {
                             Image(systemName: "server.rack")
-                            Text(client.descriptor)
+                            VStack(alignment: .leading, spacing: spacing) {
+                                Text(client.host)
+                                    .font(.system(size: headerFontSize))
+                                    .bold()
+                                APILevelTidbit(client)
+                            }
                         })
                 }
             }
@@ -31,10 +39,10 @@ struct SavedInstanceExplorerView: View {
                             Image(systemName: "tray.full")
                             VStack(alignment: .leading) {
                                 Text(listing.title)
-                                    .font(.system(size: 14.0))
+                                    .font(.system(size: headerFontSize))
                                     .bold()
                                 Text(listing.detail)
-                                    .font(.system(size: 12.0))
+                                    .font(.system(size: subheadFontSize))
                                     .opacity(0.8)
                             }
                         })
@@ -48,9 +56,24 @@ struct SavedInstanceExplorerView: View {
 }
 
 struct SavedInstanceExplorerView_Previews: PreviewProvider {
+    static let mockModel: RootModel = {
+        let model = RootModel()
+        model.clients = [
+            LemmyAPIClient(descriptor: "chapo.chat/v1"),
+            LemmyAPIClient(descriptor: "lemmy.ml/v2"),
+        ]
+        return model
+    }()
+    
     static var previews: some View {
         NavigationView {
-            SavedInstanceExplorerView().rootModel(RootModel())
+            SavedInstanceExplorerView().rootModel(mockModel)
         }
+        .environment(\.sizeCategory, .large)
+        
+        NavigationView {
+            SavedInstanceExplorerView().rootModel(mockModel)
+        }
+        .environment(\.sizeCategory, .accessibilityLarge)
     }
 }

@@ -8,25 +8,28 @@
 import SwiftUI
 
 struct KeyValueTidbit: View {
+    @ScaledMetric(wrappedValue: 2.0) var padding: CGFloat
+    @ScaledMetric(wrappedValue: 12.0) var fontPointSize: CGFloat
+    
     var key: String
     var value: String
     
     var body: some View {
         HStack(spacing: 0) {
             Text(key)
-                .padding(.vertical, 2.0)
-                .padding(.leading, 6.0)
-                .padding(.trailing, 4.0)
+                .padding(.vertical, padding)
+                .padding(.leading, padding * 3)
+                .padding(.trailing, padding * 2)
                 .background(Color.accentColor.opacity(0.8))
             Text(value)
                 .bold()
-                .padding(.vertical, 2.0)
-                .padding(.leading, 4.0)
-                .padding(.trailing, 6.0)
+                .padding(.vertical, padding)
+                .padding(.leading, padding * 2)
+                .padding(.trailing, padding * 3)
                 .background(Color.accentColor)
         }
-        .font(.system(size: 12.0))
-        .mask(RoundedRectangle(cornerRadius: 4.0))
+        .font(.system(size: fontPointSize))
+        .mask(RoundedRectangle(cornerRadius: padding * 2))
     }
 }
 
@@ -39,6 +42,12 @@ struct KeyValueTidbit_Previews: PreviewProvider {
                 .foregroundColor(.white)
             
             KeyValueTidbit(key: "API", value: "v1")
+                .previewLayout(.sizeThatFits)
+                .accentColor(.purple)
+                .foregroundColor(.white)
+            
+            KeyValueTidbit(key: "API", value: "v1")
+                .environment(\.sizeCategory, .accessibilityLarge)
                 .previewLayout(.sizeThatFits)
                 .accentColor(.purple)
                 .foregroundColor(.white)
