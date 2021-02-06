@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SavedInstanceExplorerView: View {
-    @ScaledMetric(wrappedValue: 2.0) var spacing: CGFloat
     @ScaledMetric(wrappedValue: 14.0) var headerFontSize: CGFloat
     @ScaledMetric(wrappedValue: 12.0) var subheadFontSize: CGFloat
     @EnvironmentObject var rootModel: RootModel
@@ -21,7 +20,7 @@ struct SavedInstanceExplorerView: View {
                         destination: SiteSummaryLoaderView(client),
                         label: {
                             Image(systemName: "server.rack")
-                            VStack(alignment: .leading, spacing: spacing) {
+                            VStack(alignment: .leading, spacing: 2.0) {
                                 Text(client.host)
                                     .font(.system(size: headerFontSize))
                                     .bold()
