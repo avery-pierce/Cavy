@@ -14,13 +14,6 @@ struct CommunitiesView: View {
         self.communities = communities
     }
     
-    func postResults(communityID: Int) -> ParsedDataResource<CavyPostListing> {
-        switch client {
-        case .v1(let spec): return ParsedDataResource(spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID))
-        case .v2(let spec): return ParsedDataResource(spec.listPosts(type: .community, sort: .hot, limit: 50, communityID: communityID))
-        }
-    }
-    
     var body: some View {
         List {
             ForEach(communities, id: \.id) { community in
