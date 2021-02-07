@@ -91,6 +91,8 @@
 		C6A7D4D025B8866B00D5FF2E /* BulletSeperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */; };
 		C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8992532496E00EB7DB8 /* Resource.swift */; };
 		C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */; };
+		C6D06D2D25D056A0004D2DA7 /* PostItemCellThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */; };
+		C6D06D3125D05A4D004D2DA7 /* PostItemCellThumbnailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
@@ -223,6 +225,8 @@
 		C6A7D4CF25B8866B00D5FF2E /* BulletSeperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletSeperator.swift; sourceTree = "<group>"; };
 		C6C3D8992532496E00EB7DB8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemCellThumbnailView.swift; sourceTree = "<group>"; };
+		C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemCellThumbnailText.swift; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 				C632F67F25C7556C00CC1FC9 /* LoadingPostListView.swift */,
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
+				C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */,
+				C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */,
 			);
 			path = Listing;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				C62543EE25B4A249007F170A /* PostModel.swift in Sources */,
 				C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */,
 				C6515CFD2532030B00C8CEF7 /* ListingView.swift in Sources */,
+				C6D06D2D25D056A0004D2DA7 /* PostItemCellThumbnailView.swift in Sources */,
 				C6FA680325BA7ECA002A352E /* PostContentView.swift in Sources */,
 				C6091D1A25C4813200E6CD0F /* LemmySiteResponseV2.swift in Sources */,
 				C6515D092532038900C8CEF7 /* MainTabView.swift in Sources */,
@@ -775,6 +782,7 @@
 				C625442725B65220007F170A /* LemmyComment++.swift in Sources */,
 				C6D9F1232537D5B100B41CE4 /* EditHostsView.swift in Sources */,
 				C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */,
+				C6D06D3125D05A4D004D2DA7 /* PostItemCellThumbnailText.swift in Sources */,
 				C632F67C25C74E5700CC1FC9 /* ListingIntent.swift in Sources */,
 				C6FA67ED25BA769B002A352E /* LinkKind.swift in Sources */,
 				C632F68025C7556C00CC1FC9 /* LoadingPostListView.swift in Sources */,

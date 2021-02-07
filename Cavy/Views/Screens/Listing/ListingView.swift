@@ -33,6 +33,7 @@ struct ListingView: View {
                     .frame(width: 0, height: 0)
                     .hidden()
                 }
+                .listRowInsets(EdgeInsets(top: 4.0, leading: 8.0, bottom: 4.0, trailing: 8.0))
             }
         }
         .listStyle(PlainListStyle())

@@ -100,9 +100,13 @@ struct PostItemView: View {
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: 8) {
+        HStack(alignment: .top, spacing: 12) {
             if let thumbnailURL = postItem.thumbnailURL {
-                LoadingThumbnailView(thumbnailURL)
+                Loader(thumbnailURL, parsedBy: imageParser) { loadState in
+                    PostItemCellThumbnailView(loadState)
+                }
+            } else {
+                PostItemCellThumbnailText()
             }
 
             VStack(alignment: .leading, spacing: 4.0) {
@@ -121,12 +125,25 @@ struct PostItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PostItemView(post)
-                .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/))
+                .previewLayout(.fixed(width: 400.0, height: 100.0))
             
             PostItemView(post)
                 .preferredColorScheme(.dark)
-                .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/400.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/))
+                .previewLayout(.fixed(width: 400.0, height: 100.0))
+            
+            PostItemView(postWithoutThumbnail)
+                .previewLayout(.fixed(width: 400.0, height: 100.0))
+            
+            PostItemView(postWithoutThumbnail)
+                .preferredColorScheme(.dark)
+                .previewLayout(.fixed(width: 400.0, height: 100.0))
         }
+    }
+    
+    static var postWithoutThumbnail: CavyPost {
+        var p = self.post
+        p.thumbnailURL = nil
+        return p
     }
     
     static let post = try! LemmyPostItem.fromJSON("""
