@@ -11,6 +11,8 @@ protocol Cachable {
     var filename: String { get }
 }
 
+fileprivate let ioQueue = DispatchQueue(label: "CachingDataProvider IO", qos: .userInteractive)
+
 struct CachingDataProvider<CachableDataProvider: DataProvider & Cachable>: DataProvider {
     let dataProvider: CachableDataProvider
     init(_ dataProvider: CachableDataProvider) {
@@ -18,35 +20,48 @@ struct CachingDataProvider<CachableDataProvider: DataProvider & Cachable>: DataP
     }
     
     func getData(_ completion: @escaping (Result<Data, Error>) -> Void) {
-        if isCached {
-            getDataFromCache(completion)
-        } else {
-            dataProvider.getData { (result) in
-                if let downloadedData = try? result.get() {
-                    writeToCache(data: downloadedData)
+        checkIfCached { isCached in
+            if isCached {
+                self.getDataFromCache(completion)
+            } else {
+                self.dataProvider.getData { (result) in
+                    if let downloadedData = try? result.get() {
+                        self.writeToCache(data: downloadedData)
+                    }
+                    
+                    completion(result)
                 }
-                
-                completion(result)
             }
         }
     }
     
     func getDataFromCache(_ completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let data = FileManager.default.contents(atPath: cachePath) else {
-            completion(.failure(PlainError("File didn't exist at \(cachePath)")))
-            return
+        ioQueue.async {
+            let data = FileManager.default.contents(atPath: cachePath)
+            DispatchQueue.main.async {
+                if let data = data {
+                    completion(.success(data))
+                } else {
+                    completion(.failure(PlainError("File didn't exist at \(cachePath)")))
+                }
+            }
         }
-        
-        completion(.success(data))
     }
     
     func writeToCache(data: Data) {
-        createFolderIfNeeded()
-        FileManager.default.createFile(atPath: cachePath, contents: data, attributes: nil)
+        ioQueue.async {
+            createFolderIfNeeded()
+            FileManager.default.createFile(atPath: cachePath, contents: data, attributes: nil)
+        }
     }
     
-    var isCached: Bool {
-        return FileManager.default.fileExists(atPath: cachePath)
+    func checkIfCached(_ completion: @escaping (Bool) -> Void) {
+        ioQueue.async {
+            let isCached = FileManager.default.fileExists(atPath: cachePath)
+            DispatchQueue.main.async {
+                completion(isCached)
+            }
+        }
     }
     
     var cachePath: String {
