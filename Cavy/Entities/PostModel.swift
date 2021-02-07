@@ -27,7 +27,6 @@ class PostModel: ObservableObject {
     func refresh() {
         loadState = .loading(nil)
         commentsResource.$state
-            .print()
             .assign(to: &$loadState)
         commentsResource.load()
     }

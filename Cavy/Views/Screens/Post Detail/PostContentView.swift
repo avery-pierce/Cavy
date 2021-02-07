@@ -27,7 +27,7 @@ struct PostContentView: View {
         let summaryTitle = post.embed?.title == post.title ? nil : post.embed?.title
         return VStack {
             if let thumbnailURL = post.thumbnailURL {
-                Loader(thumbnailURL, parsedBy: imageParser) { thumbnailState in
+                Loader(CachingDataProvider(thumbnailURL), parsedBy: imageParser) { thumbnailState in
                     ArticleSummaryView(title: summaryTitle, description: post.embed?.description, destinationURL: post.linkURL, thumbnailState: thumbnailState)
                 }
             } else {
@@ -48,7 +48,7 @@ struct PostContentView: View {
         VStack(alignment: .center) {
             if let imageURL = post.linkURL, imageURL.kind == LinkKind.image {
                 Link(destination: imageURL) {
-                    Loader(imageURL, parsedBy: imageParser) { state in
+                    Loader(CachingDataProvider(imageURL), parsedBy: imageParser) { state in
                         HStack(alignment: .center) {
                             LoadStateView(state) { image in
                                 Image(uiImage: image)

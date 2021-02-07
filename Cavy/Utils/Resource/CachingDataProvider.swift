@@ -67,3 +67,9 @@ struct CachingDataProvider<CachableDataProvider: DataProvider & Cachable>: DataP
         try? FileManager.default.createDirectory(at: cachingDataProviderFolderURL, withIntermediateDirectories: true, attributes: nil)
     }
 }
+
+extension URL: Cachable {
+    var filename: String {
+        return "\(hashValue).data"
+    }
+}

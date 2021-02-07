@@ -91,7 +91,7 @@ struct PostItemView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             if let thumbnailURL = postItem.thumbnailURL {
-                Loader(thumbnailURL, parsedBy: imageParser) { loadState in
+                Loader(CachingDataProvider(thumbnailURL), parsedBy: imageParser) { loadState in
                     PostItemCellThumbnailView(loadState)
                 }
             } else {

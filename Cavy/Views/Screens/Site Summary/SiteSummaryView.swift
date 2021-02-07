@@ -21,7 +21,7 @@ struct SiteSummaryView: View {
         ScrollView {
             LazyVStack {
                 if let icon = site.iconURL {
-                    Loader(icon, parsedBy: imageParser) { state in
+                    Loader(CachingDataProvider(icon), parsedBy: imageParser) { state in
                         LoadStateView(state) { image in
                             Image(uiImage: image)
                                 .resizable()
