@@ -28,8 +28,8 @@ struct PostItemView: View {
     }
     
     var commentsDetail: some View {
-        HStack(spacing: 4) {
-            Image(systemName: "bubble.left")
+        HStack(spacing: 2) {
+            Image(systemName: "bubble.right")
             Text("\(postItem.numComments ?? 0) \(postItem.numComments == 1 ? "comment" : "comments")")
         }.foregroundColor(.secondary)
     }
@@ -69,7 +69,7 @@ struct PostItemView: View {
     }
     
     var metadataView: some View {
-        VStack(spacing: 4.0) {
+        VStack(alignment: .leading, spacing: 4.0) {
             HStack {
                 if let author = postItem.submitterName {
                     authorDetail(author)
@@ -79,13 +79,8 @@ struct PostItemView: View {
                     communityDetail(communityName)
                 }
                 
-                if let domain = postItem.domain {
-                    domainDetail(domain)
-                }
-                
                 Spacer()
             }
-            .font(.system(size: 12.0))
             
             HStack(spacing: 4) {
                 scoreDetail
@@ -95,8 +90,8 @@ struct PostItemView: View {
                 timeAgoDetail
                 Spacer()
             }
-            .font(.system(size: 12.0))
         }
+        .font(.system(size: 12.0))
     }
     
     var body: some View {
