@@ -44,12 +44,6 @@ struct PostItemView: View {
             .foregroundColor(.green)
     }
     
-    func domainDetail(_ domain: String) -> some View {
-        Text(domain)
-            .italic()
-            .foregroundColor(.secondary)
-    }
-    
     var scoreText: String {
         guard let score = postItem.score else { return "-" }
         return "\(score)"
