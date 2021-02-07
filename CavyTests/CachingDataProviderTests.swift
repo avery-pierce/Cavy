@@ -30,6 +30,10 @@ class CachingDataProviderTests: XCTestCase {
         let cachingDataProvider = CachingDataProvider(testDataProvider)
         cachingDataProvider.getData { (result) in
             
+            // Writing to the cache is done asynchronously.
+            // Let's wait for 1 second to give it a chance.
+            sleep(1)
+            
             do {
                 let paths = try self.filesInCacheDirectory()
                 XCTAssertEqual(paths, [filename])
