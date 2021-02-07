@@ -4,6 +4,8 @@ Cavy is a [Lemmy](https://join.lemmy.ml) client for iOS, written in Swift
 
 Cavy aims to be competitive with professionally made apps like Reddit in functionality, look-and-feel, and accessibility. The app should be easy to use, and feel right at home on iOS. The experience should be friendly not just to Lemmy power users, but also users new to Lemmy and the broader fediverse.
 
+![Site screen](./static/Screenshot_Lemmyml.png) ![post screen](./static/Screenshot_LemmyFrontPage.png) ![image post screen](./static/Screenshot_ImagePost.png) ![saved instances screen](./static/Screenshot_SavedInstances.png)
+
 ## State of the project
 
 Cavy is still in it's exploratory development phase, which means the app may change drastically before release. As of today, Cavy does not support logging in – it is read-only. However, you may find value in being able to browse instances and save favorite communities.
