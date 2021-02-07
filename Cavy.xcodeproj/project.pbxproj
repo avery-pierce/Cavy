@@ -93,6 +93,8 @@
 		C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */; };
 		C6D06D2D25D056A0004D2DA7 /* PostItemCellThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */; };
 		C6D06D3125D05A4D004D2DA7 /* PostItemCellThumbnailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */; };
+		C6D06D3B25D06581004D2DA7 /* CachingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3A25D06581004D2DA7 /* CachingDataProvider.swift */; };
+		C6D06D3F25D06B0D004D2DA7 /* CachingDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
@@ -227,6 +229,8 @@
 		C6C3D8B2253253BF00EB7DB8 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemCellThumbnailView.swift; sourceTree = "<group>"; };
 		C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemCellThumbnailText.swift; sourceTree = "<group>"; };
+		C6D06D3A25D06581004D2DA7 /* CachingDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingDataProvider.swift; sourceTree = "<group>"; };
+		C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingDataProviderTests.swift; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				C6FA67FE25BA7991002A352E /* Utils.swift */,
 				C63DF2D425313FB500728E08 /* Info.plist */,
 				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
+				C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */,
 			);
 			path = CavyTests;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				C652707D25BCAF5C0014FB05 /* ParsedDataResource.swift */,
 				C6091D1D25C4832800E6CD0F /* Spec.swift */,
 				C659A6B425C5F37400F12466 /* APIClientSelectorResource.swift */,
+				C6D06D3A25D06581004D2DA7 /* CachingDataProvider.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 				C632F67625C738D400CC1FC9 /* SiteKPIsRow.swift in Sources */,
 				C6F306B125BCE02300B381B1 /* UsersListView.swift in Sources */,
 				C6091D3D25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift in Sources */,
+				C6D06D3B25D06581004D2DA7 /* CachingDataProvider.swift in Sources */,
 				C63DF2AE2530016000728E08 /* CavyApp.swift in Sources */,
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
 				C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */,
@@ -799,6 +806,7 @@
 			files = (
 				C625442B25B65528007F170A /* DateParserTests.swift in Sources */,
 				C6091D0A25C4759800E6CD0F /* LemmyV2SpecTests.swift in Sources */,
+				C6D06D3F25D06B0D004D2DA7 /* CachingDataProviderTests.swift in Sources */,
 				C6D9F13A2537F04300B41CE4 /* DataProvider.swift in Sources */,
 				C6091D2825C4881700E6CD0F /* LemmyV1SpecTests.swift in Sources */,
 				C6D9F1462537F05400B41CE4 /* LoadState.swift in Sources */,
