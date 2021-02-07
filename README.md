@@ -1,3 +1,4 @@
+![app icon](./static/IconRounded_80.png)
 # Cavy
 Cavy is a [Lemmy](https://join.lemmy.ml) client for iOS, written in Swift
 
