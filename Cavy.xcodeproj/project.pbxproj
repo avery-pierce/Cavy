@@ -344,8 +344,6 @@
 				C625443425B68B8E007F170A /* 20210118_post_list_all_hot.json */,
 				C652705825BCA0A80014FB05 /* 20210122_lemmy_ml_site.json */,
 				C63DF2B42530016300728E08 /* Preview Assets.xcassets */,
-				C6F306B425BCE08600B381B1 /* LemmySiteResponsePreviews.swift */,
-				C6091D3C25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -533,6 +531,7 @@
 		C6C3D8942532481F00EB7DB8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C6D06D4625D1893F004D2DA7 /* Previews */,
 				C6515CF825316A6A00C8CEF7 /* URLSession++.swift */,
 				C6FA680625BA822E002A352E /* URL++.swift */,
 				C62543FB25B4AD78007F170A /* Decodable++.swift */,
@@ -562,6 +561,15 @@
 				C632F67B25C74E5700CC1FC9 /* ListingIntent.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		C6D06D4625D1893F004D2DA7 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				C6F306B425BCE08600B381B1 /* LemmySiteResponsePreviews.swift */,
+				C6091D3C25C4AF6C00E6CD0F /* LemmyPostItemPreviews.swift */,
+			);
+			path = Previews;
 			sourceTree = "<group>";
 		};
 		C6D9F1172537CD7500B41CE4 /* Use Cases */ = {
