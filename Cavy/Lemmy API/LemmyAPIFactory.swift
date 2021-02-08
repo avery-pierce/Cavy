@@ -81,7 +81,7 @@ class LemmyAPIFactory: ObservableObject {
     func updateHeaders(of request: URLRequest) -> URLRequest {
         var newRequest = request
         newRequest.addValue("application/json", forHTTPHeaderField: "Accepts")
-        newRequest.addValue("Unnammed Lemmy Mobile Client by @AveryPierceApps", forHTTPHeaderField: "User-Agent")
+        newRequest.addValue("Cavy mobile app by @avery_pierce on lemmy.ml", forHTTPHeaderField: "User-Agent")
         return newRequest
     }
     
