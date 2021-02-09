@@ -12,7 +12,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: sersoft-gmbh/xcodebuild-action@v1
+    - name: Xcode Test
+      uses: sersoft-gmbh/xcodebuild-action@v1.3
       with:
         project: Cavy.xcodeproj
         scheme: Cavy
