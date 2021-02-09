@@ -12,6 +12,7 @@ func isImageURL(_ url: URL) -> Bool {
         "jpg",
         "jpeg",
         "png",
+        "webp",
     ])
     
     return knownImageExtensions.contains(url.pathExtension)
