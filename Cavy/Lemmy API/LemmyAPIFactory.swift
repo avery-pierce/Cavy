@@ -68,25 +68,38 @@ class LemmyAPIFactory: ObservableObject {
         return path("api/\(v)/post?id=\(id)")
     }
     
+    func login(usernameOrEmail: String, password: String) -> URLRequest {
+        var request = path("api/\(v)/user/login")
+        try! request.postData(LemmyLoginRequest(usernameOrEmail: usernameOrEmail, password: password))
+        return request
+    }
+    
     func fetchPost(id: Int) -> URLRequest {
         return fetchPost(id: String(id))
     }
     
     func path(_ path: String) -> URLRequest {
         let url = URL(string: "https://\(host)/\(path)")!
-        let request = URLRequest(url: url)
-        return updateHeaders(of: request)
-    }
-    
-    func updateHeaders(of request: URLRequest) -> URLRequest {
-        var newRequest = request
-        newRequest.addValue("application/json", forHTTPHeaderField: "Accepts")
-        newRequest.addValue("Cavy mobile app by @avery_pierce on lemmy.ml", forHTTPHeaderField: "User-Agent")
-        return newRequest
+        var request = URLRequest(url: url)
+        request.addDefaultHeaders()
+        return request
     }
     
     private var v: String {
         return version.rawValue
+    }
+}
+
+private extension URLRequest {
+    mutating func addDefaultHeaders() {
+        addValue("application/json", forHTTPHeaderField: "Accepts")
+        addValue("Cavy mobile app by @avery_pierce on lemmy.ml", forHTTPHeaderField: "User-Agent")
+    }
+    
+    mutating func postData<BodyType: Encodable>(_ body: BodyType) throws {
+        httpMethod = "POST"
+        httpBody = try JSONEncoder().encode(body)
+        addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
     }
 }
 

@@ -35,5 +35,9 @@ class LemmyV2Spec {
     func fetchPost(id: Int) -> Spec<URLRequest, LemmyPostResponseV2> {
         Spec(factory.fetchPost(id: id))
     }
+    
+    func login(usernameOrEmail: String, password: String) -> Spec<URLRequest, LemmyLoginResponse> {
+        Spec(factory.login(usernameOrEmail: usernameOrEmail, password: password))
+    }
 }
 

@@ -94,6 +94,9 @@
 		C6D06D3125D05A4D004D2DA7 /* PostItemCellThumbnailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */; };
 		C6D06D3B25D06581004D2DA7 /* CachingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3A25D06581004D2DA7 /* CachingDataProvider.swift */; };
 		C6D06D3F25D06B0D004D2DA7 /* CachingDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */; };
+		C6D06D4A25D2E0C8004D2DA7 /* LemmyLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D4925D2E0C8004D2DA7 /* LemmyLoginRequest.swift */; };
+		C6D06D4E25D2E0F8004D2DA7 /* LemmyLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D4D25D2E0F8004D2DA7 /* LemmyLoginResponse.swift */; };
+		C6D06D5225D2E4AB004D2DA7 /* secrets.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D06D5125D2E4AB004D2DA7 /* secrets.json */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
@@ -229,6 +232,9 @@
 		C6D06D3025D05A4D004D2DA7 /* PostItemCellThumbnailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemCellThumbnailText.swift; sourceTree = "<group>"; };
 		C6D06D3A25D06581004D2DA7 /* CachingDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingDataProvider.swift; sourceTree = "<group>"; };
 		C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingDataProviderTests.swift; sourceTree = "<group>"; };
+		C6D06D4925D2E0C8004D2DA7 /* LemmyLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyLoginRequest.swift; sourceTree = "<group>"; };
+		C6D06D4D25D2E0F8004D2DA7 /* LemmyLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyLoginResponse.swift; sourceTree = "<group>"; };
+		C6D06D5125D2E4AB004D2DA7 /* secrets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = secrets.json; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
@@ -361,6 +367,7 @@
 				C63DF2D425313FB500728E08 /* Info.plist */,
 				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 				C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */,
+				C6D06D5125D2E4AB004D2DA7 /* secrets.json */,
 			);
 			path = CavyTests;
 			sourceTree = "<group>";
@@ -524,6 +531,8 @@
 				C6D9F10F2532652500B41CE4 /* LemmyComment.swift */,
 				C6D9F1132532654700B41CE4 /* LemmyUser.swift */,
 				C652705025BC99A80014FB05 /* LemmyModerator.swift */,
+				C6D06D4925D2E0C8004D2DA7 /* LemmyLoginRequest.swift */,
+				C6D06D4D25D2E0F8004D2DA7 /* LemmyLoginResponse.swift */,
 			);
 			path = "Lemmy Entities";
 			sourceTree = "<group>";
@@ -694,6 +703,7 @@
 				C6FA681B25BB2F42002A352E /* 20210122_chapo_chat_site.json in Resources */,
 				C625443125B685ED007F170A /* 20210118_post_list_all_hot.json in Resources */,
 				C625441925B600B9007F170A /* 20210118_lemmy_post_41391.json in Resources */,
+				C6D06D5225D2E4AB004D2DA7 /* secrets.json in Resources */,
 				C6FA680F25BB2910002A352E /* 20210122_lemmy_ml_stite.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -788,8 +798,10 @@
 				C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */,
 				C652707E25BCAF5C0014FB05 /* ParsedDataResource.swift in Sources */,
 				C6A7D4D025B8866B00D5FF2E /* BulletSeperator.swift in Sources */,
+				C6D06D4E25D2E0F8004D2DA7 /* LemmyLoginResponse.swift in Sources */,
 				C6FA680725BA822E002A352E /* URL++.swift in Sources */,
 				C652707A25BCAE880014FB05 /* DataResource.swift in Sources */,
+				C6D06D4A25D2E0C8004D2DA7 /* LemmyLoginRequest.swift in Sources */,
 				C625442725B65220007F170A /* LemmyComment++.swift in Sources */,
 				C6D9F1232537D5B100B41CE4 /* EditHostsView.swift in Sources */,
 				C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */,

@@ -17,6 +17,7 @@ func assertDecodes<T: Decodable>(to Type: T.Type, fromDataProvidedBy dataProvide
 
 func assertDecodes<T: Decodable>(to Type: T.Type, from data: Data?, file: StaticString = #filePath, line: UInt = #line) {
     XCTAssertNotNil(data, "data was nil", file: file, line: line)
+    XCTAssertFalse(data!.isEmpty, "data was empty", file: file, line: line)
     
     do {
         let _ = try JSONDecoder().decode(Type.self, from: data!)
