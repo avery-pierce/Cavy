@@ -1,4 +1,4 @@
-name: Swift
+name: Test
 
 on:
   push:
@@ -12,10 +12,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: "Checkout Project"
+    - name: Checkout Project
       uses: actions/checkout@v2
 
-    - uses: maxim-lobanov/setup-xcode@v1
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: latest-stable
 
