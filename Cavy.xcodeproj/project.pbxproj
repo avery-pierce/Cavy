@@ -630,6 +630,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C63DF2D725313FB500728E08 /* Build configuration list for PBXNativeTarget "CavyTests" */;
 			buildPhases = (
+				C6D06D5C25D6D897004D2DA7 /* ShellScript */,
 				C63DF2CC25313FB500728E08 /* Sources */,
 				C63DF2CD25313FB500728E08 /* Frameworks */,
 				C63DF2CE25313FB500728E08 /* Resources */,
@@ -709,6 +710,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6D06D5C25D6D897004D2DA7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This initializes the secrets.json file to an empty file\n# (Otherwise the combile would fail due to a missing file)\ntouch ${SRCROOT}/CavyTests/secrets.json\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C63DF2A62530016000728E08 /* Sources */ = {
