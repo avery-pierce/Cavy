@@ -1,10 +1,10 @@
-![app icon](./static/IconRounded_80.png)
+![app icon](./docs/static/IconRounded_80.png)
 # Cavy
 Cavy is a [Lemmy](https://join.lemmy.ml) client for iOS, written in Swift
 
 Cavy aims to be competitive with professionally made apps like Reddit in functionality, look-and-feel, and accessibility. The app should be easy to use, and feel right at home on iOS. The experience should be friendly not just to Lemmy power users, but also users new to Lemmy and the broader fediverse.
 
-<img src="./static/Screenshot_Lemmyml.png" alt="site screen" width="200" /> <img src="./static/Screenshot_LemmyFrontPage.png" alt="post listing screen" width="200" /> <img src="./static/Screenshot_ImagePost.png" alt="image post screen" width="200" /> <img src="./static/Screenshot_SavedInstances.png" alt="saved instances screen" width="200" />
+<img src="./docs/static/Screenshot_Lemmyml.png" alt="site screen" width="200" /> <img src="./docs/static/Screenshot_LemmyFrontPage.png" alt="post listing screen" width="200" /> <img src="./docs/static/Screenshot_ImagePost.png" alt="image post screen" width="200" /> <img src="./docs/static/Screenshot_SavedInstances.png" alt="saved instances screen" width="200" />
 
 ## State of the project
 
