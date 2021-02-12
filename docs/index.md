@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+## What is Cavy?
 
-You can use the [editor on GitHub](https://github.com/avery-pierce/Cavy/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Cavy is a iOS client for Lemmy, a federated link aggregator and social forum similar to reddit. Lemmy instances around the world are independently owned, operated, and moderated. Lemmy is federated, which means that content can be shared between instances.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+For more information about Lemmy, see https://join.lemmy.ml
 
-### Markdown
+Coming soon: TestFlight public beta.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Why the name Cavy?
 
-```markdown
-Syntax highlighted code block
+Cavies are adorable little critters. The word Cavy commonly refers to Guinea Pigs, but can also refer to the family of rodents which also include Capybaras.
 
-# Header 1
-## Header 2
-### Header 3
+## Open Source
 
-- Bulleted
-- List
+Cavy is open-source software, licensed under the MIT license. It's currently in active development.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/avery-pierce/Cavy/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Follow [@SocialCavy](https://twitter.com/SocialCavy) on twitter for development updates.
