@@ -23,8 +23,8 @@ struct CommentsListView: View {
                 .onTapGesture {
                     self.commentTree.toggleHidden(comment.comment.id)
                 }
-                .animation(.easeIn, value: commentTree.hiddenCommentIDs)
         }
+        .animation(.easeIn, value: commentTree.hiddenCommentIDs)
     }
 }
 
@@ -37,7 +37,7 @@ struct CommentsListView_Previews: PreviewProvider {
                         {
                             "id": 1,
                             "creator_name": "jill",
-                            "content": "Hello World! This is the first comment in the list"
+                            "content": "Hello World! This is the first comment in the list. It's quite a long comment. Does it wrap around many times? This is a good comment."
                         }
                         """).cavyComment
                     ,
@@ -53,7 +53,7 @@ struct CommentsListView_Previews: PreviewProvider {
                         {
                             "id": 3,
                             "creator_name": "jack",
-                            "content": "Preview a second comment",
+                            "content": "Preview a third comment",
                             "parent_id": 1
                         }
                         """).cavyComment,
@@ -61,11 +61,12 @@ struct CommentsListView_Previews: PreviewProvider {
                     {
                         "id": 4,
                         "creator_name": "jack",
-                        "content": "Preview a second comment",
+                        "content": "Preview another reply",
                         "parent_id": 2
                     }
                     """).cavyComment
                 ])
+                .padding(.leading, 8)
                 Spacer()
             }
         }

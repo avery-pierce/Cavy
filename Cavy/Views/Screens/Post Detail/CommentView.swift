@@ -35,7 +35,7 @@ struct CommentView: View {
             .purple,
         ]
         
-        let choice = threadedComment.indentationLevel % colorCycle.count
+        let choice = threadedComment.indentationLevel - 1 % colorCycle.count
         return colorCycle[choice]
     }
     
@@ -45,7 +45,8 @@ struct CommentView: View {
     }
     
     var inset: CGFloat {
-        return 8.0 * CGFloat(threadedComment.indentationLevel)
+        guard threadedComment.indentationLevel > 0 else { return 0 }
+        return 8.0 * CGFloat(threadedComment.indentationLevel - 1)
     }
     
     var timeAgoText: String {
@@ -58,9 +59,11 @@ struct CommentView: View {
     
     var body: some View {
         HStack {
+            if (threadedComment.indentationLevel > 0) {
             RoundedRectangle(cornerRadius: 1.5)
                 .fill(barColor)
                 .frame(width: 3)
+            }
             
             VStack(alignment: .leading, spacing: 6) {
                 VStack {
@@ -82,16 +85,19 @@ struct CommentView: View {
                 }
                 .font(.system(size: 14.0))
                 .foregroundColor(isHidden ? .secondary : .primary)
-                .padding(.trailing, 10)
                 
                 if !isHidden {
                     MarkdownText(comment.bodyMarkdown ?? "(content)")
                         .font(.system(size: 14.0))
                         .multilineTextAlignment(.leading)
+                    
                 }
             }
+            .padding(.vertical, 4)
         }
         .padding(.leading, inset)
+        .padding(.trailing, 12)
+
     }
 }
 
@@ -100,8 +106,9 @@ struct CommentView_Previews: PreviewProvider {
         Group {
             Group {
                 ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(try! .fromJSON("""
+                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
                                 {
+                                    "id": 1,
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
                                     "score": 15,
@@ -111,8 +118,9 @@ struct CommentView_Previews: PreviewProvider {
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
-                CommentView(ThreadedComment(try! .fromJSON("""
+                CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
                                 {
+                                    "id": 2,
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
                                 }
@@ -122,8 +130,9 @@ struct CommentView_Previews: PreviewProvider {
             
             Group {
                 ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(try! .fromJSON("""
+                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
                                 {
+                                    "id": 3,
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
                                     "score": 15,
@@ -132,8 +141,9 @@ struct CommentView_Previews: PreviewProvider {
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
-                CommentView(ThreadedComment(try! .fromJSON("""
+                CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
                                 {
+                                    "id": 4,
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
                                 }
