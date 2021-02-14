@@ -15,15 +15,8 @@ struct SiteSummaryLoaderView: View {
         self.client = client
     }
     
-    var siteResource: ParsedDataResource<CavySiteConvertable> {
-        switch client {
-        case .v1(let spec): return ParsedDataResource(spec.fetchSite())
-        case .v2(let spec): return ParsedDataResource(spec.fetchSite())
-        }
-    }
-    
     var body: some View {
-        Loader(siteResource) { loadState in
+        InstanceSiteLoader(client) { loadState in
             LoadStateView(loadState.map(\.cavySite)) { site in
                 SiteSummaryView(site)
                     .environment(\.lemmyAPIClient, client)
