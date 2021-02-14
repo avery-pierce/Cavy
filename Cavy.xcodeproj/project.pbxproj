@@ -100,7 +100,7 @@
 		C6D06D6525D82570004D2DA7 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D6425D82570004D2DA7 /* OnboardingScreen.swift */; };
 		C6D06D6B25D8279D004D2DA7 /* WelcomeToCavyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */; };
 		C6D06D6F25D82EEA004D2DA7 /* ChooseInstancePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */; };
-		C6D06D7325D83008004D2DA7 /* LemmyExplanationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D7225D83008004D2DA7 /* LemmyExplanationPage.swift */; };
+		C6D06D7925D97449004D2DA7 /* LabeledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
@@ -242,7 +242,7 @@
 		C6D06D6425D82570004D2DA7 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToCavyPage.swift; sourceTree = "<group>"; };
 		C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstancePage.swift; sourceTree = "<group>"; };
-		C6D06D7225D83008004D2DA7 /* LemmyExplanationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyExplanationPage.swift; sourceTree = "<group>"; };
+		C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDivider.swift; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
@@ -450,6 +450,7 @@
 				C6091CD625BDF2EA00E6CD0F /* MarkdownText.swift */,
 				C632F68B25C75E6100CC1FC9 /* ToggleSavedListIntent.swift */,
 				C632F65625C7295E00CC1FC9 /* Colors.swift */,
+				C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -594,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				C6D06D6425D82570004D2DA7 /* OnboardingScreen.swift */,
-				C6D06D7225D83008004D2DA7 /* LemmyExplanationPage.swift */,
 				C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */,
 				C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */,
 			);
@@ -817,7 +817,6 @@
 				C659A6B525C5F37400F12466 /* APIClientSelectorResource.swift in Sources */,
 				C62543F225B4ABED007F170A /* CommentView.swift in Sources */,
 				C659A6C025C6004600F12466 /* ClientStore.swift in Sources */,
-				C6D06D7325D83008004D2DA7 /* LemmyExplanationPage.swift in Sources */,
 				C6091D1E25C4832800E6CD0F /* Spec.swift in Sources */,
 				C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */,
 				C632F67225C7383900CC1FC9 /* FederatedIntancesCellTidbit.swift in Sources */,
@@ -838,6 +837,7 @@
 				C6D9F11F2537D0A900B41CE4 /* SettingsView.swift in Sources */,
 				C6D06D6525D82570004D2DA7 /* OnboardingScreen.swift in Sources */,
 				C6091CF225C46ED600E6CD0F /* LemmyCommunitiesResponseV2.swift in Sources */,
+				C6D06D7925D97449004D2DA7 /* LabeledDivider.swift in Sources */,
 				C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */,
 				C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */,
 				C625441025B4BFF5007F170A /* ThreadedComment.swift in Sources */,
