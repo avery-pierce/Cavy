@@ -101,6 +101,8 @@
 		C6D06D6B25D8279D004D2DA7 /* WelcomeToCavyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */; };
 		C6D06D6F25D82EEA004D2DA7 /* ChooseInstancePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */; };
 		C6D06D7925D97449004D2DA7 /* LabeledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */; };
+		C6D06D8325D9784B004D2DA7 /* FillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D8225D9784B004D2DA7 /* FillButton.swift */; };
+		C6D06D8725D97B71004D2DA7 /* OnboardingNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D06D8625D97B71004D2DA7 /* OnboardingNavigationView.swift */; };
 		C6D9F104253257C300B41CE4 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F103253257C300B41CE4 /* SafariView.swift */; };
 		C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */; };
 		C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F10F2532652500B41CE4 /* LemmyComment.swift */; };
@@ -243,6 +245,8 @@
 		C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeToCavyPage.swift; sourceTree = "<group>"; };
 		C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstancePage.swift; sourceTree = "<group>"; };
 		C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDivider.swift; sourceTree = "<group>"; };
+		C6D06D8225D9784B004D2DA7 /* FillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButton.swift; sourceTree = "<group>"; };
+		C6D06D8625D97B71004D2DA7 /* OnboardingNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigationView.swift; sourceTree = "<group>"; };
 		C6D9F103253257C300B41CE4 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		C6D9F1072532641D00B41CE4 /* LemmyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyPostResponse.swift; sourceTree = "<group>"; };
 		C6D9F10F2532652500B41CE4 /* LemmyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyComment.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				C632F68B25C75E6100CC1FC9 /* ToggleSavedListIntent.swift */,
 				C632F65625C7295E00CC1FC9 /* Colors.swift */,
 				C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */,
+				C6D06D8225D9784B004D2DA7 /* FillButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 		C6D06D6325D82559004D2DA7 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C6D06D8625D97B71004D2DA7 /* OnboardingNavigationView.swift */,
 				C6D06D6425D82570004D2DA7 /* OnboardingScreen.swift */,
 				C6D06D6A25D8279D004D2DA7 /* WelcomeToCavyPage.swift */,
 				C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */,
@@ -776,6 +782,7 @@
 				C6D06D6B25D8279D004D2DA7 /* WelcomeToCavyPage.swift in Sources */,
 				C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
+				C6D06D8325D9784B004D2DA7 /* FillButton.swift in Sources */,
 				C6091D1225C4799400E6CD0F /* LemmyPostItemSummary.swift in Sources */,
 				C652706E25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift in Sources */,
 				C640773525BCD02000B42F63 /* FederatedInstancesListView.swift in Sources */,
@@ -794,6 +801,7 @@
 				C6091CD725BDF2EA00E6CD0F /* MarkdownText.swift in Sources */,
 				C6515CEB2531479400C8CEF7 /* LemmyCommunitiesResponse.swift in Sources */,
 				C6D9F1332537DF1500B41CE4 /* DataProvider.swift in Sources */,
+				C6D06D8725D97B71004D2DA7 /* OnboardingNavigationView.swift in Sources */,
 				C62543EA25B4A1F1007F170A /* CommentsListView.swift in Sources */,
 				C640772A25BCC8C100B42F63 /* LoadableCommunitiesView.swift in Sources */,
 				C6C3D89A2532496E00EB7DB8 /* Resource.swift in Sources */,

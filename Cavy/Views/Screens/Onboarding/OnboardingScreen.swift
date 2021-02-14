@@ -13,18 +13,12 @@ struct OnboardingScreen: View {
             Spacer()
             WelcomeToCavyPage()
             
-            HStack {
-                Spacer()
-                Text("Select an Instance")
-                    .bold()
-                Spacer()
-            }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.blue))
-            .foregroundColor(.white)
-            .padding()
+            NavigationLink(destination: ChooseInstancePage(), label: { FillButton("Select an Instance")
+            })
+                .padding()
         }
         .background(Color.systemGroupedBackground.ignoresSafeArea())
+        .navigationBarHidden(true)
     }
 }
 
