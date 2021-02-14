@@ -70,7 +70,7 @@ class RootModel: ObservableObject {
     
     // MARK: - Onboarding trigger
     
-    private static let ONBOARDING_COMPLETE_KEY = "ONBOARDING_COMPLETE_3"
+    private static let ONBOARDING_COMPLETE_KEY = "ONBOARDING_COMPLETE"
     
     @Published var needsOnboarding: Bool
     
@@ -82,6 +82,7 @@ class RootModel: ObservableObject {
         clients = [initialClient]
         savedListings = []
         needsOnboarding = false
+        UserDefaults.standard.setValue(true, forKey: RootModel.ONBOARDING_COMPLETE_KEY)
     }
 }
 
