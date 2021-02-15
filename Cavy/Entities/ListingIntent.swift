@@ -45,10 +45,12 @@ struct ListingIntent {
         self.limit = limit
     }
     
-    static func frontPage(of client: LemmyAPIClient) -> ListingIntent {
-        var intent = ListingIntent(client)
-        intent.explicitTitle = "Front Page"
-        return intent
+    static func allPosts(of client: LemmyAPIClient) -> ListingIntent {
+        ListingIntent(client)
+    }
+    
+    static func subscribed(_ client: LemmyAPIClient) -> ListingIntent {
+        ListingIntent(client, postType: .subscribed)
     }
     
     static func community(_ client: LemmyAPIClient, _ community: CavyCommunity) -> ListingIntent {

@@ -30,6 +30,6 @@ class ListingIntentStore {
     }
     
     static let defaultIntents = [
-        ListingIntent.frontPage(of: LemmyAPIClient.lemmyML)
+        ListingIntent.allPosts(of: LemmyAPIClient.lemmyML)
     ]
 }

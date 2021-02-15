@@ -56,7 +56,11 @@ class LemmyAPIFactory: ObservableObject {
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50) -> URLRequest {
         // It looks strange, but yes, the `type_` argument includes the underscore.
-        return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)")
+        if let token = token {
+            return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&auth=\(token)")
+        } else {
+            return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)")
+        }
     }
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50, communityID: Int) -> URLRequest {

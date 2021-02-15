@@ -36,6 +36,6 @@ struct ToggleSavedListIntent: View {
 
 struct ToggleSavedListIntent_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleSavedListIntent(.frontPage(of: .lemmyML))
+        ToggleSavedListIntent(.allPosts(of: .lemmyML))
     }
 }

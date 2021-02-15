@@ -45,11 +45,29 @@ struct SiteSummaryView: View {
                     .buttonStyle(DefaultButtonStyle())
                     .lemmyAPIClient(client)
                 
-                NavigationLink(destination: LoadingPostListView(.frontPage(of: client))) {
+                if (client.isAuthenticated) {
+                    NavigationLink(destination: LoadingPostListView(.subscribed(client))) {
+                        ListCellView {
+                            Image(systemName: "tray.full")
+                            VStack(alignment: .leading) {
+                                Text("Subscribed Communities")
+                                    .font(.system(size: 14.0))
+                                    .bold()
+                                Text(client.host)
+                                    .font(.system(size: 12.0))
+                                    .opacity(0.8)
+                            }
+                        }
+                    }
+                    .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
+                    .padding(.horizontal)
+                }
+                
+                NavigationLink(destination: LoadingPostListView(.allPosts(of: client))) {
                     ListCellView {
                         Image(systemName: "tray.full")
                         VStack(alignment: .leading) {
-                            Text("Front Page")
+                            Text("All Posts")
                                 .font(.system(size: 14.0))
                                 .bold()
                             Text(client.host)
