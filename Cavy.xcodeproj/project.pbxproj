@@ -427,9 +427,9 @@
 		C652708E25BCBB7D0014FB05 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C6F60EC125DB2CA400ACD2C4 /* Explore */,
 				C6D06D6325D82559004D2DA7 /* Onboarding */,
 				C6515D082532038900C8CEF7 /* MainTabView.swift */,
+				C6F60EC125DB2CA400ACD2C4 /* Explore */,
 				C652709025BCBBA80014FB05 /* Listing */,
 				C6FA67D725B9D3A1002A352E /* Post Detail */,
 				C652709625BCBC910014FB05 /* Site Summary */,
