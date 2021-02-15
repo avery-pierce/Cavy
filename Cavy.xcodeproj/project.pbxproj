@@ -464,6 +464,7 @@
 				C632F65625C7295E00CC1FC9 /* Colors.swift */,
 				C6D06D7825D97449004D2DA7 /* LabeledDivider.swift */,
 				C6D06D8225D9784B004D2DA7 /* FillButton.swift */,
+				C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -616,7 +617,6 @@
 				C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */,
 				C6D06D8C25D989D9004D2DA7 /* InstancePreviewScreen.swift */,
 				C6F60EB925DAE55A00ACD2C4 /* AddInstanceScreen.swift */,
-				C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
