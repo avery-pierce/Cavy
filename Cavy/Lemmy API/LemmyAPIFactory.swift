@@ -55,15 +55,13 @@ class LemmyAPIFactory: ObservableObject {
     }
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50, page: Int = 1) -> URLRequest {
-        var query: [String: String] = [
+        return path("api/\(v)/post/list", query: withAuth([
             // It looks strange, but yes, the `type_` argument includes the underscore.
             "type_": type.rawValue,
             "sort": sort.rawValue,
             "page": "\(page)",
             "limit": "\(limit)",
-        ]
-        query["auth"] = token
-        return path("api/\(v)/post/list", query: query)
+        ]))
     }
     
     func listPosts(type: PostType, sort: SortType, limit: Int = 50, page: Int = 1, communityID: Int) -> URLRequest {
@@ -112,6 +110,12 @@ class LemmyAPIFactory: ObservableObject {
     
     private var v: String {
         return version.rawValue
+    }
+    
+    private func withAuth(_ query: [String: String] = [:]) -> [String: String] {
+        var q = query
+        q["auth"] = token
+        return q
     }
 }
 
