@@ -21,12 +21,20 @@ class RootModel: ObservableObject {
         }
     }
     
+    @Published var appTabs = [AppTab]() {
+        didSet {
+            appTabStore.write(appTabs)
+        }
+    }
+    
     let serverStore = ClientStore()
     let listingStore = ListingIntentStore()
+    let appTabStore = AppTabStore()
     
     init() {
         self.clients = serverStore.read()
         self.savedListings = listingStore.read()
+        self.appTabs = appTabStore.read()
         self.needsOnboarding = RootModel.checkNeedsOnboarding()
     }
     
@@ -68,6 +76,10 @@ class RootModel: ObservableObject {
         removeFavorite(at: index)
     }
     
+    // MARK: - Active Tabs
+    
+    
+    
     // MARK: - Onboarding trigger
     
     private static let ONBOARDING_COMPLETE_KEY = "ONBOARDING_COMPLETE"
@@ -81,7 +93,13 @@ class RootModel: ObservableObject {
     
     func onboardingDidComplete(_ initialClient: LemmyAPIClient) {
         clients = [initialClient]
-        savedListings = []
+        let defaultListing = initialClient.isAuthenticated
+            ? ListingIntent.subscribed(initialClient)
+            : ListingIntent.allPosts(of: initialClient)
+            
+        savedListings = [defaultListing]
+        appTabs = [.listing(defaultListing)]
+        
         needsOnboarding = false
         UserDefaults.standard.setValue(true, forKey: RootModel.ONBOARDING_COMPLETE_KEY)
     }
