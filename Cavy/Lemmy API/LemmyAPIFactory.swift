@@ -11,6 +11,10 @@ import SwiftUI
 class LemmyAPIFactory: ObservableObject {
     var host: String
     var version: APIVersion
+    
+    var token: String? = nil
+    var username: String? = nil
+    
     init(_ host: String, _ version: APIVersion = .v1) {
         self.host = host
         self.version = version

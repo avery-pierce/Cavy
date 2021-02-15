@@ -21,9 +21,16 @@ struct SavedInstanceExplorerView: View {
                         label: {
                             Image(systemName: "server.rack")
                             VStack(alignment: .leading, spacing: 2.0) {
-                                Text(client.host)
-                                    .font(.system(size: headerFontSize))
-                                    .bold()
+                                HStack {
+                                    if let username = client.authenticatedUser {
+                                        Text(username)
+                                            .font(.system(size: headerFontSize))
+                                            .bold()
+                                    }
+                                    Text(client.host)
+                                        .font(.system(size: headerFontSize))
+                                        .bold()
+                                }
                                 APILevelTidbit(client)
                             }
                         })

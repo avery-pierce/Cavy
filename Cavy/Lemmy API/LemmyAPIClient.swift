@@ -35,29 +35,50 @@ extension LemmyAPIClient {
 
 extension LemmyAPIClient {
     init(descriptor: String) {
+        let parts = descriptor.split(separator: "@")
+        if parts.count > 1 {
+            let username = String(parts[0])
+            let domainAndAPILevel = String(parts[1])
+            let client = LemmyAPIClient.parseDomainAndAPILevel(domainAndAPILevel)
+            guard let jwt = KeychainUseCase().findJWT(forUser: username, onServer: client.host) else {
+                self = client
+                return
+            }
+            
+            client.apiFactory.username = username
+            client.apiFactory.token = jwt
+            self = client
+        } else {
+            self = LemmyAPIClient.parseDomainAndAPILevel(descriptor)
+        }
+    }
+    
+    private static func parseDomainAndAPILevel(_ descriptor: String) -> LemmyAPIClient {
         let parts = descriptor.split(separator: "/")
         if parts.count > 1 {
             let base = parts[0..<(parts.count - 1)].joined(separator: "/")
             let versionString = parts.last!.lowercased()
             
             switch versionString {
-            case "v1": self = .v1(LemmyV1Spec(base))
-            case "v2": self = .v2(LemmyV2Spec(base))
-            default: self = .v2(LemmyV2Spec(descriptor))
+            case "v1": return .v1(LemmyV1Spec(base))
+            case "v2": return .v2(LemmyV2Spec(base))
+            default: return .v2(LemmyV2Spec(descriptor))
             }
         } else {
             let version = LemmyAPIClient.knownAPIVersions[descriptor] ?? .v2
             switch version {
-            case .v1: self = .v1(LemmyV1Spec(descriptor))
-            case .v2: self = .v2(LemmyV2Spec(descriptor))
+            case .v1: return .v1(LemmyV1Spec(descriptor))
+            case .v2: return .v2(LemmyV2Spec(descriptor))
             }
         }
     }
     
     var descriptor: String {
-        switch self {
-        case .v1(let spec): return "\(spec.factory.host)/v1"
-        case .v2(let spec): return "\(spec.factory.host)/v2"
+        switch (self, authenticatedUser) {
+        case (.v1(let spec), .some(let username)): return "\(username)@\(spec.factory.host)/v1"
+        case (.v2(let spec), .some(let username)): return "\(username)@\(spec.factory.host)/v2"
+        case (.v1(let spec), .none): return "\(spec.factory.host)/v1"
+        case (.v2(let spec), .none): return "\(spec.factory.host)/v2"
         }
     }
 }
@@ -72,4 +93,22 @@ extension LemmyAPIClient {
     
     var host: String { apiFactory.host }
     var versionLevel: LemmyAPIFactory.APIVersion { apiFactory.version }
+}
+
+extension LemmyAPIClient {
+    func authenticated(as username: String, jwt: String) -> LemmyAPIClient {
+        let newClient = LemmyAPIClient(descriptor: self.descriptor)
+        newClient.apiFactory.username = username
+        newClient.apiFactory.token = jwt
+        return newClient
+    }
+    
+    var isAuthenticated: Bool {
+        return apiFactory.token != nil
+    }
+    
+    var authenticatedUser: String? {
+        guard isAuthenticated else { return nil }
+        return apiFactory.username
+    }
 }

@@ -21,3 +21,16 @@ struct Spec<D: DataProvider, Result: Codable> {
         self.type = Result.self
     }
 }
+
+extension Spec {
+    func load(completion: @escaping (Swift.Result<Result, Error>) -> Void) {
+        dataProvider.getData { (result) in
+            let parsed = result.flatMap { (data) -> Swift.Result<Result, Error> in
+                Swift.Result { () -> Result in
+                    try JSONDecoder().decode(Result.self, from: data)
+                }
+            }
+            completion(parsed)
+        }
+    }
+}
