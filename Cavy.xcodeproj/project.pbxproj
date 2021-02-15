@@ -123,6 +123,8 @@
 		C6D9F14A2537F3A100B41CE4 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9F1492537F3A100B41CE4 /* Assert.swift */; };
 		C6F306B125BCE02300B381B1 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F306B025BCE02300B381B1 /* UsersListView.swift */; };
 		C6F306B525BCE08600B381B1 /* LemmySiteResponsePreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F306B425BCE08600B381B1 /* LemmySiteResponsePreviews.swift */; };
+		C6F60EB225D9DE1E00ACD2C4 /* KeychainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */; };
+		C6F60EB625D9EE5700ACD2C4 /* KeychainUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */; };
 		C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */; };
 		C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */; };
 		C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E425BA5804002A352E /* ThumbnailView.swift */; };
@@ -266,6 +268,8 @@
 		C6D9F1492537F3A100B41CE4 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		C6F306B025BCE02300B381B1 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
 		C6F306B425BCE08600B381B1 /* LemmySiteResponsePreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmySiteResponsePreviews.swift; sourceTree = "<group>"; };
+		C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUseCase.swift; sourceTree = "<group>"; };
+		C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUseCaseTests.swift; sourceTree = "<group>"; };
 		C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSummaryView.swift; sourceTree = "<group>"; };
 		C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		C6FA67E425BA5804002A352E /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 				C63DF2D425313FB500728E08 /* Info.plist */,
 				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 				C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */,
+				C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */,
 				C6D06D5125D2E4AB004D2DA7 /* secrets.json */,
 			);
 			path = CavyTests;
@@ -622,6 +627,7 @@
 				C6D9F1182537CD8F00B41CE4 /* EditHostsUseCase.swift */,
 				C625440525B4BCBF007F170A /* CommentTreeUseCase.swift */,
 				C659A6AC25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift */,
+				C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -788,6 +794,7 @@
 				C6D06D3B25D06581004D2DA7 /* CachingDataProvider.swift in Sources */,
 				C63DF2AE2530016000728E08 /* CavyApp.swift in Sources */,
 				C625440C25B4BFEA007F170A /* CommentTree.swift in Sources */,
+				C6F60EB225D9DE1E00ACD2C4 /* KeychainUseCase.swift in Sources */,
 				C6D06D6B25D8279D004D2DA7 /* WelcomeToCavyPage.swift in Sources */,
 				C659A6AD25C5EB0E00F12466 /* SelectLemmyAPIVersionUseCase.swift in Sources */,
 				C6515CEF2531601800C8CEF7 /* LemmyPostItemResponse.swift in Sources */,
@@ -898,6 +905,7 @@
 				C659A6B125C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift in Sources */,
 				C6D9F13D2537F04700B41CE4 /* PlainError.swift in Sources */,
 				C625441425B5FEE9007F170A /* CommentTreeTests.swift in Sources */,
+				C6F60EB625D9EE5700ACD2C4 /* KeychainUseCaseTests.swift in Sources */,
 				C6FA67FF25BA7991002A352E /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
