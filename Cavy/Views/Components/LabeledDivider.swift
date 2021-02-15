@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct LabeledDivider<Children: View>: View {
     var children: Children
@@ -23,7 +24,7 @@ struct LabeledDivider<Children: View>: View {
             children
             Rectangle().frame(height: 1)
         }
-        .foregroundColor(Color.gray)
+        .foregroundColor(Color(UIColor.separator))
         .font(.system(.footnote))
     }
 }

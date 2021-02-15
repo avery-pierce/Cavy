@@ -15,13 +15,12 @@ struct ChooseInstancePage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Select an instance")
-                
                 HStack {
                     VStack(alignment: .leading, spacing: 8.0) {
                         HStack {
                             Text("lemmy.ml")
                                 .font(.headline)
+                            
                             Text("(recommended)")
                                 .opacity(0.5)
                         }
@@ -31,33 +30,42 @@ struct ChooseInstancePage: View {
                     Spacer()
                 }
                 .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.blue, lineWidth: 2)
-                )
+                .background(Color.secondarySystemGroupedBackground)
+                .mask(RoundedRectangle(cornerRadius: 8.0))
+                .overlay(RoundedRectangle(cornerRadius: 8.0).stroke(Color.accentColor, lineWidth: 1.0))
                 .onTapGesture {
-                    rootModel.onboardingDidComplete(.lemmyML)
+                    self.committedLemmyServer = Classy("lemmy.ml")
                 }
                 
                 LabeledDivider(content: Text("OR")).padding(.vertical)
                 
                 Text("Enter another intance")
+                    .font(.callout)
+                    .foregroundColor(.primary)
+                    .opacity(0.8)
+                
                 TextField("lemmy.ml", text: $lemmyServer, onCommit: {
                     self.committedLemmyServer = Classy(lemmyServer)
                 })
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .keyboardType(.URL)
-                    .padding()
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.blue, lineWidth: 2))
-                    
-                Text("You can also add more instances later")
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .keyboardType(.URL)
+                .frame(height: 44)
+                .padding(.horizontal, 10.0)
+                .background(Color.secondarySystemGroupedBackground)
+                .mask(RoundedRectangle(cornerRadius: 8.0))
+                .overlay(RoundedRectangle(cornerRadius: 8.0).stroke(Color.accentColor, lineWidth: 1.0))
+                
+                Text("Enter the host name of the instance you want to connect to. You can alway add more instances later")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
             }
             .padding()
         }
+        .background(Color.systemGroupedBackground.ignoresSafeArea())
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Choose Instance")
         .sheet(item: $committedLemmyServer) { host in
             InstancePreviewScreen(host: host.value) { client in
                 rootModel.onboardingDidComplete(client)
@@ -69,6 +77,8 @@ struct ChooseInstancePage: View {
 
 struct ChooseInstancePage_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseInstancePage()
+        NavigationView {
+            ChooseInstancePage()
+        }
     }
 }
