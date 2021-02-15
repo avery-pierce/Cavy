@@ -71,11 +71,12 @@ class RootModel: ObservableObject {
     // MARK: - Onboarding trigger
     
     private static let ONBOARDING_COMPLETE_KEY = "ONBOARDING_COMPLETE"
+    private static let testingOnboardingFlow = false
     
     @Published var needsOnboarding: Bool
     
     static func checkNeedsOnboarding() -> Bool {
-        !UserDefaults.standard.bool(forKey: ONBOARDING_COMPLETE_KEY)
+        !UserDefaults.standard.bool(forKey: ONBOARDING_COMPLETE_KEY) || testingOnboardingFlow
     }
     
     func onboardingDidComplete(_ initialClient: LemmyAPIClient) {
