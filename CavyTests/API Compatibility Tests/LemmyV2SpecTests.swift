@@ -15,7 +15,7 @@ class LemmyV2SpecTests: XCTestCase {
     func testLogin() throws {
         // Don't commit usernames and passwords to source control.
         // Instead, load them from (gitignore'd) secrets file.
-        let secrets = loadSecrets()
+        let secrets = Secrets.load()?["loginV2"] as? [String: String]
         let username = secrets?["username"]
         let password = secrets?["password"]
         try XCTSkipUnless(username != nil && password != nil, "username and password not found in secrets.json")
@@ -82,13 +82,6 @@ class LemmyV2SpecTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 5, handler: nil)
-    }
-    
-    func loadSecrets() -> [String: String]? {
-        guard let url = Bundle(for: Self.self).url(forResource: "secrets", withExtension: "json") else { return nil }
-        guard let loadedData = try? Data(contentsOf: url) else { return nil }
-        guard let object = try? JSONSerialization.jsonObject(with: loadedData, options: []) as? [String: String] else { return nil }
-        return object
     }
 }
 

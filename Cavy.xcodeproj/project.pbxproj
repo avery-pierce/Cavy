@@ -127,6 +127,7 @@
 		C6F60EC525DB2D3300ACD2C4 /* AddAnotherInstanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EC425DB2D3300ACD2C4 /* AddAnotherInstanceView.swift */; };
 		C6F60ECB25DB334700ACD2C4 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60ECA25DB334700ACD2C4 /* AppTab.swift */; };
 		C6F60ECF25DB342B00ACD2C4 /* AppTabStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60ECE25DB342B00ACD2C4 /* AppTabStore.swift */; };
+		C6F60ED325DB3B0900ACD2C4 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */; };
 		C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */; };
 		C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */; };
 		C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E425BA5804002A352E /* ThumbnailView.swift */; };
@@ -274,6 +275,7 @@
 		C6F60EC425DB2D3300ACD2C4 /* AddAnotherInstanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnotherInstanceView.swift; sourceTree = "<group>"; };
 		C6F60ECA25DB334700ACD2C4 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		C6F60ECE25DB342B00ACD2C4 /* AppTabStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabStore.swift; sourceTree = "<group>"; };
+		C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSummaryView.swift; sourceTree = "<group>"; };
 		C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		C6FA67E425BA5804002A352E /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 				C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */,
 				C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */,
+				C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */,
 				C6D06D5125D2E4AB004D2DA7 /* secrets.json */,
 			);
 			path = CavyTests;
@@ -901,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C625442B25B65528007F170A /* DateParserTests.swift in Sources */,
+				C6F60ED325DB3B0900ACD2C4 /* Secrets.swift in Sources */,
 				C6091D0A25C4759800E6CD0F /* LemmyV2SpecTests.swift in Sources */,
 				C6D06D3F25D06B0D004D2DA7 /* CachingDataProviderTests.swift in Sources */,
 				C6D9F13A2537F04300B41CE4 /* DataProvider.swift in Sources */,
