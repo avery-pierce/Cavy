@@ -27,11 +27,12 @@ struct InstancePreviewScreen: View {
                 }
             }
         }
+        .navigationBarHidden(true)
         .onAppear(perform: {
             loadState = .loading(nil)
             SelectLemmyAPIVersionUseCase(host).determineAPI { (result) in
                 self.loadState = .complete(result)
             }
-        })
+        })        
     }
 }

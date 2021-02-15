@@ -63,7 +63,7 @@ struct SavedInstanceExplorerView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: { isSheetPresented = true }, label: { Image(systemName: "plus.circle") }))
         .sheet(isPresented: $isSheetPresented, content: {
-            ChooseInstancePage() { client in
+            AddAnotherInstanceView() { client in
                 rootModel.addServer(client)
                 isSheetPresented = false
             }
