@@ -17,19 +17,6 @@ struct MainTabView: View {
             }.tabItem {
                 Label("Instances", systemImage: "binoculars")
             }
-            
-            ForEach(rootModel.savedListings, id: \.fakeHashValue) { listing in
-                NavigationView {
-                    LoadingPostListView(listing)
-                }.tabItem {
-                    Label(listing.title, systemImage: "globe")
-                }
-            }
-            
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
         }
     }
 }
