@@ -54,26 +54,40 @@ class LemmyAPIFactory: ObservableObject {
         return path("api/\(v)/site/config")
     }
     
-    func listPosts(type: PostType, sort: SortType, limit: Int = 50) -> URLRequest {
-        // It looks strange, but yes, the `type_` argument includes the underscore.
-        if let token = token {
-            return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&auth=\(token)")
-        } else {
-            return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)")
-        }
+    func listPosts(type: PostType, sort: SortType, limit: Int = 50, page: Int = 1) -> URLRequest {
+        var query: [String: String] = [
+            // It looks strange, but yes, the `type_` argument includes the underscore.
+            "type_": type.rawValue,
+            "sort": sort.rawValue,
+            "page": "\(page)",
+            "limit": "\(limit)",
+        ]
+        query["auth"] = token
+        return path("api/\(v)/post/list", query: query)
     }
     
-    func listPosts(type: PostType, sort: SortType, limit: Int = 50, communityID: Int) -> URLRequest {
-        // It looks strange, but yes, the `type_` argument includes the underscore.
-        return path("api/\(v)/post/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&limit=\(limit)&community_id=\(communityID)")
+    func listPosts(type: PostType, sort: SortType, limit: Int = 50, page: Int = 1, communityID: Int) -> URLRequest {
+        return path("api/\(v)/post/list", query: [
+            // It looks strange, but yes, the `type_` argument includes the underscore.
+            "type_": type.rawValue,
+            "sort": sort.rawValue,
+            "page": "\(page)",
+            "limit": "\(limit)",
+            "community_id": "\(communityID)",
+        ])
     }
     
     func listCommunities(type: PostType = .all, sort: SortType, page: Int = 1, limit: Int = 50) -> URLRequest {
-        return path("api/\(v)/community/list?type_=\(type.rawValue)&sort=\(sort.rawValue)&page=\(page)&limit=\(limit)")
+        return path("api/\(v)/community/list", query: [
+            "type_": type.rawValue,
+            "sort": sort.rawValue,
+            "page": "\(page)",
+            "limit": "\(limit)",
+        ])
     }
     
     func fetchPost(id: String) -> URLRequest {
-        return path("api/\(v)/post?id=\(id)")
+        return path("api/\(v)/post", query: ["id": id])
     }
     
     func login(usernameOrEmail: String, password: String) -> URLRequest {
@@ -86,8 +100,11 @@ class LemmyAPIFactory: ObservableObject {
         return fetchPost(id: String(id))
     }
     
-    func path(_ path: String) -> URLRequest {
-        let url = URL(string: "https://\(host)/\(path)")!
+    func path(_ path: String, query: [String: String] = [:]) -> URLRequest {
+        var components = URLComponents(string: "https://\(host)/\(path)")!
+        components.queryItems = query.map(URLQueryItem.init)
+        
+        let url = components.url!
         var request = URLRequest(url: url)
         request.addDefaultHeaders()
         return request
