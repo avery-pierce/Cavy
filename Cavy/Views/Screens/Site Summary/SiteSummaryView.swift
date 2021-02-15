@@ -40,11 +40,6 @@ struct SiteSummaryView: View {
                 
                 APILevelTidbit()
                 
-                SiteKPIsRow(site: site)
-                    .padding(.horizontal)
-                    .buttonStyle(DefaultButtonStyle())
-                    .lemmyAPIClient(client)
-                
                 if (client.isAuthenticated) {
                     NavigationLink(destination: LoadingPostListView(.subscribed(client))) {
                         ListCellView {
@@ -78,6 +73,11 @@ struct SiteSummaryView: View {
                 }
                 .background(RoundedRectangle(cornerRadius: 8.0).fill(Color.secondarySystemGroupedBackground))
                 .padding(.horizontal)
+                
+                SiteKPIsRow(site: site)
+                    .padding(.horizontal)
+                    .buttonStyle(DefaultButtonStyle())
+                    .lemmyAPIClient(client)
                 
                 if let description = site.descriptionMarkdown {
                     MarkdownText(description)
