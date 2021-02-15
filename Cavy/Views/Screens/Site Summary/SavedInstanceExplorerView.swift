@@ -12,6 +12,8 @@ struct SavedInstanceExplorerView: View {
     @ScaledMetric(wrappedValue: 12.0) var subheadFontSize: CGFloat
     @EnvironmentObject var rootModel: RootModel
     
+    @State var isSheetPresented: Bool = false
+    
     var body: some View {
         List {
             Section(header: Text("Saved Instances")) {
@@ -21,15 +23,16 @@ struct SavedInstanceExplorerView: View {
                         label: {
                             Image(systemName: "server.rack")
                             VStack(alignment: .leading, spacing: 2.0) {
-                                HStack {
+                                
+                                HStack(spacing: 2) {
                                     if let username = client.authenticatedUser {
                                         Text(username)
                                             .font(.system(size: headerFontSize))
                                             .bold()
+                                        Text("@").opacity(0.5)
                                     }
                                     Text(client.host)
                                         .font(.system(size: headerFontSize))
-                                        .bold()
                                 }
                                 APILevelTidbit(client)
                             }
@@ -58,6 +61,13 @@ struct SavedInstanceExplorerView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Saved Instances")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: { isSheetPresented = true }, label: { Image(systemName: "plus.circle") }))
+        .sheet(isPresented: $isSheetPresented, content: {
+            ChooseInstancePage() { client in
+                rootModel.addServer(client)
+                isSheetPresented = false
+            }
+        })
     }
 }
 
@@ -66,7 +76,7 @@ struct SavedInstanceExplorerView_Previews: PreviewProvider {
         let model = RootModel()
         model.clients = [
             LemmyAPIClient(descriptor: "chapo.chat/v1"),
-            LemmyAPIClient(descriptor: "lemmy.ml/v2"),
+            LemmyAPIClient(descriptor: "CavyTestUser@lemmy.ml/v2"),
         ]
         return model
     }()

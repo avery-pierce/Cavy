@@ -12,6 +12,11 @@ struct ChooseInstancePage: View {
     @State var lemmyServer: String = ""
     @State var committedLemmyServer: Classy<String>? = nil
     
+    let onClient: ((LemmyAPIClient) -> Void)?
+    init(_ onClient: ((LemmyAPIClient) -> Void)? = nil) {
+        self.onClient = onClient
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -67,11 +72,18 @@ struct ChooseInstancePage: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Choose Instance")
         .sheet(item: $committedLemmyServer) { host in
-            InstancePreviewScreen(host: host.value) { client in
-                rootModel.onboardingDidComplete(client)
-                committedLemmyServer = nil
-            }
+            InstancePreviewScreen(host: host.value, onConfirm: didConfirmClient(_:))
         }
+    }
+    
+    func didConfirmClient(_ client: LemmyAPIClient) {
+        if let onClient = onClient {
+            onClient(client)
+        } else {
+            rootModel.onboardingDidComplete(client)
+        }
+        
+        committedLemmyServer = nil
     }
 }
 
