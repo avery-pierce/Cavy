@@ -9,35 +9,48 @@ import SwiftUI
 import UIKit
 
 struct LabeledDivider<Children: View>: View {
-    var children: Children
-    init(@ViewBuilder _ content: @escaping () -> Children) {
+    let children: Children
+    let alignment: Alignment
+    init(alignment: Alignment = .center, @ViewBuilder _ content: @escaping () -> Children) {
+        self.alignment = alignment
         self.children = content()
     }
     
-    init(content: Children) {
+    init(alignment: Alignment = .center, content: Children) {
+        self.alignment = alignment
         self.children = content
     }
     
     var body: some View {
         HStack {
-            Rectangle().frame(height: 1)
+            if alignment != .leading {
+                Rectangle().frame(height: 1)
+            }
             children
-            Rectangle().frame(height: 1)
+            if alignment != .trailing {
+                Rectangle().frame(height: 1)
+            }
         }
         .foregroundColor(Color(UIColor.separator))
         .font(.system(.footnote))
+    }
+    
+    enum Alignment {
+        case center
+        case leading
+        case trailing
     }
 }
 
 struct LabeledDivider_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            
+        VStack(spacing: 20.0) {
             LabeledDivider {
                 Text("OR")
             }
-            
             LabeledDivider(content: Text("AND"))
+            LabeledDivider(alignment: .leading, content: Image(systemName: "star.fill"))
+            LabeledDivider(alignment: .trailing, content: Image(systemName: "heart.fill"))
         }
     }
 }

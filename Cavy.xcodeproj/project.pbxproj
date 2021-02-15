@@ -126,6 +126,7 @@
 		C6F60EB225D9DE1E00ACD2C4 /* KeychainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */; };
 		C6F60EB625D9EE5700ACD2C4 /* KeychainUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */; };
 		C6F60EBA25DAE55A00ACD2C4 /* AddInstanceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EB925DAE55A00ACD2C4 /* AddInstanceScreen.swift */; };
+		C6F60EBE25DB216600ACD2C4 /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */; };
 		C6FA67DD25B9D3F5002A352E /* ArticleSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */; };
 		C6FA67E125BA5769002A352E /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */; };
 		C6FA67E525BA5804002A352E /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA67E425BA5804002A352E /* ThumbnailView.swift */; };
@@ -272,6 +273,7 @@
 		C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUseCase.swift; sourceTree = "<group>"; };
 		C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUseCaseTests.swift; sourceTree = "<group>"; };
 		C6F60EB925DAE55A00ACD2C4 /* AddInstanceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstanceScreen.swift; sourceTree = "<group>"; };
+		C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		C6FA67DC25B9D3F5002A352E /* ArticleSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSummaryView.swift; sourceTree = "<group>"; };
 		C6FA67E025BA5769002A352E /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		C6FA67E425BA5804002A352E /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				C6D06D6E25D82EEA004D2DA7 /* ChooseInstancePage.swift */,
 				C6D06D8C25D989D9004D2DA7 /* InstancePreviewScreen.swift */,
 				C6F60EB925DAE55A00ACD2C4 /* AddInstanceScreen.swift */,
+				C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				C6515CF32531606E00C8CEF7 /* LemmyAPIFactory.swift in Sources */,
 				C659A6C425C6009000F12466 /* ListingDescriptor.swift in Sources */,
 				C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */,
+				C6F60EBE25DB216600ACD2C4 /* LoginForm.swift in Sources */,
 				C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */,
 				C6091CFA25C46F1A00E6CD0F /* LemmyCategory.swift in Sources */,
 				C6F60EBA25DAE55A00ACD2C4 /* AddInstanceScreen.swift in Sources */,
