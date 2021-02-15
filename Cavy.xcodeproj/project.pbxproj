@@ -425,6 +425,7 @@
 		C652708E25BCBB7D0014FB05 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C6F60EC125DB2CA400ACD2C4 /* Explore */,
 				C6D06D6325D82559004D2DA7 /* Onboarding */,
 				C6515D082532038900C8CEF7 /* MainTabView.swift */,
 				C652709025BCBBA80014FB05 /* Listing */,
@@ -482,7 +483,6 @@
 				C652706D25BCAB7B0014FB05 /* SiteSummaryLoaderView.swift */,
 				C632F67525C738D400CC1FC9 /* SiteKPIsRow.swift */,
 				C640773425BCD02000B42F63 /* FederatedInstancesListView.swift */,
-				C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */,
 				C6F306B025BCE02300B381B1 /* UsersListView.swift */,
 			);
 			path = "Site Summary";
@@ -636,6 +636,14 @@
 				C6F60EB125D9DE1E00ACD2C4 /* KeychainUseCase.swift */,
 			);
 			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		C6F60EC125DB2CA400ACD2C4 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C6091CCD25BDE22300E6CD0F /* SavedInstanceExplorerView.swift */,
+			);
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		C6FA67D725B9D3A1002A352E /* Post Detail */ = {
