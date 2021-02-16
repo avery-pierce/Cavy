@@ -42,7 +42,7 @@ struct PostDetailView: View {
             LazyVStack {
                 PostContentView(post)
                 LoadStateView(postModel.loadState) { listing in
-                    CommentsListView(listing.cavyComments)
+                    CommentsListView(listing.cavyComments, post: post)
                         .padding(.leading, 8)
                 }
                 Spacer()

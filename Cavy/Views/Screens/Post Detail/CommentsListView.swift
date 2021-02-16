@@ -10,16 +10,24 @@ import SwiftUI
 struct CommentsListView: View {
     @ObservedObject var commentTree: CommentTree
     
-    init(_ comments: [CavyComment]) {
+    let post: CavyPost?
+    
+    init(_ comments: [CavyComment], post: CavyPost? = nil) {
         let commentTreeBuilder = CommentTreeUseCase(comments)
         self.commentTree = CommentTree(commentTreeBuilder.buildTree())
+        self.post = post
+    }
+    
+    func isPostedByOP(comment: CavyComment) -> Bool {
+        guard let post = post else { return false }
+        return post.submitterName == comment.submitterName
     }
     
     var body: some View {
         ForEach(commentTree.comments, id: \.comment.id) { comment in
             // FIXME: The tap target shrinks to fit the content instead
             // of filling the entire cell.
-            CommentView(comment)
+            CommentView(comment, isOP: isPostedByOP(comment: comment.comment))
                 .onTapGesture {
                     self.commentTree.toggleHidden(comment.comment.id)
                 }

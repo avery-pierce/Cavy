@@ -9,14 +9,26 @@ import SwiftUI
 
 struct CommentView: View {
     let threadedComment: ThreadedComment
+    let isOP: Bool
     var comment: CavyComment { threadedComment.comment }
     
-    init(_ threadedComment: ThreadedComment) {
+    init(_ threadedComment: ThreadedComment, isOP: Bool) {
         self.threadedComment = threadedComment
+        self.isOP = isOP
     }
     
     var author: String {
         return comment.submitterName ?? "(user)"
+    }
+    
+    var authorColor: Color {
+        if isHidden {
+            return .secondary
+        } else if isOP {
+            return .blue
+        } else {
+            return .primary
+        }
     }
     
     var isHidden: Bool {
@@ -75,6 +87,7 @@ struct CommentView: View {
                         
                         HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                             Text(author).bold()
+                                .foregroundColor(authorColor)
                         }
                         
                         Spacer()
@@ -114,7 +127,7 @@ struct CommentView_Previews: PreviewProvider {
                                     "score": 15,
                                     "creator_published": "2021-01-18T23:42:26.673844"
                                 }
-                                """), indentationLevel: i))
+                                """), indentationLevel: i), isOP: true)
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
@@ -124,7 +137,7 @@ struct CommentView_Previews: PreviewProvider {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
                                 }
-                                """), indentationLevel: 0, isHidden: true))
+                                """), indentationLevel: 0, isHidden: true), isOP: true)
                     .previewLayout(.fixed(width: 300, height: 100))
             }
             
@@ -137,7 +150,7 @@ struct CommentView_Previews: PreviewProvider {
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
                                     "score": 15,
                                 }
-                                """), indentationLevel: i))
+                                """), indentationLevel: i), isOP: false)
                         .previewLayout(.fixed(width: 300, height: 100))
                 }
                 
@@ -147,7 +160,7 @@ struct CommentView_Previews: PreviewProvider {
                                     "creator_name": "john_appleseed",
                                     "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
                                 }
-                                """), indentationLevel: 0, isHidden: true))
+                                """), indentationLevel: 0, isHidden: true), isOP: true)
                     
                     .previewLayout(.fixed(width: 300, height: 100))
             }
