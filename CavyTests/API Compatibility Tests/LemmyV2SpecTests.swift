@@ -49,6 +49,37 @@ class LemmyV2SpecTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+    func testListPostsAuthed() throws {
+        // Don't commit usernames and passwords to source control.
+        // Instead, load them from (gitignore'd) secrets file.
+        let secrets = Secrets.load()?["loginV2"] as? [String: String]
+        let username = secrets?["username"]
+        let password = secrets?["password"]
+        try XCTSkipUnless(username != nil && password != nil, "username and password not found in secrets.json")
+        
+        let e = expectation(description: "list posts")
+        let spec = client.login(usernameOrEmail: username!, password: password!)
+        spec.load { (result) in
+            switch result {
+            case .success(let jwtWrapper):
+                let authClient = LemmyV2Spec.lemmyML
+                authClient.factory.token = jwtWrapper.jwt
+                authClient.factory.username = username
+                
+                let spec = authClient.listPosts(type: .subscribed, sort: .hot)
+                assertDecodes(spec) {
+                    e.fulfill()
+                }
+                
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     func testListPostsByCommunity() throws {
         let e = expectation(description: "List Posts")
         let spec = client.listPosts(type: .all, sort: .hot, communityID: 1)

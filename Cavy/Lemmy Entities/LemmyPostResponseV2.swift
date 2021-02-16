@@ -42,7 +42,7 @@ struct LemmyCommentSummary: Codable {
     var creatorBannedFromCommunity: Bool?
     var subscribed: Bool?
     var saved: Bool?
-    var myVote: Bool?
+    var myVote: Int?
     
     enum CodingKeys: String, CodingKey {
         case comment = "comment"
@@ -68,7 +68,7 @@ struct LemmyCommentSummary: Codable {
         creatorBannedFromCommunity = try values.decodeIfPresent(Bool.self, forKey: .creatorBannedFromCommunity)
         subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
         saved = try values.decodeIfPresent(Bool.self, forKey: .saved)
-        myVote = try values.decodeIfPresent(Bool.self, forKey: .myVote)
+        myVote = try values.decodeIfPresent(Int.self, forKey: .myVote)
     }
     
     struct Counts: Codable {

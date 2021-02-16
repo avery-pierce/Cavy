@@ -40,7 +40,7 @@ struct LemmyComment: Codable, Equatable {
     let hotRank : Int?
     let hotRankActive : Int?
     let userID : String?
-    let myVote : String?
+    let myVote : Int?
     let subscribed : String?
     let saved : String?
     
@@ -116,7 +116,7 @@ struct LemmyComment: Codable, Equatable {
         hotRank = try values.decodeIfPresent(Int.self, forKey: .hotRank)
         hotRankActive = try values.decodeIfPresent(Int.self, forKey: .hotRankActive)
         userID = try values.decodeIfPresent(String.self, forKey: .userID)
-        myVote = try values.decodeIfPresent(String.self, forKey: .myVote)
+        myVote = try values.decodeIfPresent(Int.self, forKey: .myVote)
         subscribed = try values.decodeIfPresent(String.self, forKey: .subscribed)
         saved = try values.decodeIfPresent(String.self, forKey: .saved)
     }

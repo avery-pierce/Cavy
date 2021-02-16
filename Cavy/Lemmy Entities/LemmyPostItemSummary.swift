@@ -16,7 +16,7 @@ struct LemmyPostItemSummary: Codable {
     var subscribed: Bool?
     var saved: Bool?
     var read: Bool?
-    var myVote: Bool?
+    var myVote: Int?
     
     enum CodingKeys: String, CodingKey {
         case post = "post"
@@ -40,7 +40,7 @@ struct LemmyPostItemSummary: Codable {
         subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
         saved = try values.decodeIfPresent(Bool.self, forKey: .saved)
         read = try values.decodeIfPresent(Bool.self, forKey: .read)
-        myVote = try values.decodeIfPresent(Bool.self, forKey: .myVote)
+        myVote = try values.decodeIfPresent(Int.self, forKey: .myVote)
     }
     
     struct Counts: Codable {
