@@ -24,6 +24,8 @@ struct CommentView: View {
     var authorColor: Color {
         if isHidden {
             return .secondary
+        } else if comment.isSubmitterAdmin {
+            return .red
         } else if isOP {
             return .blue
         } else {

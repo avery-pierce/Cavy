@@ -12,6 +12,7 @@ struct CavyComment {
     var parentID: Int?
     var score: Int?
     var submitterName: String?
+    var isSubmitterAdmin: Bool
     var publishDate: Date?
     var bodyMarkdown: String?
 }
@@ -19,14 +20,26 @@ struct CavyComment {
 extension LemmyComment {
     var cavyComment: CavyComment {
         let publishDate = published.flatMap(parseLemmyDate(_:))
-        return CavyComment(id: id!, parentID: parentID, score: score, submitterName: creatorPreferredUsername ?? creatorName, publishDate: publishDate, bodyMarkdown: content)
+        return CavyComment(id: id!,
+                           parentID: parentID,
+                           score: score,
+                           submitterName: creatorPreferredUsername ?? creatorName,
+                           isSubmitterAdmin: false,
+                           publishDate: publishDate,
+                           bodyMarkdown: content)
     }
 }
 
 extension LemmyCommentSummary {
     var cavyComment: CavyComment {
         let publishDate = comment?.published.flatMap(parseLemmyDate(_:))
-        return CavyComment(id: comment!.id!, parentID: comment!.parentID, score: counts.score, submitterName: creator?.name, publishDate: publishDate, bodyMarkdown: comment?.content)
+        return CavyComment(id: comment!.id!,
+                           parentID: comment!.parentID,
+                           score: counts.score,
+                           submitterName: creator?.name,
+                           isSubmitterAdmin: creator?.admin ?? false,
+                           publishDate: publishDate,
+                           bodyMarkdown: comment?.content)
     }
 }
 

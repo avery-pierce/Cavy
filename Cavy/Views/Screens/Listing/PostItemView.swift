@@ -36,7 +36,7 @@ struct PostItemView: View {
     
     func authorDetail(_ authorName: String) -> some View {
         Text(authorName)
-            .foregroundColor(.accentColor)
+            .foregroundColor(postItem.isSubmitterAdmin ? .red : .accentColor)
     }
     
     func communityDetail(_ communityName: String) -> some View {
