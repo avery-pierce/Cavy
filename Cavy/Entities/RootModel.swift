@@ -76,10 +76,6 @@ class RootModel: ObservableObject {
         removeFavorite(at: index)
     }
     
-    // MARK: - Active Tabs
-    
-    
-    
     // MARK: - Onboarding trigger
     
     private static let ONBOARDING_COMPLETE_KEY = "ONBOARDING_COMPLETE"
