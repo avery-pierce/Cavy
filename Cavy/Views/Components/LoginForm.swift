@@ -43,7 +43,7 @@ struct LoginForm: View {
     func login() {
         switch (anonymousClient) {
         case .v2(let spec):
-            spec.login(usernameOrEmail: username, password: password).load { (result) in
+            spec.login(usernameOrEmail: username, password: password).load { result in
                 switch result {
                 case .success(let jwtWrapper):
                     let jwt = jwtWrapper.jwt
@@ -56,7 +56,19 @@ struct LoginForm: View {
                 }
             }
             
-        case .v1: return
+        case .v1(let spec):
+            spec.login(usernameOrEmail: username, password: password).load { result in
+                switch result {
+                case .success(let jwtWrapper):
+                    let jwt = jwtWrapper.jwt
+                    
+                    KeychainUseCase().storeJWT(jwt, forUser: username, onServer: anonymousClient.host)
+                    onSuccess(anonymousClient.authenticated(as: username, jwt: jwtWrapper.jwt))
+                    
+                case .failure(let error):
+                    print("Error \(error)")
+                }
+            }
         }
     }
 }

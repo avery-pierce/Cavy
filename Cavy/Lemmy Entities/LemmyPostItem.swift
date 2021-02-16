@@ -29,25 +29,25 @@ struct LemmyPostItem: Codable, Equatable {
     let banned : Bool?
     let name : String?
     let embedHTML : String?
-    let myVote : String?
+    let myVote : Int?
     let creatorPreferredUsername : String?
     let apID : String?
-    let subscribed : String?
+    let subscribed : Bool?
     let published : String?
     let stickied : Bool?
     let creatorName : String?
     let thumbnailURL : String?
     let communityName : String?
-    let saved : String?
+    let saved : Bool?
     let deleted : Bool?
     let removed : Bool?
     let creatorPublished : String?
     let upvotes : Int?
     let numberOfComments : Int?
-    let userID : String?
+    let userID : Int?
     let hotRank : Int?
     let communityRemoved : Bool?
-    let read : String?
+    let read : Bool?
     let bannedFromCommunity : Bool?
     let creatorLocal : Bool?
     let communityActorID : String?
@@ -128,25 +128,25 @@ struct LemmyPostItem: Codable, Equatable {
         banned = try values.decodeIfPresent(Bool.self, forKey: .banned)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         embedHTML = try values.decodeIfPresent(String.self, forKey: .embedHTML)
-        myVote = try values.decodeIfPresent(String.self, forKey: .myVote)
+        myVote = try values.decodeIfPresent(Int.self, forKey: .myVote)
         creatorPreferredUsername = try values.decodeIfPresent(String.self, forKey: .creatorPreferredUsername)
         apID = try values.decodeIfPresent(String.self, forKey: .apID)
-        subscribed = try values.decodeIfPresent(String.self, forKey: .subscribed)
+        subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
         published = try values.decodeIfPresent(String.self, forKey: .published)
         stickied = try values.decodeIfPresent(Bool.self, forKey: .stickied)
         creatorName = try values.decodeIfPresent(String.self, forKey: .creatorName)
         thumbnailURL = try values.decodeIfPresent(String.self, forKey: .thumbnailURL)
         communityName = try values.decodeIfPresent(String.self, forKey: .communityName)
-        saved = try values.decodeIfPresent(String.self, forKey: .saved)
+        saved = try values.decodeIfPresent(Bool.self, forKey: .saved)
         deleted = try values.decodeIfPresent(Bool.self, forKey: .deleted)
         removed = try values.decodeIfPresent(Bool.self, forKey: .removed)
         creatorPublished = try values.decodeIfPresent(String.self, forKey: .creatorPublished)
         upvotes = try values.decodeIfPresent(Int.self, forKey: .upvotes)
         numberOfComments = try values.decodeIfPresent(Int.self, forKey: .numberOfComments)
-        userID = try values.decodeIfPresent(String.self, forKey: .userID)
+        userID = try values.decodeIfPresent(Int.self, forKey: .userID)
         hotRank = try values.decodeIfPresent(Int.self, forKey: .hotRank)
         communityRemoved = try values.decodeIfPresent(Bool.self, forKey: .communityRemoved)
-        read = try values.decodeIfPresent(String.self, forKey: .read)
+        read = try values.decodeIfPresent(Bool.self, forKey: .read)
         bannedFromCommunity = try values.decodeIfPresent(Bool.self, forKey: .bannedFromCommunity)
         creatorLocal = try values.decodeIfPresent(Bool.self, forKey: .creatorLocal)
         communityActorID = try values.decodeIfPresent(String.self, forKey: .communityActorID)
