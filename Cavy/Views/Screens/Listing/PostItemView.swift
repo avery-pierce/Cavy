@@ -51,9 +51,18 @@ struct PostItemView: View {
     
     var scoreDetail: some View {
         HStack(alignment: .center, spacing: 2) {
-            Image(systemName: "arrow.up")
-            Text(scoreText)
-        }.font(.system(size: 12.0, weight: .regular))
+            if postItem.myVote == 1 {
+                Image(systemName: "arrow.up").foregroundColor(.purple)
+                Text(scoreText).foregroundColor(.purple)
+            } else if postItem.myVote == -1 {
+                Image(systemName: "arrow.down").foregroundColor(.red)
+                Text(scoreText).foregroundColor(.red)
+            } else {
+                Image(systemName: "arrow.up")
+                Text(scoreText)
+            }
+        }
+        .font(.system(size: 12.0, weight: (postItem.myVote ?? 0) == 0 ? .regular : .bold))
     }
     
     var bulletSeperator: some View {
@@ -179,7 +188,7 @@ struct PostItemView_Previews: PreviewProvider {
                     "hot_rank_active": 1635,
                     "newest_activity_time": "2021-01-19T03:07:42.264058",
                     "user_id": null,
-                    "my_vote": null,
+                    "my_vote": 1,
                     "subscribed": null,
                     "read": null,
                     "saved": null
