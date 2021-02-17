@@ -13,16 +13,18 @@ struct CavyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                if (rootModel.needsOnboarding) {
-                    OnboardingNavigationView()
-                        .environmentObject(rootModel)
-                } else {
-                    MainTabView()
-                        .environmentObject(rootModel)
+            Themed {
+                ZStack {
+                    if (rootModel.needsOnboarding) {
+                        OnboardingNavigationView()
+                            .environmentObject(rootModel)
+                    } else {
+                        MainTabView()
+                            .environmentObject(rootModel)
+                    }
                 }
+                .animation(.easeIn, value: rootModel.needsOnboarding)
             }
-            .animation(.easeIn, value: rootModel.needsOnboarding)
         }
     }
 }

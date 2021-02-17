@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PostItemView: View {
+    @Environment(\.palette) var palette
     let postItem: CavyPost
     
     init(_ postItem: CavyPost) {
@@ -36,12 +37,12 @@ struct PostItemView: View {
     
     func authorDetail(_ authorName: String) -> some View {
         Text(authorName)
-            .foregroundColor(postItem.isSubmitterAdmin ? .red : .accentColor)
+            .foregroundColor(postItem.isSubmitterAdmin ? palette.adminUsername : palette.opCommentUsername)
     }
     
     func communityDetail(_ communityName: String) -> some View {
         Text(communityName)
-            .foregroundColor(.green)
+            .foregroundColor(palette.communityName)
     }
     
     var scoreText: String {
@@ -52,11 +53,11 @@ struct PostItemView: View {
     var scoreDetail: some View {
         HStack(alignment: .center, spacing: 2) {
             if postItem.myVote == 1 {
-                Image(systemName: "arrow.up").foregroundColor(.purple)
-                Text(scoreText).foregroundColor(.purple)
+                Image(systemName: "arrow.up").foregroundColor(palette.upvote)
+                Text(scoreText).foregroundColor(palette.upvote)
             } else if postItem.myVote == -1 {
-                Image(systemName: "arrow.down").foregroundColor(.red)
-                Text(scoreText).foregroundColor(.red)
+                Image(systemName: "arrow.down").foregroundColor(palette.downvote)
+                Text(scoreText).foregroundColor(palette.downvote)
             } else {
                 Image(systemName: "arrow.up")
                 Text(scoreText)
@@ -122,19 +123,28 @@ struct PostItemView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            PostItemView(post)
-                .previewLayout(.fixed(width: 400.0, height: 100.0))
-            
-            PostItemView(post)
-                .preferredColorScheme(.dark)
-                .previewLayout(.fixed(width: 400.0, height: 100.0))
-            
-            PostItemView(postWithoutThumbnail)
-                .previewLayout(.fixed(width: 400.0, height: 100.0))
-            
-            PostItemView(postWithoutThumbnail)
-                .preferredColorScheme(.dark)
-                .previewLayout(.fixed(width: 400.0, height: 100.0))
+            Themed {
+                PostItemView(postUpvoted)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+                
+                PostItemView(postUpvoted)
+                    .preferredColorScheme(.dark)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+                
+                PostItemView(postDownvoted)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+                
+                PostItemView(postDownvoted)
+                    .preferredColorScheme(.dark)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+                
+                PostItemView(postWithoutThumbnail)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+                
+                PostItemView(postWithoutThumbnail)
+                    .preferredColorScheme(.dark)
+                    .previewLayout(.fixed(width: 400.0, height: 100.0))
+            }
         }
     }
     
@@ -142,6 +152,20 @@ struct PostItemView_Previews: PreviewProvider {
         var p = self.post
         p.thumbnailURL = nil
         return p
+    }
+    
+    static var postUpvoted: CavyPost {
+        var upvotedPost = post
+        upvotedPost.score! += 1
+        upvotedPost.myVote = 1
+        return upvotedPost
+    }
+    
+    static var postDownvoted: CavyPost {
+        var downvotedPost = post
+        downvotedPost.score! -= 1
+        downvotedPost.myVote = -1
+        return downvotedPost
     }
     
     static let post = try! LemmyPostItem.fromJSON("""
@@ -188,10 +212,12 @@ struct PostItemView_Previews: PreviewProvider {
                     "hot_rank_active": 1635,
                     "newest_activity_time": "2021-01-19T03:07:42.264058",
                     "user_id": null,
-                    "my_vote": 1,
+                    "my_vote": 0,
                     "subscribed": null,
                     "read": null,
                     "saved": null
                 }
                 """).cavyPost
+    
+
 }
