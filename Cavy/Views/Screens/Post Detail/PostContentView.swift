@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PostContentView: View {
+    @Environment(\.palette) var palette
+    
     let post: CavyPost
 
     init(_ post: CavyPost) {
@@ -91,12 +93,12 @@ struct PostContentView: View {
                 HStack {
                     if let submitter = post.submitterName {
                         Text(submitter)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(palette.opCommentUsername)
                     }
                     
                     if let communityName = post.communityName {
                         Text(communityName)
-                            .foregroundColor(.green)
+                            .foregroundColor(palette.communityName)
                     }
                     
                     Text(timeAgoText)
