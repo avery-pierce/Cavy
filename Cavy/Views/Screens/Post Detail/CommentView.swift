@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CommentView: View {
+    @Environment(\.palette) var palette
+    
     let threadedComment: ThreadedComment
     let isOP: Bool
     var comment: CavyComment { threadedComment.comment }
@@ -25,9 +27,9 @@ struct CommentView: View {
         if isHidden {
             return .secondary
         } else if comment.isSubmitterAdmin {
-            return .red
+            return palette.adminUsername
         } else if isOP {
-            return .blue
+            return palette.opCommentUsername
         } else {
             return .primary
         }
@@ -41,12 +43,12 @@ struct CommentView: View {
         guard !threadedComment.isHidden else { return .secondary }
         
         let colorCycle: [Color] = [
-            .red,
-            .orange,
-            .yellow,
-            .green,
-            .blue,
-            .purple,
+            palette.red,
+            palette.orange,
+            palette.yellow,
+            palette.green,
+            palette.blue,
+            palette.purple,
         ]
         
         let choice = threadedComment.indentationLevel - 1 % colorCycle.count
@@ -118,55 +120,57 @@ struct CommentView: View {
 
 struct CommentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
+        Themed {
             Group {
-                ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
-                                {
-                                    "id": 1,
-                                    "creator_name": "john_appleseed",
-                                    "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
-                                    "score": 15,
-                                    "creator_published": "2021-01-18T23:42:26.673844"
-                                }
-                                """), indentationLevel: i), isOP: true)
-                        .previewLayout(.fixed(width: 300, height: 100))
-                }
-                
-                CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
-                                {
-                                    "id": 2,
-                                    "creator_name": "john_appleseed",
-                                    "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
-                                }
-                                """), indentationLevel: 0, isHidden: true), isOP: true)
-                    .previewLayout(.fixed(width: 300, height: 100))
-            }
-            
-            Group {
-                ForEach(0..<4) { i in
-                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
-                                {
-                                    "id": 3,
-                                    "creator_name": "john_appleseed",
-                                    "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
-                                    "score": 15,
-                                }
-                                """), indentationLevel: i), isOP: false)
-                        .previewLayout(.fixed(width: 300, height: 100))
-                }
-                
-                CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
-                                {
-                                    "id": 4,
-                                    "creator_name": "john_appleseed",
-                                    "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
-                                }
-                                """), indentationLevel: 0, isHidden: true), isOP: true)
+                Group {
+                    ForEach(0..<7) { i in
+                        CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
+                                    {
+                                        "id": 1,
+                                        "creator_name": "john_appleseed",
+                                        "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
+                                        "score": 15,
+                                        "creator_published": "2021-01-18T23:42:26.673844"
+                                    }
+                                    """), indentationLevel: i), isOP: true)
+                            .previewLayout(.fixed(width: 300, height: 100))
+                    }
                     
-                    .previewLayout(.fixed(width: 300, height: 100))
-            }
-            .preferredColorScheme(.dark)
+                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
+                                    {
+                                        "id": 2,
+                                        "creator_name": "john_appleseed",
+                                        "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+                                    }
+                                    """), indentationLevel: 0, isHidden: true), isOP: true)
+                        .previewLayout(.fixed(width: 300, height: 100))
+                }
+                
+                Group {
+                    ForEach(0..<7) { i in
+                        CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
+                                    {
+                                        "id": 3,
+                                        "creator_name": "john_appleseed",
+                                        "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah",
+                                        "score": 15,
+                                    }
+                                    """), indentationLevel: i), isOP: false)
+                            .previewLayout(.fixed(width: 300, height: 100))
+                    }
+                    
+                    CommentView(ThreadedComment(try! LemmyComment.fromJSON("""
+                                    {
+                                        "id": 4,
+                                        "creator_name": "john_appleseed",
+                                        "content": "This is a new comment. Hello world! Lorem Ipsum Dolor mit blah blah blah"
+                                    }
+                                    """), indentationLevel: 0, isHidden: true), isOP: true)
+                        
+                        .previewLayout(.fixed(width: 300, height: 100))
+                }
+                .preferredColorScheme(.dark)
+            } 
         }
     }
 }

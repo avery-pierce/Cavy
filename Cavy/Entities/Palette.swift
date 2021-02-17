@@ -9,6 +9,13 @@ import Foundation
 import SwiftUI
 
 protocol Palette {
+    var red: Color { get }
+    var orange: Color { get }
+    var yellow: Color { get }
+    var green: Color { get }
+    var blue: Color { get }
+    var purple: Color { get }
+    
     var upvote: Color { get }
     var downvote: Color { get }
     
