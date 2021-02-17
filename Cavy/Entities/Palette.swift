@@ -55,7 +55,7 @@ extension LemmyTheme {
     var downvote: Color { danger }
     var communityName: Color { primary }
     var postSubmitterUsername: Color { info }
-    var adminUsername: Color { warning }
+    var adminUsername: Color { indigo }
     var opCommentUsername: Color { info }
 }
 
@@ -109,5 +109,6 @@ struct LemmyDarkTheme: LemmyTheme {
     let dark = Color(hex: "#dee2e6")
     
     var communityName: Color { green }
+    var adminUsername: Color { red }
 }
 
