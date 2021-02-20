@@ -17,7 +17,7 @@ struct CommunitiesView: View {
     var body: some View {
         List {
             ForEach(communities, id: \.id) { community in
-                NavigationLink(community.name, destination: LoadingPostListView(.community(client, community)))
+                NavigationLink(community.name, destination: EndlessPostListView(.community(client, community)))
             }
         }
         .navigationTitle("Communities")

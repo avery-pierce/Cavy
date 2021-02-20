@@ -14,7 +14,6 @@ struct ListingIntent {
     var postType: LemmyAPIFactory.PostType = .all
     var sortType: LemmyAPIFactory.SortType = .hot
     var communityID: Int? = nil
-    var limit: Int = 50
     
     /// The explicit title of the intent when presented to the user
     var explicitTitle: String? = nil
@@ -38,11 +37,10 @@ struct ListingIntent {
         return explicitDetail ?? client.host
     }
     
-    init(_ client: LemmyAPIClient, postType: LemmyAPIFactory.PostType = .all, sortType: LemmyAPIFactory.SortType = .hot, limit: Int = 50) {
+    init(_ client: LemmyAPIClient, postType: LemmyAPIFactory.PostType = .all, sortType: LemmyAPIFactory.SortType = .hot) {
         self.client = client
         self.postType = postType
         self.sortType = sortType
-        self.limit = limit
     }
     
     static func allPosts(of client: LemmyAPIClient) -> ListingIntent {
@@ -61,25 +59,26 @@ struct ListingIntent {
         return intent
     }
     
-    func createResource() -> ParsedDataResource<CavyPostListing> {
+    /// Page number starts at 1.
+    func createResource(limit: Int = 50, pageNumber: Int = 1) -> ParsedDataResource<CavyPostListing> {
         switch client {
         case .v1(let spec):
             if let communityID = communityID {
-                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, communityID: communityID))
+                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, page: pageNumber, communityID: communityID))
             } else {
-                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit))
+                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, page: pageNumber))
             }
         case .v2(let spec):
             if let communityID = communityID {
-                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, communityID: communityID))
+                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, page: pageNumber, communityID: communityID))
             } else {
-                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit))
+                return ParsedDataResource(spec.listPosts(type: postType, sort: sortType, limit: limit, page: pageNumber))
             }
         }
     }
     
     func createFlatPack() -> FlatPack {
-        FlatPack(clientDescriptor: client.descriptor, postType: postType, sortType: sortType, communityID: communityID, limit: limit, explicitTitle: explicitTitle, explicitDetail: explicitDetail)
+        FlatPack(clientDescriptor: client.descriptor, postType: postType, sortType: sortType, communityID: communityID, explicitTitle: explicitTitle, explicitDetail: explicitDetail)
     }
     
     init(_ flatPack: FlatPack) {
@@ -87,7 +86,6 @@ struct ListingIntent {
         self.postType = flatPack.postType
         self.sortType = flatPack.sortType
         self.communityID = flatPack.communityID
-        self.limit = flatPack.limit ?? 50
         self.explicitTitle = flatPack.explicitTitle
         self.explicitDetail = flatPack.explicitDetail
     }
@@ -97,7 +95,6 @@ struct ListingIntent {
         var postType: LemmyAPIFactory.PostType
         var sortType: LemmyAPIFactory.SortType
         var communityID: Int?
-        var limit: Int?
         var explicitTitle: String?
         var explicitDetail: String?
     }

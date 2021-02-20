@@ -43,6 +43,9 @@
 		C631841925DD653B00286983 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631841825DD653B00286983 /* Palette.swift */; };
 		C631841D25DD67D400286983 /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631841C25DD67D400286983 /* Color++.swift */; };
 		C631842125DD6CB000286983 /* Themed.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842025DD6CB000286983 /* Themed.swift */; };
+		C631842525E0087E00286983 /* EndlessPostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842425E0087E00286983 /* EndlessPostListView.swift */; };
+		C631842925E017E000286983 /* CombineLearningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842825E017E000286983 /* CombineLearningTests.swift */; };
+		C631842D25E1701400286983 /* CombineUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842C25E1701400286983 /* CombineUtils.swift */; };
 		C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65625C7295E00CC1FC9 /* Colors.swift */; };
 		C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */; };
 		C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */; };
@@ -195,6 +198,9 @@
 		C631841825DD653B00286983 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C631841C25DD67D400286983 /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
 		C631842025DD6CB000286983 /* Themed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themed.swift; sourceTree = "<group>"; };
+		C631842425E0087E00286983 /* EndlessPostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndlessPostListView.swift; sourceTree = "<group>"; };
+		C631842825E017E000286983 /* CombineLearningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLearningTests.swift; sourceTree = "<group>"; };
+		C631842C25E1701400286983 /* CombineUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineUtils.swift; sourceTree = "<group>"; };
 		C632F65625C7295E00CC1FC9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTidbit.swift; sourceTree = "<group>"; };
 		C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILevelTidbit.swift; sourceTree = "<group>"; };
@@ -404,6 +410,7 @@
 				C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */,
 				C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */,
 				C6D06D5125D2E4AB004D2DA7 /* secrets.json */,
+				C631842825E017E000286983 /* CombineLearningTests.swift */,
 			);
 			path = CavyTests;
 			sourceTree = "<group>";
@@ -449,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				C632F67F25C7556C00CC1FC9 /* LoadingPostListView.swift */,
+				C631842425E0087E00286983 /* EndlessPostListView.swift */,
 				C6515CFC2532030B00C8CEF7 /* ListingView.swift */,
 				C63DF2BD253001BC00728E08 /* PostItemView.swift */,
 				C6D06D2C25D056A0004D2DA7 /* PostItemCellThumbnailView.swift */,
@@ -539,6 +547,7 @@
 				C625442225B65137007F170A /* DateParser.swift */,
 				C6FA67F225BA76F7002A352E /* URLUtils.swift */,
 				C6D06D9025D98B62004D2DA7 /* Classy.swift */,
+				C631842C25E1701400286983 /* CombineUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -858,6 +867,7 @@
 				C6091D2425C487F900E6CD0F /* LemmyV1Spec.swift in Sources */,
 				C6091D1625C47C7800E6CD0F /* LemmyPostResponseV2.swift in Sources */,
 				C6F60ECF25DB342B00ACD2C4 /* AppTabStore.swift in Sources */,
+				C631842D25E1701400286983 /* CombineUtils.swift in Sources */,
 				C632F66425C7330E00CC1FC9 /* ImageCellTidbit.swift in Sources */,
 				C6091D0E25C4797900E6CD0F /* LemmyPostItemResponseV2.swift in Sources */,
 				C62543FC25B4AD78007F170A /* Decodable++.swift in Sources */,
@@ -896,6 +906,7 @@
 				C6FA680725BA822E002A352E /* URL++.swift in Sources */,
 				C652707A25BCAE880014FB05 /* DataResource.swift in Sources */,
 				C6D06D4A25D2E0C8004D2DA7 /* LemmyLoginRequest.swift in Sources */,
+				C631842525E0087E00286983 /* EndlessPostListView.swift in Sources */,
 				C625442725B65220007F170A /* LemmyComment++.swift in Sources */,
 				C6F60EC525DB2D3300ACD2C4 /* AddAnotherInstanceView.swift in Sources */,
 				C6C3D8B3253253BF00EB7DB8 /* PostDetailView.swift in Sources */,
@@ -921,6 +932,7 @@
 				C6D06D3F25D06B0D004D2DA7 /* CachingDataProviderTests.swift in Sources */,
 				C6D9F13A2537F04300B41CE4 /* DataProvider.swift in Sources */,
 				C6091D2825C4881700E6CD0F /* LemmyV1SpecTests.swift in Sources */,
+				C631842925E017E000286983 /* CombineLearningTests.swift in Sources */,
 				C6D9F1462537F05400B41CE4 /* LoadState.swift in Sources */,
 				C6D9F1432537F05100B41CE4 /* Resource.swift in Sources */,
 				C6FA67FB25BA7923002A352E /* LemmyPostItem++Tests.swift in Sources */,

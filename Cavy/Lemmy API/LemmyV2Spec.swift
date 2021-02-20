@@ -20,12 +20,12 @@ class LemmyV2Spec {
         Spec(factory.fetchSite())
     }
 
-    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50) -> Spec<URLRequest, LemmyPostItemResponseV2> {
-        Spec(factory.listPosts(type: type, sort: sort, limit: limit))
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, page: Int = 1) -> Spec<URLRequest, LemmyPostItemResponseV2> {
+        Spec(factory.listPosts(type: type, sort: sort, limit: limit, page: page))
     }
 
-    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, communityID: Int) -> Spec<URLRequest, LemmyPostItemResponseV2> {
-        Spec(factory.listPosts(type: type, sort: sort, limit: limit, communityID: communityID))
+    func listPosts(type: LemmyAPIFactory.PostType, sort: LemmyAPIFactory.SortType, limit: Int = 50, page: Int = 1, communityID: Int) -> Spec<URLRequest, LemmyPostItemResponseV2> {
+        Spec(factory.listPosts(type: type, sort: sort, limit: limit, page: page, communityID: communityID))
     }
 
     func listCommunities(sort: LemmyAPIFactory.SortType, page: Int = 1, limit: Int = 50) -> Spec<URLRequest, LemmyCommunitiesResponseV2> {

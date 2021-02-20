@@ -43,7 +43,7 @@ struct SavedInstanceExplorerView: View {
             Section(header: Text("Saved listings")) {
                 ForEach(rootModel.savedListings, id: \.fakeHashValue) { listing in
                     NavigationLink(
-                        destination: LoadingPostListView(listing),
+                        destination: EndlessPostListView(listing),
                         label: {
                             Image(systemName: "tray.full")
                             VStack(alignment: .leading) {

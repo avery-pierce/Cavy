@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(*, deprecated, message: "Use EndlessPostListView instead")
 struct LoadingPostListView<PostResource: Resource & ObservableObject>: View where PostResource.T == CavyPostListing {
     @Environment(\.lemmyAPIClient) var client
     let intent: ListingIntent?

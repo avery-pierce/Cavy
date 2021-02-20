@@ -41,7 +41,7 @@ struct SiteSummaryView: View {
                 APILevelTidbit()
                 
                 if (client.isAuthenticated) {
-                    NavigationLink(destination: LoadingPostListView(.subscribed(client))) {
+                    NavigationLink(destination: EndlessPostListView(.subscribed(client))) {
                         ListCellView {
                             Image(systemName: "tray.full")
                             VStack(alignment: .leading) {
@@ -58,7 +58,7 @@ struct SiteSummaryView: View {
                     .padding(.horizontal)
                 }
                 
-                NavigationLink(destination: LoadingPostListView(.allPosts(of: client))) {
+                NavigationLink(destination: EndlessPostListView(.allPosts(of: client))) {
                     ListCellView {
                         Image(systemName: "tray.full")
                         VStack(alignment: .leading) {
