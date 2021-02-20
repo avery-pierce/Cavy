@@ -11,17 +11,15 @@ import XCTest
 class LemmyV2SpecTests: XCTestCase {
 
     let client: LemmyV2Spec = .lemmyML
+    let activeSession = ActiveSessionClient(.lemmyML)
     
     func testLogin() throws {
-        // Don't commit usernames and passwords to source control.
-        // Instead, load them from (gitignore'd) secrets file.
-        let secrets = Secrets.load()?["loginV2"] as? [String: String]
-        let username = secrets?["username"]
-        let password = secrets?["password"]
-        try XCTSkipUnless(username != nil && password != nil, "username and password not found in secrets.json")
+        let credentials = activeSession.getCredentials()
+        try XCTSkipUnless(credentials != nil, "username and password not found in secrets.json")
         
+        let (username, password) = credentials!
         let e = expectation(description: "Login")
-        let spec = client.login(usernameOrEmail: username!, password: password!)
+        let spec = client.login(usernameOrEmail: username, password: password)
         assertDecodes(spec) {
             e.fulfill()
         }
@@ -50,34 +48,17 @@ class LemmyV2SpecTests: XCTestCase {
     }
     
     func testListPostsAuthed() throws {
-        // Don't commit usernames and passwords to source control.
-        // Instead, load them from (gitignore'd) secrets file.
-        let secrets = Secrets.load()?["loginV2"] as? [String: String]
-        let username = secrets?["username"]
-        let password = secrets?["password"]
-        try XCTSkipUnless(username != nil && password != nil, "username and password not found in secrets.json")
         
         let e = expectation(description: "list posts")
-        let spec = client.login(usernameOrEmail: username!, password: password!)
-        spec.load { (result) in
-            switch result {
-            case .success(let jwtWrapper):
-                let authClient = LemmyV2Spec.lemmyML
-                authClient.factory.token = jwtWrapper.jwt
-                authClient.factory.username = username
-                
-                let spec = authClient.listPosts(type: .subscribed, sort: .hot)
-                assertDecodes(spec) {
-                    e.fulfill()
-                }
-                
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
+        activeSession.vend { (authClient) in
+            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
+            let spec = client.listPosts(type: .subscribed, sort: .hot)
+            assertDecodes(spec) {
+                e.fulfill()
             }
-            
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 50, handler: nil)
     }
     
     func testListPostsByCommunity() throws {
@@ -114,12 +95,17 @@ class LemmyV2SpecTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-}
-
-func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: Spec<D, T>, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
-    dataPackage.dataProvider.getData { (result) in
-        let data = assertSuccess(result, file: file, line: line)
-        assertDecodes(to: dataPackage.type, from: data, file: file, line: line)
-        completion()
+    
+    func testVote() throws {
+        let e = expectation(description: "Vote")
+        activeSession.vend { (authClient) in
+            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
+            let spec = client.vote(1, onPostID: 41167)
+            assertDecodes(spec, printData: true) {
+                e.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }

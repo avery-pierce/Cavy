@@ -50,6 +50,9 @@
 		C631843525E1860900286983 /* SortModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843425E1860900286983 /* SortModeView.swift */; };
 		C631843925E1A65B00286983 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843825E1A65B00286983 /* ScoreView.swift */; };
 		C631843D25E1B9AE00286983 /* VotingArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843C25E1B9AE00286983 /* VotingArrows.swift */; };
+		C631844125E1C44800286983 /* AnyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631844025E1C44800286983 /* AnyResponse.swift */; };
+		C631844525E1C51200286983 /* LemmyVoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631844425E1C51200286983 /* LemmyVoteRequest.swift */; };
+		C631844B25E1C92900286983 /* ActiveSessionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631844A25E1C92900286983 /* ActiveSessionClient.swift */; };
 		C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65625C7295E00CC1FC9 /* Colors.swift */; };
 		C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */; };
 		C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */; };
@@ -209,6 +212,9 @@
 		C631843425E1860900286983 /* SortModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortModeView.swift; sourceTree = "<group>"; };
 		C631843825E1A65B00286983 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		C631843C25E1B9AE00286983 /* VotingArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingArrows.swift; sourceTree = "<group>"; };
+		C631844025E1C44800286983 /* AnyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyResponse.swift; sourceTree = "<group>"; };
+		C631844425E1C51200286983 /* LemmyVoteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemmyVoteRequest.swift; sourceTree = "<group>"; };
+		C631844A25E1C92900286983 /* ActiveSessionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionClient.swift; sourceTree = "<group>"; };
 		C632F65625C7295E00CC1FC9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTidbit.swift; sourceTree = "<group>"; };
 		C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILevelTidbit.swift; sourceTree = "<group>"; };
@@ -534,6 +540,7 @@
 				C6091D2725C4881700E6CD0F /* LemmyV1SpecTests.swift */,
 				C6091D0925C4759800E6CD0F /* LemmyV2SpecTests.swift */,
 				C659A6B025C5F14C00F12466 /* SelectLemmyAPIVersionUseCaseTests.swift */,
+				C631844A25E1C92900286983 /* ActiveSessionClient.swift */,
 			);
 			path = "API Compatibility Tests";
 			sourceTree = "<group>";
@@ -585,6 +592,8 @@
 				C652705025BC99A80014FB05 /* LemmyModerator.swift */,
 				C6D06D4925D2E0C8004D2DA7 /* LemmyLoginRequest.swift */,
 				C6D06D4D25D2E0F8004D2DA7 /* LemmyLoginResponse.swift */,
+				C631844425E1C51200286983 /* LemmyVoteRequest.swift */,
+				C631844025E1C44800286983 /* AnyResponse.swift */,
 			);
 			path = "Lemmy Entities";
 			sourceTree = "<group>";
@@ -823,6 +832,7 @@
 				C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */,
 				C6515CE72531454700C8CEF7 /* LemmyCommunity.swift in Sources */,
 				C6091D0425C473B800E6CD0F /* LemmyV2Spec.swift in Sources */,
+				C631844525E1C51200286983 /* LemmyVoteRequest.swift in Sources */,
 				C63DF2BE253001BC00728E08 /* PostItemView.swift in Sources */,
 				C63DF2C1253001CC00728E08 /* CavyPost.swift in Sources */,
 				C6D9F1102532652500B41CE4 /* LemmyComment.swift in Sources */,
@@ -899,6 +909,7 @@
 				C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */,
 				C6F60EBE25DB216600ACD2C4 /* LoginForm.swift in Sources */,
 				C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */,
+				C631844125E1C44800286983 /* AnyResponse.swift in Sources */,
 				C6091CFA25C46F1A00E6CD0F /* LemmyCategory.swift in Sources */,
 				C6F60EBA25DAE55A00ACD2C4 /* AddInstanceScreen.swift in Sources */,
 				C6091CCE25BDE22300E6CD0F /* SavedInstanceExplorerView.swift in Sources */,
@@ -949,6 +960,7 @@
 				C6D9F13A2537F04300B41CE4 /* DataProvider.swift in Sources */,
 				C6091D2825C4881700E6CD0F /* LemmyV1SpecTests.swift in Sources */,
 				C631842925E017E000286983 /* CombineLearningTests.swift in Sources */,
+				C631844B25E1C92900286983 /* ActiveSessionClient.swift in Sources */,
 				C6D9F1462537F05400B41CE4 /* LoadState.swift in Sources */,
 				C6D9F1432537F05100B41CE4 /* Resource.swift in Sources */,
 				C6FA67FB25BA7923002A352E /* LemmyPostItem++Tests.swift in Sources */,

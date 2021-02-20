@@ -63,5 +63,7 @@ struct ListingView_Previews: PreviewProvider {
             ListingView(LemmyPostItem.sampleDataList.map(\.cavyPost))
                 .preferredColorScheme(.dark)
         }
+        .lemmyAPIClient(.lemmyML)
+        .rootModel(RootModel())
     }
 }

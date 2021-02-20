@@ -39,5 +39,11 @@ class LemmyV2Spec {
     func login(usernameOrEmail: String, password: String) -> Spec<URLRequest, LemmyLoginResponse> {
         Spec(factory.login(usernameOrEmail: usernameOrEmail, password: password))
     }
+    
+    /// `score` can be 0, -1, or 1
+    func vote(_ score: Int, onPostID postID: Int) -> Spec<URLRequest, LemmyPostResponseV2> {
+        Spec(factory.vote(score, postID: postID))
+    }
 }
+
 

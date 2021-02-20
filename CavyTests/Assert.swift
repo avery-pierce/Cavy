@@ -6,10 +6,18 @@
 //
 
 import XCTest
+@testable import Cavy
 
-func assertDecodes<T: Decodable>(to Type: T.Type, fromDataProvidedBy dataProvider: DataProvider, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
+func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: Spec<D, T>, printData: Bool = false, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
+    assertDecodes(to: dataPackage.type, fromDataProvidedBy: dataPackage.dataProvider, printData: printData, completion: completion)
+}
+
+func assertDecodes<T: Decodable>(to Type: T.Type, fromDataProvidedBy dataProvider: DataProvider, printData: Bool = false, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
     dataProvider.getData { (result) in
         let data = assertSuccess(result, file: file, line: line)
+        if let data = data, printData {
+            print(try! prettyJSON(data))
+        }
         assertDecodes(to: Type, from: data, file: file, line: line)
         completion()
     }

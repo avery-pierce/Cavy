@@ -98,6 +98,12 @@ class LemmyAPIFactory: ObservableObject {
         return fetchPost(id: String(id))
     }
     
+    func vote(_ score: Int, postID: Int) -> URLRequest {
+        var request = path("api/\(v)/post/like")
+        try! request.postData(LemmyVoteBody(score, postID: postID, auth: token ?? ""))
+        return request
+    }
+    
     func path(_ path: String, query: [String: String] = [:]) -> URLRequest {
         var components = URLComponents(string: "https://\(host)/\(path)")!
         components.queryItems = query.map(URLQueryItem.init)
