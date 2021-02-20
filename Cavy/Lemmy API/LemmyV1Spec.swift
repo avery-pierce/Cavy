@@ -37,4 +37,13 @@ class LemmyV1Spec {
     func login(usernameOrEmail: String, password: String) -> Spec<URLRequest, LemmyLoginResponse> {
         Spec(factory.login(usernameOrEmail: usernameOrEmail, password: password))
     }
+    
+    /// `score` can be 0, -1, or 1
+    func vote(_ score: Int, onPostID postID: Int) -> Spec<URLRequest, LemmyPostItemWrapper> {
+        Spec(factory.vote(score, postID: postID))
+    }
+}
+
+struct LemmyPostItemWrapper: Codable {
+    var post: LemmyPostItem
 }

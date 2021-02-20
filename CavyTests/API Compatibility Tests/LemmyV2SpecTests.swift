@@ -58,7 +58,7 @@ class LemmyV2SpecTests: XCTestCase {
             }
         }
         
-        waitForExpectations(timeout: 50, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testListPostsByCommunity() throws {
