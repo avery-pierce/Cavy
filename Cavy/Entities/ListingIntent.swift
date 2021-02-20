@@ -26,9 +26,9 @@ struct ListingIntent {
         if let title = explicitTitle { return title }
         
         switch postType {
-        case .community: return "Community"
-        case .all: return "All Posts"
-        case .subscribed: return "Subscribed"
+        case .community: return "Community (\(sortType.title))"
+        case .all: return "All Posts (\(sortType.title))"
+        case .subscribed: return "Subscribed (\(sortType.title))"
         }
     }
     

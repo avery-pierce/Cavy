@@ -45,7 +45,8 @@ struct SavedInstanceExplorerView: View {
                     NavigationLink(
                         destination: EndlessPostListView(listing),
                         label: {
-                            Image(systemName: "tray.full")
+                            SortModeView(listing.sortType)
+                                .frame(width: 20)
                             VStack(alignment: .leading) {
                                 Text(listing.title)
                                     .font(.system(size: headerFontSize))

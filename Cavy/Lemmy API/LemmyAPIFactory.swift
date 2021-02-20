@@ -119,6 +119,21 @@ class LemmyAPIFactory: ObservableObject {
     }
 }
 
+extension LemmyAPIFactory.SortType {
+    var title: String {
+        switch self {
+        case .active: return "Active"
+        case .hot: return "Hot"
+        case .new: return "New"
+        case .topDay: return "Top Day"
+        case .topWeek: return "Top Week"
+        case .topMonth: return "Top Month"
+        case .topYear: return "Top Year"
+        case .topAll: return "Top All"
+        }
+    }
+}
+
 private extension URLRequest {
     mutating func addDefaultHeaders() {
         addValue("application/json", forHTTPHeaderField: "Accepts")
