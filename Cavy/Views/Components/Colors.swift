@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 extension Color {
+    static var systemBackground: Color {
+        Color(UIColor.systemBackground)
+    }
+    
     static var systemGroupedBackground: Color {
         Color(UIColor.systemGroupedBackground)
     }

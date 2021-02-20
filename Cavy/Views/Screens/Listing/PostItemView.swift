@@ -11,10 +11,18 @@ struct PostItemView: View {
     @Environment(\.palette) var palette
     @EnvironmentObject var rootModel: RootModel
     
+    @State private var horizontalOffset: CGFloat = 0.0
+    @State private var myVote: Int?
+    
     let postItem: CavyPost
     
-    init(_ postItem: CavyPost) {
+    typealias VoteChangedCallback = ((_ newVote: Int) -> Void)
+    let onVoteChanged: VoteChangedCallback?
+    
+    init(_ postItem: CavyPost, onVoteChanged: VoteChangedCallback? = nil) {
         self.postItem = postItem
+        self.onVoteChanged = onVoteChanged
+        self.myVote = postItem.myVote
     }
     
     var timeAgoText: String {
@@ -57,6 +65,14 @@ struct PostItemView: View {
         postItem.isRead || rootModel.readIds.contains(postItem.apID)
     }
     
+    var resolvedScore: Int? {
+        guard let actualScore = postItem.score else { return nil }
+        
+        // remove my vote from the lemmy total, and replace it with the
+        // vote in app state.
+        return actualScore - (postItem.myVote ?? 0) + (myVote ?? 0)
+    }
+    
     var metadataView: some View {
         VStack(alignment: .leading, spacing: 4.0) {
             HStack {
@@ -72,7 +88,7 @@ struct PostItemView: View {
             }
             
             HStack(spacing: 4) {
-                ScoreView(postItem)
+                ScoreView(score: resolvedScore, myVote: myVote)
                 bulletSeperator
                 commentsDetail
                 bulletSeperator
@@ -92,7 +108,7 @@ struct PostItemView: View {
             } else {
                 PostItemCellThumbnailText()
             }
-
+            
             VStack(alignment: .leading, spacing: 4.0) {
                 Text(postItem.title ?? "")
                     .bold()
@@ -101,7 +117,15 @@ struct PostItemView: View {
                 
                 metadataView
             }
+            
+            if let onVoteChanged = onVoteChanged {
+                VotingArrows(myVote: myVote ?? 0) { (newVote) in
+                    myVote = newVote
+                    onVoteChanged(newVote)
+                }
+            }
         }
+        .padding(EdgeInsets(top: 12.0, leading: 8.0, bottom: 12.0, trailing: 8.0))
     }
 }
 
@@ -110,10 +134,10 @@ struct PostItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Themed {
-                PostItemView(postUpvoted)
+                PostItemView(postUpvoted, onVoteChanged: { _ in })
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
                 
-                PostItemView(postUpvoted)
+                PostItemView(postUpvoted, onVoteChanged: { _ in })
                     .preferredColorScheme(.dark)
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
                 
@@ -131,7 +155,7 @@ struct PostItemView_Previews: PreviewProvider {
                     .preferredColorScheme(.dark)
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
             }
-        }
+        }.rootModel(RootModel())
     }
     
     static var postWithoutThumbnail: CavyPost {

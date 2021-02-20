@@ -32,7 +32,7 @@ struct ListingView: View {
             ForEach(posts, id: \.id) { post in
                 ZStack {
                     PostItemView(post)
-                        .padding(.vertical, 8)
+                    
                     NavigationLink(
                         destination: PostDetailView(post: post).lemmyAPIClient(client)) {
                         EmptyView()
@@ -40,7 +40,7 @@ struct ListingView: View {
                     .frame(width: 0, height: 0)
                     .hidden()
                 }
-                .listRowInsets(EdgeInsets(top: 4.0, leading: 8.0, bottom: 4.0, trailing: 8.0))
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
             
             HStack(alignment: .center) {

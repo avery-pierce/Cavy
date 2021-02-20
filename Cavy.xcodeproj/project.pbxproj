@@ -49,6 +49,7 @@
 		C631843125E17D3600286983 /* EndlessPostLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843025E17D3600286983 /* EndlessPostLoader.swift */; };
 		C631843525E1860900286983 /* SortModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843425E1860900286983 /* SortModeView.swift */; };
 		C631843925E1A65B00286983 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843825E1A65B00286983 /* ScoreView.swift */; };
+		C631843D25E1B9AE00286983 /* VotingArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843C25E1B9AE00286983 /* VotingArrows.swift */; };
 		C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65625C7295E00CC1FC9 /* Colors.swift */; };
 		C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */; };
 		C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */; };
@@ -207,6 +208,7 @@
 		C631843025E17D3600286983 /* EndlessPostLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndlessPostLoader.swift; sourceTree = "<group>"; };
 		C631843425E1860900286983 /* SortModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortModeView.swift; sourceTree = "<group>"; };
 		C631843825E1A65B00286983 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		C631843C25E1B9AE00286983 /* VotingArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingArrows.swift; sourceTree = "<group>"; };
 		C632F65625C7295E00CC1FC9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTidbit.swift; sourceTree = "<group>"; };
 		C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILevelTidbit.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				C6F60EBD25DB216600ACD2C4 /* LoginForm.swift */,
 				C631843425E1860900286983 /* SortModeView.swift */,
 				C631843825E1A65B00286983 /* ScoreView.swift */,
+				C631843C25E1B9AE00286983 /* VotingArrows.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				C631841D25DD67D400286983 /* Color++.swift in Sources */,
 				C625442325B65137007F170A /* DateParser.swift in Sources */,
 				C63DF2CA25313E3200728E08 /* LemmyPostItem.swift in Sources */,
+				C631843D25E1B9AE00286983 /* VotingArrows.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
