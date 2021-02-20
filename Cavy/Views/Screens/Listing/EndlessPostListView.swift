@@ -48,7 +48,7 @@ struct EndlessPostListView: View {
     }
     
     var body: some View {
-        ListingView(postLoader.posts)
+        ListingView(postLoader.posts, isNextPageLoading: postLoader.nextPageLoading, onLoadNextPage: { postLoader.loadNextPage() })
             .onAppear(perform: {
                 postLoader.loadFirstPage()
             })
@@ -90,6 +90,7 @@ class EndlessPostLoader: ObservableObject {
     })
     
     @Published var posts: [CavyPost] = []
+    @Published var nextPageLoading: Bool = false
     
     private var cancelBag = Set<AnyCancellable>()
     
@@ -97,16 +98,24 @@ class EndlessPostLoader: ObservableObject {
         self.intent = intent
         
         loadedPosts
-            .breakpoint()
-            .sink { (posts) in
-                self.posts = posts
-            }.store(in: &cancelBag)
+            .assign(to: \.posts, on: self)
+            .store(in: &cancelBag)
+        
+        isNextPageLoading
+            .assign(to: \.nextPageLoading, on: self)
+            .store(in: &cancelBag)
     }
     
     func loadNextPage() {
-        let nextResource = intent.createResource(pageNumber: nextPageNumber)
+        let nextResource = intent.createResource(limit: 50, pageNumber: nextPageNumber)
         pages.append(nextResource)
         nextResource.load()
+    }
+    
+    func loadNextPageIfNeeded() {
+        if !nextPageLoading {
+            loadNextPage()
+        }
     }
     
     func loadFirstPage() {

@@ -10,12 +10,19 @@ import SwiftUI
 struct ListingView: View {
     @Environment(\.lemmyAPIClient) var client
     let posts: [CavyPost]
-    init(_ posts: [CavyPost]) {
+    let isNextPageLoading: Bool
+    let onLoadNextPage: (() -> Void)?
+    
+    init(_ posts: [CavyPost], isNextPageLoading: Bool = false, onLoadNextPage: (() -> Void)? = nil) {
         self.posts = posts
+        self.isNextPageLoading = isNextPageLoading
+        self.onLoadNextPage = onLoadNextPage
     }
     
-    init(_ postListing: CavyPostListing) {
-        self.posts = postListing.cavyPosts
+    init(_ postListing: CavyPostListing, isNextPageLoading: Bool = false, onLoadNextPage: (() -> Void)? = nil) {
+        self.init(postListing.cavyPosts,
+                  isNextPageLoading: isNextPageLoading,
+                  onLoadNextPage: onLoadNextPage)
     }
     
     var body: some View {
@@ -35,6 +42,15 @@ struct ListingView: View {
                 }
                 .listRowInsets(EdgeInsets(top: 4.0, leading: 8.0, bottom: 4.0, trailing: 8.0))
             }
+            
+            HStack(alignment: .center) {
+                VStack(alignment: .center) {
+                    if isNextPageLoading { ProgressView() }
+                }
+            }
+            .frame(height: 80, alignment: .center)
+            .frame(maxWidth: .infinity)
+            .onAppear(perform: { onLoadNextPage?() })
         }
         .listStyle(PlainListStyle())
     }
