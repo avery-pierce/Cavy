@@ -15,6 +15,7 @@ struct LemmyPostItem: Codable, Equatable {
     let body : String?
     let creatorID : Int?
     let creatorAvatar : String?
+    let creatorTags: CreatorTags?
     let locked : Bool?
     let url : String?
     let updated : String?
@@ -56,7 +57,6 @@ struct LemmyPostItem: Codable, Equatable {
     let nsfw : Bool?
     
     enum CodingKeys: String, CodingKey {
-        
         case embedDescription = "embed_description"
         case communityDeleted = "community_deleted"
         case id = "id"
@@ -64,6 +64,7 @@ struct LemmyPostItem: Codable, Equatable {
         case body = "body"
         case creatorID = "creator_id"
         case creatorAvatar = "creator_avatar"
+        case creatorTags = "creator_tags"
         case locked = "locked"
         case url = "url"
         case updated = "updated"
@@ -114,6 +115,7 @@ struct LemmyPostItem: Codable, Equatable {
         body = try values.decodeIfPresent(String.self, forKey: .body)
         creatorID = try values.decodeIfPresent(Int.self, forKey: .creatorID)
         creatorAvatar = try values.decodeIfPresent(String.self, forKey: .creatorAvatar)
+        creatorTags = try values.decodeIfPresent(CreatorTags.self, forKey: .creatorTags)
         locked = try values.decodeIfPresent(Bool.self, forKey: .locked)
         url = try values.decodeIfPresent(String.self, forKey: .url)
         updated = try values.decodeIfPresent(String.self, forKey: .updated)
@@ -153,5 +155,9 @@ struct LemmyPostItem: Codable, Equatable {
         downvotes = try values.decodeIfPresent(Int.self, forKey: .downvotes)
         communityNSFW = try values.decodeIfPresent(Bool.self, forKey: .communityNSFW)
         nsfw = try values.decodeIfPresent(Bool.self, forKey: .nsfw)
+    }
+    
+    struct CreatorTags: Codable, Equatable {
+        var pronouns: String?
     }
 }
