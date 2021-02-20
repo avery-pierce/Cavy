@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostItemView: View {
     @Environment(\.palette) var palette
+    @EnvironmentObject var rootModel: RootModel
+    
     let postItem: CavyPost
     
     init(_ postItem: CavyPost) {
@@ -72,6 +74,10 @@ struct PostItemView: View {
             .opacity(0.5)
     }
     
+    var isRead: Bool {
+        postItem.isRead || rootModel.readIds.contains(postItem.apID)
+    }
+    
     var metadataView: some View {
         VStack(alignment: .leading, spacing: 4.0) {
             HStack {
@@ -112,6 +118,7 @@ struct PostItemView: View {
                 Text(postItem.title ?? "")
                     .bold()
                     .font(.system(size: 14.0))
+                    .foregroundColor(isRead ? .secondary : .primary)
                 
                 metadataView
             }

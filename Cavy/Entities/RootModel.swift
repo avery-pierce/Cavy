@@ -99,6 +99,18 @@ class RootModel: ObservableObject {
         needsOnboarding = false
         UserDefaults.standard.setValue(true, forKey: RootModel.ONBOARDING_COMPLETE_KEY)
     }
+    
+    // MARK: - Read state
+    
+    @Published var readIds = Set<String>()
+    
+    func markAsRead(_ cavyPost: CavyPost) {
+        readIds.insert(cavyPost.apID)
+    }
+    
+    func isPostRead(_ cavyPost: CavyPost) -> Bool {
+        readIds.contains(cavyPost.apID)
+    }
 }
 
 extension RootModel: AddServerDelegate {

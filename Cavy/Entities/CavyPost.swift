@@ -9,6 +9,7 @@ import Foundation
 
 struct CavyPost {
     var id: Int
+    var apID: String
     var title: String?
     var visited: Bool?
     var submitterName: String?
@@ -22,6 +23,7 @@ struct CavyPost {
     var bodyMarkdown: String?
     var embed: Embed?
     var myVote: Int?
+    var isRead: Bool
     
     struct Embed {
         var title: String?
@@ -44,6 +46,7 @@ extension LemmyPostItem {
         let publishedDate = published.flatMap(parseLemmyDate(_:))
         let embed = CavyPost.Embed(title: embedTitle, description: embedDescription)
         return CavyPost(id: id,
+                        apID: apID ?? UUID().uuidString,
                         title: name,
                         visited: false,
                         submitterName: creatorPreferredUsername ?? creatorName,
@@ -56,7 +59,8 @@ extension LemmyPostItem {
                         linkURL: url.flatMap(URL.init(string:)),
                         bodyMarkdown: body,
                         embed: embed,
-                        myVote: myVote)
+                        myVote: myVote,
+                        isRead: read ?? false)
     }
 }
 
@@ -69,6 +73,7 @@ extension LemmyPostItemSummary {
         let publishedDate = counts.published.flatMap(parseLemmyDate(_:))
         let embed = CavyPost.Embed(title: post?.embedTitle, description: post?.embedDescription)
         return CavyPost(id: post!.id,
+                        apID: post!.apID ?? UUID().uuidString,
                         title: post?.name,
                         visited: read,
                         submitterName: creator?.name,
@@ -81,7 +86,8 @@ extension LemmyPostItemSummary {
                         linkURL: post?.url.flatMap(URL.init(string:)),
                         bodyMarkdown: post?.body,
                         embed: embed,
-                        myVote: myVote)
+                        myVote: myVote,
+                        isRead: read ?? false)
     }
 }
 

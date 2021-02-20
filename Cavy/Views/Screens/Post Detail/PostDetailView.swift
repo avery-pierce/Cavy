@@ -12,6 +12,7 @@ struct PostDetailView: View {
     
     @Environment(\.lemmyAPIClient) var client: LemmyAPIClient
     @ObservedObject var postModel: PostModel
+    @EnvironmentObject var rootModel: RootModel
     
     init(post: CavyPost) {
         self.post = post
@@ -19,6 +20,7 @@ struct PostDetailView: View {
     }
     
     func refresh() {
+        rootModel.markAsRead(post)
         postModel.client = client
         postModel.refresh()
     }
