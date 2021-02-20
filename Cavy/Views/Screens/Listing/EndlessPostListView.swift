@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EndlessPostListView: View {
     @ObservedObject var postLoader: EndlessPostLoader
+    @State var showingSortPopover: Bool = false
     
-    let intent: ListingIntent
+    var intent: ListingIntent { postLoader.intent }
+    
     init(_ intent: ListingIntent) {
-        self.intent = intent
         self.postLoader = EndlessPostLoader(intent)
     }
     
@@ -22,6 +23,22 @@ struct EndlessPostListView: View {
     
     var barButtonItems: some View {
         HStack {
+            Button(action: { showingSortPopover = true }, label: {
+                SortModeView(intent.sortType)
+            })
+            .actionSheet(isPresented: $showingSortPopover, content: {
+                ActionSheet(title: Text("Choose a sort order"), message: nil, buttons: [
+                    .default(Text("Hot"), action: { postLoader.changeSort(to: .hot) }),
+                    .default(Text("New"), action: { postLoader.changeSort(to: .new)}),
+                    .default(Text("Active"), action: { postLoader.changeSort(to: .active)}),
+                    .default(Text("Top Day"), action: { postLoader.changeSort(to: .topDay)}),
+                    .default(Text("Top Week"), action: { postLoader.changeSort(to: .topWeek)}),
+                    .default(Text("Top Month"), action: { postLoader.changeSort(to: .topMonth)}),
+                    .default(Text("Top Year"), action: { postLoader.changeSort(to: .topYear)}),
+                    .default(Text("Top All"), action: { postLoader.changeSort(to: .topAll)}),
+                ])
+            })
+            
             if let intent = intent {
                 ToggleSavedListIntent(intent)
             }

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class EndlessPostLoader: ObservableObject {
-    let intent: ListingIntent
+    var intent: ListingIntent
     @Published var pages: [ParsedDataResource<CavyPostListing>] = []
     @Published var posts: [CavyPost] = []
     @Published var nextPageLoading: Bool = false
@@ -42,6 +42,12 @@ class EndlessPostLoader: ObservableObject {
         isNextPageLoading
             .assign(to: \.nextPageLoading, on: self)
             .store(in: &cancelBag)
+    }
+    
+    func changeSort(to sortMode: LemmyAPIFactory.SortType) {
+        intent.sortType = sortMode
+        pages = []
+        loadFirstPage()
     }
     
     func loadNextPage() {
