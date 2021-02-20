@@ -91,6 +91,8 @@ struct PostContentView: View {
                 }
                 
                 HStack {
+                    ScoreView(post)
+                    
                     if let submitter = post.submitterName {
                         Text(submitter)
                             .foregroundColor(palette.opCommentUsername)

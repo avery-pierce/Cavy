@@ -47,27 +47,6 @@ struct PostItemView: View {
             .foregroundColor(palette.communityName)
     }
     
-    var scoreText: String {
-        guard let score = postItem.score else { return "-" }
-        return "\(score)"
-    }
-    
-    var scoreDetail: some View {
-        HStack(alignment: .center, spacing: 2) {
-            if postItem.myVote == 1 {
-                Image(systemName: "arrow.up").foregroundColor(palette.upvote)
-                Text(scoreText).foregroundColor(palette.upvote)
-            } else if postItem.myVote == -1 {
-                Image(systemName: "arrow.down").foregroundColor(palette.downvote)
-                Text(scoreText).foregroundColor(palette.downvote)
-            } else {
-                Image(systemName: "arrow.up")
-                Text(scoreText)
-            }
-        }
-        .font(.system(size: 12.0, weight: (postItem.myVote ?? 0) == 0 ? .regular : .bold))
-    }
-    
     var bulletSeperator: some View {
         return BulletSeperator()
             .foregroundColor(.secondary)
@@ -93,7 +72,7 @@ struct PostItemView: View {
             }
             
             HStack(spacing: 4) {
-                scoreDetail
+                ScoreView(postItem)
                 bulletSeperator
                 commentsDetail
                 bulletSeperator
