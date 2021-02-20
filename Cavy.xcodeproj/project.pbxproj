@@ -46,6 +46,7 @@
 		C631842525E0087E00286983 /* EndlessPostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842425E0087E00286983 /* EndlessPostListView.swift */; };
 		C631842925E017E000286983 /* CombineLearningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842825E017E000286983 /* CombineLearningTests.swift */; };
 		C631842D25E1701400286983 /* CombineUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631842C25E1701400286983 /* CombineUtils.swift */; };
+		C631843125E17D3600286983 /* EndlessPostLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C631843025E17D3600286983 /* EndlessPostLoader.swift */; };
 		C632F65725C7295E00CC1FC9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65625C7295E00CC1FC9 /* Colors.swift */; };
 		C632F65C25C72CA200CC1FC9 /* KeyValueTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */; };
 		C632F66025C72F1600CC1FC9 /* APILevelTidbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */; };
@@ -201,6 +202,7 @@
 		C631842425E0087E00286983 /* EndlessPostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndlessPostListView.swift; sourceTree = "<group>"; };
 		C631842825E017E000286983 /* CombineLearningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLearningTests.swift; sourceTree = "<group>"; };
 		C631842C25E1701400286983 /* CombineUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineUtils.swift; sourceTree = "<group>"; };
+		C631843025E17D3600286983 /* EndlessPostLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndlessPostLoader.swift; sourceTree = "<group>"; };
 		C632F65625C7295E00CC1FC9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C632F65B25C72CA200CC1FC9 /* KeyValueTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueTidbit.swift; sourceTree = "<group>"; };
 		C632F65F25C72F1600CC1FC9 /* APILevelTidbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILevelTidbit.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				C625440F25B4BFF5007F170A /* ThreadedComment.swift */,
 				C632F67B25C74E5700CC1FC9 /* ListingIntent.swift */,
 				C631841825DD653B00286983 /* Palette.swift */,
+				C631843025E17D3600286983 /* EndlessPostLoader.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				C6091CC625BCEBBB00E6CD0F /* ListCellView.swift in Sources */,
 				C6515CF32531606E00C8CEF7 /* LemmyAPIFactory.swift in Sources */,
 				C659A6C425C6009000F12466 /* ListingDescriptor.swift in Sources */,
+				C631843125E17D3600286983 /* EndlessPostLoader.swift in Sources */,
 				C6D9F1082532641D00B41CE4 /* LemmyPostResponse.swift in Sources */,
 				C6F60EBE25DB216600ACD2C4 /* LoginForm.swift in Sources */,
 				C6D9F1192537CD8F00B41CE4 /* EditHostsUseCase.swift in Sources */,
