@@ -23,14 +23,8 @@ struct EndlessPostListView: View {
     
     var barButtonItems: some View {
         HStack {
-            Button(action: { postLoader.loadNextPage() }, label: {
-                Image(systemName: "square.and.arrow.down")
-            })
-            
             if let intent = intent {
                 ToggleSavedListIntent(intent)
-            } else {
-                EmptyView()
             }
         }
     }
