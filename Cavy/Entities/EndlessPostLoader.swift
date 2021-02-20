@@ -11,6 +11,10 @@ import Combine
 class EndlessPostLoader: ObservableObject {
     let intent: ListingIntent
     @Published var pages: [ParsedDataResource<CavyPostListing>] = []
+    @Published var posts: [CavyPost] = []
+    @Published var nextPageLoading: Bool = false
+    
+    private var cancelBag = Set<AnyCancellable>()
     
     lazy var pageStates = $pages.flatMap({ (resources) -> AnyPublisher<[LoadState<CavyPostListing, Error>], Never> in
         
@@ -27,11 +31,6 @@ class EndlessPostLoader: ObservableObject {
     lazy var loadedPosts = pageStates.map({ resources -> [CavyPost] in
         resources.flatMap({ $0.value?.cavyPosts ?? [] })
     })
-    
-    @Published var posts: [CavyPost] = []
-    @Published var nextPageLoading: Bool = false
-    
-    private var cancelBag = Set<AnyCancellable>()
     
     init(_ intent: ListingIntent) {
         self.intent = intent
