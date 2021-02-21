@@ -25,13 +25,24 @@ struct ListingView: View {
                   onLoadNextPage: onLoadNextPage)
     }
     
+    func vote(on post: CavyPost, score: Int) {
+        // FIXME: For some reason this is being called for BOTH buttons when
+        // the user taps ANYWHERE in the cell. :(
+//        switch client {
+//        case .v1(let spec): spec.vote(score, onPostID: post.id).load(completion: { _ in })
+//        case .v2(let spec): spec.vote(score, onPostID: post.id).load(completion: { _ in })
+//        }
+    }
+    
     var body: some View {
         // Had to jumpt through some strange hooks to hide the disclosure indicator
         // https://stackoverflow.com/a/61724540
         List {
             ForEach(posts, id: \.id) { post in
                 ZStack {
-                    PostItemView(post)
+                    PostItemView(post, onVoteChanged: { newVote in
+                        self.vote(on: post, score: newVote)
+                    })
                     
                     NavigationLink(
                         destination: PostDetailView(post: post).lemmyAPIClient(client)) {
