@@ -12,7 +12,7 @@ struct PostItemView: View {
     @EnvironmentObject var rootModel: RootModel
     
     @State private var horizontalOffset: CGFloat = 0.0
-    @State private var myVote: Int?
+    @State private var myVote: Int
     private let thumbnailResource: ParsedDataResource<UIImage>?
     
     let postItem: CavyPost
@@ -30,7 +30,7 @@ struct PostItemView: View {
         
         self.postItem = postItem
         self.onVoteChanged = onVoteChanged
-        self.myVote = postItem.myVote
+        self._myVote = .init(wrappedValue: postItem.myVote ?? 0)
     }
     
     var timeAgoText: String {
@@ -77,8 +77,8 @@ struct PostItemView: View {
         guard let actualScore = postItem.score else { return nil }
         
         // remove my vote from the lemmy total, and replace it with the
-        // vote in app state.
-        return actualScore - (postItem.myVote ?? 0) + (myVote ?? 0)
+        // vote in app state, which may be ahead of the actual score
+        return actualScore - (postItem.myVote ?? 0) + myVote
     }
     
     var metadataView: some View {
@@ -127,7 +127,7 @@ struct PostItemView: View {
             }
             
             if let onVoteChanged = onVoteChanged {
-                VotingArrows(myVote: myVote ?? 0) { (newVote) in
+                VotingArrows(myVote: myVote) { (newVote) in
                     myVote = newVote
                     onVoteChanged(newVote)
                 }
@@ -149,10 +149,10 @@ struct PostItemView_Previews: PreviewProvider {
                     .preferredColorScheme(.dark)
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
                 
-                PostItemView(postDownvoted)
+                PostItemView(postDownvoted, onVoteChanged: { _ in })
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
                 
-                PostItemView(postDownvoted)
+                PostItemView(postDownvoted, onVoteChanged: { _ in })
                     .preferredColorScheme(.dark)
                     .previewLayout(.fixed(width: 400.0, height: 100.0))
                 
