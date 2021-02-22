@@ -126,12 +126,12 @@ struct PostItemView: View {
                 metadataView
             }
             
-//            if let onVoteChanged = onVoteChanged {
-//                VotingArrows(myVote: myVote ?? 0) { (newVote) in
-//                    myVote = newVote
-//                    onVoteChanged(newVote)
-//                }
-//            }
+            if let onVoteChanged = onVoteChanged {
+                VotingArrows(myVote: myVote ?? 0) { (newVote) in
+                    myVote = newVote
+                    onVoteChanged(newVote)
+                }
+            }
         }
         .padding(EdgeInsets(top: 12.0, leading: 8.0, bottom: 12.0, trailing: 8.0))
     }

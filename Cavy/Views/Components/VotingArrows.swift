@@ -33,6 +33,7 @@ struct VotingArrows: View {
             .foregroundColor(myVote == -1 ? .white : .secondary)
             .background(Circle().fill(palette.downvote).opacity(myVote == -1 ? 1.0 : 0.0))
         }
+        .buttonStyle(BorderlessButtonStyle())
     }
     
     func voteUp() {
