@@ -13,6 +13,7 @@ struct PostItemView: View {
     
     @State private var horizontalOffset: CGFloat = 0.0
     @State private var myVote: Int?
+    private let thumbnailResource: ParsedDataResource<UIImage>?
     
     let postItem: CavyPost
     
@@ -20,6 +21,13 @@ struct PostItemView: View {
     let onVoteChanged: VoteChangedCallback?
     
     init(_ postItem: CavyPost, onVoteChanged: VoteChangedCallback? = nil) {
+        if let thumbnailURL = postItem.thumbnailURL {
+            let thumbnailCacher = CachingDataProvider(thumbnailURL)
+            self.thumbnailResource = ParsedDataResource(thumbnailCacher, parsedBy: imageParser)
+        } else {
+            self.thumbnailResource = nil
+        }
+        
         self.postItem = postItem
         self.onVoteChanged = onVoteChanged
         self.myVote = postItem.myVote
@@ -101,8 +109,8 @@ struct PostItemView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            if let thumbnailURL = postItem.thumbnailURL {
-                Loader(CachingDataProvider(thumbnailURL), parsedBy: imageParser) { loadState in
+            if let thumbnailResource = thumbnailResource {
+                Loader(thumbnailResource) { loadState in
                     PostItemCellThumbnailView(loadState)
                 }
             } else {
@@ -118,12 +126,12 @@ struct PostItemView: View {
                 metadataView
             }
             
-            if let onVoteChanged = onVoteChanged {
-                VotingArrows(myVote: myVote ?? 0) { (newVote) in
-                    myVote = newVote
-                    onVoteChanged(newVote)
-                }
-            }
+//            if let onVoteChanged = onVoteChanged {
+//                VotingArrows(myVote: myVote ?? 0) { (newVote) in
+//                    myVote = newVote
+//                    onVoteChanged(newVote)
+//                }
+//            }
         }
         .padding(EdgeInsets(top: 12.0, leading: 8.0, bottom: 12.0, trailing: 8.0))
     }

@@ -19,6 +19,8 @@ class ParsedDataResource<T>: ObservableObject, Resource {
     }
     
     func load() {
+        guard state.isIdle else { return }
+        
         state = .loading(nil)
         dataProvider.getData { (result) in
             
