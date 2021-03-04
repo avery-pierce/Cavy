@@ -12,8 +12,8 @@ class LemmyV2Spec {
     
     private(set) var factory: LemmyAPIFactory
     
-    init(_ host: String) {
-        self.factory = LemmyAPIFactory(host, .v2)
+    init(_ host: String, https: Bool = true) {
+        self.factory = LemmyAPIFactory(host, https: https, .v2)
     }
     
     func fetchSite() -> Spec<URLRequest, LemmySiteResponseV2> {

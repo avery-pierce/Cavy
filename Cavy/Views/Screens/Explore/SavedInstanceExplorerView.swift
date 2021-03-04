@@ -65,8 +65,10 @@ struct SavedInstanceExplorerView: View {
         .navigationBarItems(trailing: Button(action: { isSheetPresented = true }, label: { Image(systemName: "plus.circle") }))
         .sheet(isPresented: $isSheetPresented, content: {
             AddAnotherInstanceView() { client in
-                rootModel.addServer(client)
-                isSheetPresented = false
+                DispatchQueue.main.async {                
+                    rootModel.addServer(client)
+                    isSheetPresented = false
+                }
             }
         })
     }

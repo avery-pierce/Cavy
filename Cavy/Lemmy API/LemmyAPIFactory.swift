@@ -10,13 +10,15 @@ import SwiftUI
 
 class LemmyAPIFactory: ObservableObject {
     var host: String
+    var https: Bool
     var version: APIVersion
     
     var token: String? = nil
     var username: String? = nil
     
-    init(_ host: String, _ version: APIVersion = .v1) {
+    init(_ host: String, https: Bool = true, _ version: APIVersion = .v1) {
         self.host = host
+        self.https = https
         self.version = version
     }
     
@@ -105,7 +107,8 @@ class LemmyAPIFactory: ObservableObject {
     }
     
     func path(_ path: String, query: [String: String] = [:]) -> URLRequest {
-        var components = URLComponents(string: "https://\(host)/\(path)")!
+        let scheme = https ? "https" : "http"
+        var components = URLComponents(string: "\(scheme)://\(host)/\(path)")!
         components.queryItems = query.map(URLQueryItem.init)
         
         let url = components.url!

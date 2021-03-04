@@ -55,7 +55,18 @@ extension LemmyAPIClient {
     
     private static func parseDomainAndAPILevel(_ descriptor: String) -> LemmyAPIClient {
         let parts = descriptor.split(separator: "/")
-        if parts.count > 1 {
+        if parts.count > 2 {
+            let base = parts[0..<(parts.count - 2)].joined(separator: "/")
+            let scheme = parts[parts.count - 2].lowercased()
+            let https = scheme != "http"
+            let versionString = parts.last!.lowercased()
+            
+            switch versionString {
+            case "v1": return .v1(LemmyV1Spec(base, https: https))
+            case "v2": return .v2(LemmyV2Spec(base, https: https))
+            default: return .v2(LemmyV2Spec(descriptor, https: https))
+            }
+        } else if parts.count > 1 {
             let base = parts[0..<(parts.count - 1)].joined(separator: "/")
             let versionString = parts.last!.lowercased()
             
@@ -74,11 +85,14 @@ extension LemmyAPIClient {
     }
     
     var descriptor: String {
-        switch (self, authenticatedUser) {
-        case (.v1(let spec), .some(let username)): return "\(username)@\(spec.factory.host)/v1"
-        case (.v2(let spec), .some(let username)): return "\(username)@\(spec.factory.host)/v2"
-        case (.v1(let spec), .none): return "\(spec.factory.host)/v1"
-        case (.v2(let spec), .none): return "\(spec.factory.host)/v2"
+        let host = apiFactory.host
+        let scheme = apiFactory.https ? "https" : "http"
+        let version = apiFactory.version.rawValue
+        
+        if let user = authenticatedUser {
+            return "\(user)@\(host)/\(scheme)/\(version)"
+        } else {
+            return "\(host)/\(scheme)/\(version)"
         }
     }
 }

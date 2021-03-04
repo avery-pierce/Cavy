@@ -10,8 +10,8 @@ import Foundation
 class LemmyV1Spec {
     private(set) var factory: LemmyAPIFactory
     
-    init(_ host: String) {
-        self.factory = LemmyAPIFactory(host, .v1)
+    init(_ host: String, https: Bool = true) {
+        self.factory = LemmyAPIFactory(host, https: https, .v1)
     }
     
     func fetchSite() -> Spec<URLRequest, LemmySiteResponse> {

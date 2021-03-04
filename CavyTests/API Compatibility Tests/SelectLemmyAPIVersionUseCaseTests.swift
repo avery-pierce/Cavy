@@ -69,4 +69,31 @@ class SelectLemmyAPIVersionUseCaseTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
+    
+    func testParseInput() {
+        let useCase = SelectLemmyAPIVersionUseCase("http://localhost:1235")
+        XCTAssertEqual(useCase.host, "localhost:1235")
+        XCTAssertEqual(useCase.https, false)
+    }
+    
+    func testLocalhostAPI() {
+        let e = expectation(description: "Select Lemmy API version")
+        let useCase = SelectLemmyAPIVersionUseCase("http://localhost:8536")
+        useCase.determineAPI { (result) in
+            switch result {
+            case .success(let client):
+                switch client {
+                case .v2:
+                    e.fulfill()
+                default:
+                    XCTFail("Did not resolve to V2")
+                }
+                
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }
