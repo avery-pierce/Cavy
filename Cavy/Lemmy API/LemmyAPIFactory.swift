@@ -106,6 +106,21 @@ class LemmyAPIFactory: ObservableObject {
         return request
     }
     
+    struct SubmitPostArgs: Codable {
+        var name: String
+        var url: String?
+        var body: String?
+        var nsfw: Bool
+        var community_id: Int
+        var auth: String
+    }
+    
+    func submitPost(name: String, url: String?, body: String?, nsfw: Bool, communityID: Int) -> URLRequest {
+        var request = path("api/\(v)/post")
+        try! request.postData(SubmitPostArgs(name: name, url: url, body: body, nsfw: nsfw, community_id: communityID, auth: token ?? ""))
+        return request
+    }
+    
     func path(_ path: String, query: [String: String] = [:]) -> URLRequest {
         let scheme = https ? "https" : "http"
         var components = URLComponents(string: "\(scheme)://\(host)/\(path)")!

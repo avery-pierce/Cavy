@@ -10,8 +10,10 @@ import XCTest
 
 class LemmyV2SpecTests: XCTestCase {
 
-    let client: LemmyV2Spec = .lemmyML
-    let activeSession = ActiveSessionClient(.lemmyML)
+    static let localhostSpec = LemmyV2Spec("localhost:8536", https: false)
+    
+    let client: LemmyV2Spec = LemmyV2SpecTests.localhostSpec
+    let activeSession = ActiveSessionClient(LemmyAPIClient(LemmyV2SpecTests.localhostSpec))
     
     func testLogin() throws {
         let credentials = activeSession.getCredentials()
@@ -30,7 +32,7 @@ class LemmyV2SpecTests: XCTestCase {
     func testListCommunities() throws {
         let e = expectation(description: "List Communities")
         let spec = client.listCommunities(sort: .hot)
-        assertDecodes(spec) {
+        assertDecodes(spec, printData: true) {
             e.fulfill()
         }
         
@@ -78,7 +80,7 @@ class LemmyV2SpecTests: XCTestCase {
          post ID: 41326
          */
         let e = expectation(description: "Get post")
-        let spec = client.fetchPost(id: 41391)
+        let spec = client.fetchPost(id: 1)
         assertDecodes(spec) {
             e.fulfill()
         }
@@ -100,7 +102,20 @@ class LemmyV2SpecTests: XCTestCase {
         let e = expectation(description: "Vote")
         activeSession.vend { (authClient) in
             guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
-            let spec = client.vote(1, onPostID: 41167)
+            let spec = client.vote(1, onPostID: 1)
+            assertDecodes(spec, printData: true) {
+                e.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testSubmitPost() throws {
+        let e = expectation(description: "Create Post")
+        activeSession.vend { (authClient) in
+            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
+            let spec = client.submitPost(name: "Automated test post \(Date().description)", url: "https://example.com", body: "This is a test post", nsfw: false, communityID: 2)
             assertDecodes(spec, printData: true) {
                 e.fulfill()
             }
