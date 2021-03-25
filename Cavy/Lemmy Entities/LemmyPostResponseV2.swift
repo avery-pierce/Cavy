@@ -104,4 +104,3 @@ struct LemmyModeratorSummary: Codable {
     var community: LemmyCommunity?
     var moderator: LemmyUser?
 }
-

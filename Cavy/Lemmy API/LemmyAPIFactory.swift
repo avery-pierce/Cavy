@@ -121,6 +121,20 @@ class LemmyAPIFactory: ObservableObject {
         return request
     }
     
+    struct SubmitCommentArgs: Codable {
+        var content: String
+        var post_id: Int
+        var parent_id: Int?
+        var form_id: String?
+        var auth: String
+    }
+    
+    func submitComment(content: String, postID: Int, parentID: Int?, formID: String?) -> URLRequest {
+        var request = path("api/\(v)/comment")
+        try! request.postData(SubmitCommentArgs(content: content, post_id: postID, parent_id: parentID, form_id: formID, auth: token ?? ""))
+        return request
+    }
+    
     func path(_ path: String, query: [String: String] = [:]) -> URLRequest {
         let scheme = https ? "https" : "http"
         var components = URLComponents(string: "\(scheme)://\(host)/\(path)")!

@@ -123,4 +123,18 @@ class LemmyV2SpecTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testSubmitComment() throws {
+        let e = expectation(description: "Submit Comment")
+        activeSession.vend { (authClient) in
+            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
+            let spec = client.submitComment(content: "Hello world! This is an automated comment \(Date().description)", postID: 1, parentID: nil)
+            
+            assertDecodes(spec, printData: true) {
+                e.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

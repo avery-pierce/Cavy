@@ -15,7 +15,7 @@ func assertDecodes<D: DataProvider, T: Codable>(_ dataPackage: Spec<D, T>, print
 func assertDecodes<T: Decodable>(to Type: T.Type, fromDataProvidedBy dataProvider: DataProvider, printData: Bool = false, file: StaticString = #filePath, line: UInt = #line, completion: @escaping () -> Void) {
     dataProvider.getData { (result) in
         let data = assertSuccess(result, file: file, line: line)
-        if let data = data, printData {
+        if let data = data, !data.isEmpty, printData {
             print(try! prettyJSON(data))
         }
         assertDecodes(to: Type, from: data, file: file, line: line)

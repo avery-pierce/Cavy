@@ -48,6 +48,10 @@ class LemmyV2Spec {
     func submitPost(name: String, url: String? = nil, body: String? = nil, nsfw: Bool = false, communityID: Int) -> Spec<URLRequest, LemmyPostResponseV2> {
         Spec(factory.submitPost(name: name, url: url, body: body, nsfw: nsfw, communityID: communityID))
     }
+    
+    func submitComment(content: String, postID: Int, parentID: Int?, formID: String? = nil) -> Spec<URLRequest, LemmyCommentResponseV2> {
+        Spec(factory.submitComment(content: content, postID: postID, parentID: parentID, formID: formID))
+    }
 }
 
 
