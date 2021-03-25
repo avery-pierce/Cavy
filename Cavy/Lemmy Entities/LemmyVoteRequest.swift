@@ -18,3 +18,15 @@ struct LemmyVoteBody: Codable {
         self.auth = auth
     }
 }
+
+struct LemmyVoteCommentBody: Codable {
+    var comment_id: Int
+    var score: Int
+    var auth: String
+    
+    init(_ score: Int, commentID: Int, auth: String) {
+        self.score = score
+        self.comment_id = commentID
+        self.auth = auth
+    }
+}

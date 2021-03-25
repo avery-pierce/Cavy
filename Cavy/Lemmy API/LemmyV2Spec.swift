@@ -45,6 +45,10 @@ class LemmyV2Spec {
         Spec(factory.vote(score, postID: postID))
     }
     
+    func vote(_ score: Int, onCommentID commentID: Int) -> Spec<URLRequest, LemmyCommentResponseV2> {
+        Spec(factory.vote(score, commentID: commentID))
+    }
+    
     func submitPost(name: String, url: String? = nil, body: String? = nil, nsfw: Bool = false, communityID: Int) -> Spec<URLRequest, LemmyPostResponseV2> {
         Spec(factory.submitPost(name: name, url: url, body: body, nsfw: nsfw, communityID: communityID))
     }

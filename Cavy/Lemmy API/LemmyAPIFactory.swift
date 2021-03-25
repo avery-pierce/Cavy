@@ -106,6 +106,12 @@ class LemmyAPIFactory: ObservableObject {
         return request
     }
     
+    func vote(_ score: Int, commentID: Int) -> URLRequest {
+        var request = path("api/\(v)/comment/like")
+        try! request.postData(LemmyVoteCommentBody(score, commentID: commentID, auth: token ?? ""))
+        return request
+    }
+    
     struct SubmitPostArgs: Codable {
         var name: String
         var url: String?

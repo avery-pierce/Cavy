@@ -137,4 +137,18 @@ class LemmyV2SpecTests: XCTestCase {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testVoteComment() throws {
+        let e = expectation(description: "Vote Comment")
+        activeSession.vend { (authClient) in
+            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
+            let spec = client.vote(1, onCommentID: 1)
+            
+            assertDecodes(spec, printData: true) {
+                e.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }
