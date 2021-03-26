@@ -93,7 +93,11 @@ class LemmyV2SpecTests: LemmySpecTestCase {
     
     func testSubmitPost() throws {
         expectWithAuthedV2Client("Create Post") { client, onComplete in
-            let spec = client.submitPost(name: "Automated test post \(Date().description)", url: "https://example.com", body: "This is a test post", nsfw: false, communityID: 2)
+            let spec = client.submitPost(name: "Automated test post \(Date().description)",
+                                         url: "https://example.com",
+                                         body: "This is a test post",
+                                         nsfw: false,
+                                         communityID: 2)
             assertDecodes(spec, printData: true) {
                 onComplete(nil)
             }
@@ -102,8 +106,9 @@ class LemmyV2SpecTests: LemmySpecTestCase {
     
     func testSubmitComment() throws {
         expectWithAuthedV2Client("Submit Comment") { (client, onComplete) in
-            let spec = client.submitComment(content: "Hello world! This is an automated comment \(Date().description)", postID: 1, parentID: nil)
-            
+            let spec = client.submitComment(content: "Hello world! This is an automated comment \(Date().description)",
+                                            postID: 1,
+                                            parentID: nil)
             assertDecodes(spec, printData: true) {
                 onComplete(nil)
             }
