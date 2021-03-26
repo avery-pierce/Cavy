@@ -421,10 +421,8 @@
 				C6FA67F625BA77B2002A352E /* URLUtilsTests.swift */,
 				C6FA67FA25BA7923002A352E /* LemmyPostItem++Tests.swift */,
 				C63DF2D425313FB500728E08 /* Info.plist */,
-				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 				C6D06D3E25D06B0D004D2DA7 /* CachingDataProviderTests.swift */,
 				C6F60EB525D9EE5700ACD2C4 /* KeychainUseCaseTests.swift */,
-				C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */,
 				C6D06D5125D2E4AB004D2DA7 /* secrets.json */,
 				C631842825E017E000286983 /* CombineLearningTests.swift */,
 			);
@@ -551,6 +549,8 @@
 			isa = PBXGroup;
 			children = (
 				C6FA67FE25BA7991002A352E /* TestBundle.swift */,
+				C6F60ED225DB3B0900ACD2C4 /* Secrets.swift */,
+				C6D9F1492537F3A100B41CE4 /* Assert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
