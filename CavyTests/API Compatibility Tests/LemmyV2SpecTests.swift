@@ -8,13 +8,8 @@
 import XCTest
 @testable import Cavy
 
-class LemmyV2SpecTests: XCTestCase {
+class LemmyV2SpecTests: LemmySpecTestCase {
 
-    static let localhostSpec = LemmyV2Spec("localhost:8536", https: false)
-    
-    let client: LemmyV2Spec = LemmyV2SpecTests.localhostSpec
-    let activeSession = ActiveSessionClient(LemmyAPIClient(LemmyV2SpecTests.localhostSpec))
-    
     func testLogin() throws {
         let credentials = activeSession.getCredentials()
         try XCTSkipUnless(credentials != nil, "username and password not found in secrets.json")
@@ -122,41 +117,6 @@ class LemmyV2SpecTests: XCTestCase {
             assertDecodes(spec, printData: true) {
                 onComplete(nil)
             }
-        }
-    }
-    
-    func withAuthedV2Client(_ block: @escaping (LemmyV2Spec) -> Void) {
-        activeSession.vend { (authClient) in
-            guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
-            block(client)
-        }
-    }
-    
-    func expect(_ name: String, timeout: TimeInterval = 10, _ block: @escaping (_ completion: @escaping (Error?) -> Void) -> Void) {
-        let e = expectation(description: name)
-        
-        block { error in
-            if let error = error {
-                XCTFail(error.localizedDescription)
-            } else {
-                e.fulfill()
-            }
-        }
-        
-        waitForExpectations(timeout: timeout, handler: nil)
-    }
-    
-    func expectWithAuthedV2Client(_ name: String, timeout: TimeInterval = 10, _ block: @escaping (LemmyV2Spec, @escaping (Error?) -> Void) -> Void) {
-        expect(name, timeout: timeout) { onComplete in
-            self.withAuthedV2Client { client in
-                block(client, onComplete)
-            }
-        }
-    }
-    
-    func expectWithAnonV2Client(_ name: String, timeout: TimeInterval = 10, _ block: @escaping (LemmyV2Spec, @escaping (Error?) -> Void) -> Void) {
-        expect(name, timeout: timeout) { onComplete in
-            block(self.client, onComplete)
         }
     }
 }
