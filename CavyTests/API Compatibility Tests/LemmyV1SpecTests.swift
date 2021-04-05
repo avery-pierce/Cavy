@@ -10,9 +10,6 @@ import XCTest
 
 class LemmyV1SpecTests: LemmySpecTestCase {
     
-    let client: LemmyV1Spec = LemmyV1Spec("www.chapo.chat")
-    let activeSession = ActiveSessionClient(LemmyAPIClient(LemmyV1Spec("www.chapo.chat")))
-    
     func testLogin() throws {
         let credentials = v1ActiveSession.getCredentials()
         try XCTSkipUnless(credentials != nil, "username and password not found in secrets.json")
