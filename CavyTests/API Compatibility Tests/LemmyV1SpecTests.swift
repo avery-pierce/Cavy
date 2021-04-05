@@ -88,4 +88,38 @@ class LemmyV1SpecTests: LemmySpecTestCase {
             }
         }
     }
+    
+    func testSubmitPost() throws {
+        expectWithAuthedV1Client("Create Post") { client, onComplete in
+            let spec = client.submitPost(name: "Automated test post \(Date().description)",
+                                         url: "https://example.com",
+                                         body: "This is a test post",
+                                         nsfw: false,
+                                         communityID: 2)
+            assertDecodes(spec, printData: true) {
+                onComplete(nil)
+            }
+        }
+    }
+    
+    func testSubmitComment() throws {
+        expectWithAuthedV1Client("Submit Comment") { (client, onComplete) in
+            let spec = client.submitComment(content: "Hello world! This is an automated comment \(Date().description)",
+                                            postID: 1,
+                                            parentID: nil)
+            assertDecodes(spec, printData: true) {
+                onComplete(nil)
+            }
+        }
+    }
+
+    func testVoteComment() throws {
+        expectWithAuthedV1Client("Vote Comment") { (client, onComplete) in
+            let spec = client.vote(1, onCommentID: 1)
+
+            assertDecodes(spec, printData: true) {
+                onComplete(nil)
+            }
+        }
+    }
 }

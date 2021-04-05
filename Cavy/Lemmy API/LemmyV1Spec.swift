@@ -42,6 +42,18 @@ class LemmyV1Spec {
     func vote(_ score: Int, onPostID postID: Int) -> Spec<URLRequest, LemmyPostItemWrapper> {
         Spec(factory.vote(score, postID: postID))
     }
+    
+    func vote(_ score: Int, onCommentID commentID: Int) -> Spec<URLRequest, LemmyCommentSubmitResponse> {
+        Spec(factory.vote(score, commentID: commentID))
+    }
+    
+    func submitPost(name: String, url: String? = nil, body: String? = nil, nsfw: Bool = false, communityID: Int) -> Spec<URLRequest, LemmyPostSubmitResponse> {
+        Spec(factory.submitPost(name: name, url: url, body: body, nsfw: nsfw, communityID: communityID))
+    }
+    
+    func submitComment(content: String, postID: Int, parentID: Int?, formID: String? = nil) -> Spec<URLRequest, LemmyCommentSubmitResponse> {
+        Spec(factory.submitComment(content: content, postID: postID, parentID: parentID, formID: formID))
+    }
 }
 
 struct LemmyPostItemWrapper: Codable {

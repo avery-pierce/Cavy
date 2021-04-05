@@ -39,10 +39,10 @@ struct LemmyComment: Codable, Equatable {
     let downvotes : Int?
     let hotRank : Int?
     let hotRankActive : Int?
-    let userID : String?
+    let userID : Int?
     let myVote : Int?
-    let subscribed : String?
-    let saved : String?
+    let subscribed : Bool?
+    let saved : Bool?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -115,9 +115,9 @@ struct LemmyComment: Codable, Equatable {
         downvotes = try values.decodeIfPresent(Int.self, forKey: .downvotes)
         hotRank = try values.decodeIfPresent(Int.self, forKey: .hotRank)
         hotRankActive = try values.decodeIfPresent(Int.self, forKey: .hotRankActive)
-        userID = try values.decodeIfPresent(String.self, forKey: .userID)
+        userID = try values.decodeIfPresent(Int.self, forKey: .userID)
         myVote = try values.decodeIfPresent(Int.self, forKey: .myVote)
-        subscribed = try values.decodeIfPresent(String.self, forKey: .subscribed)
-        saved = try values.decodeIfPresent(String.self, forKey: .saved)
+        subscribed = try values.decodeIfPresent(Bool.self, forKey: .subscribed)
+        saved = try values.decodeIfPresent(Bool.self, forKey: .saved)
     }
 }

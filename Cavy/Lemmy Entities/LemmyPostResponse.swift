@@ -13,3 +13,7 @@ struct LemmyPostResponse: Codable, Equatable {
     let community: LemmyCommunity
     let moderators: [LemmyModerator]
 }
+
+struct LemmyPostSubmitResponse: Codable, Equatable {
+    let post: LemmyPostItem
+}
