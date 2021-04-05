@@ -8,106 +8,84 @@
 import XCTest
 @testable import Cavy
 
-class LemmyV1SpecTests: XCTestCase {
+class LemmyV1SpecTests: LemmySpecTestCase {
     
     let client: LemmyV1Spec = LemmyV1Spec("www.chapo.chat")
     let activeSession = ActiveSessionClient(LemmyAPIClient(LemmyV1Spec("www.chapo.chat")))
     
     func testLogin() throws {
-        // Don't commit usernames and passwords to source control.
-        // Instead, load them from (gitignore'd) secrets file.
-        let secrets = Secrets.load()?["loginV1"] as? [String: String]
-        let username = secrets?["username"]
-        let password = secrets?["password"]
-        try XCTSkipUnless(username != nil && password != nil, "username and password not found in secrets.json")
+        let credentials = v1ActiveSession.getCredentials()
+        try XCTSkipUnless(credentials != nil, "username and password not found in secrets.json")
         
-        let e = expectation(description: "Login")
-        let spec = client.login(usernameOrEmail: username!, password: password!)
-        assertDecodes(spec) {
-            e.fulfill()
+        let (username, password) = credentials!
+        expectWithAnonV1Client("Login") { client, onComplete in
+            let spec = client.login(usernameOrEmail: username, password: password)
+            assertDecodes(spec) {
+                onComplete(nil)
+            }
         }
-        
-        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testListCommunities() throws {
-        let e = expectation(description: "List Communities")
-        let spec = client.listCommunities(sort: .hot)
-        assertDecodes(spec) {
-            e.fulfill()
+        expectWithAnonV1Client("List Communities") { client, onComplete in
+            let spec = client.listCommunities(sort: .hot)
+            assertDecodes(spec, printData: true) {
+                onComplete(nil)
+            }
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testListPosts() throws {
-        let e = expectation(description: "List Posts")
-        let spec = client.listPosts(type: .all, sort: .hot)
-        assertDecodes(spec) {
-            e.fulfill()
+        expectWithAnonV1Client("List Posts") { client, onComplete in
+            let spec = client.listPosts(type: .all, sort: .hot)
+            assertDecodes(spec) {
+                onComplete(nil)
+            }
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testListPostsAuthed() throws {
-        let e = expectation(description: "list posts")
-        activeSession.vend { (authClient) in
-            guard let authClient = authClient, case .v1(let client) = authClient else { return XCTFail() }
+        expectWithAuthedV1Client("List Authed Posts") { client, onComplete in
             let spec = client.listPosts(type: .subscribed, sort: .hot)
-            assertDecodes(spec, printData: true) {
-                e.fulfill()
+            assertDecodes(spec) {
+                onComplete(nil)
             }
         }
-        
-        waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testListPostsByCommunity() throws {
-        let e = expectation(description: "List Posts")
-        let spec = client.listPosts(type: .all, sort: .hot, communityID: 1)
-        assertDecodes(spec) {
-            e.fulfill()
+        expectWithAnonV1Client("List Posts") { client, onComplete in
+            let spec = client.listPosts(type: .all, sort: .hot, communityID: 1)
+            assertDecodes(spec) {
+                onComplete(nil)
+            }
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testListComments() throws {
-        /*
-         Some good examples:
-         Post ID: 41391
-         post ID: 41326
-         */
-        let e = expectation(description: "Get post")
-        let spec = client.fetchPost(id: 79027)
-        assertDecodes(spec) {
-            e.fulfill()
+        expectWithAnonV1Client("Get Post") { client, onComplete in
+            let spec = client.fetchPost(id: 1)
+            assertDecodes(spec) {
+                onComplete(nil)
+            }
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testGetSiteData() throws {
-        let e = expectation(description: "Fetch Site")
-        let spec = client.fetchSite()
-        assertDecodes(spec) {
-            e.fulfill()
+        expectWithAnonV1Client("Fetch Site") { client, onComplete in
+            let spec = client.fetchSite()
+            assertDecodes(spec) {
+                onComplete(nil)
+            }
         }
-
-        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testVote() throws {
-        let e = expectation(description: "Vote")
-        activeSession.vend { (authClient) in
-            guard let authClient = authClient, case .v1(let client) = authClient else { return XCTFail() }
-            let spec = client.vote(1, onPostID: 86094)
+        expectWithAuthedV1Client("Vote") { client, onComplete in
+            let spec = client.vote(1, onPostID: 1)
             assertDecodes(spec, printData: true) {
-                e.fulfill()
+                onComplete(nil)
             }
         }
-
-        waitForExpectations(timeout: 10, handler: nil)
     }
 }

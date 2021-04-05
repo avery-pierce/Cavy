@@ -11,7 +11,7 @@ import XCTest
 class LemmyV2SpecTests: LemmySpecTestCase {
 
     func testLogin() throws {
-        let credentials = activeSession.getCredentials()
+        let credentials = v2ActiveSession.getCredentials()
         try XCTSkipUnless(credentials != nil, "username and password not found in secrets.json")
         
         let (username, password) = credentials!
@@ -60,11 +60,6 @@ class LemmyV2SpecTests: LemmySpecTestCase {
     }
 
     func testListComments() throws {
-        /*
-         Some good examples:
-         Post ID: 41391
-         post ID: 41326
-         */
         expectWithAnonV2Client("Get Post") { client, onComplete in
             let spec = client.fetchPost(id: 1)
             assertDecodes(spec) {

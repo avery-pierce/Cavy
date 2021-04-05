@@ -11,10 +11,13 @@ import XCTest
 
 open class LemmySpecTestCase: XCTestCase {
     
-    static let localhostSpec = LemmyV2Spec("localhost:8536", https: false)
+    static let localhostV2Spec = LemmyV2Spec("localhost:8536", https: false)
+    let v2Client: LemmyV2Spec = LemmySpecTestCase.localhostV2Spec
+    let v2ActiveSession = ActiveSessionClient(LemmyAPIClient(LemmySpecTestCase.localhostV2Spec))
     
-    let client: LemmyV2Spec = LemmyV2SpecTests.localhostSpec
-    let activeSession = ActiveSessionClient(LemmyAPIClient(LemmyV2SpecTests.localhostSpec))
+    static let localhostV1Spec = LemmyV1Spec("localhost:8536", https: false)
+    let v1Client: LemmyV1Spec = LemmySpecTestCase.localhostV1Spec
+    let v1ActiveSession = ActiveSessionClient(LemmyAPIClient(LemmySpecTestCase.localhostV1Spec))
     
     public enum ClientScope {
         case anonymous
@@ -40,13 +43,42 @@ open class LemmySpecTestCase: XCTestCase {
     open func withV2Client(_ scope: ClientScope, _ block: @escaping (LemmyV2Spec) -> Void) {
         switch scope {
         case .authenticated:
-            activeSession.vend { (authClient) in
+            v2ActiveSession.vend { (authClient) in
                 guard let authClient = authClient, case .v2(let client) = authClient else { return XCTFail() }
                 block(client)
             }
             
         case .anonymous:
-            block(client)
+            block(v2Client)
+        }
+    }
+    
+    open func expectWithAuthedV1Client(_ name: String, timeout: TimeInterval = 10, _ block: @escaping (LemmyV1Spec, @escaping (Error?) -> Void) -> Void) {
+        expectWithV1Client(.authenticated, description: name, timeout: timeout, block)
+    }
+    
+    open func expectWithAnonV1Client(_ name: String, timeout: TimeInterval = 10, _ block: @escaping (LemmyV1Spec, @escaping (Error?) -> Void) -> Void) {
+        expectWithV1Client(.anonymous, description: name, timeout: timeout, block)
+    }
+    
+    open func expectWithV1Client(_ scope: ClientScope, description: String, timeout: TimeInterval = 10, _ block: @escaping (LemmyV1Spec, @escaping (Error?) -> Void) -> Void) {
+        expect(name, timeout: timeout) { onComplete in
+            self.withV1Client(scope) { client in
+                block(client, onComplete)
+            }
+        }
+    }
+    
+    open func withV1Client(_ scope: ClientScope, _ block: @escaping (LemmyV1Spec) -> Void) {
+        switch scope {
+        case .authenticated:
+            v1ActiveSession.vend { (authClient) in
+                guard let authClient = authClient, case .v1(let client) = authClient else { return XCTFail() }
+                block(client)
+            }
+            
+        case .anonymous:
+            block(v1Client)
         }
     }
 }
